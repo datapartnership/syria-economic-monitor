@@ -66,8 +66,8 @@ for(adm_i in 0:2){
   })
   
   # Extract VIIRS - Corrected ----------------------------------------------------
-  r <- raster(file.path(ntl_viirs_dir, "RawData", 
-                        "syr_viirs_raw_monthly_start_201204_avg_rad.tif"))
+  r <- raster(file.path(ntl_viirs_c_dir, "RawData", 
+                        "syr_viirs_corrected_monthly_start_201401_avg_rad.tif"))
   
   n_bands <- nbands(r)
   
@@ -94,6 +94,7 @@ for(adm_i in 0:2){
   ym_df <- ym_df[!((ym_df$year %in% 2022) & (ym_df$month %in% 9:12)),]
   
   viirs_bm_df <- map_df(1:nrow(ym_df), function(i){
+    print(i)
     
     ym_i_df <- ym_df[i,]
     
@@ -118,5 +119,9 @@ for(adm_i in 0:2){
     left_join(gadm_df, by = c("uid"))
   
   # Export -----------------------------------------------------------------------
+  data_df <- data_df %>%
+    dplyr::mutate(year_month = paste0(year, "-", month, "-01") %>% ymd())
+  
   saveRDS(data_df, file.path(gadm_dir, "FinalData", paste0("gadm_", adm_i, "_ntl.Rds")))
 }
+
