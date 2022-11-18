@@ -40,3 +40,16 @@ for(year in 2012:2022){
 }
 
 
+
+
+library(raster)
+
+r <- r_mean
+r[] <- log(r[]+1)
+pal <- colorNumeric(c("#0C2C84", "#41B6C4", "#FFFFCC"), raster::values(r),
+                    na.color = "transparent")
+
+leaflet() %>% addTiles() %>%
+  addRasterImage(r, colors = pal, opacity = 0.4) %>%
+  addLegend(pal = pal, values = raster::values(r),
+            title = "Surface temp") 
