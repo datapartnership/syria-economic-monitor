@@ -44,8 +44,9 @@ gf_sp <- gf_sf %>% as("Spatial")
 ## Non GS Locations
 gadm_0_sp <- readRDS(file.path(gadm_dir, "RawData", paste0("gadm36_SYR_",0,"_sp.rds")))
 
-gadm_0_sp <- gSimplify(gadm_0_sp, tol = 1)
-gadm_no_gf_sp <- gDifference(gadm_0_sp, gf_sp, byid=T)
+#gadm_0_sp <- gSimplify(gadm_0_sp, tol = 1)
+gadm_no_gf_sp <- gDifference(gadm_0_sp, gf_sp, byid=F)
+gadm_no_gf_sp$id <- 1
 
 # Load data --------------------------------------------------------------------
 for(adm_i in 0:2){
@@ -72,7 +73,7 @@ for(adm_i in 0:2){
                           "syr_viirs_raw_monthly_start_201204_avg_rad.tif"), i)
     
     r_gf   <- r %>% crop(gf_sp) %>% mask(gf_sp)
-    r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gf_sp)
+    r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gadm_no_gf_sp)
     
     gadm_id_df$viirs_mean <- exact_extract(r, gadm_sp, 'mean')
     gadm_id_df$viirs_sum  <- exact_extract(r, gadm_sp, 'sum')
@@ -104,7 +105,7 @@ for(adm_i in 0:2){
                           "syr_viirs_corrected_monthly_start_201401_avg_rad.tif"), i)
     
     r_gf   <- r %>% crop(gf_sp) %>% mask(gf_sp)
-    r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gf_sp)
+    r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gadm_no_gf_sp)
     
     gadm_id_df$viirs_c_mean <- exact_extract(r, gadm_sp, 'mean')
     gadm_id_df$viirs_c_sum <- exact_extract(r, gadm_sp, 'sum')
@@ -134,14 +135,12 @@ for(adm_i in 0:2){
     
     ym_i_df <- ym_df[i,]
     
-    ym_i_df$year
-    
     r <- raster(file.path(ntl_bm_dir, "FinalData", "monthly_rasters",
                           paste0("bm_vnp46A3_",ym_i_df$year,"_",ym_i_df$month %>% pad2(),
                                  ".tif")))
     
     r_gf   <- r %>% crop(gf_sp) %>% mask(gf_sp)
-    r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gf_sp)
+    r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gadm_no_gf_sp)
     
     gadm_id_df$viirs_bm_mean <- exact_extract(r, gadm_sp, 'mean')
     gadm_id_df$viirs_bm_sum <- exact_extract(r, gadm_sp, 'sum')
