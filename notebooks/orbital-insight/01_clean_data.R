@@ -19,6 +19,8 @@ oi_df <- oi_df %>%
   dplyr::mutate(date = measurement_ts %>% as.Date()) %>%
   dplyr::mutate(hour = measurement_ts %>% hour())
 
+saveRDS(oi_df, file.path(oi_dir, "FinalData", "oi.Rds"))
+
 oi_date_df <- oi_df %>%
   mutate(date = date %>% floor_date(unit = "month")) %>%
   group_by(date, object, aoi_name) %>%

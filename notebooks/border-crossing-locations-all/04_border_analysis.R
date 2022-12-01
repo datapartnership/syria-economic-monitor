@@ -35,6 +35,25 @@ ntl_df <- ntl_df %>%
   ))
 
 # Figures ----------------------------------------------------------------------
+ntl_df$viirs_bm_mean <- NULL
+
+ntl_df %>%
+  dplyr::filter(year %in% c(2019, 2020, 2021, 2022)) %>%
+  
+  ggplot(aes(x = month, y = viirs_bm_sum)) +
+  geom_line() +
+  geom_point() +
+  facet_grid(year~bc_name) +
+  scale_x_continuous(labels = 1:12,
+                     breaks = 1:12) +
+  labs(x = "Month",
+       y = "NTL")
+
+a <- aa %>%
+  dplyr::filter(year %in% 2013,
+                bc_name %in% "Matraba")
+
+
 sar_2022_df <- sar_df %>%
   dplyr::filter(year == 2022)
 
