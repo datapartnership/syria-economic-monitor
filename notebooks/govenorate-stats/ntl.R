@@ -30,7 +30,7 @@ data_df <- readRDS(file.path(gadm_dir, "FinalData", paste0("gadm_", 1, "_ntl.Rds
 data_df <- add_pcode(data_df)
 
 data_sum_df <- data_df %>%
-  dplyr::filter(year %in% c(2019, 2021, 2022)) %>%
+  dplyr::filter(year %in% c(2020, 2021, 2022)) %>%
   group_by(pcode, year) %>%
   dplyr::summarise(viirs_bm_sum      = mean(viirs_bm_sum),
                    viirs_bm_gf_sum   = mean(viirs_bm_gf_sum),

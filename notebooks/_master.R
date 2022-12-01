@@ -21,6 +21,7 @@ s1_sar_dir      <- file.path(data_dir, "Sentinel 1 - SAR")
 spaceknow_dir   <- file.path(data_dir, "SpaceKnow - Congestion")
 dmsp_harmon_dir <- file.path(data_dir, "DMSP-Harmonized")
 dmsp_dir        <- file.path(data_dir, "DMSP")
+outlogic_dir    <- file.path(data_dir, "Outlogic - Devices Counts")
 
 out_dir        <- file.path(proj_dir, "Outputs")
 figures_dir    <- file.path(out_dir, "figures")
