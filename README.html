@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>🚀 Syria Economic Monitor</title>
+    <title>Support for Syria Economic Monitor</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,9 +50,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://worldbank.github.io/template/README.html" />
+    <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/README.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Observed Cross-Border Mobility Traces in Lebanon and Syria" href="notebooks/mobility/README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,29 +105,36 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Additional Resources
+  Cross-border Mobility
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://datapartnership.org">
-   Development Data Partnership
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/mobility/README.html">
+   Observed Cross-Border Mobility Traces in Lebanon and Syria
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://wbdatalab.org">
-   World Bank Data Lab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://www.worldbank.org/en/about/unit/unit-dec">
-   World Bank DEC
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://www.worldbank.org/en/research/dime">
-   World Bank DIME
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/mobility/01a-aoi-and-tessellation.html">
+     Generate Areas of Interest and Tessellation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/mobility/01b-convenience-sampling.html">
+     Convenience Sampling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/mobility/03a-count-within-aoi.html">
+     Counting Devices within Areas of Interest
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -197,7 +205,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/worldbank/template"
+        <a href="https://github.com/datapartnership/syria-economic-monitor"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -214,7 +222,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/worldbank/template/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/datapartnership/syria-economic-monitor/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -231,7 +239,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/worldbank/template/edit/main/README.md"
+        <a href="https://github.com/datapartnership/syria-economic-monitor/edit/main/README.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -296,23 +304,94 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-availability-statement">
+     Data Availability Statement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license">
+   License
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>🚀 Syria Economic Monitor</h1>
+                <h1>Support for Syria Economic Monitor</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-availability-statement">
+     Data Availability Statement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license">
+   License
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -320,13 +399,33 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="syria-economic-monitor">
-<h1>🚀 Syria Economic Monitor<a class="headerlink" href="#syria-economic-monitor" title="Permalink to this headline">#</a></h1>
-<p>This repository contains all the data and notebooks other data goods created to support World Bank’s Syria Economic Monitor updates.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="support-for-syria-economic-monitor">
+<h1>Support for Syria Economic Monitor<a class="headerlink" href="#support-for-syria-economic-monitor" title="Permalink to this headline">#</a></h1>
+<p>This repository contains methodological notes and implementation materials (R scripts and Jupyter notebooks) created in support of the upcoming release of the <strong>Syria Economic Monitor</strong>.</p>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In February 2022, the <em>Syria Economic Monitor</em> team received a <a class="reference external" href="https://worldbankgroup-my.sharepoint.com/:b:/r/personal/hkrambeck_worldbank_org/Documents/00%20-%20Labs/%200%20SD%20Data%20Lab%20-%20Shared/Data%20Corps/Data%20Corps%20-%20Projects/2022-02%20DC%20Syria%20Economic%20Brief/Data%20Corps%20Strategic%20Brief%20-%20Syria%20Economic%20Report.pdf?csf=1&amp;web=1&amp;e=5kiAIp">Data Corps Strategic Brief</a>, of which the following working methodologies are a result and waiting peer-review.</p>
 </div>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cross-border Mobility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/mobility/README.html">Observed Cross-Border Mobility Traces in Lebanon and Syria</a></li>
+</ul>
 </div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<section id="data-availability-statement">
+<h3>Data Availability Statement<a class="headerlink" href="#data-availability-statement" title="Permalink to this headline">#</a></h3>
+<p>Restrictions apply to the data that support the findings of this study. The data are subject to the terms and conditions of the data license agreement and the “Official Use Only” data classification. Data are available upon request through the <a class="reference external" href="https://datapartnership.org">Development Data Partnership</a>.</p>
+</section>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">#</a></h2>
+<p>The repository is licensed under the <span class="xref myst">World Bank Master Community License Agreement</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -356,6 +455,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="notebooks/mobility/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Observed Cross-Border Mobility Traces in Lebanon and Syria</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
