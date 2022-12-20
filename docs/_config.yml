@@ -2,6 +2,7 @@
 title:
 author: World Bank Development Data Group
 logo: docs/images/logo.png
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 
 repository:
     url: https://github.com/datapartnership/syria-economic-monitor
@@ -16,3 +17,20 @@ html:
     baseurl: https://datapartnership.github.io/datapartnership/syria-economic-monitor
 
 only_build_toc_files: true
+
+#######################################################################################
+# Execution settings
+execute:
+    execute_notebooks: force
+    allow_errors: true
+    exclude_patterns:
+        - notebooks/**/*.ipynb
+
+#######################################################################################
+# Bibliography settings
+bibtex_bibfiles:
+    - docs/bibliography.bib
+
+sphinx:
+    config:
+        bibtex_reference_style: author_year
