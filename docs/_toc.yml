@@ -11,3 +11,9 @@ parts:
           - file: notebooks/mobility/02-validate-mobility-data.ipynb
           - file: notebooks/mobility/03a-count-within-aoi.ipynb
           - file: notebooks/mobility/03b-calculate-stay-locations.ipynb
+  - caption: AIS Trade Estimation
+    chapters:
+      - file: notebooks/ais-analysis/README
+        sections:
+          # - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
+          # - file: notebooks/ais-analysis/02-trade-estimation.ipynb
