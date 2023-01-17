@@ -138,6 +138,35 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tracking Maritime Shipping
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ais-analysis/README.html">
+   Seaborn Trade Activity Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">
+     AIS Data Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/02-trade-estimation.html">
+     AIS Trade Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -494,21 +523,21 @@ title="Print to PDF"
 <p>Finally, we generate a working dataset from the raw mobility data by drawing devices out to compose sub-panels <strong>A</strong> and <strong>B</strong>. Finally, we persist the data in an efficient partitioning layout for further analysis.</p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import dask.dataframe as dd
-import geopandas
-import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_parameters docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Parameters 
-# https://papermill.readthedocs.io/en/latest/usage-parameterize.html
-DASK_SCHEDULER_ADDRESS = None
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters </span>
+<span class="c1"># https://papermill.readthedocs.io/en/latest/usage-parameterize.html</span>
+<span class="n">DASK_SCHEDULER_ADDRESS</span> <span class="o">=</span> <span class="kc">None</span>
 
-AOI = &quot;id=7&amp;name=A&quot;
-NAME = &quot;A&quot;
+<span class="n">AOI</span> <span class="o">=</span> <span class="s2">&quot;id=7&amp;name=A&quot;</span>
+<span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -520,14 +549,14 @@ NAME = &quot;A&quot;
 <p>On the previous step, we defiend the area(s) of interest. Here, we selected it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AOI = geopandas.read_file(f&quot;../../data/interim/aoi/{AOI}.geojson&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../data/interim/aoi/</span><span class="si">{</span><span class="n">AOI</span><span class="si">}</span><span class="s2">.geojson&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AOI.explore()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -710,36 +739,36 @@ NAME = &quot;A&quot;
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>PATH = [
-    f&quot;../../data/external/outlogic/LB/date=*/*.parquet&quot;,
-    f&quot;../../data/external/outlogic/SY/date=*/*.parquet&quot;,
-]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PATH</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sa">f</span><span class="s2">&quot;../../data/external/outlogic/LB/date=*/*.parquet&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;../../data/external/outlogic/SY/date=*/*.parquet&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf = dd.read_parquet(
-    PATH,
-    columns=[
-        &quot;uid&quot;,
-        &quot;latitude&quot;,
-        &quot;longitude&quot;,
-        &quot;h3_10&quot;,
-        &quot;datetime&quot;,
-        &quot;country&quot;,
-        &quot;year&quot;,
-        &quot;date&quot;,
-    ],
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
+    <span class="n">PATH</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;uid&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;latitude&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;longitude&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;h3_10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;country&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf.npartitions
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span><span class="o">.</span><span class="n">npartitions</span>
 </pre></div>
 </div>
 </div>
@@ -752,7 +781,7 @@ NAME = &quot;A&quot;
 <p>Removing rows without <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf = ddf[~ddf[&quot;uid&quot;].isnull()]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="o">~</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
 </pre></div>
 </div>
 </div>
@@ -765,7 +794,7 @@ NAME = &quot;A&quot;
 <p>First, let’s calculate the total number of devices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf[&quot;uid&quot;].nunique().compute()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -780,8 +809,8 @@ NAME = &quot;A&quot;
 <p>Now, let’s calculate the <strong>sub-panel</strong> by drawing out devices detected within the <code class="docutils literal notranslate"><span class="pre">AOI</span></code> at least <strong>once</strong> throughout the time horizon.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>devices = ddf[ddf[&quot;h3_10&quot;].isin(AOI[&quot;hex_id&quot;])][&quot;uid&quot;].unique().compute()
-devices = devices.to_frame()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">devices</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;h3_10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">])][</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">devices</span> <span class="o">=</span> <span class="n">devices</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -794,7 +823,7 @@ devices = devices.to_frame()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(devices)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -807,7 +836,7 @@ devices = devices.to_frame()
 <p>Finally, select the mobility panel based on <code class="docutils literal notranslate"><span class="pre">devices</span></code> through the time horizon.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf = ddf[ddf[&quot;uid&quot;].isin(devices[&quot;uid&quot;])]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">])]</span>
 </pre></div>
 </div>
 </div>
@@ -822,30 +851,30 @@ devices = devices.to_frame()
 <p>In this step, we convert <code class="docutils literal notranslate"><span class="pre">datetime</span></code> to the <strong>Asia/Damascus</strong> timezone and calculate the quarter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf[&quot;datetime&quot;] = ddf[&quot;datetime&quot;].dt.tz_convert(&quot;Asia/Damascus&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s2">&quot;Asia/Damascus&quot;</span><span class="p">)</span>
 
-ddf[&quot;date&quot;] = dd.to_datetime(ddf[&quot;date&quot;])
-ddf[&quot;quarter&quot;] = ddf[&quot;datetime&quot;].dt.quarter
+<span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
+<span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;quarter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">quarter</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># reorder columns
-ddf = ddf[
-    [
-        &quot;uid&quot;,
-        &quot;latitude&quot;,
-        &quot;longitude&quot;,
-        &quot;h3_10&quot;,
-        &quot;datetime&quot;,
-        &quot;country&quot;,
-        &quot;year&quot;,
-        &quot;quarter&quot;,
-        &quot;date&quot;,
-    ]
-]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reorder columns</span>
+<span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;uid&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;latitude&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;longitude&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;h3_10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;country&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quarter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -853,11 +882,11 @@ ddf = ddf[
 <p>Saving to disk,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf.repartition(1).to_parquet(
-    f&quot;../../data/interim/panels/_{NAME}&quot;,
-    write_index=False,
-    partition_on=[&quot;country&quot;, &quot;year&quot;, &quot;quarter&quot;],
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;../../data/interim/panels/_</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">write_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">partition_on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;quarter&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -53,6 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/mobility/03a-count-within-aoi.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Seaborn Trade Activity Estimation" href="../ais-analysis/README.html" />
     <link rel="prev" title="Convenience Sampling" href="01b-convenience-sampling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -132,6 +133,35 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Counting Devices within Areas of Interest
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tracking Maritime Shipping
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ais-analysis/README.html">
+   Seaborn Trade Activity Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">
+     AIS Data Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/02-trade-estimation.html">
+     AIS Trade Estimation
     </a>
    </li>
   </ul>
@@ -443,25 +473,25 @@ title="Print to PDF"
 <p>In this step, we calculate the number of devices detected within the <strong>areas of interest</strong>, creating a time series.</p>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import dask.dataframe as dd
-import geopandas
-import matplotlib.colors as mcolors
-import matplotlib.dates as mdates
-import matplotlib.pyplot as plt
-import pandas as pd
-import humanize
-from dask.distributed import Client
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">humanize</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_parameters docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># https://papermill.readthedocs.io/en/latest/usage-parameterize.html
-DASK_SCHEDULER_ADDRESS = None
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://papermill.readthedocs.io/en/latest/usage-parameterize.html</span>
+<span class="n">DASK_SCHEDULER_ADDRESS</span> <span class="o">=</span> <span class="kc">None</span>
 
-AOI = &quot;id=7&amp;name=A&quot;
-NAME = &quot;A&quot;
+<span class="n">AOI</span> <span class="o">=</span> <span class="s2">&quot;id=7&amp;name=A&quot;</span>
+<span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -472,7 +502,7 @@ NAME = &quot;A&quot;
 <h3>Area of Interest<a class="headerlink" href="#area-of-interest" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AOI = geopandas.read_file(f&quot;../../data/interim/aoi/{AOI}.geojson&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../data/interim/aoi/</span><span class="si">{</span><span class="n">AOI</span><span class="si">}</span><span class="s2">.geojson&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -483,12 +513,12 @@ NAME = &quot;A&quot;
 <p>In this step, we import the panel of devices detected within the <strong>area of interest</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>PATH = [
-    f&quot;../../data/interim/panels/{NAME}&quot;,
-]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PATH</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sa">f</span><span class="s2">&quot;../../data/interim/panels/</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
-filters = [
-]
+<span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -496,7 +526,7 @@ filters = [
 <p>Reading the mobility data as an <a class="reference external" href="https://arrow.apache.org/docs/python/parquet.html">Apache Parquet Dataset</a> in parallel using <a class="reference external" href="https://www.dask.org">Dask</a>,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf = dd.read_parquet(PATH, filters=filters)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -504,7 +534,7 @@ filters = [
 <p>Filtering,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ddf = ddf[ddf[&quot;h3_10&quot;].isin(AOI[&quot;hex_id&quot;])]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;h3_10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">])]</span>
 </pre></div>
 </div>
 </div>
@@ -516,8 +546,8 @@ filters = [
 <p>First, let’s just take a look!</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># dropping uid, for privacy
-ddf.head().drop([&quot;uid&quot;], axis=&quot;columns&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dropping uid, for privacy</span>
+<span class="n">ddf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;uid&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -612,7 +642,7 @@ ddf.head().drop([&quot;uid&quot;], axis=&quot;columns&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>humanize.naturalsize(ddf.memory_usage(deep=True).sum().compute())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">humanize</span><span class="o">.</span><span class="n">naturalsize</span><span class="p">(</span><span class="n">ddf</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -625,14 +655,14 @@ ddf.head().drop([&quot;uid&quot;], axis=&quot;columns&quot;)
 <p>As seen, the data will easily fit in memory. Let’s convert to a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = ddf.compute()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(df)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -645,10 +675,10 @@ ddf.head().drop([&quot;uid&quot;], axis=&quot;columns&quot;)
 <p>And now, a sneak peek of 10,000 locations from the panel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gdf = geopandas.GeoDataFrame(
-    df[[&quot;longitude&quot;, &quot;latitude&quot;]].iloc[:10000], geometry=geopandas.points_from_xy(df.longitude.iloc[:10000], df.latitude.iloc[:10000], crs=&quot;EPSG:4326&quot;)
-)
-gdf.explore()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -828,11 +858,11 @@ gdf.explore()
 <p>Now, we are interested to see how the number of devices evolves in time. Let’s calculate the daily number of devices detected withih the area of interest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>count = (
-    ddf.groupby([&quot;date&quot;])[&quot;uid&quot;].nunique().compute().to_frame(&quot;count&quot;)
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ddf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;date&quot;</span><span class="p">])[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 
-count.index = pd.to_datetime(count.index)
+<span class="n">count</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">count</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -840,16 +870,16 @@ count.index = pd.to_datetime(count.index)
 <p>Plotting,</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(16, 10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-count.plot(ax=ax)
-ax.set_title(
-    f&quot;Number of devices with area of interest ({NAME})&quot;,
-    fontsize=18,
-    fontweight=&quot;bold&quot;,
-)
-ax.yaxis.set_label_text(&quot;Number of devices&quot;)
-ax.xaxis.set_major_formatter(mdates.DateFormatter(&#39;%b-%Y&#39;));
+<span class="n">count</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Number of devices with area of interest (</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+    <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_text</span><span class="p">(</span><span class="s2">&quot;Number of devices&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b-%Y&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -893,6 +923,13 @@ ax.xaxis.set_major_formatter(mdates.DateFormatter(&#39;%b-%Y&#39;));
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Convenience Sampling</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ais-analysis/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Seaborn Trade Activity Estimation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
