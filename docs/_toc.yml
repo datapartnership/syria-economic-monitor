@@ -11,6 +11,10 @@ parts:
           - file: notebooks/mobility/02-validate-mobility-data.ipynb
           - file: notebooks/mobility/03a-count-within-aoi.ipynb
           - file: notebooks/mobility/03b-calculate-stay-locations.ipynb
+  - caption: Nighttime Lights
+    chapters:
+      - file: notebooks/ntl-analysis/README
+
   - caption: Tracking Maritime Shipping
     chapters:
       - file: notebooks/ais-analysis/README
