@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/ais-analysis/README.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -415,6 +417,11 @@ title="Print to PDF"
    Limitations
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -481,6 +488,11 @@ title="Print to PDF"
    Limitations
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -496,12 +508,12 @@ title="Print to PDF"
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <p>This section introduces the use of an alternative big data source – Automatic Identification System (hereafter, AIS) – to monitor seaborn trade activity in Syrian ports. AIS was originally developed by the International Maritime Organization in 2004 to prevent collisions between large vessels. This system requires all commercial ships (gross tonnage greater than 300) and passenger ships to broadcast their position via ground stations and satellites.</p>
-<p>A nascent literature has been dedicated to convert raw AIS messages into economic values of trade (Arslanalp et al., 2021; Cerdeiro et al., 2020; Jia et al., 2019; Verschuur et al., 2021a, 2021b). These papers utilize dynamic information on ship movements, static characteristics of each ship, and reported draft (depth of submergence), to estimate the amount of goods offloaded or loaded at a certain port. While this approach is grounded on principles from physics and has been validated with official statistics, issues with missing data make it less reliable in the context of Syria.</p>
-<p>For the purposes of the monitor, we implement the methodology described in “Global economic impacts of COVID-19 lockdown measures stand out in high frequency shipping data” (Verschuur et al., 2021b), using the same AIS data used by the authors, facilitated by the <a class="reference external" href="https://unstats.un.org/wiki/display/AIS/AIS+Handbook+Outline">UN Global Platform AIS Task Team</a>. We choose to follow this paper as it is the latest global AIS analysis which included Syria, and the data processing steps are described in detail in the appendix. The authors report strong correlations between predicted trade and reported trade for selected countries (0.52 - 0.96), as well as with trade flows retrieved from UN Comtrade (0.84 - 0.86).</p>
+<p>A nascent literature has been dedicated to convert raw AIS messages into economic values of trade (<span id="id1">Arslanalp <em>et al.</em> [<a class="reference internal" href="../mobility/README.html#id15" title="Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. IMF Working Papers, 2021(225):A001, 2021. URL: https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml, doi:10.5089/9781513593531.001.A001.">2021</a>]</span>; <span id="id2">Cerdeiro <em>et al.</em> [<a class="reference internal" href="../mobility/README.html#id11" title="Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. IMF Working Papers, 2020.">2020</a>]</span>; <span id="id3">Jia <em>et al.</em> [<a class="reference internal" href="../mobility/README.html#id12" title="Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. International Journal of Shipping and Transport Logistics, 11:25, 01 2019. doi:10.1504/IJSTL.2019.096864.">2019</a>]</span>; <span id="id4">Verschuur <em>et al.</em> [<a class="reference internal" href="../mobility/README.html#id13" title="Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. Nature Human Behaviour, 5(3):305-307, Mar 2021. URL: https://doi.org/10.1038/s41562-021-01060-5, doi:10.1038/s41562-021-01060-5.">2021</a>]</span>; <span id="id5">Verschuur <em>et al.</em> [<a class="reference internal" href="../mobility/README.html#id14" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">2021</a>]</span>). These papers utilize dynamic information on ship movements, static characteristics of each ship, and reported draft (depth of submergence), to estimate the amount of goods offloaded or loaded at a certain port. While this approach is grounded on principles from physics and has been validated with official statistics, issues with missing data make it less reliable in the context of Syria.</p>
+<p>For the purposes of the monitor, we implement the methodology described in “Global economic impacts of COVID-19 lockdown measures stand out in high frequency shipping data” <span id="id6">[<a class="reference internal" href="../mobility/README.html#id14" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>, using the same AIS data used by the authors, facilitated by the <a class="reference external" href="https://unstats.un.org/wiki/display/AIS/AIS+Handbook+Outline">UN Global Platform AIS Task Team</a>. We choose to follow this paper as it is the latest global AIS analysis which included Syria, and the data processing steps are described in detail in the appendix. The authors report strong correlations between predicted trade and reported trade for selected countries (0.52 - 0.96), as well as with trade flows retrieved from UN Comtrade (0.84 - 0.86).</p>
 </section>
 <section id="method">
 <h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">#</a></h2>
-<p>The method can be broken down into the following four steps. A lengthier description of each step is available on “S1 Appendix: Methodology maritime trade estimates” ​(Verschuur et al., 2021b)​.</p>
+<p>The method can be broken down into the following four steps. A lengthier description of each step is available on “S1 Appendix: Methodology maritime trade estimates” ​<span id="id7">[<a class="reference internal" href="../mobility/README.html#id14" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>.</p>
 <section id="step-1-data-extraction">
 <h3>Step 1. Data Extraction<a class="headerlink" href="#step-1-data-extraction" title="Permalink to this headline">#</a></h3>
 <p>We retrieve all AIS messages that intersect a 20-kilometer buffer from each port in Syria (Al Ladhiqiyah, Tartus, Baniyas), available from December 1st, 2018, to August 31st, 2022. This results in a dataset of 98,662 AIS messages, the majority of which are concentrated in Al Ladhiqiyah and Tartus.</p>
@@ -513,21 +525,20 @@ title="Print to PDF"
 </section>
 <section id="step-3-data-attributes">
 <h3>Step 3. Data Attributes<a class="headerlink" href="#step-3-data-attributes" title="Permalink to this headline">#</a></h3>
-<p>Besides vessel dimensions, there are three other key requirements to estimate the magnitude of trade: (1) the carrying capacity, or deadweight tonnage (DWT), (2) the block coefficient, or ratio of volume displacement, and (3) the difference in reported draft.</p>
+<p>Besides vessel dimensions, there are three other key requirements to estimate the magnitude of trade: (1) the carrying capacity, or deadweight tonnage (<span class="math notranslate nohighlight">\(DWT\)</span>), (2) the block coefficient, or ratio of volume displacement, and (3) the difference in reported draft.</p>
 <p>(1) Deadweight tonnage is retrieved from the authors’ commercial vessel database. For vessels that cannot be matched to the database, a Random Forest Regressor is used to predict deadweight tonnage, using vessel dimensions as independent variables (length, width, design draft). (2) Block coefficients per vessel category are retrieved from a technical report (DHI, 2018).</p>
 <p>Finally, (3) difference in draught is calculated from the AIS data. Draft data is reported by the ship crews, but a difference between outgoing and incoming draft is only identified in 37% of the port calls. For the remaining trade journeys, we follow the back-propagation technique. We define outgoing draft by retrieving the incoming draft reported at the next port. We search for the next port of entry in the following 3 days. This technique filled about 60% of cases where there was no draft change reported.</p>
 </section>
 <section id="step-4-trade-estimation">
 <h3>Step 4. Trade Estimation<a class="headerlink" href="#step-4-trade-estimation" title="Permalink to this headline">#</a></h3>
-<p>The payload, or utilization rate (what percentage of capacity is used to carry goods) <em>Uv</em> is calculated using the following formula:</p>
-<p><img alt="Payload Formula" src="../../_images/ais-formula.JPG" />)</p>
-<figcaption align = "center"><b>Payload Formula</b>
-</figcaption>
+<p>The payload, or utilization rate (what percentage of capacity is used to carry goods) <span class="math notranslate nohighlight">\(u_{v}\)</span> is calculated using the following formula:</p>
+<div class="math notranslate nohighlight" id="equation-payload-formula">
+<span class="eqno">(1)<a class="headerlink" href="#equation-payload-formula" title="Permalink to this equation">#</a></span>\[u_v = \frac{((C_b \times d_r - C_b \times d_d) \times LWp_w) + DWT}{DWT}\]</div>
 <blockquote>
-<div><p>where <em>Cb</em> is the block coefficient, <em>dd</em> is the design draft, <em>dr</em> is the reported draft, <em>L</em> is the length, <em>W</em> is the width, <em>DWT</em> is the deadweight tonnage, and <em>Pw</em> is a constant for the density in salt water.</p>
+<div><p>where <span class="math notranslate nohighlight">\(C_{b}\)</span> is the block coefficient, <span class="math notranslate nohighlight">\(d_{d}\)</span> is the design draft, <span class="math notranslate nohighlight">\(d_r\)</span> is the reported draft, <span class="math notranslate nohighlight">\(L\)</span> is the length, <span class="math notranslate nohighlight">\(W\)</span> is the width, <span class="math notranslate nohighlight">\(DWT\)</span> is the deadweight tonnage, and <span class="math notranslate nohighlight">\(p_w\)</span> is a constant for the density in salt water.</p>
 </div></blockquote>
 <p>The utilization rate is multiplied by deadweight tonnage to calculate the volume of cargo being transported. The direction of the change in draught dictates whether the cargo is considered an import or an export. If the outgoing draught is greater than the incoming draught, the trade flow is considered an export, and the inverse is true for imports.</p>
-<p>In the majority of cases, vessels either load or unload goods. Therefore, we estimate the trade flows based on the net unloading (imports) or loading (exports) of vessels, which is estimated based on the draft differences when entering and leaving the port. In case there is no difference between the ingoing and outgoing draft (as this is not always manually entered), we estimate the ratio of unloading (fraction exports) and loading (fraction imports) based on the imbalance measured at the port. (Verschuur et al., 2021b)</p>
+<p>In the majority of cases, vessels either load or unload goods. Therefore, we estimate the trade flows based on the net unloading (imports) or loading (exports) of vessels, which is estimated based on the draft differences when entering and leaving the port. In case there is no difference between the ingoing and outgoing draft (as this is not always manually entered), we estimate the ratio of unloading (fraction exports) and loading (fraction imports) based on the imbalance measured at the port. <span id="id8">[<a class="reference internal" href="../mobility/README.html#id14" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>.</p>
 </section>
 </section>
 <section id="notebooks">
@@ -540,9 +551,12 @@ title="Print to PDF"
 <section id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this headline">#</a></h2>
 <p>We present results of the estimated volume of trade (imports and exports) across both ports in Syria (Latakia and Tartus). Despite the relatively small number of ships captured by the AIS data in Syria (498 vessels), the data is comprehensive enough to identify general trends from the limited trade that remains since the fallout of the conflict. The trade flow is consistently dominated by imports. We find a decrease in trade volume in 2020, with slight decreases in 2021 and 2022.</p>
-<p><img alt="Estimated Monthly Trade Volume from AIS signals" src="../../_images/trade-estimates.png" /></p>
-<figcaption align = "center"><b>Estiamted Monthly Trade Volume from AIS signals</b>
+<figure class="align-center" id="id20">
+<img alt="../../_images/trade-estimates.png" src="../../_images/trade-estimates.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Estimated Monthly Trade Volume from AIS signal</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
+</figure>
 <p>The general trends identified are consistent with the AIS-derived estimates reported by UN Comtrade, although the decrease is more pronounced in the Comtrade data. Although both estimates are based on the same AIS data, there are important methodological differences that affect the results. Key differences include the coverage of vessel information, the method to define port boundaries (Comtrade uses an automated method), and the trade estimation formula.</p>
 </section>
 <section id="limitations">
@@ -552,6 +566,40 @@ title="Print to PDF"
 <li><p>The methodology doesn’t currently account for transshipment (goods that are offloaded at a port and then loaded onto another vessel without going through customs). We have no data on transshipment rates in Syrian ports.</p></li>
 <li><p>This methodology does not capture trade conducted by vessels that turn off their AIS signals. The team intends to explore this topic with further research.</p></li>
 </ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id9">
+<dl class="citation">
+<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id1">AKV21</a></span></dt>
+<dd><p>Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. <em>IMF Working Papers</em>, 2021(225):A001, 2021. URL: <a class="reference external" href="https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml">https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml</a>, <a class="reference external" href="https://doi.org/10.5089/9781513593531.001.A001">doi:10.5089/9781513593531.001.A001</a>.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id2">CKomaromiLS20</a></span></dt>
+<dd><p>Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. <em>IMF Working Papers</em>, 2020.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">HT04</span></dt>
+<dd><p>Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In <em>Geographic Information Science. Volume 3234</em>, volume 3234, 106–124. 2004. <a class="reference external" href="https://doi.org/10.1007/978-3-540-30231-5_8">doi:10.1007/978-3-540-30231-5_8</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id3">JPS19</a></span></dt>
+<dd><p>Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. <em>International Journal of Shipping and Transport Logistics</em>, 11:25, 01 2019. <a class="reference external" href="https://doi.org/10.1504/IJSTL.2019.096864">doi:10.1504/IJSTL.2019.096864</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">Kun14</span></dt>
+<dd><p>Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/18241">http://hdl.handle.net/10986/18241</a>.</p>
+</dd>
+<dt class="label" id="id18"><span class="brackets">VKH21a</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>,<a href="#id7">3</a>,<a href="#id8">4</a>)</span></dt>
+<dd><p>Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. <em>PLoS One</em>, 16(4):e0248818, April 2021.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id4">VKH21b</a></span></dt>
+<dd><p>Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. <em>Nature Human Behaviour</em>, 5(3):305–307, Mar 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">https://doi.org/10.1038/s41562-021-01060-5</a>, <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">doi:10.1038/s41562-021-01060-5</a>.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">WorldBank21</span></dt>
+<dd><p>World Bank. <em>World Development Report 2021 : Data for Better Lives</em>. World Bank, 2021. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/35218">http://hdl.handle.net/10986/35218</a>.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">WorldBank22</span></dt>
+<dd><p>World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/37617">http://hdl.handle.net/10986/37617</a>.</p>
+</dd>
+</dl>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>

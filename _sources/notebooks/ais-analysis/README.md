@@ -4,13 +4,13 @@
 
 This section introduces the use of an alternative big data source – Automatic Identification System (hereafter, AIS) – to monitor seaborn trade activity in Syrian ports. AIS was originally developed by the International Maritime Organization in 2004 to prevent collisions between large vessels. This system requires all commercial ships (gross tonnage greater than 300) and passenger ships to broadcast their position via ground stations and satellites.
 
-A nascent literature has been dedicated to convert raw AIS messages into economic values of trade (Arslanalp et al., 2021; Cerdeiro et al., 2020; Jia et al., 2019; Verschuur et al., 2021a, 2021b). These papers utilize dynamic information on ship movements, static characteristics of each ship, and reported draft (depth of submergence), to estimate the amount of goods offloaded or loaded at a certain port. While this approach is grounded on principles from physics and has been validated with official statistics, issues with missing data make it less reliable in the context of Syria.
+A nascent literature has been dedicated to convert raw AIS messages into economic values of trade ({cite:t}`TrackingTradefromSpaceAnApplicationtoPacificIslandCountries`; {cite:t}`Cerdeiro2020WorldST`; {cite:t}`Jia2019`; {cite:t}`Verschuur2021`; {cite:t}`Verschuur2021-fw`). These papers utilize dynamic information on ship movements, static characteristics of each ship, and reported draft (depth of submergence), to estimate the amount of goods offloaded or loaded at a certain port. While this approach is grounded on principles from physics and has been validated with official statistics, issues with missing data make it less reliable in the context of Syria.
 
-For the purposes of the monitor, we implement the methodology described in “Global economic impacts of COVID-19 lockdown measures stand out in high frequency shipping data” (Verschuur et al., 2021b), using the same AIS data used by the authors, facilitated by the [UN Global Platform AIS Task Team](https://unstats.un.org/wiki/display/AIS/AIS+Handbook+Outline). We choose to follow this paper as it is the latest global AIS analysis which included Syria, and the data processing steps are described in detail in the appendix. The authors report strong correlations between predicted trade and reported trade for selected countries (0.52 - 0.96), as well as with trade flows retrieved from UN Comtrade (0.84 - 0.86).
+For the purposes of the monitor, we implement the methodology described in “Global economic impacts of COVID-19 lockdown measures stand out in high frequency shipping data” {cite}`Verschuur2021-fw`, using the same AIS data used by the authors, facilitated by the [UN Global Platform AIS Task Team](https://unstats.un.org/wiki/display/AIS/AIS+Handbook+Outline). We choose to follow this paper as it is the latest global AIS analysis which included Syria, and the data processing steps are described in detail in the appendix. The authors report strong correlations between predicted trade and reported trade for selected countries (0.52 - 0.96), as well as with trade flows retrieved from UN Comtrade (0.84 - 0.86).
 
 ## Method
 
-The method can be broken down into the following four steps. A lengthier description of each step is available on “S1 Appendix: Methodology maritime trade estimates” ​(Verschuur et al., 2021b)​.
+The method can be broken down into the following four steps. A lengthier description of each step is available on “S1 Appendix: Methodology maritime trade estimates” ​{cite}`Verschuur2021-fw`.
 
 ### Step 1. Data Extraction
 
@@ -24,7 +24,7 @@ Port calls that meet the following criteria are excluded to keep trips that are 
 
 ### Step 3. Data Attributes
 
-Besides vessel dimensions, there are three other key requirements to estimate the magnitude of trade: (1) the carrying capacity, or deadweight tonnage (DWT), (2) the block coefficient, or ratio of volume displacement, and (3) the difference in reported draft.
+Besides vessel dimensions, there are three other key requirements to estimate the magnitude of trade: (1) the carrying capacity, or deadweight tonnage ($DWT$), (2) the block coefficient, or ratio of volume displacement, and (3) the difference in reported draft.
 
 (1) Deadweight tonnage is retrieved from the authors’ commercial vessel database. For vessels that cannot be matched to the database, a Random Forest Regressor is used to predict deadweight tonnage, using vessel dimensions as independent variables (length, width, design draft). (2) Block coefficients per vessel category are retrieved from a technical report (DHI, 2018).
 
@@ -32,17 +32,18 @@ Finally, (3) difference in draught is calculated from the AIS data. Draft data i
 
 ### Step 4. Trade Estimation
 
-The payload, or utilization rate (what percentage of capacity is used to carry goods) *Uv* is calculated using the following formula:
+The payload, or utilization rate (what percentage of capacity is used to carry goods) $u_{v}$ is calculated using the following formula:
 
-![Payload Formula](../../reports/figures/ais-formula.JPG))
-<figcaption align = "center"><b>Payload Formula</b>
-</figcaption>
+```{math}
+:label: payload_formula
+u_v = \frac{((C_b \times d_r - C_b \times d_d) \times LWp_w) + DWT}{DWT}
+```
 
-> where *Cb* is the block coefficient, *dd* is the design draft, *dr* is the reported draft, *L* is the length, *W* is the width, *DWT* is the deadweight tonnage, and *Pw* is a constant for the density in salt water.
+> where $C_{b}$ is the block coefficient, $d_{d}$ is the design draft, $d_r$ is the reported draft, $L$ is the length, $W$ is the width, $DWT$ is the deadweight tonnage, and $p_w$ is a constant for the density in salt water.
 
 The utilization rate is multiplied by deadweight tonnage to calculate the volume of cargo being transported. The direction of the change in draught dictates whether the cargo is considered an import or an export. If the outgoing draught is greater than the incoming draught, the trade flow is considered an export, and the inverse is true for imports.
 
-In the majority of cases, vessels either load or unload goods. Therefore, we estimate the trade flows based on the net unloading (imports) or loading (exports) of vessels, which is estimated based on the draft differences when entering and leaving the port. In case there is no difference between the ingoing and outgoing draft (as this is not always manually entered), we estimate the ratio of unloading (fraction exports) and loading (fraction imports) based on the imbalance measured at the port. (Verschuur et al., 2021b)
+In the majority of cases, vessels either load or unload goods. Therefore, we estimate the trade flows based on the net unloading (imports) or loading (exports) of vessels, which is estimated based on the draft differences when entering and leaving the port. In case there is no difference between the ingoing and outgoing draft (as this is not always manually entered), we estimate the ratio of unloading (fraction exports) and loading (fraction imports) based on the imbalance measured at the port. {cite}`Verschuur2021-fw`.
 
 ## Notebooks
 
@@ -53,9 +54,12 @@ In the majority of cases, vessels either load or unload goods. Therefore, we est
 
 We present results of the estimated volume of trade (imports and exports) across both ports in Syria (Latakia and Tartus). Despite the relatively small number of ships captured by the AIS data in Syria (498 vessels), the data is comprehensive enough to identify general trends from the limited trade that remains since the fallout of the conflict. The trade flow is consistently dominated by imports. We find a decrease in trade volume in 2020, with slight decreases in 2021 and 2022.
 
-![Estimated Monthly Trade Volume from AIS signals](../../reports/figures/trade-estimates.png)
-<figcaption align = "center"><b>Estiamted Monthly Trade Volume from AIS signals</b>
-</figcaption>
+```{figure} ../../reports/figures/trade-estimates.png
+---
+align: center
+---
+Estimated Monthly Trade Volume from AIS signal
+```
 
 The general trends identified are consistent with the AIS-derived estimates reported by UN Comtrade, although the decrease is more pronounced in the Comtrade data. Although both estimates are based on the same AIS data, there are important methodological differences that affect the results. Key differences include the coverage of vessel information, the method to define port boundaries (Comtrade uses an automated method), and the trade estimation formula.
 
@@ -66,3 +70,8 @@ The general trends identified are consistent with the AIS-derived estimates repo
 - The methodology doesn’t currently account for transshipment (goods that are offloaded at a port and then loaded onto another vessel without going through customs). We have no data on transshipment rates in Syrian ports.
 
 - This methodology does not capture trade conducted by vessels that turn off their AIS signals. The team intends to explore this topic with further research.
+
+## References
+
+```{bibliography}
+```

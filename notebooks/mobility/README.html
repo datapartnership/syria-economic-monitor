@@ -519,7 +519,7 @@ title="Print to PDF"
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h2>
 <p>In this working methodology, we propose to investigate and map sub-panels of devices’ mobility traces based on convenience sampling. The working hypothesis is that by selecting sub-panels of devices based on whether they were detected in the proximity of points of interest (POIs) and reconstructing their mobility traces – in other words, where they went and where they stopped throughout the horizon – the movement captured could suggest trade activity that, more importantly, could be located and quantified if combined with other datasets.</p>
 <p>The sampling method - convenience sampling, a non-probability form of sampling - is a <strong>significant</strong> limitation of this approach. Nevertheless, in the face of significant data scarcity in Syria <span id="id1">[<a class="reference internal" href="#id10" title="World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/37617.">World Bank, 2022</a>]</span> and thanks to the mobility data’s availability and finer granularity, we propose to utilize and trace the movement of different sub-panels of devices to tentatively identify and pinpoint formal and informal cross-border trade activity. Particularly, we define sub-panels composed of (A) devices seen at six border checkpoints and (B) devices seen in the proximity of border, except the six checkpoints.</p>
-<p>We rely on a loose definition of cross-border flows, as “movement of people and goods between regions and between countries” <span id="id2">[<a class="reference internal" href="#id7" title="Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/18241.">Kunaka, 2014</a>]</span> that, in this study, is quantified by the number stay locations and by the number of “trips” observed throughout the horizon, according to the methodology described by <span id="id3">Hariharan and Toyama [<a class="reference internal" href="#id6" title="Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In Geographic Information Science. Volume 3234, volume 3234, 106–124. 2004. doi:10.1007/978-3-540-30231-5_8.">2004</a>]</span>.</p>
+<p>We rely on a loose definition of cross-border flows, as “movement of people and goods between regions and between countries” <span id="id2">[<a class="reference internal" href="#id7" title="Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/18241.">Kunaka, 2014</a>]</span> that, in this study, is quantified by the number stay locations and by the number of “trips” observed throughout the horizon, according to the methodology described by <span id="id3">[<a class="reference internal" href="#id6" title="Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In Geographic Information Science. Volume 3234, volume 3234, 106–124. 2004. doi:10.1007/978-3-540-30231-5_8.">Hariharan and Toyama, 2004</a>]</span>.</p>
 <section id="convenience-sampling">
 <h3>Convenience Sampling<a class="headerlink" href="#convenience-sampling" title="Permalink to this headline">#</a></h3>
 <p>From the mobility data panel, devices are drawn out to compose sub-panels based on which devices visited preselected points of interest (POIs), such as border checkpoints or unofficial border crossings. The sub-panel composition criterium is if a device was detected within the proximity of a point of interest at least once throughout the time horizon.</p>
@@ -541,9 +541,12 @@ title="Print to PDF"
 <li><p><strong>(A)</strong> The area within a 2Km distance of any six official border crossing checkpoints</p></li>
 <li><p><strong>(B)</strong> The area within a 500-meter buffer strip along the Lebanese Syrian border, except <strong>(A)</strong>.</p></li>
 </ul>
-<p><img alt="Areas of Interst A (format) and B (informal)" src="../../_images/SEM_areasofinterest.png" /></p>
-<figcaption align = "center"><b>Areas of Interest A (formal) and B (informal)</b><br>The figure illustrates Region A (red) and Region B (blue).
+<figure class="align-center" id="id16">
+<img alt="../../_images/SEM_areasofinterest.png" src="../../_images/SEM_areasofinterest.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Areas of Interest A (format) and B (informal): The figure illustrates Region A (red) and Region B (blue).</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
+</figure>
 </section>
 </section>
 <section id="findings">
@@ -564,13 +567,21 @@ title="Print to PDF"
 <section id="formal-and-informal-activity">
 <h3>Formal and Informal Activity<a class="headerlink" href="#formal-and-informal-activity" title="Permalink to this headline">#</a></h3>
 <p>The working hypothesis is that movement captured within preselected regions of interest, e.g., within the proximity of border checkpoints, could be proportional to trade flows and, thus, could potentially inform the dynamics of population movement and trade corridors, in the absence of other data sources.</p>
-<p><strong>“Activity” is defined as the number of stay locations generated by sub-panels of devices based on whether they were detected at least once in the proximity of points-of-interest through the time horizon. We approximate formal activity based on the stay locations generated by the sub-panel of devices seen within a 2Km distance from border checkpoints and informal activity based on the stay locations generated by the sub-panel of devices seen within a 500-meter border strip between Lebanon and Syria, excluding official border checkpoints.</strong></p>
-<p><img alt="Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021" src="../../_images/SEM_Figure_13A.jpg" /></p>
-<figcaption align = "center"><b>Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021</b><br>The figure is a snapshot of the change in informal activity in Apr-Jul 2021 (the optimal smuggling period) compared to Dec 2020-Mar 2021. In red, 75 percent or more decrease in informal activity; in green, areas with a 75 percent or more increase.
+<blockquote>
+<div><p><strong>“Activity” is defined as the number of stay locations generated by sub-panels of devices based on whether they were detected at least once in the proximity of points-of-interest through the time horizon. We approximate formal activity based on the stay locations generated by the sub-panel of devices seen within a 2Km distance from border checkpoints and informal activity based on the stay locations generated by the sub-panel of devices seen within a 500-meter border strip between Lebanon and Syria, excluding official border checkpoints.</strong></p>
+</div></blockquote>
+<figure class="align-center" id="id17">
+<img alt="../../_images/SEM_Figure_13A.jpg" src="../../_images/SEM_Figure_13A.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021: The figure is a snapshot of the change in informal activity in Apr-Jul 2021 (the optimal smuggling period) compared to Dec 2020-Mar 2021. In red, 75 percent or more decrease in informal activity; in green, areas with a 75 percent or more increase.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
-<p><img alt="Normalized difference between formal and informal activity in Apr-Jul 2021" src="../../_images/SEM_Figure_13B.jpg" /></p>
-<figcaption align = "center"><b>Normalized difference between formal and informal activity in Apr-Jul 2021</b><br>The image presents a snapshot map of the sub-panels' activity. The activity index is a normalized difference between the formal and informal sub-panels and ranges from –1 to 1 (informal to formal). For instance, an activity index of –0.5 indicates that informal sub-panel's devices were 3 times as many as the formal sub-panel's devices within an area.
+</figure>
+<figure class="align-center" id="id18">
+<img alt="../../_images/SEM_Figure_13B.jpg" src="../../_images/SEM_Figure_13B.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Normalized difference between formal and informal activity in Apr-Jul 2021: The image presents a snapshot map of the sub-panels’ activity. The activity index is a normalized difference between the formal and informal sub-panels and ranges from –1 to 1 (informal to formal). For instance, an activity index of –0.5 indicates that informal sub-panel’s devices were 3 times as many as the formal sub-panel’s devices within an area.</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
+</figure>
 </section>
 <section id="point-in-time-comparison">
 <h3>Point-in-time Comparison<a class="headerlink" href="#point-in-time-comparison" title="Permalink to this headline">#</a></h3>
@@ -598,11 +609,26 @@ title="Print to PDF"
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <div class="docutils container" id="id5">
 <dl class="citation">
+<dt class="label" id="id15"><span class="brackets">AKV21</span></dt>
+<dd><p>Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. <em>IMF Working Papers</em>, 2021(225):A001, 2021. URL: <a class="reference external" href="https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml">https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml</a>, <a class="reference external" href="https://doi.org/10.5089/9781513593531.001.A001">doi:10.5089/9781513593531.001.A001</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">CKomaromiLS20</span></dt>
+<dd><p>Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. <em>IMF Working Papers</em>, 2020.</p>
+</dd>
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">HT04</a></span></dt>
 <dd><p>Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In <em>Geographic Information Science. Volume 3234</em>, volume 3234, 106–124. 2004. <a class="reference external" href="https://doi.org/10.1007/978-3-540-30231-5_8">doi:10.1007/978-3-540-30231-5_8</a>.</p>
 </dd>
+<dt class="label" id="id12"><span class="brackets">JPS19</span></dt>
+<dd><p>Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. <em>International Journal of Shipping and Transport Logistics</em>, 11:25, 01 2019. <a class="reference external" href="https://doi.org/10.1504/IJSTL.2019.096864">doi:10.1504/IJSTL.2019.096864</a>.</p>
+</dd>
 <dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">Kun14</a></span></dt>
 <dd><p>Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/18241">http://hdl.handle.net/10986/18241</a>.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">VKH21a</span></dt>
+<dd><p>Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. <em>PLoS One</em>, 16(4):e0248818, April 2021.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">VKH21b</span></dt>
+<dd><p>Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. <em>Nature Human Behaviour</em>, 5(3):305–307, Mar 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">https://doi.org/10.1038/s41562-021-01060-5</a>, <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">doi:10.1038/s41562-021-01060-5</a>.</p>
 </dd>
 <dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">WorldBank21</a></span></dt>
 <dd><p>World Bank. <em>World Development Report 2021 : Data for Better Lives</em>. World Bank, 2021. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/35218">http://hdl.handle.net/10986/35218</a>.</p>
