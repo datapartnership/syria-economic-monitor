@@ -21,3 +21,7 @@ parts:
         sections:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
           - file: notebooks/ais-analysis/02-trade-estimation.ipynb
+
+  - caption: Agricultural Activity 
+    chapters:
+      - file: notebooks/ndvi/README
