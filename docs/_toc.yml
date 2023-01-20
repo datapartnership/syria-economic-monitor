@@ -2,6 +2,9 @@ format: jb-book
 root: README
 
 parts:
+  - caption: Agricultural Activity
+    chapters:
+      - file: notebooks/ndvi/README
   - caption: Cross-border Mobility
     chapters:
       - file: notebooks/mobility/README
@@ -14,7 +17,6 @@ parts:
   - caption: Nighttime Lights
     chapters:
       - file: notebooks/ntl-analysis/README
-
   - caption: Tracking Maritime Shipping
     chapters:
       - file: notebooks/ais-analysis/README
