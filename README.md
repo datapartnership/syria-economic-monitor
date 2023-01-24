@@ -15,7 +15,7 @@ In February 2022, the *Syria Economic Monitor* team received a [Data Corps Strat
 
 ### Data Availability Statement
 
-Restrictions apply to the data that support the findings of this study. The data are subject to the terms and conditions of the data license agreement and the "Official Use Only" data classification. Data are available upon request through the [Development Data Partnership](https://datapartnership.org).
+Restrictions may apply to the data that support the findings of this study. Data recceived from the private sector through the Development Data Partnership are subject to the terms and conditions of the data license agreement and the "Official Use Only" data classification. These data are available upon request through the [Development Data Partnership](https://datapartnership.org). Licensing and access information for all other datasets are included in the documentation. 
 
 ## License
 
