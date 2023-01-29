@@ -29,3 +29,8 @@ parts:
         sections:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
           - file: notebooks/ais-analysis/02-trade-estimation.ipynb
+  - caption: Data Goods Team and Acknowledgements
+    chapters:
+      - file: notebooks/Data Goods Team.ipynb
+
+
