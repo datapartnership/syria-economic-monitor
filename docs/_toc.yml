@@ -2,6 +2,12 @@ format: jb-book
 root: README
 
 parts:
+  - caption: Introduction to Data Goods
+    chapters:
+      - file: notebooks/Introduction to Data Goods.ipynb
+  - caption: Foundational Datasets and Data Products
+    chapters:
+      - file: notebooks/Foundational Datasets and Data Products.ipynb
   - caption: Agricultural Activity
     chapters:
       - file: notebooks/ndvi/README
