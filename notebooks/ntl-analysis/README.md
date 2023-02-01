@@ -8,6 +8,12 @@ We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime 
 
 In the analysis, we distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the [Global Gas Flaring Reduction Partnership](https://www.worldbank.org/en/programs/gasflaringreduction); we remove lights within 5km of gas flaring sites.
 
+## Code
+
+Code to replicate the analysis can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis).
+
+The main script ([_main.R](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/_main.R)) loads all packages and runs all scripts for the analysis. There are separate scripts for processing the data (e.g., [downloading and cleaning Black Marble data](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/01_download_black_marble.R)), and separate scripts to produce each of the figures (e.g., [producing maps showing changes in nighttime lights](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/02_maps_of_ntl_changes.R)).
+
 ## Findings
 
 The below figure shows nighttime lights from the latest month available. As expected, Syria’s largest cities are the most brightly lit – including Damascus in the southwest and Aleppo in the northwest.

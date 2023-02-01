@@ -1,6 +1,6 @@
-# Create Syria NTL Data
+# Download Black Marble Data
 
-BEARER <- "BEARER-TOKEN-HERE"
+BEARER <- "BEARER-TOKEN-HERE" # Bearer token from NASA
 
 # Load data --------------------------------------------------------------------
 # Load black marble grid and Syria polygon
@@ -9,6 +9,10 @@ grid_sf <- read_sf("https://raw.githubusercontent.com/ramarty/download_blackmarb
 syr_sf <- getData('GADM', country='SYR', level=0) %>% st_as_sf()
 
 # Grab tiles for Syria ---------------------------------------------------------
+# Remove grid along edges, which causes st_intersects to fail
+grid_sf <- grid_sf[!(grid_sf$TileID %>% str_detect("h00")),]
+grid_sf <- grid_sf[!(grid_sf$TileID %>% str_detect("v00")),]
+
 inter <- st_intersects(grid_sf, syr_sf, sparse = F) %>% as.vector()
 grid_use_sf <- grid_sf[inter,]
 
@@ -30,7 +34,7 @@ monthly_files_use_df <- monthly_files_use_df %>%
 # Download data ----------------------------------------------------------------
 for(year_month_i in unique(monthly_files_use_df$year_month)){
   
-  OUT_FILE <- file.path(ntl_bm_dir, "FinalData", "monthly_rasters", paste0("bm_vnp46A3_",year_month_i,".tif"))
+  OUT_FILE <- file.path(data_dir, paste0("bm_vnp46A3_",year_month_i,".tif"))
   
   if(!file.exists(OUT_FILE)){
     
@@ -49,4 +53,3 @@ for(year_month_i in unique(monthly_files_use_df$year_month)){
     writeRaster(r, OUT_FILE)
   }
 }
-
