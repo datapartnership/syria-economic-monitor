@@ -422,6 +422,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#findings">
    Findings
   </a>
@@ -461,6 +466,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#findings">
    Findings
   </a>
@@ -492,6 +502,11 @@ title="Print to PDF"
 <h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">#</a></h2>
 <p>We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. From VIIRS Black Marble, we use monthly data from January 2012 through August 2022—where data is available at a 500-meter resolution.</p>
 <p>In the analysis, we distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the <a class="reference external" href="https://www.worldbank.org/en/programs/gasflaringreduction">Global Gas Flaring Reduction Partnership</a>; we remove lights within 5km of gas flaring sites.</p>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h2>
+<p>Code to replicate the analysis can be found <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis">here</a>.</p>
+<p>The main script (<a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/_main.R">_main.R</a>) loads all packages and runs all scripts for the analysis. There are separate scripts for processing the data (e.g., <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/01_download_black_marble.R">downloading and cleaning Black Marble data</a>), and separate scripts to produce each of the figures (e.g., <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/02_maps_of_ntl_changes.R">producing maps showing changes in nighttime lights</a>).</p>
 </section>
 <section id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this headline">#</a></h2>
