@@ -20,6 +20,8 @@ Datasets and methods used to generate insights for this project have been prepar
 In February 2022, the *Syria Economic Monitor* team received a [Data Corps Strategic Brief](https://worldbankgroup-my.sharepoint.com/:b:/r/personal/hkrambeck_worldbank_org/Documents/00%20-%20Labs/%200%20SD%20Data%20Lab%20-%20Shared/Data%20Corps/Data%20Corps%20-%20Projects/2022-02%20DC%20Syria%20Economic%20Brief/Data%20Corps%20Strategic%20Brief%20-%20Syria%20Economic%20Report.pdf?csf=1&web=1&e=5kiAIp), of which the following working methodologies are a result and waiting peer-review.
 ```
 
+## Contents
+
 ```{tableofcontents}
 ```
 

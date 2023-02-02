@@ -10,6 +10,9 @@
 The **Development Data Hub** is the World Bank's central data catalogue and includes meta-data and license information.
 ```
 
+```{table} Foundational Datasets
+:name: foundational_datasets
+
 | **ID** | **Name**                                      | **License**            | **Description**                                                                                                       | **Update Frequency**                                              | **Access**                                                                            | **Contact**                                  |
 |--------|-----------------------------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------|
 | 1      | Syria Admin Boundaries                        | Open                   | Admin boundaries up to level 4                                                                                        | Last update in January 2021                                       | [Open Access Point (UNOCHA)](https://data.humdata.org/dataset/cod-ab-syr?); [Development Data Hub](https://datacatalog.worldbank.org/int/data/dataset/0063876/syria_administrative_boundaries)                                      | [Sahiti Sarva](mailto:ssarva@worldbank.org), Data Lab                     |
@@ -23,10 +26,14 @@ The **Development Data Hub** is the World Bank's central data catalogue and incl
 | 9      | Population Data                               | Open   and Proprietary | Population with demographic information from Meta (2019) and population from WorldPop (2020)                          | 2019, 2020                                                        | [Project SharePoint](https://worldbankgroup.sharepoint.com/:f:/t/DevelopmentDataPartnershipCommunity-WBGroup/EoeSZJuXrI1Ar7VoeWDQW_wBHGMhZKOEfaud7APJ8zp5Bg?e=lLSoVR); [Development Data Hub](https://datacatalog.worldbank.org/int/data/dataset/0063877/syria_population)                                              | [Sahiti Sarva](mailto:ssarva@worldbank.org), Data Lab                     |
 | 10     | Normalized Difference Vegetation Index (NDVI) | Open                   | Normalized Difference Vegetation Index datasets sourced from MODIS, used to measure change in agricultural production | Monthly                                                           | [European Commission, Anomaly Hotspots of Agricultural Production](https://mars.jrc.ec.europa.eu/asap/country.php?cntry=238); [Development Data Hub](https://datacatalog.worldbank.org/int/data/dataset/0063843/syria__normalized_difference_vegetation_index) | [Andres Chamorro](mailto:achamorroelizond@worldbank.org), GOST                        |
 | 11     | Border Crossing Map                           | Authorized Access      | Border crossing analysis by UN Humanitarian Needs Assessment Programme                                                | Updated August 2022                                               | [Project SharePoint](https://worldbankgroup.sharepoint.com/:b:/t/DevelopmentDataPartnershipCommunity-WBGroup/ERiG3FqcKxRFls7zAIFFuhgBe0_r8DiWeaIhDX1XDtd8mA?e=w6XVm7)                                                                    |                                              |
+```
 
 ## Data Products Summary
 
 **Data Products** are produced using the **Foundational Datasets** and can be used to generate indicators and insights. All Data Products include documentation, references to original data sources (and/or information on how to access them), and a description of their limitations.
+
+```{table} Data Products
+:name: data_products
 
 | **ID** | **Name**                                                                                       | **Description**                                                                                                       | **Limitations**                                                                                                                                                                                  | **Foundational Datasets Used (ID#)** |
 |---------------|-------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
@@ -35,12 +42,16 @@ The **Development Data Hub** is the World Bank's central data catalogue and incl
 |     C         |     Trends in Traffic Volumes at Formal and Informal Border   Crossings                               |     Monthly aggregated statistics of cross-border   flows at select locations                                                |     Data purchase limited to select   checkpoints to determine insight value; Satellite imagery-derived counts   reflect sporadic time periods; Radar-derived traffic trends do not include   counts    |     5,6,7,11                   |
 |     D         |     Changes in Observed Nighttime Lights                                                              |     Yearly and monthly aggregated remote   sensing data used to derive changes in observed nighttime lights                  |     Results reflect data from NASA’s   nighttime lights data                                                                                                                                            |     4                          |
 |     E         |     Change in Agricultural Production                                                                 |     Monthly change in Normalized Difference   in Vegetation Index as a proxy to measure change in agricultural production    |     The statistics are based on global datasets to flag warnings. It   has not been fine-tuned to describe local agricultural dynamics.                                                                 |     10                         |
+```
 
 ## Sample Indicators
 
 **Indicators** can be derived from a combination of **Foundational Datasets** and **Data Products**. By combining these two inputs, teams can, on-demand, develop a large array of indicators to meet their project needs. Indicators can presented side-by-side in an Excel workbook -- a format that is generally accessible to the widest audiences.  Because all indicators are based on the same underlying data, they are comparable with each other, across geographies and across time.
 
 For this project, sample indicators have been derived and aggregated at the governorate level and by year, to show changing trends in each governorate over time. Here is a link to the **Indicators Excel workbook** (accessible to team members via SharePoint): [Excel workbook](https://worldbankgroup.sharepoint.com/:x:/t/DevelopmentDataPartnershipCommunity-WBGroup/EXZkY4Z6vMVMjRVcIBCHqlkBVI4z1b9rP1fyyLQ6aluvWA?e=pFazxV), and following is a summary of sample indicators.
+
+```{table} Indicators
+:name: indicators
 
 | **ID** | **Name**                                           | **Indicator (units)**         | **Potential Update Frequency** | **Foundational Datasets and Data Products Used (ID#)** |
 |---------------|-----------------------------------------------------------|--------------------------------------|---------------------------------------|--------------------------------|
@@ -54,3 +65,4 @@ For this project, sample indicators have been derived and aggregated at the gove
 |     viii      |     Number of Riots and Protests                          |     Number of events                 |     Monthly                           |     1,3                        |
 |     ix        |     Observed Formal Border-Crossing Corridor Locations    |     Number of observed stops         |     Annually                          |     1,B                        |
 |     x         |     Observed Formal Border-Crossing Corridor Locations    |     Number of observed stops         |     Annually                          |     1,B                        |
+```
