@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Traffic</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/traffic/README.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Nighttime Lights" href="../ntl-analysis/README.html" />
+    <link rel="prev" title="Counting Devices within Areas of Interest" href="../mobility/03a-count-within-aoi.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Data Goods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/introduction_to_data_goods.html">
+   Introduction to Data Goods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/foundational_datasets_and_data_products.html">
+   Foundational Datasets, Data Products, &amp; Sample Indicators
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Products
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ndvi/README.html">
+   Agricultural Activity
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../mobility/README.html">
+   Observed Cross-Border Mobility Traces in Lebanon and Syria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../mobility/01a-aoi-and-tessellation.html">
+     Generate Areas of Interest and Tessellation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../mobility/01b-convenience-sampling.html">
+     Convenience Sampling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../mobility/03a-count-within-aoi.html">
+     Counting Devices within Areas of Interest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Traffic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ntl-analysis/README.html">
+   Nighttime Lights
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ais-analysis/README.html">
+   Seaborn Trade Activity Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">
+     AIS Data Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/02-trade-estimation.html">
+     AIS Trade Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Acknowledgements
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/team.html">
+   Data Goods Team and Acknowledgements
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/traffic/README.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/edit/main/notebooks/traffic/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notebooks/traffic/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-sources">
+   Data Sources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#findings">
+   Findings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Traffic</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-sources">
+   Data Sources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#findings">
+   Findings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="traffic">
+<h1>Traffic<a class="headerlink" href="#traffic" title="Permalink to this headline">#</a></h1>
+<p>We monitor trends in traffic along key border crossings in Syria. When vehicle count data captured along roads is not available, other data sources can be used to detect traffic and congestion—such as mobility data and satellite imagery. In this analysis, we test the use of three data sources for monitoring trends in traffic at three border crossings.</p>
+<section id="data-sources">
+<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">#</a></h2>
+<p>We test to the use of three data sources for monitoring trends in traffic at border crossings. We leverage three data sources as each data source comes with its own set of advantages and limitations. The three data sources are:</p>
+<ul class="simple">
+<li><p><strong>Very High Resolution Satellite Imagery</strong>: We use very high resolution (VHR) daytime satellite imagery from <a class="reference external" href="https://orbitalinsight.com/">Orbital Insight</a>. Orbital Insight has developed algorithms for detecting cars and trucks from satellite imagery that has less than 1 meter spatial resolution. From such high resolution images, cars and trucks can be easily detected using Orbital Insight’s algorithms. However, a key limitation of using VHR data for detecting trends in traffic is that VHR satellite images used by Orbital Insight are not captured at regular intervals. Consequently, the number of images available can vary across locations.</p></li>
+<li><p><strong>Medium Resolution Synthetic Aperture Radar Satellite Imagery:</strong> We use synthetic aperture radar (SAR) satellite imagery captured from Sentinel-1, which is available at a 10 meter resolution. SAR satellites transmit waves and measure the strength and orientation of waves reflected back to the satellite. Different objects scatter waves differently, and metallic objects such as vehicles produce a strong signal back to the sensor <span id="id1">[<a class="reference internal" href="#id13" title="Dirk Geudtner, Ramón Torres, Paul Snoeij, Malcolm Davidson, and Björn Rommen. Sentinel-1 system capabilities and applications. In 2014 IEEE Geoscience and Remote Sensing Symposium, volume, 1457-1460. 2014. doi:10.1109/IGARSS.2014.6946711.">Geudtner <em>et al.</em>, 2014</a>]</span>. <a class="reference external" href="https://spaceknow.com/">SpaceKnow</a> has developed algorithms that use SAR data from Sentinel-1 to detect trends in congestion. Unlike VHR imagery, SAR data is not able to count the number of vehicles; however, Sentinel-1 captures SAR data at regular intervals (multiple times a month). SpaceKnow leverages SAR data to develop a traffic index, where larger values correspond to more congestion.</p></li>
+<li><p><strong>Mobility Data:</strong> We leverage mobility data from GPS-enabled devices to monitor the number of unique devices at border crossing locations. Mobility data comes from Outlogic, which is further described in <a class="reference external" href="https://datapartnership.org/syria-economic-monitor/notebooks/mobility/README.html">this section</a>. The number of unique devices observed at border crossing locations can indicate activity—and traffic—at the crossing. A key advantage of mobility data over satellite imagery is that it is available at all points in time; the dataset captures the timestamp and location of GPS-enable devices. Consequently, the data can be aggregated hourly, daily, or at other intervals. Mobility data may underestimate activity as not everyone may have a GPS-enabled device; however, we check whether trends in mobility data are similar to trends captured from satellite imagery.</p></li>
+</ul>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h2>
+<p>Code to analyze traffic across the three data sources is available <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/traffic/traffic_analysis.R">here</a>.</p>
+</section>
+<section id="findings">
+<h2>Findings<a class="headerlink" href="#findings" title="Permalink to this headline">#</a></h2>
+<p>The below figure shows trends in the traffic indicators from the three sources. VHR images are captured at irregular intervals, so car and truck counts are available at limited points in time. However, comparing the VHR and mobility data emphasizes the downward bias in the mobility data. VHR data shows up to 250 vehicles captured at a single point in time for a border crossing, while mobility data from Outlogic only shows up to 12 unique devices captured during a day. Outlogic data may have too few observations at the border crossing locations to meaningfully observe trends. The traffic index from SAR imagery shows a notable increase in traffic at the Al Abbudiyah border crossing in 2022, a slight upward trend in traffic at the Al Aridah border crossing, and relatively consistent traffic at the Matraba border crossing.</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../../_images/border_trends_sat_mobility.png"><img alt="../../_images/border_trends_sat_mobility.png" src="../../_images/border_trends_sat_mobility.png" style="width: 1500.0px; height: 1350.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Trends in Traffic using Different Data Sources. Data aggregated to the monthly level; when multiple observations are available within the month, we use the maximum.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">#</a></h2>
+<p>Next steps can focus on piloting the data sources at additional border crossings. As the availability of VHR imagery can vary across locations, certain border crossings may have higher frequency VHR imagery where meaningful trends can be determined. As the WB Data Lab team has Outlogic data available across the country, trends could be examined across all border crossings to understand if some locations have higher volumes of mobility data. Ground-truth the data sources with traffic count data obtained at border crossings would also provide useful in understanding the usefulness and biases of the different data sources.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id12"><span class="brackets">AKV21</span></dt>
+<dd><p>Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. <em>IMF Working Papers</em>, 2021(225):A001, 2021. URL: <a class="reference external" href="https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml">https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml</a>, <a class="reference external" href="https://doi.org/10.5089/9781513593531.001.A001">doi:10.5089/9781513593531.001.A001</a>.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">CKomaromiLS20</span></dt>
+<dd><p>Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. <em>IMF Working Papers</em>, 2020.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id1">GTS+14</a></span></dt>
+<dd><p>Dirk Geudtner, Ramón Torres, Paul Snoeij, Malcolm Davidson, and Björn Rommen. Sentinel-1 system capabilities and applications. In <em>2014 IEEE Geoscience and Remote Sensing Symposium</em>, volume, 1457–1460. 2014. <a class="reference external" href="https://doi.org/10.1109/IGARSS.2014.6946711">doi:10.1109/IGARSS.2014.6946711</a>.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">HT04</span></dt>
+<dd><p>Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In <em>Geographic Information Science. Volume 3234</em>, volume 3234, 106–124. 2004. <a class="reference external" href="https://doi.org/10.1007/978-3-540-30231-5_8">doi:10.1007/978-3-540-30231-5_8</a>.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets">JPS19</span></dt>
+<dd><p>Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. <em>International Journal of Shipping and Transport Logistics</em>, 11:25, 01 2019. <a class="reference external" href="https://doi.org/10.1504/IJSTL.2019.096864">doi:10.1504/IJSTL.2019.096864</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">Kun14</span></dt>
+<dd><p>Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/18241">http://hdl.handle.net/10986/18241</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">VKH21a</span></dt>
+<dd><p>Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. <em>PLoS One</em>, 16(4):e0248818, April 2021.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">VKH21b</span></dt>
+<dd><p>Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. <em>Nature Human Behaviour</em>, 5(3):305–307, Mar 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">https://doi.org/10.1038/s41562-021-01060-5</a>, <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">doi:10.1038/s41562-021-01060-5</a>.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">WorldBank21</span></dt>
+<dd><p>World Bank. <em>World Development Report 2021 : Data for Better Lives</em>. World Bank, 2021. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/35218">http://hdl.handle.net/10986/35218</a>.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">WorldBank22</span></dt>
+<dd><p>World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/37617">http://hdl.handle.net/10986/37617</a>.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/traffic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../mobility/03a-count-within-aoi.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Counting Devices within Areas of Interest</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ntl-analysis/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Nighttime Lights</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By World Bank Development Data Group<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

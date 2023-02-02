@@ -160,6 +160,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../traffic/README.html">
+   Traffic
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../ntl-analysis/README.html">
    Nighttime Lights
   </a>
@@ -538,8 +543,8 @@ title="Print to PDF"
 <section id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h2>
 <p>In this working methodology, we propose to investigate and map sub-panels of devices’ mobility traces based on convenience sampling. The working hypothesis is that by selecting sub-panels of devices based on whether they were detected in the proximity of points of interest (POIs) and reconstructing their mobility traces – in other words, where they went and where they stopped throughout the horizon – the movement captured could suggest trade activity that, more importantly, could be located and quantified if combined with other datasets.</p>
-<p>The sampling method - convenience sampling, a non-probability form of sampling - is a <strong>significant</strong> limitation of this approach. Nevertheless, in the face of significant data scarcity in Syria <span id="id1">[<a class="reference internal" href="#id10" title="World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/37617.">World Bank, 2022</a>]</span> and thanks to the mobility data’s availability and finer granularity, we propose to utilize and trace the movement of different sub-panels of devices to tentatively identify and pinpoint formal and informal cross-border trade activity. Particularly, we define sub-panels composed of (A) devices seen at six border checkpoints and (B) devices seen in the proximity of border, except the six checkpoints.</p>
-<p>We rely on a loose definition of cross-border flows, as “movement of people and goods between regions and between countries” <span id="id2">[<a class="reference internal" href="#id7" title="Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/18241.">Kunaka, 2014</a>]</span> that, in this study, is quantified by the number stay locations and by the number of “trips” observed throughout the horizon, according to the methodology described by <span id="id3">[<a class="reference internal" href="#id6" title="Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In Geographic Information Science. Volume 3234, volume 3234, 106–124. 2004. doi:10.1007/978-3-540-30231-5_8.">Hariharan and Toyama, 2004</a>]</span>.</p>
+<p>The sampling method - convenience sampling, a non-probability form of sampling - is a <strong>significant</strong> limitation of this approach. Nevertheless, in the face of significant data scarcity in Syria <span id="id1">[<a class="reference internal" href="../traffic/README.html#id7" title="World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/37617.">World Bank, 2022</a>]</span> and thanks to the mobility data’s availability and finer granularity, we propose to utilize and trace the movement of different sub-panels of devices to tentatively identify and pinpoint formal and informal cross-border trade activity. Particularly, we define sub-panels composed of (A) devices seen at six border checkpoints and (B) devices seen in the proximity of border, except the six checkpoints.</p>
+<p>We rely on a loose definition of cross-border flows, as “movement of people and goods between regions and between countries” <span id="id2">[<a class="reference internal" href="../traffic/README.html#id4" title="Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/18241.">Kunaka, 2014</a>]</span> that, in this study, is quantified by the number stay locations and by the number of “trips” observed throughout the horizon, according to the methodology described by <span id="id3">[<a class="reference internal" href="../traffic/README.html#id3" title="Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In Geographic Information Science. Volume 3234, volume 3234, 106–124. 2004. doi:10.1007/978-3-540-30231-5_8.">Hariharan and Toyama, 2004</a>]</span>.</p>
 <section id="convenience-sampling">
 <h3>Convenience Sampling<a class="headerlink" href="#convenience-sampling" title="Permalink to this headline">#</a></h3>
 <p>From the mobility data panel, devices are drawn out to compose sub-panels based on which devices visited preselected points of interest (POIs), such as border checkpoints or unofficial border crossings. The sub-panel composition criterium is if a device was detected within the proximity of a point of interest at least once throughout the time horizon.</p>
@@ -561,10 +566,10 @@ title="Print to PDF"
 <li><p><strong>(A)</strong> The area within a 2Km distance of any six official border crossing checkpoints</p></li>
 <li><p><strong>(B)</strong> The area within a 500-meter buffer strip along the Lebanese Syrian border, except <strong>(A)</strong>.</p></li>
 </ul>
-<figure class="align-center" id="id16">
+<figure class="align-center" id="id17">
 <img alt="../../_images/SEM_areasofinterest.png" src="../../_images/SEM_areasofinterest.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Areas of Interest A (format) and B (informal): The figure illustrates Region A (red) and Region B (blue).</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Areas of Interest A (format) and B (informal): The figure illustrates Region A (red) and Region B (blue).</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -590,16 +595,16 @@ title="Print to PDF"
 <blockquote>
 <div><p><strong>“Activity” is defined as the number of stay locations generated by sub-panels of devices based on whether they were detected at least once in the proximity of points-of-interest through the time horizon. We approximate formal activity based on the stay locations generated by the sub-panel of devices seen within a 2Km distance from border checkpoints and informal activity based on the stay locations generated by the sub-panel of devices seen within a 500-meter border strip between Lebanon and Syria, excluding official border checkpoints.</strong></p>
 </div></blockquote>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <img alt="../../_images/SEM_Figure_13A.jpg" src="../../_images/SEM_Figure_13A.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021: The figure is a snapshot of the change in informal activity in Apr-Jul 2021 (the optimal smuggling period) compared to Dec 2020-Mar 2021. In red, 75 percent or more decrease in informal activity; in green, areas with a 75 percent or more increase.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021: The figure is a snapshot of the change in informal activity in Apr-Jul 2021 (the optimal smuggling period) compared to Dec 2020-Mar 2021. In red, 75 percent or more decrease in informal activity; in green, areas with a 75 percent or more increase.</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../../_images/SEM_Figure_13B.jpg" src="../../_images/SEM_Figure_13B.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Normalized difference between formal and informal activity in Apr-Jul 2021: The image presents a snapshot map of the sub-panels’ activity. The activity index is a normalized difference between the formal and informal sub-panels and ranges from –1 to 1 (informal to formal). For instance, an activity index of –0.5 indicates that informal sub-panel’s devices were 3 times as many as the formal sub-panel’s devices within an area.</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Normalized difference between formal and informal activity in Apr-Jul 2021: The image presents a snapshot map of the sub-panels’ activity. The activity index is a normalized difference between the formal and informal sub-panels and ranges from –1 to 1 (informal to formal). For instance, an activity index of –0.5 indicates that informal sub-panel’s devices were 3 times as many as the formal sub-panel’s devices within an area.</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -616,7 +621,7 @@ title="Print to PDF"
 <p class="admonition-title">Caution</p>
 <p>In summary, beyond standing-by peer-review, the limitations can be summarized in the following.</p>
 <ul class="simple">
-<li><p>The methodology relies on private intent data in the form of mobile location data. In other words, the input data was not produced or collected to analyze the population of interest or address the research question as its primary goal but repurposed for the public good. The benefits and caveats when using private intent data have been extensively discussed in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span id="id4">[<a class="reference internal" href="#id8" title="World Bank. World Development Report 2021 : Data for Better Lives. World Bank, 2021. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/35218.">World Bank, 2021</a>]</span>.</p></li>
+<li><p>The methodology relies on private intent data in the form of mobile location data. In other words, the input data was not produced or collected to analyze the population of interest or address the research question as its primary goal but repurposed for the public good. The benefits and caveats when using private intent data have been extensively discussed in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span id="id4">[<a class="reference internal" href="../traffic/README.html#id5" title="World Bank. World Development Report 2021 : Data for Better Lives. World Bank, 2021. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/35218.">World Bank, 2021</a>]</span>.</p></li>
 <li><p>On the one hand, the mobility data panel is spatially and temporally granular and readily available, on the other hand it is created as a convenience sampling which constitutes an important source of bias. The panel composition is not entirely known and susceptible to change, the data collection and the composition of the mobility data panel cannot be controlled. For example, Outlogic has reported a significant data reduction since April 30, 2022, which impacted the panel composition.</p></li>
 <li><p>It is important to emphasize that in the current implementation, no treatment regarding the origin-destination or transportation mode is in place. In other words, we consider all trips not only trips that are border crossings. The idea was to select devices based on where they were seen once and map their mobility traces - where they went and where they stopped.</p></li>
 <li><p>A significant limitation is that the methodology is based on convenience sampling, which is a non-probabilistic sampling method. One of the criticisms of convenience sampling is that the results are not easily generalizable to the entire population. 3</p></li>
@@ -634,6 +639,9 @@ title="Print to PDF"
 </dd>
 <dt class="label" id="id11"><span class="brackets">CKomaromiLS20</span></dt>
 <dd><p>Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. <em>IMF Working Papers</em>, 2020.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">GTS+14</span></dt>
+<dd><p>Dirk Geudtner, Ramón Torres, Paul Snoeij, Malcolm Davidson, and Björn Rommen. Sentinel-1 system capabilities and applications. In <em>2014 IEEE Geoscience and Remote Sensing Symposium</em>, volume, 1457–1460. 2014. <a class="reference external" href="https://doi.org/10.1109/IGARSS.2014.6946711">doi:10.1109/IGARSS.2014.6946711</a>.</p>
 </dd>
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">HT04</a></span></dt>
 <dd><p>Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In <em>Geographic Information Science. Volume 3234</em>, volume 3234, 106–124. 2004. <a class="reference external" href="https://doi.org/10.1007/978-3-540-30231-5_8">doi:10.1007/978-3-540-30231-5_8</a>.</p>
