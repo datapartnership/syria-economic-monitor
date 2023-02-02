@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/ntl-analysis/README.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Seaborn Trade Activity Estimation" href="../ais-analysis/README.html" />
-    <link rel="prev" title="Traffic" href="../traffic/README.html" />
+    <link rel="next" title="Observed Cross-Border Mobility Traces in Lebanon and Syria" href="../mobility/README.html" />
+    <link rel="prev" title="Agricultural Productivity" href="../ndvi/README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,7 +129,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ndvi/README.html">
-   Agricultural Activity
+   Agricultural Productivity
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Nighttime Lights
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -159,16 +164,6 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../traffic/README.html">
-   Traffic
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Nighttime Lights
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ais-analysis/README.html">
    Seaborn Trade Activity Estimation
@@ -190,6 +185,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../traffic/README.html">
+   Traffic Trends at Border Crossings
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -394,13 +394,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method">
-   Method
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code">
-   Code
+  <a class="reference internal nav-link" href="#methodology">
+   Methodology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -438,13 +443,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method">
-   Method
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code">
-   Code
+  <a class="reference internal nav-link" href="#methodology">
+   Methodology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -475,13 +485,17 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="nighttime-lights">
 <h1>Nighttime Lights<a class="headerlink" href="#nighttime-lights" title="Permalink to this headline">#</a></h1>
 <p>Nighttime lights have become a commonly used resource to estimate changes in local economic activity. This section shows where nighttime lights are concentrated across Syria and observed changes over time.</p>
-<section id="method">
-<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">#</a></h2>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
 <p>We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. From VIIRS Black Marble, we use monthly data from January 2012 through August 2022—where data is available at a 500-meter resolution.</p>
+<p>For further information, please refer to <a class="reference internal" href="../../docs/foundational_datasets_and_data_products.html#id1"><span class="std std-ref">Foundational Datasets</span></a>.</p>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h2>
 <p>In the analysis, we distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the <a class="reference external" href="https://www.worldbank.org/en/programs/gasflaringreduction">Global Gas Flaring Reduction Partnership</a>; we remove lights within 5km of gas flaring sites.</p>
 </section>
-<section id="code">
-<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h2>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
 <p>Code to replicate the analysis can be found <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis">here</a>.</p>
 <p>The main script (<a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/_main.R">_main.R</a>) loads all packages and runs all scripts for the analysis. There are separate scripts for processing the data (e.g., <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/01_download_black_marble.R">downloading and cleaning Black Marble data</a>), and separate scripts to produce each of the figures (e.g., <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/02_maps_of_ntl_changes.R">producing maps showing changes in nighttime lights</a>).</p>
 </section>
@@ -491,33 +505,33 @@ title="Print to PDF"
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/ntl_syria_2022.png"><img alt="../../_images/ntl_syria_2022.png" src="../../_images/ntl_syria_2022.png" style="width: 550.0px; height: 458.5px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Nighttime lights in August 2022</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Nighttime lights in August 2022</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The below figure shows changes in nighttime lights. Many 500-meter pixels see some, even negligibly small, levels and changes of nighttime lights. Consequently, we consider pixels with a luminosity value under one to be noise (in Syria, nighttime lights goes up to 18,500, with a median value of lit pixels of 10). Specifically, in the below figure, pixels with “lights lost” saw a loss of 1 or more luminosity, pixels “new lights” saw a gain of 1 or more luminosity, and pixels with “no change” had a nighttime lights value in both years. The figure shows notable reductions in nighttime lights in Syria’s western regions, with gains in nighttime lights in populated places throughout Syria’s east.</p>
 <figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/ntl_syria_2019_2022.png"><img alt="../../_images/ntl_syria_2019_2022.png" src="../../_images/ntl_syria_2019_2022.png" style="width: 342.75px; height: 342.75px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/ntl_syria_2020_2022.png"><img alt="../../_images/ntl_syria_2020_2022.png" src="../../_images/ntl_syria_2020_2022.png" style="width: 343.5px; height: 343.5px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../../_images/ntl_syria_2021_2022.png"><img alt="../../_images/ntl_syria_2021_2022.png" src="../../_images/ntl_syria_2021_2022.png" style="width: 340.5px; height: 340.5px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The below figure shows trends in nighttime lights across Syria’s 14 governorates. We show trends considering (1) all nighttime lights, (2) lights just in locations with gas flaring (oil extraction locations), and (3) nighttime lights with gas flaring locations removed. The figure shows notable reductions in nighttime lights across provinces from 2012 to 2014—reflecting a reduction in economic activity resulting from Syria’s civil war. Lights in gas flare locations have increased starting around 2018—suggesting an acceleration of oil extraction in recent years. For the most part, gains in nighttime lights have been concentrated in gas flaring locations. When removing gas flares, trends in nighttime lights appear relatively stable from 2014 through present.</p>
 <figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="../../_images/ntl_syria_trends.png"><img alt="../../_images/ntl_syria_trends.png" src="../../_images/ntl_syria_trends.png" style="width: 677.0px; height: 800.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Change in nighttime lights; locations with flaring removed.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -559,17 +573,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../traffic/README.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../ndvi/README.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Traffic</p>
+            <p class="prev-next-title">Agricultural Productivity</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../ais-analysis/README.html" title="next page">
+    <a class='right-next' id="next-link" href="../mobility/README.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Seaborn Trade Activity Estimation</p>
+        <p class="prev-next-title">Observed Cross-Border Mobility Traces in Lebanon and Syria</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -2,13 +2,17 @@
 
 Nighttime lights have become a commonly used resource to estimate changes in local economic activity. This section shows where nighttime lights are concentrated across Syria and observed changes over time.
 
-## Method
+## Data
 
 We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. From VIIRS Black Marble, we use monthly data from January 2012 through August 2022—where data is available at a 500-meter resolution.
 
+For further information, please refer to {ref}`foundational_datasets`.
+
+## Methodology
+
 In the analysis, we distinguish lights between lights observed in gas flaring locations and lights in other locations. Oil extraction and production involves gas flaring, which produces significant volumes of light. Separately examining lights in gas flaring and other locations allows distinguishing between lights generated due to oil production versus other sources of human activity. We use data on the locations of gas flaring sites from the [Global Gas Flaring Reduction Partnership](https://www.worldbank.org/en/programs/gasflaringreduction); we remove lights within 5km of gas flaring sites.
 
-## Code
+## Implementation
 
 Code to replicate the analysis can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis).
 

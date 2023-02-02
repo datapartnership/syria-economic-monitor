@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Agricultural Activity</title>
+    <title>Agricultural Productivity</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/ndvi/README.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Observed Cross-Border Mobility Traces in Lebanon and Syria" href="../mobility/README.html" />
+    <link rel="next" title="Nighttime Lights" href="../ntl-analysis/README.html" />
     <link rel="prev" title="Foundational Datasets, Data Products, &amp; Sample Indicators" href="../../docs/foundational_datasets_and_data_products.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -129,7 +129,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Agricultural Activity
+   Agricultural Productivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ntl-analysis/README.html">
+   Nighttime Lights
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -159,16 +164,6 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../traffic/README.html">
-   Traffic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ntl-analysis/README.html">
-   Nighttime Lights
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ais-analysis/README.html">
    Seaborn Trade Activity Estimation
@@ -190,6 +185,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../traffic/README.html">
+   Traffic Trends at Border Crossings
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -394,23 +394,25 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tabular-data">
+     Tabular Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#annual-maps">
+     Annual Maps
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tabular-data">
-   Tabular Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#annual-maps">
-   Annual Maps
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notebooks">
-   Notebooks
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -427,7 +429,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Agricultural Activity</h1>
+                <h1>Agricultural Productivity</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -438,23 +440,25 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#data">
+   Data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tabular-data">
+     Tabular Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#annual-maps">
+     Annual Maps
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tabular-data">
-   Tabular Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#annual-maps">
-   Annual Maps
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notebooks">
-   Notebooks
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -472,15 +476,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="agricultural-activity">
-<h1>Agricultural Activity<a class="headerlink" href="#agricultural-activity" title="Permalink to this headline">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="agricultural-productivity">
+<h1>Agricultural Productivity<a class="headerlink" href="#agricultural-productivity" title="Permalink to this headline">#</a></h1>
 <p>Satellite images can capture the intensity of vegetation through the light reflected in the visible and near-infrared bands. The Normalized Difference Vegetation Index (NDVI) has often been used as a proxy of seasonal productivity. To assess changes in agricultural production in Syria, we retrieved anomalies in NDVI from the <a class="reference external" href="https://mars.jrc.ec.europa.eu/asap/download.php">Anomaly Hotspots of Agricultural Production</a> (ASAP) portal.</p>
 <p>In the ASAP portal, NDVI data is originally sourced from MODIS and undergoes additional processing to better capture periods of low agricultural performance. These steps include intersecting NDVI data with croplands and pasture lands, filtering time periods for the relevant crop calendar, and calculating deviations from normal conditions. More information on their data processing and cropland masks can be found on the <a class="reference external" href="https://mars.jrc.ec.europa.eu/asap/files/asap_warning_classification_v_4_0.pdf">documentation pages</a>.</p>
-</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
 <section id="tabular-data">
-<h2>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">#</a></h2>
+<h3>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">#</a></h3>
 <p>We retrieved data for two NDVI-based anomalies (standardized z-scores) at the sub-national admin 1 level:</p>
 <ul class="simple">
 <li><p>Cumulative: zNDVIc, the standardized score of the cumulative NDVI (NDVIc) over the growing season</p></li>
@@ -488,7 +491,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="annual-maps">
-<h2>Annual Maps<a class="headerlink" href="#annual-maps" title="Permalink to this headline">#</a></h2>
+<h3>Annual Maps<a class="headerlink" href="#annual-maps" title="Permalink to this headline">#</a></h3>
 <p>In addition to extracting data from ASAP, we prepared maps that summarize annual performance in agricultural productivity, by comparing the average 2022 NDVI values to previous years. We follow a similar methodology to the one employed by ASAP:</p>
 <ol class="simple">
 <li><p>Extract NDVI (Modis) data for relevant crop season</p></li>
@@ -498,8 +501,9 @@ title="Print to PDF"
 <li><p>Export maps</p></li>
 </ol>
 </section>
-<section id="notebooks">
-<h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
 <p>We implemented this workflow on Google Earth Engine:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/datapartnership/syria-economic-monitor/main/notebooks/ndvi/gee_ndvi_annual_anomalies.js">GEE NDVI Annual Anomalies</a></p></li>
@@ -551,10 +555,10 @@ title="Print to PDF"
             <p class="prev-next-title">Foundational Datasets, Data Products, &amp; Sample Indicators</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../mobility/README.html" title="next page">
+    <a class='right-next' id="next-link" href="../ntl-analysis/README.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Observed Cross-Border Mobility Traces in Lebanon and Syria</p>
+        <p class="prev-next-title">Nighttime Lights</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
