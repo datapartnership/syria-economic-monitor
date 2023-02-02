@@ -1,8 +1,8 @@
-# Traffic
+# Traffic Trends at Border Crossings
 
 We monitor trends in traffic along key border crossings in Syria. When vehicle count data captured along roads is not available, other data sources can be used to detect traffic and congestion---such as mobility data and satellite imagery. In this analysis, we test the use of three data sources for monitoring trends in traffic at three border crossings.
 
-## Data Sources
+## Data
 
 We test to the use of three data sources for monitoring trends in traffic at border crossings. We leverage three data sources as each data source comes with its own set of advantages and limitations. The three data sources are:
 
@@ -10,9 +10,11 @@ We test to the use of three data sources for monitoring trends in traffic at bor
 
 * __Medium Resolution Synthetic Aperture Radar Satellite Imagery:__ We use synthetic aperture radar (SAR) satellite imagery captured from Sentinel-1, which is available at a 10 meter resolution. SAR satellites transmit waves and measure the strength and orientation of waves reflected back to the satellite. Different objects scatter waves differently, and metallic objects such as vehicles produce a strong signal back to the sensor {cite:p}`Dirk2014`. [SpaceKnow](https://spaceknow.com/) has developed algorithms that use SAR data from Sentinel-1 to detect trends in congestion. Unlike VHR imagery, SAR data is not able to count the number of vehicles; however, Sentinel-1 captures SAR data at regular intervals (multiple times a month). SpaceKnow leverages SAR data to develop a traffic index, where larger values correspond to more congestion.
 
-* __Mobility Data:__ We leverage mobility data from GPS-enabled devices to monitor the number of unique devices at border crossing locations. Mobility data comes from Outlogic, which is further described in [this section](https://datapartnership.org/syria-economic-monitor/notebooks/mobility/README.html). The number of unique devices observed at border crossing locations can indicate activity---and traffic---at the crossing. A key advantage of mobility data over satellite imagery is that it is available at all points in time; the dataset captures the timestamp and location of GPS-enable devices. Consequently, the data can be aggregated hourly, daily, or at other intervals. Mobility data may underestimate activity as not everyone may have a GPS-enabled device; however, we check whether trends in mobility data are similar to trends captured from satellite imagery.
+* __Mobility Data:__ We leverage mobility data from GPS-enabled devices to monitor the number of unique devices at border crossing locations. Mobility data comes from Outlogic, which is further described in {doc}`../mobility/README`. The number of unique devices observed at border crossing locations can indicate activity---and traffic---at the crossing. A key advantage of mobility data over satellite imagery is that it is available at all points in time; the dataset captures the timestamp and location of GPS-enable devices. Consequently, the data can be aggregated hourly, daily, or at other intervals. Mobility data may underestimate activity as not everyone may have a GPS-enabled device; however, we check whether trends in mobility data are similar to trends captured from satellite imagery.
 
-## Code
+For further information, please refer to {ref}`foundational_datasets`.
+
+## Implementation
 
 Code to analyze traffic across the three data sources is available [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/traffic/traffic_analysis.R).
 
@@ -22,7 +24,6 @@ The below figure shows trends in the traffic indicators from the three sources. 
 
 ```{figure} ../../reports/figures/border_trends_sat_mobility.png
 ---
-scale: 50%
 align: center
 ---
 Trends in Traffic using Different Data Sources. Data aggregated to the monthly level; when multiple observations are available within the month, we use the maximum.
