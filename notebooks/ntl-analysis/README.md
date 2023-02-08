@@ -18,6 +18,16 @@ Code to replicate the analysis can be found [here](https://github.com/datapartne
 
 The main script ([_main.R](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/_main.R)) loads all packages and runs all scripts for the analysis. There are separate scripts for processing the data (e.g., [downloading and cleaning Black Marble data](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/01_download_black_marble.R)), and separate scripts to produce each of the figures (e.g., [producing maps showing changes in nighttime lights](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/02_maps_of_ntl_changes.R)).
 
+Data for the analysis can be downloaded from:
+
+* [Gas Flaring Location Data](https://datacatalog.worldbank.org/search/dataset/0037743)
+
+* __Black Marble Nighttime Lights:__ There are two options to access the data:
+
+  * The code [here](https://github.com/datapartnership/syria-economic-monitor/blob/main/notebooks/ntl-analysis/01_download_black_marble.R) downloads raw data from the [NASA archive](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/) and processes the data for Syria---mosaicing raster tiles together to cover Syria. Running the code requires a NASA bearer token; the documentation [here](https://github.com/ramarty/download_blackmarble) describes how to obtain a token.
+  
+  * Pre-processed data can be downloaded from [here](https://datacatalog.worldbank.org/int/data/dataset/0063879/syria__night_time_lights), using the __Night Time Lights BlackMarble Data__
+
 ## Findings
 
 The below figure shows nighttime lights from the latest month available. As expected, Syria’s largest cities are the most brightly lit – including Damascus in the southwest and Aleppo in the northwest.
