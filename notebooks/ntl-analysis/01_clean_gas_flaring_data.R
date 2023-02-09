@@ -1,6 +1,7 @@
 # Clean Gas Flaring Data
 
 # Create dataset of gas flaring locations in Syria
+# Raw data from: https://datacatalog.worldbank.org/search/dataset/0037743
 
 # Load data --------------------------------------------------------------------
 clean_data <- function(x) x %>% clean_names() %>% dplyr::filter(iso_code %in% "SYR")

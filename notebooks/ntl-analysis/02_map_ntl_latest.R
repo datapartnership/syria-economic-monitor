@@ -2,7 +2,7 @@
 
 # Load data --------------------------------------------------------------------
 r_mean  <- raster(file.path(data_dir, "bm_vnp46A3_2022_08.tif"))
-gadm_sp <- readRDS(file.path(data_dir, "gadm36_SYR_0_sp.rds"))
+gadm_sp <- getData('GADM', country='SYR', level=0) 
 
 # Prep data --------------------------------------------------------------------
 r_mean <- r_mean %>% crop(gadm_sp) %>% mask(gadm_sp) 

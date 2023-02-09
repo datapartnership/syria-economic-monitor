@@ -1,6 +1,13 @@
 # Syria Economic Monitor
 # Nighttime Lights Analysis: Main Script
 
+# PARAMETERS
+# Whether to download and mosaic nighttime light data from the BlackMarble 
+# archive. Instead of re-downloaded and re-processing the data, pre-processed
+# data for Syria can be found here:
+# https://datacatalog.worldbank.org/int/data/dataset/0063879/syria__night_time_lights
+DOWNLOAD_NTL <- F
+
 # Filepaths --------------------------------------------------------------------
 #### Root paths
 if(Sys.info()[["user"]] == "robmarty"){
@@ -44,8 +51,10 @@ RUN_SCRIPTS <- F
 if(RUN_SCRIPTS){
   
   # Download black marble nighttime lights data into monthly rasters 
-  # for Syria
-  source(file.path(ntl_dir, "01_download_black_marble.R"))
+  # for Syria.
+  # NOTE: Requires a bearer token from NASA. To aquire, see documentation here:
+  # https://github.com/ramarty/download_blackmarble
+  if(DOWNLOAD_NTL) source(file.path(ntl_dir, "01_download_black_marble.R"))
   
   # Clean dataset of gas flaring locations; produces a dataset of gas flaring
   # locations in Syria

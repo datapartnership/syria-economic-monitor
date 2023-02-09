@@ -2,7 +2,7 @@
 
 # Load data --------------------------------------------------------------------
 ## GADM
-gadm_sp <- readRDS(file.path(data_dir, "gadm36_SYR_1_sp.rds"))
+gadm_sp <- getData('GADM', country='SYR', level=0)
 
 ## Average Annual NTL
 r_2013 <- file.path(data_dir) %>%
