@@ -30,9 +30,9 @@ library(ggtheme)
 library(ggpubr)
 
 # 3. Load data -----------------------------------------------------------------
-ol_df <- readRDS(file.path(data_dir, "outlogic_bc_counts.Rds"))
-sn_df <- readRDS(file.path(data_dir, "spaceknow.Rds"))
-oi_df <- readRDS(file.path(data_dir, "oi.Rds"))
+ol_df <- read_csv(file.path(data_dir, "outlogic_bc_counts.csv"))
+sn_df <- read_csv(file.path(data_dir, "traffic_index_sentinel1_sar.csv"))
+oi_df <- read_csv(file.path(data_dir, "vehicle_count_oi.csv"))
 
 # 4. Prep Outlogic data --------------------------------------------------------
 ol_df <- ol_df %>%
