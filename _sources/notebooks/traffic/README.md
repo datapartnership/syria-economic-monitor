@@ -18,6 +18,8 @@ For further information, please refer to {ref}`foundational_datasets`.
 
 Code to analyze traffic across the three data sources is available [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/traffic/traffic_analysis.R).
 
+Data for the analysis can be accessed [here](https://datacatalog.worldbank.org/int/data/dataset/0063878/syrialebanon_border_crossing_traffic).
+
 ## Findings
 
 The below figure shows trends in the traffic indicators from the three sources. VHR images are captured at irregular intervals, so car and truck counts are available at limited points in time. However, comparing the VHR and mobility data emphasizes the downward bias in the mobility data. VHR data shows up to 250 vehicles captured at a single point in time for a border crossing, while mobility data from Outlogic only shows up to 12 unique devices captured during a day. Outlogic data may have too few observations at the border crossing locations to meaningfully observe trends. The traffic index from SAR imagery shows a notable increase in traffic at the Al Abbudiyah border crossing in 2022, a slight upward trend in traffic at the Al Aridah border crossing, and relatively consistent traffic at the Matraba border crossing.

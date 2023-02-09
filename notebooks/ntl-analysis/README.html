@@ -498,6 +498,16 @@ title="Print to PDF"
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
 <p>Code to replicate the analysis can be found <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis">here</a>.</p>
 <p>The main script (<a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/_main.R">_main.R</a>) loads all packages and runs all scripts for the analysis. There are separate scripts for processing the data (e.g., <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/01_download_black_marble.R">downloading and cleaning Black Marble data</a>), and separate scripts to produce each of the figures (e.g., <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/ntl-analysis/02_maps_of_ntl_changes.R">producing maps showing changes in nighttime lights</a>).</p>
+<p>Data for the analysis can be downloaded from:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datacatalog.worldbank.org/search/dataset/0037743">Gas Flaring Location Data</a></p></li>
+<li><p><strong>Black Marble Nighttime Lights:</strong> There are two options to access the data:</p>
+<ul>
+<li><p>The code <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/blob/main/notebooks/ntl-analysis/01_download_black_marble.R">here</a> downloads raw data from the <a class="reference external" href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/">NASA archive</a> and processes the data for Syria—mosaicing raster tiles together to cover Syria. Running the code requires a NASA bearer token; the documentation <a class="reference external" href="https://github.com/ramarty/download_blackmarble">here</a> describes how to obtain a token.</p></li>
+<li><p>Pre-processed data can be downloaded from <a class="reference external" href="https://datacatalog.worldbank.org/int/data/dataset/0063879/syria__night_time_lights">here</a>, using the <strong>Night Time Lights BlackMarble Data</strong></p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this headline">#</a></h2>
