@@ -27,9 +27,10 @@ monthly_files_use_df <- monthly_files_df[monthly_files_df$name %>% str_detect(ti
 
 ## Create year_month variable
 monthly_files_use_df <- monthly_files_use_df %>%
-  mutate(month_day_start = month_day_start %>% pad3(),
-         month = month_day_start %>% month_start_day_to_month(),
-         year_month = paste0(year, "_", month))
+  mutate(year_month = paste0(year, "-", month, "-01") %>%
+           ymd() %>%
+           substring(1,7) %>%
+           str_replace_all("-", "_"))
 
 # Download data ----------------------------------------------------------------
 for(year_month_i in unique(monthly_files_use_df$year_month)){
