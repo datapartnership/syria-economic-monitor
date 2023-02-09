@@ -19,7 +19,7 @@ grid_use_sf <- grid_sf[inter,]
 # Dataframe of files to download -----------------------------------------------
 
 ## Create dataframe of all tiles
-monthly_files_df <- read.csv("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/data/monthly_datasets.csv")
+monthly_files_df <- read.csv("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/data/VNP46A3.csv")
 
 ## Grab tiles in Syria
 tile_ids_rx <- grid_use_sf$TileID %>% paste(collapse = "|")
