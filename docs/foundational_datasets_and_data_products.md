@@ -12,6 +12,8 @@ Following is list of all Foundational Datasets used in this Data Good:
 The **Development Data Hub** is the World Bank's central data catalogue and includes meta-data and license information.
 ```
 
+Where feasible, all datasets that can be obtained through the Development Data Hub have been placed in a special collection: [Syria Economic Monitor Data Collection](https://datacatalog.worldbank.org/int/search/collections/sem). 
+
 ```{table}
 :name: foundational_datasets
 
