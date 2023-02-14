@@ -11,12 +11,21 @@ DOWNLOAD_NTL <- F
 # Filepaths --------------------------------------------------------------------
 #### Root paths
 if(Sys.info()[["user"]] == "robmarty"){
-  git_dir <- "~/Documents/Github/syria-economic-monitor"
+  git_dir  <- "~/Documents/Github/syria-economic-monitor"
+  #data_dir <- "~/Documents/Github/syria-economic-monitor/data"
+  data_dir <- file.path("~", "Dropbox", "World Bank", "Side Work", "Syria Economic Monitor",
+                        "data")
 } 
 
 #### From root
-ntl_dir     <- file.path(git_dir, "notebooks", "ntl-analysis")
-data_dir    <- file.path(git_dir, "data")
+#ntl_dir     <- file.path(git_dir, "notebooks", "ntl-analysis")
+figures_dir <- file.path(git_dir, "reports", "figures")
+
+ntl_bm_dir  <- file.path(data_dir, "NTL BlackMarble")
+gas_flare_dir  <- file.path(data_dir, "Global Gas Flaring")
+gadm_dir  <- file.path(data_dir, "GADM")
+eq_intensity_dir <- file.path(data_dir, "Earthquake Intensity")
+unocha_dir <- file.path(data_dir, "UNOCHA")
 figures_dir <- file.path(git_dir, "reports", "figures")
 
 # Packages and functions -------------------------------------------------------
@@ -41,6 +50,7 @@ library(h3jsr)
 library(readxl)
 library(janitor)
 library(glcm)
+library(httr)
 
 ## User written script to facilitating downloading black marble NTL data
 source("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/R/download_blackmarble.R")
