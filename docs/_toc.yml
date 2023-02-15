@@ -16,7 +16,7 @@ parts:
           - file: notebooks/mobility/01b-convenience-sampling.ipynb
           - file: notebooks/mobility/02-validate-mobility-data.ipynb
           - file: notebooks/mobility/03a-count-within-aoi.ipynb
-          - file: notebooks/mobility/03b-calculate-stay-locations.ipynb
+          - file: notebooks/mobility/03b-estimate-stay-locations.ipynb
       - file: notebooks/ais-analysis/README
         sections:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
