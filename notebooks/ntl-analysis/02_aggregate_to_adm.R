@@ -30,9 +30,9 @@ if(adm_i == 3){
 if(adm_i == 4){
   gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_pplp_adm4_unocha_20210113.json")) %>%
     as("Spatial")
-  
+
   gadm_sp <- geo.buffer(gadm_sp, r = 0.5*1000)
-  
+
   gadm_sp <- raster::aggregate(gadm_sp, by = "ADM4_PCODE")
 }
 
@@ -47,30 +47,30 @@ daily_files <- list.files(file.path(ntl_bm_dir, "FinalData", "VNP46A2_rasters"))
 
 viirs_bm_df <- map_df(daily_files, function(file_i){ # nrow(ym_df)
   print(file_i)
-  
+
   r <- raster(file.path(ntl_bm_dir, "FinalData", "VNP46A2_rasters", file_i))
-  
+
   r_gf   <- r %>% crop(gf_sp) %>% mask(gf_sp)
   r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gadm_no_gf_sp)
-  
+
   gadm_sf <- gadm_sp %>% st_as_sf()
-  
+
   gadm_id_df$viirs_bm_mean <- exact_extract(r, gadm_sf, 'mean')
   gadm_id_df$viirs_bm_sum <- exact_extract(r, gadm_sf, 'sum')
-  
+
   gadm_id_df$viirs_bm_gf_mean <- exact_extract(r_gf, gadm_sf, 'mean')
   gadm_id_df$viirs_bm_gf_sum  <- exact_extract(r_gf, gadm_sf, 'sum')
-  
+
   gadm_id_df$viirs_bm_nogf_mean <- exact_extract(r_nogf, gadm_sf, 'mean')
   gadm_id_df$viirs_bm_nogf_sum  <- exact_extract(r_nogf, gadm_sf, 'sum')
-  
+
   # Add date info
   year_i <- file_i %>% substring(12,15) %>% as.numeric()
   day_i  <- file_i %>% substring(17,19) %>% as.numeric()
   gadm_id_df$year <- year_i
   gadm_id_df$day  <- day_i
   gadm_id_df$date <- as.Date(day_i, origin = paste0(year_i-1, "-12-31")) # 1 = Jan 1 of next year
-  
+
   return(gadm_id_df)
 })
 
