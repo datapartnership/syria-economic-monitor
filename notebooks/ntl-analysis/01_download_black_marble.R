@@ -4,7 +4,7 @@
 #### Bearer token from NASA
 # To get token, see: https://github.com/ramarty/download_blackmarble
 BEARER <- "BEARER-TOKEN-HERE" 
-BEARER <- "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUFMgT0F1dGgyIEF1dGhlbnRpY2F0b3IiLCJpYXQiOjE2NzY1ODM0MDIsIm5iZiI6MTY3NjU4MzQwMiwiZXhwIjoxNjkyMTM1NDAyLCJ1aWQiOiJyYW1hcnR5IiwiZW1haWxfYWRkcmVzcyI6InJhbWFydHlAZW1haWwud20uZWR1IiwidG9rZW5DcmVhdG9yIjoicmFtYXJ0eSJ9.sYxaKd5zIH7shl9qtQSqEsSYfMp03LqszuIe7Apd9V0"
+
 ##### Region of Interest
 
 ## Polygon around Syria and Turkey
