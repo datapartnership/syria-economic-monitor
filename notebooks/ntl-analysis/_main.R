@@ -18,9 +18,10 @@ if(Sys.info()[["user"]] == "robmarty"){
 } 
 
 #### From root
-#ntl_dir     <- file.path(git_dir, "notebooks", "ntl-analysis")
+ntl_dir     <- file.path(git_dir, "notebooks", "ntl-analysis")
 figures_dir <- file.path(git_dir, "reports", "figures")
 
+bc_dir  <- file.path(data_dir, "Border Crossings")
 ntl_bm_dir  <- file.path(data_dir, "NTL BlackMarble")
 gas_flare_dir  <- file.path(data_dir, "Global Gas Flaring")
 gadm_dir  <- file.path(data_dir, "GADM")
@@ -51,6 +52,7 @@ library(readxl)
 library(janitor)
 library(glcm)
 library(httr)
+library(spatialEco)
 
 ## User written script to facilitating downloading black marble NTL data
 source("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/R/download_blackmarble.R")
@@ -84,7 +86,20 @@ if(RUN_SCRIPTS){
   
 }
 
-
+if(F){
+  
+  source(file.path(ntl_dir, "02_download_black_marble.R"))
+  
+  source(file.path(ntl_dir, "03_syr_aggregate.R"))
+  source(file.path(ntl_dir, "03_syr_append_aggregations.R"))
+  
+  source(file.path(ntl_dir, "03_tur_aggregate.R"))
+  source(file.path(ntl_dir, "03_tur_append_aggregations.R"))
+  
+  source(file.path(ntl_dir, "05_clean_tur.R"))
+  source(file.path(ntl_dir, "05_merge_ntl_eq_data.R"))
+  
+}
 
 
 
