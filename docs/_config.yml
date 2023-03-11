@@ -3,6 +3,7 @@ title:
 author: World Bank Development Data Group
 logo: docs/images/logo.png
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+only_build_toc_files: true
 
 repository:
     url: https://github.com/datapartnership/syria-economic-monitor
@@ -15,8 +16,10 @@ html:
     use_repository_button: true
     use_issues_button: true
     baseurl: https://datapartnership.github.io/datapartnership/syria-economic-monitor
-
-only_build_toc_files: true
+    extra_footer: |
+        <div>
+            <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
+        </div>
 
 #######################################################################################
 # Execution settings
@@ -31,7 +34,11 @@ execute:
 bibtex_bibfiles:
     - docs/bibliography.bib
 
+#######################################################################################
+# Sphinx settings
 sphinx:
     config:
         bibtex_reference_style: author_year
         mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+        html_last_updated_fmt: "%b %d, %Y"
+        html_show_copyright: false
