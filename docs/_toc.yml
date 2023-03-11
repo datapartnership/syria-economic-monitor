@@ -22,9 +22,9 @@ parts:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
           - file: notebooks/ais-analysis/02-trade-estimation.ipynb
       - file: notebooks/traffic/README
-- caption: Insights and Indicators
-  chapters:
-    - file: docs/2023-summer-README
-- caption: Acknowledgements
+  - caption: Insights and Indicators
+    chapters:
+      - file: docs/2023-summer-economic-monitor
+  - caption: Acknowledgements
     chapters:
       - file: docs/team
