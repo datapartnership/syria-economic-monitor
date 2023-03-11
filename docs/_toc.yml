@@ -24,7 +24,7 @@ parts:
       - file: notebooks/traffic/README
 - caption: Insights and Indicators
   chapters:
-    - file: docs/2023-summer-README.md
+    - file: docs/2023-summer-README
 - caption: Acknowledgements
     chapters:
       - file: docs/team
