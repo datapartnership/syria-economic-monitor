@@ -455,13 +455,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-governorate">
-   Step 3. Create pivot table to show change in forest cover loss over time, by governorate.
+  <a class="reference internal nav-link" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level">
+   Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-calculate-cumualative-forest-cover-less">
-   Step 4. Calculate cumualative forest cover less
+  <a class="reference internal nav-link" href="#step-4-calculate-cumualative-forest-cover-loss">
+   Step 4. Calculate cumualative forest cover loss
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -499,13 +499,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-governorate">
-   Step 3. Create pivot table to show change in forest cover loss over time, by governorate.
+  <a class="reference internal nav-link" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level">
+   Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-calculate-cumualative-forest-cover-less">
-   Step 4. Calculate cumualative forest cover less
+  <a class="reference internal nav-link" href="#step-4-calculate-cumualative-forest-cover-loss">
+   Step 4. Calculate cumualative forest cover loss
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -541,7 +541,7 @@ title="Print to PDF"
 <section id="step-2-prepare-data-from-global-forest-watch">
 <h2>Step 2. Prepare data from <a class="reference external" href="https://www.globalforestwatch.org/">Global Forest Watch</a><a class="headerlink" href="#step-2-prepare-data-from-global-forest-watch" title="Permalink to this headline">#</a></h2>
 <p>Global forest watch sources its data from a <a class="reference external" href="http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.7.html">University of Maryland time-series analysis of Landsat images</a> that show global forest extent and change. These data can be downloaded for free, as .tiff files.</p>
-<p>Following is an example of what these files look like, rendered using QGIS, in Syria, covering the period from 2000-2020. The intensity of color commensurate with the intensity of forest cover loss.</p>
+<p>Following is an example of what these files look like rendered using QGIS, in Syria, covering the period from 2000-2020. The intensity of the red color is commensurate with the intensity of forest cover loss.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;images/syria-tree-loss-2.png&quot;</span><span class="p">)</span>
@@ -658,8 +658,8 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
-<section id="step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-governorate">
-<h2>Step 3. Create pivot table to show change in forest cover loss over time, by governorate.<a class="headerlink" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-governorate" title="Permalink to this headline">#</a></h2>
+<section id="step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level">
+<h2>Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level.<a class="headerlink" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create pivot table of tree cover loss by admin1 and year</span>
@@ -1009,8 +1009,8 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
-<section id="step-4-calculate-cumualative-forest-cover-less">
-<h2>Step 4. Calculate cumualative forest cover less<a class="headerlink" href="#step-4-calculate-cumualative-forest-cover-less" title="Permalink to this headline">#</a></h2>
+<section id="step-4-calculate-cumualative-forest-cover-loss">
+<h2>Step 4. Calculate cumualative forest cover loss<a class="headerlink" href="#step-4-calculate-cumualative-forest-cover-loss" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group data by adm1 and year, and calculate cumulative tree cover loss</span>
