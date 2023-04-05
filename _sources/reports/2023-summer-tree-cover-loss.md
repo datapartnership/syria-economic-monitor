@@ -8,11 +8,11 @@ Following are example of what these files look like rendered using QGIS, in Syri
 
 ![](figures/syria-tree-loss-2.png)
 
-*Figure 1: Tree cover loss in Lattakia, from 2000-2021*
+*Figure 1: Tree cover loss in northwest Syria, from 2000-2021*
 
 ![](figures/syria-tree-loss-3.png)
 
-*Figure 2: Tree cover loss in Lattakia, from 2000-2021 (zoomed in)*
+*Figure 2: Tree cover loss in eastern Lattakia, from 2000-2021 (zoomed in)*
 
 ## Findings
 
