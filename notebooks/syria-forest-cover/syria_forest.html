@@ -456,17 +456,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level">
-   Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level.
+   Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-calculate-cumualative-forest-cover-loss">
-   Step 4. Calculate cumualative forest cover loss
+  <a class="reference internal nav-link" href="#step-4-calculate-cumulative-forest-cover-loss">
+   Step 4. Calculate cumulative forest cover loss
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total">
-   Step 5. Calculate total tree cover loss by administrative level 1, identify which account for the greatest losses, and then calculate their percent of the national total
+  <a class="reference internal nav-link" href="#step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-admin1s-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total">
+   Step 5. Calculate total tree cover loss by administrative level 1, identify which admin1s account for the greatest losses, and then calculate their percent of the national total
   </a>
  </li>
 </ul>
@@ -500,17 +500,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level">
-   Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level.
+   Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-calculate-cumualative-forest-cover-loss">
-   Step 4. Calculate cumualative forest cover loss
+  <a class="reference internal nav-link" href="#step-4-calculate-cumulative-forest-cover-loss">
+   Step 4. Calculate cumulative forest cover loss
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total">
-   Step 5. Calculate total tree cover loss by administrative level 1, identify which account for the greatest losses, and then calculate their percent of the national total
+  <a class="reference internal nav-link" href="#step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-admin1s-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total">
+   Step 5. Calculate total tree cover loss by administrative level 1, identify which admin1s account for the greatest losses, and then calculate their percent of the national total
   </a>
  </li>
 </ul>
@@ -659,7 +659,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level">
-<h2>Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level.<a class="headerlink" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level" title="Permalink to this headline">#</a></h2>
+<h2>Step 3. Create pivot table to show change in forest cover loss over time, by first administrative level<a class="headerlink" href="#step-3-create-pivot-table-to-show-change-in-forest-cover-loss-over-time-by-first-administrative-level" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create pivot table of tree cover loss by admin1 and year</span>
@@ -1009,22 +1009,38 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
-<section id="step-4-calculate-cumualative-forest-cover-loss">
-<h2>Step 4. Calculate cumualative forest cover loss<a class="headerlink" href="#step-4-calculate-cumualative-forest-cover-loss" title="Permalink to this headline">#</a></h2>
+<section id="step-4-calculate-cumulative-forest-cover-loss">
+<h2>Step 4. Calculate cumulative forest cover loss<a class="headerlink" href="#step-4-calculate-cumulative-forest-cover-loss" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group data by adm1 and year, and calculate cumulative tree cover loss</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set font family</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sans-serif&#39;</span>
+
+<span class="c1"># Group data by admin1 and year, and calculate cumulative tree cover loss</span>
 <span class="n">grouped_df</span> <span class="o">=</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;adm1&#39;</span><span class="p">,</span> <span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">])[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;cummulative loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;adm1&#39;</span><span class="p">)[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 
-<span class="c1"># Create line chart of cumulative tree cover loss over time, by admin</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cummulative loss&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;adm1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">grouped_df</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Tree Cover Loss (ha)&#39;</span><span class="p">)</span>
+<span class="c1"># Convert year column to integers</span>
+<span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;integer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Replace NaN values with None</span>
+<span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Create line chart of cumulative tree cover loss over time, by admin1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cummulative loss&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;adm1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">grouped_df</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Tree Cover Loss (ha)&#39;</span><span class="p">)</span>
 
 <span class="c1"># Customize the title for your area of interest and time period</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Tree Cover Loss from 2000-2021, by Governorate&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Cumulative Tree Cover Loss from 2000-2021, by Governorate&#39;</span><span class="p">)</span>
+
+<span class="c1"># Format tick labels as integers</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1034,14 +1050,14 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total">
-<h2>Step 5. Calculate total tree cover loss by administrative level 1, identify which account for the greatest losses, and then calculate their percent of the national total<a class="headerlink" href="#step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total" title="Permalink to this headline">#</a></h2>
+<section id="step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-admin1s-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total">
+<h2>Step 5. Calculate total tree cover loss by administrative level 1, identify which admin1s account for the greatest losses, and then calculate their percent of the national total<a class="headerlink" href="#step-5-calculate-total-tree-cover-loss-by-administrative-level-1-identify-which-admin1s-account-for-the-greatest-losses-and-then-calculate-their-percent-of-the-national-total" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group data by adm1 and calculate tree cover loss</span>
-<span class="n">total_loss</span> <span class="o">=</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;adm1&#39;</span><span class="p">)[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group data by admin1 and calculate tree cover loss</span>
+<span class="n">total_loss</span> <span class="o">=</span> <span class="nb">round</span> <span class="p">(</span><span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;adm1&#39;</span><span class="p">)[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># Calculate percentage of the total tree cover loss for each adm1</span>
+<span class="c1"># Calculate percentage of the total tree cover loss for each admin1</span>
 <span class="n">percentage_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">total_loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
 
 <span class="c1"># Get the admin1 with the highest tree cover loss</span>
@@ -1060,18 +1076,20 @@ title="Print to PDF"
 
 <span class="c1"># Display the results (customize the local name for an admin1 area)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the most tree cover loss is </span><span class="si">{</span><span class="n">most_loss</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">total_loss</span><span class="p">[</span><span class="n">most_loss</span><span class="p">]</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all admin1s.&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the second most tree cover loss is </span><span class="si">{</span><span class="n">second_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">second_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all admin1s.&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the third most tree cover loss is </span><span class="si">{</span><span class="n">third_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">third_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all admin1s.&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the most tree cover loss is </span><span class="si">{</span><span class="n">most_loss</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">total_loss</span><span class="p">[</span><span class="n">most_loss</span><span class="p">]</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the second most tree cover loss is </span><span class="si">{</span><span class="n">second_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">second_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the third most tree cover loss is </span><span class="si">{</span><span class="n">third_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">third_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<p>The governorate with the most tree cover loss is Lattakia, with 14045.481730543292 hectares lost, which represents 52.85% of the total loss across all admin1s.</p>
-<p>The governorate with the second most tree cover loss is Hamah, with 7524.196461860809 hectares lost, which represents 28.31% of the total loss across all admin1s.</p>
-<p>The governorate with the third most tree cover loss is Idlib, with 2629.7024648132574 hectares lost, which represents 9.90% of the total loss across all admin1s.</p>
+<p>The governorate with the most tree cover loss is Lattakia, with 14045.48 hectares lost, which represents 52.85% of the total loss across all governorates.</p>
+<p>The governorate with the second most tree cover loss is Hamah, with 7524.2 hectares lost, which represents 28.31% of the total loss across all governorates.</p>
+<p>The governorate with the third most tree cover loss is Idlib, with 2629.7 hectares lost, which represents 9.90% of the total loss across all governorates.</p>
 </div>
 </div>
+<hr class="docutils" />
+<p>NOTE: Most of the code in this workbook was generated using a ChatGPT program I wrote: <a class="reference external" href="https://holly-transport.github.io/coffee_chat/notebooks/CoffeeChat.html">https://holly-transport.github.io/coffee_chat/notebooks/CoffeeChat.html</a></p>
 </section>
 </section>
 
