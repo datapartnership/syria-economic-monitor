@@ -10,21 +10,15 @@ Following are example of what these files look like rendered using QGIS, in Syri
 
 *Figure 1: Tree cover loss in Lattakia, from 2000-2021*
 
-
-
 ![](figures/syria-tree-loss-3.png)
 
 *Figure 2: Tree cover loss in Lattakia, from 2000-2021 (zoomed in)*
-
-
 
 ## Findings
 
 From 2000 to 2021, Syria has lost 26,576 hectares of forest cover, with loss begining to escalate in  2011. The following line chart shows the pace of tree cover loss over this period.
 
-
-
-<img title="" src="figures/syria-tree-loss-chart.png" alt="" width="693">
+<img title="" src="figures/syria-tree-loss-chart.png" alt="" width="637" data-align="left">
 
 The table, below, shows the three governorates responsible for more than 90% of the country's tree cover loss: Lattakia, Hamah, and Idlib.
 
@@ -33,5 +27,3 @@ The table, below, shows the three governorates responsible for more than 90% of 
 | Lattakia    | 14,045               | 53%                    |
 | Hamah       | 7,524                | 28%                    |
 | Idlib       | 2,630                | 10%                    |
-
-
