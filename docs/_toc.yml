@@ -12,11 +12,14 @@ parts:
       - file: notebooks/ntl-analysis/README
       - file: notebooks/mobility/README
         sections:
-          - file: notebooks/mobility/01a-aoi-and-tessellation.ipynb
-          - file: notebooks/mobility/01b-convenience-sampling.ipynb
-          - file: notebooks/mobility/02-validate-mobility-data.ipynb
-          - file: notebooks/mobility/03a-count-within-aoi.ipynb
-          - file: notebooks/mobility/03b-estimate-stay-locations.ipynb
+          - file: notebooks/mobility/stops/README
+            sections:
+            - file: notebooks/mobility/stops/01a-aoi-and-tessellation.ipynb
+            - file: notebooks/mobility/stops/01b-convenience-sampling.ipynb
+            - file: notebooks/mobility/stops/02-validate-mobility-data.ipynb
+            - file: notebooks/mobility/stops/03a-count-within-aoi.ipynb
+            - file: notebooks/mobility/stops/03b-estimate-stay-locations.ipynb
+          - file: notebooks/mobility/activity/README
       - file: notebooks/ais-analysis/README
         sections:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
