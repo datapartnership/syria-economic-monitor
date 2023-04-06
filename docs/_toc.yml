@@ -6,6 +6,8 @@ parts:
     chapters:
       - file: docs/introduction_to_data_goods
       - file: docs/foundational_datasets_and_data_products
+        sections:
+        - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
   - caption: Data Products
     chapters:
       - file: notebooks/ndvi/README
@@ -29,6 +31,7 @@ parts:
       - file: notebooks/internet-connectivity/README
         sections:
         - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
+      - file: notebooks/conflict/acled.ipynb
   - caption: Insights and Indicators
     chapters:
       - file: docs/2023-summer-economic-monitor
