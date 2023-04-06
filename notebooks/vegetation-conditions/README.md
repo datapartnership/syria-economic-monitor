@@ -152,15 +152,15 @@ We utilized GEE to acquire a time series of EVI data. The EVI data was then proc
 
 In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data. 
 
-* The code for downloading timeseries EVI in GEE: [gee-batch-export-mxd13q1.js](../gee-batch-export-mxd13q1.js)
+* The code for downloading timeseries EVI in GEE: [gee-batch-export-mxd13q1.js](/gee-batch-export-mxd13q1.js)
 
 Following this, an ArcPy script was executed to process the acquired data and calculate long-term statistics from the time series.
 
-* The code for calculating long-term statistical value of EVI in Arcpy: [modis_8daystats.py](../modis_8daystats.py)
+* The code for calculating long-term statistical value of EVI in Arcpy: [modis_8daystats.py](/modis_8daystats.py)
 
 Lastly, another ArcPy script was employed to compute various vegetation index derived products, such as the ratio, difference, standardized anomaly, and VCI.
 
-* The code for calculating derived EVI products in Arcpy: [modis_viproducts.py](../modis_viproducts.py)
+* The code for calculating derived EVI products in Arcpy: [modis_viproducts.py](/modis_viproducts.py)
 
 ### Phenological Metrics
 
@@ -182,7 +182,7 @@ The SOS, MOS, and EOS are typically derived from EVI. These metrics are calculat
 
 Note that these metrics will depend on the choice of function, thresholds, and other methodological details. The equations for calculating SOS, MOS, and EOS may vary depending on the specific technique employed.
 
-A how-to guideline on calculating the phenological metrics are available through **[Seasonality_Parameters_Data_Extraction](../Seasonality_Parameters_Data_Extraction.md)**
+A how-to guideline on calculating the phenological metrics are available through **[Seasonality_Parameters_Data_Extraction](/Seasonality_Parameters_Data_Extraction.md)**
 
 ## Limitations and Assumptions
 
