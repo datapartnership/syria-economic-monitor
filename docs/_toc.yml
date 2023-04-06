@@ -32,7 +32,8 @@ parts:
   - caption: Insights and Indicators
     chapters:
       - file: docs/2023-summer-economic-monitor
-      - file: reports/2023-summer-tree-cover-loss.md
+        sections:
+          - file: reports/2023-summer-tree-cover-loss.md
   - caption: Acknowledgements
     chapters:
       - file: docs/team
