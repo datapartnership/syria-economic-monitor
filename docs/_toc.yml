@@ -26,6 +26,9 @@ parts:
           - file: notebooks/ais-analysis/02-trade-estimation.ipynb
       - file: notebooks/traffic/README
       - file: notebooks/syria-forest-cover/syria_forest.ipynb
+      - file: notebooks/internet-connectivity/README
+        sections:
+        - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
   - caption: Insights and Indicators
     chapters:
       - file: docs/2023-summer-economic-monitor
