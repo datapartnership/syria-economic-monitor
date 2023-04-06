@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Monitoring vegetation conditions</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/vegetation-conditions/README.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2023 Summer Economic Monitor Insights" href="../../docs/2023-summer-economic-monitor.html" />
+    <link rel="prev" title="Ookla’s Number of Speedtest Intelligence Users" href="../internet-connectivity/ookla-speedtest-analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Data Goods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/introduction_to_data_goods.html">
+   Introduction to Data Goods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/foundational_datasets_and_data_products.html">
+   Foundational Datasets, Data Products, &amp; Sample Indicators
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Products
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ndvi/README.html">
+   Agricultural Productivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ntl-analysis/README.html">
+   Nighttime Lights
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../mobility/README.html">
+   Mobility Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../mobility/stops/README.html">
+     Estimating Stops in Lebanon and Syria based on Mobility Traces
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/01a-aoi-and-tessellation.html">
+       Generate Areas of Interest and Tessellation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/01b-convenience-sampling.html">
+       Convenience Sampling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/03a-count-within-aoi.html">
+       Counting Devices within Areas of Interest
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/03b-estimate-stay-locations.html">
+       Estimating Stay Locations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../mobility/activity/README.html">
+     Estimating Activity based on Mobility Traces
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ais-analysis/README.html">
+   Seaborn Trade Activity Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">
+     AIS Data Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/02-trade-estimation.html">
+     AIS Trade Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../traffic/README.html">
+   Traffic Trends at Border Crossings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syria-forest-cover/syria_forest.html">
+   Tree Cover Loss Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../internet-connectivity/README.html">
+   Internet Connectivity Post Earthquake
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../internet-connectivity/ookla-speedtest-analysis.html">
+     Ookla’s Number of Speedtest Intelligence Users
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Monitoring vegetation conditions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Insights and Indicators
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../docs/2023-summer-economic-monitor.html">
+   2023 Summer Economic Monitor Insights
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reports/2023-summer-tree-cover-loss.html">
+     Syria Tree Cover Loss (2000 - 2021)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Acknowledgements
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/team.html">
+   Data Goods Team and Acknowledgements
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/vegetation-conditions/README.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/edit/main/notebooks/vegetation-conditions/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notebooks/vegetation-conditions/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#crop-extent">
+     Crop extent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vegetation-indices">
+     Vegetation Indices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#products">
+   Products
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vegetation-derived-anomaly">
+     Vegetation-derived anomaly
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ratio-anomaly">
+       Ratio Anomaly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#difference-anomaly">
+       Difference Anomaly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#standardized-anomaly">
+       Standardized Anomaly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vegetation-condition-index-vci">
+       Vegetation Condition Index (VCI)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phenological-metrics">
+     Phenological metrics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#start-of-season-sos">
+       Start of Season (SOS)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mid-of-season-mos">
+       Mid of Season (MOS)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#end-of-season-eos">
+       End of Season (EOS)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vegetation-indices-and-derivative-product">
+     Vegetation Indices and derivative product
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Phenological Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-and-assumptions">
+   Limitations and Assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#potential-application">
+   Potential Application
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Monitoring vegetation conditions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#crop-extent">
+     Crop extent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vegetation-indices">
+     Vegetation Indices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#products">
+   Products
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vegetation-derived-anomaly">
+     Vegetation-derived anomaly
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ratio-anomaly">
+       Ratio Anomaly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#difference-anomaly">
+       Difference Anomaly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#standardized-anomaly">
+       Standardized Anomaly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vegetation-condition-index-vci">
+       Vegetation Condition Index (VCI)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#phenological-metrics">
+     Phenological metrics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#start-of-season-sos">
+       Start of Season (SOS)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mid-of-season-mos">
+       Mid of Season (MOS)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#end-of-season-eos">
+       End of Season (EOS)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vegetation-indices-and-derivative-product">
+     Vegetation Indices and derivative product
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Phenological Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-and-assumptions">
+   Limitations and Assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#potential-application">
+   Potential Application
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="monitoring-vegetation-conditions">
+<h1>Monitoring vegetation conditions<a class="headerlink" href="#monitoring-vegetation-conditions" title="Permalink to this headline">#</a></h1>
+<p>The importance of monitoring vegetation conditions cannot be overstated, particularly in countries like Syria, where ongoing conflicts and environmental changes have had significant impacts on the landscape. Vegetation serves as an essential component of the Earth’s ecosystem, playing a crucial role in maintaining biodiversity, supporting agriculture, and regulating climate. Continuous monitoring of vegetation dynamics can provide valuable insights into ecosystem health, early warnings of environmental degradation, and identify opportunities for sustainable land management practices.</p>
+<p><img alt="WorldCover" src="../../_images/climag-worldcover.png" /></p>
+<p><strong>Figure 1.</strong> Syria land cover.</p>
+<p>Remote sensing techniques, such as those employed through the use of Moderate Resolution Imaging Spectroradiometer (<a class="reference external" href="https://modis.gsfc.nasa.gov/about/">MODIS</a>) Terra (<a class="reference external" href="https://lpdaac.usgs.gov/products/mod13q1v061/">MOD13Q1</a>) and Aqua (<a class="reference external" href="https://lpdaac.usgs.gov/products/myd13q1v061/">MYD13Q1</a>) Vegetation Indices 16-day L3 Global 250m time series data, have revolutionized the way we monitor vegetation conditions. By deriving variables such as ratio anomaly, difference anomaly, standardized anomaly, and vegetation condition index, these analyses enable the quantification of vegetation changes over time and across vast spatial extents.</p>
+<p>Regular vegetation monitoring provides numerous benefits, including the ability to detect and mitigate the impacts of deforestation, land degradation, and desertification, as well as monitor crop health and inform agricultural decision-making. Furthermore, such monitoring can guide policymakers in the development of adaptive strategies and environmental policies, ensuring a sustainable future for the country and its people.</p>
+<p>Building on the foundation of monitoring vegetation conditions using MODIS MOD13Q1 and MYD13Q1 time series data, a more comprehensive understanding of vegetation dynamics in cropland areas can be achieved by incorporating phenological analysis. This is particularly important in a country like Syria, where agriculture is a vital sector for the economy and food security. Accurate and timely information on crop phenology can significantly enhance agricultural management, resource allocation, and the overall resilience of the farming sector.</p>
+<p>To achieve this, the use of <a class="reference external" href="https://web.nateko.lu.se/timesat/timesat.asp">TIMESAT</a>, a software tool designed for the analysis of time series data, can be employed to extract critical phenological parameters such as the Start of Season (SOS), Mid of Season (MOS), and End of Season (EOS) from the Enhanced Vegetation Index (EVI) data. By first clipping the EVI data to the cropland extent, the analysis becomes more focused on the regions of interest, ensuring that the extracted parameters are directly relevant to agricultural practices.</p>
+<p>This phenological information can then be used to guide farmers and agricultural stakeholders in making timely and informed decisions, such as when to plant, irrigate, or harvest their crops. Moreover, it can help identify potential threats to crop health and yield, such as disease outbreaks, pest infestations, or the effects of climate change, allowing for proactive and targeted interventions. Ultimately, incorporating phenological analysis into vegetation monitoring efforts provides a more holistic and actionable understanding of the complex dynamics that govern agricultural productivity and environmental sustainability.</p>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<p>In this study, we utilize a range of high-quality datasets to analyze vegetation conditions and phenology within Syria’s cropland areas. The Data section introduces the sources of information employed, setting the stage for the methodologies and results presented later in the study. Our analysis incorporates EVI data from the MOD13Q1 and MYD13Q1 products and the cropland extent provided by the ESA WorldCover 2021 dataset. Combining these datasets allows for a focused assessment of the agricultural landscape, enabling a deeper understanding of the factors influencing agricultural productivity and environmental sustainability in the region.</p>
+<section id="crop-extent">
+<h3>Crop extent<a class="headerlink" href="#crop-extent" title="Permalink to this headline">#</a></h3>
+<p>We used the new <a class="reference external" href="https://esa-worldcover.org/en">ESA World Cover</a> map 10m LULC to mask out areas which aren’t of interest in computing the EVI, i.e. built-up, water, forest, etc. The cropland class has value equal to 40, which will be used within Google Earth Engine to generate the mask.</p>
+<p>There are many ways to download the WorldCover, as explained in the WorldCover <a class="reference external" href="https://esa-worldcover.org/en/data-access">Data Access</a> page.</p>
+<p><img alt="Cropland" src="notebooks/vegetation-conditions/images/climag-cropland.png" /></p>
+<p><strong>Figure 2.</strong> Cropland</p>
+</section>
+<section id="vegetation-indices">
+<h3>Vegetation Indices<a class="headerlink" href="#vegetation-indices" title="Permalink to this headline">#</a></h3>
+<p>The EVI from both MOD13Q1 and MYD13Q1 downloaded using Google Earth Engine (<a class="reference external" href="https://earthengine.google.com/">GEE</a>) which involves some process:</p>
+<ul class="simple">
+<li><p>Combine the two 16-day composites into a synthethic 8-day composite containing data from both Aqua and Terra.</p></li>
+<li><p>Applying Quality Control Bitmask, keep only pixels with good quality.</p></li>
+<li><p>Applying cropland mask, keep only pixels identified as a cropland based on ESA WorldCover.</p></li>
+<li><p>Clipped for Syria and batch export the collection to Google Drive.</p></li>
+</ul>
+<p><img alt="VI" src="../../_images/climag-vi-djf-2023.png" /></p>
+<p><strong>Figure 3.</strong> Vegetation indices, December-January-February 2023.</p>
+</section>
+</section>
+<section id="products">
+<h2>Products<a class="headerlink" href="#products" title="Permalink to this headline">#</a></h2>
+<p>We present a summary of the key derived variables employed in our analysis to monitor vegetation conditions and dynamics within Syria’s cropland areas. These variables, which are derived from the EVI data and the cropland extent, enable a comprehensive understanding of the factors influencing agricultural productivity and environmental sustainability in the region.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to note that the original MODIS EVI data downloaded from sources such as USGS or GEE is provided in a range of 0-10,000 to minimize storage requirements and maintain data integrity. To convert these values to their actual EVI range of 0-1, it is typically necessary to multiply the data by a scale factor of 0.0001. However, in this study, we have opted to retain the unscaled values to conserve storage space and ensure efficient data processing.</p>
+<p>Please be aware that the derived variables and any subsequent analysis conducted in this study will be based on the original, unscaled EVI values. The results and interpretations should be considered accordingly, acknowledging that the values presented are in the 0-10,000 range rather than the conventional 0-1 EVI range. This approach does not compromise the overall analysis, but users of the data and findings should be mindful of the difference in scale when comparing the results to other studies or datasets that use the standard EVI scaling.</p>
+</div>
+<section id="vegetation-derived-anomaly">
+<h3>Vegetation-derived anomaly<a class="headerlink" href="#vegetation-derived-anomaly" title="Permalink to this headline">#</a></h3>
+<p>This study focuses on analyzing various EVI derived products, such as the ratio, difference, standardized anomaly, and Vegetation Condition Index (VCI). These derived products provide valuable insights into vegetation health, vigor, and responses to environmental factors like climate change and land-use practices. By examining the EVI-derived products, we can assess vegetation dynamics and identify patterns and trends that may impact ecosystems and human livelihoods.</p>
+<section id="ratio-anomaly">
+<h4>Ratio Anomaly<a class="headerlink" href="#ratio-anomaly" title="Permalink to this headline">#</a></h4>
+<p>This variable represents the relative difference between the current vegetation condition and the long-term average, expressed as a ratio. By comparing current EVI values to historical trends, ratio anomalies can help identify areas experiencing significant deviations in vegetation health, which may indicate potential issues such as drought, disease, or pest infestation.</p>
+<p>The anomaly is calculated based on percentage of the average</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">/</span> <span class="pre">&quot;mean_evi&quot;)</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> is the long-term average of EVI.</p>
+<p><img alt="RatioAnom" src="../../_images/climag-evi-ratioanom.png" /></p>
+<p><strong>Figure 4.</strong> Ratio anomaly, 6-21 March 2023</p>
+</section>
+<section id="difference-anomaly">
+<h4>Difference Anomaly<a class="headerlink" href="#difference-anomaly" title="Permalink to this headline">#</a></h4>
+<p>Similar to the ratio anomaly, the difference anomaly measures the absolute difference between the current vegetation condition and the long-term average. This variable can provide insights into the magnitude of deviations in vegetation health, aiding in the detection and prioritization of regions requiring intervention or further investigation.</p>
+<p>The anomaly is calculated based on difference from the average</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;mean_evi&quot;</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> is the long-term average of EVI.</p>
+<p><img alt="DiffAnom" src="../../_images/climag-evi-diffanom.png" /></p>
+<p><strong>Figure 5.</strong> Difference anomaly, 6-21 March 2023</p>
+</section>
+<section id="standardized-anomaly">
+<h4>Standardized Anomaly<a class="headerlink" href="#standardized-anomaly" title="Permalink to this headline">#</a></h4>
+<p>The standardized anomaly is a dimensionless measure that accounts for variations in the mean and standard deviation of the time series data, allowing for a more robust comparison of anomalies across different regions or time periods. This variable can help identify abnormal vegetation conditions that may warrant further analysis or management action.</p>
+<p>The anomaly is calculated based on difference from the average and standard deviation</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;mean_evi&quot;)</span> <span class="pre">/</span> <span class="pre">&quot;std_evi&quot;</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">std_evi</span></code> is the long-term average and standard deviation of EVI.</p>
+<p><img alt="StdAnom" src="../../_images/climag-evi-stdanom.png" /></p>
+<p><strong>Figure 6.</strong> Standardized anomaly, 6-21 March 2023</p>
+</section>
+<section id="vegetation-condition-index-vci">
+<h4>Vegetation Condition Index (VCI)<a class="headerlink" href="#vegetation-condition-index-vci" title="Permalink to this headline">#</a></h4>
+<p>The VCI is a normalized index that ranges from 0 to 100, with higher values indicating better vegetation health. Derived from the EVI data, the VCI provides a concise measure of the overall vegetation condition, enabling the identification of trends and patterns in vegetation dynamics, as well as the evaluation of the effectiveness of management interventions.</p>
+<p>The anomaly is calculated based on difference from the average and standard deviation</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;vci&quot;</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;min_evi&quot;)</span> <span class="pre">/</span> <span class="pre">(&quot;max_evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;min_evi&quot;)</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">std_evi</span></code> is the long-term average and standard deviation of EVI.</p>
+<p><img alt="VCI" src="../../_images/climag-evi-vci.png" /></p>
+<p><strong>Figure 7.</strong> Vegetation Condition Index, 6-21 March 2023</p>
+</section>
+</section>
+<section id="phenological-metrics">
+<h3>Phenological metrics<a class="headerlink" href="#phenological-metrics" title="Permalink to this headline">#</a></h3>
+<p>In addition to the previously mentioned vegetation indices and derived products, this study also focuses on analyzing key phenological metrics, such as the Start of Season (SOS), Mid of Season (MOS), and End of Season (EOS). These metrics provide essential information on the timing and progression of the growing season, offering valuable insights into plant growth and development. By examining SOS, MOS, and EOS, we can assess the impacts of environmental factors, such as climate change and land-use practices, on vegetation dynamics. Furthermore, understanding these phenological patterns can help inform agricultural management strategies, conservation efforts, and policies for sustainable resource management.</p>
+<section id="start-of-season-sos">
+<h4>Start of Season (SOS)<a class="headerlink" href="#start-of-season-sos" title="Permalink to this headline">#</a></h4>
+<p>The SOS is a critical phenological metric that represents the onset of the growing season. By analyzing the timing of SOS, we can gain insights into how environmental factors, such as temperature and precipitation, impact vegetation growth and development. Understanding the SOS is vital for agricultural planning, as it can inform planting and harvesting schedules, irrigation management, and help predict potential yield outcomes.</p>
+<p><img alt="SOS" src="../../_images/climag-sos-2022.png" /></p>
+<p><strong>Figure 8.</strong> Start of Season, 2022</p>
+</section>
+<section id="mid-of-season-mos">
+<h4>Mid of Season (MOS)<a class="headerlink" href="#mid-of-season-mos" title="Permalink to this headline">#</a></h4>
+<p>The MOS is an essential phenological parameter that indicates the peak of the growing season. Examining MOS can provide valuable information about the overall health and productivity of vegetation, as it typically corresponds to the period of maximum photosynthetic activity and biomass accumulation. Assessing MOS trends can help identify changes in vegetation dynamics due to climate change, land-use practices, or other environmental stressors, and support the development of effective management strategies for agriculture and natural resources.</p>
+<p><img alt="MOS" src="../../_images/climag-mos-2022.png" /></p>
+<p><strong>Figure 9.</strong> Mid of Season, 2022</p>
+</section>
+<section id="end-of-season-eos">
+<h4>End of Season (EOS)<a class="headerlink" href="#end-of-season-eos" title="Permalink to this headline">#</a></h4>
+<p>The EOS is an important phenological marker signifying the conclusion of the growing season. Investigating the timing of EOS can reveal valuable information about the duration of the growing season and the overall performance of vegetation. EOS trends can help us understand how factors such as temperature, precipitation, and human-induced land-use changes impact ecosystems and their productivity. Information on EOS is also crucial for agricultural management, as it aids in planning harvest schedules and post-harvest activities, and supports the development of informed land management and conservation policies.</p>
+<p><img alt="EOS" src="../../_images/climag-eos-2022.png" /></p>
+<p><strong>Figure 10.</strong> End of Season, 2022</p>
+</section>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
+<p>We utilized GEE to acquire a time series of EVI data. The EVI data was then processed using the ArcPy library in ArcGIS to generate long-term statistics and derive various vegetation indices products. Following this, we employed the TIMESAT software to extract seasonality parameters from the processed vegetation data.</p>
+<section id="vegetation-indices-and-derivative-product">
+<h3>Vegetation Indices and derivative product<a class="headerlink" href="#vegetation-indices-and-derivative-product" title="Permalink to this headline">#</a></h3>
+<p>In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data.</p>
+<ul class="simple">
+<li><p>The code for downloading timeseries EVI in GEE: <span class="xref myst">gee-batch-export-mxd13q1.js</span></p></li>
+</ul>
+<p>Following this, an ArcPy script was executed to process the acquired data and calculate long-term statistics from the time series.</p>
+<ul class="simple">
+<li><p>The code for calculating long-term statistical value of EVI in Arcpy: <span class="xref myst">modis_8daystats.py</span></p></li>
+</ul>
+<p>Lastly, another ArcPy script was employed to compute various vegetation index derived products, such as the ratio, difference, standardized anomaly, and VCI.</p>
+<ul class="simple">
+<li><p>The code for calculating derived EVI products in Arcpy: <span class="xref myst">modis_viproducts.py</span></p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Phenological Metrics<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>The SOS, MOS, and EOS are typically derived from EVI. These metrics are calculated using various methods that identify critical points or thresholds in the vegetation index time series data. One common approach is the Timesat software, which fits functions (e.g., logistic, asymmetric Gaussian, Savitsky-Golay, Whittaker) to the time series data to identify these points. Here’s a general overview of the approach:</p>
+<ol class="simple">
+<li><p>Preprocessing: Detrend and smooth the vegetation index time series data to reduce noise.</p></li>
+<li><p>Model Fitting: Fit a function (e.g., logistic, asymmetric Gaussian) to the smoothed time series data. The chosen function should adequately represent the seasonal pattern of vegetation growth and senescence.</p></li>
+<li><p>Threshold Determination: Define thresholds for SOS, MOS, and EOS. These thresholds may be absolute values, or they may be based on a percentage of the maximum vegetation index value for the season (e.g., 20% for SOS and EOS, 100% for MOS).</p></li>
+<li><p>Metric Calculation: Identify the points in the fitted function where the thresholds are met. These points correspond to the SOS, MOS, and EOS.</p>
+<ul class="simple">
+<li><p>SOS: The time step where the fitted function first exceeds the lower threshold, marking the start of significant vegetation growth.</p></li>
+<li><p>MOS: The time step where the fitted function reaches the maximum vegetation index value, indicating the peak of the growing season.</p></li>
+<li><p>EOS: The time step where the fitted function falls below the lower threshold again, signifying the end of significant vegetation growth.</p></li>
+</ul>
+</li>
+</ol>
+<p>Note that these metrics will depend on the choice of function, thresholds, and other methodological details. The equations for calculating SOS, MOS, and EOS may vary depending on the specific technique employed.</p>
+<p>A how-to guideline on calculating the phenological metrics are available through <strong><span class="xref myst">Seasonality_Parameters_Data_Extraction</span></strong></p>
+</section>
+</section>
+<section id="limitations-and-assumptions">
+<h2>Limitations and Assumptions<a class="headerlink" href="#limitations-and-assumptions" title="Permalink to this headline">#</a></h2>
+<p>Getting VI data with good quality for all period are challenging (pixels covered with cloud, snow/ice, aerosol quantity, shadow) for optic data (MODIS). Cultivated area year by year are varies, due to MODIS data quality and crop type is not described, so the seasonal parameters are for general cropland.</p>
+<p>At this point, the analysis is also limited to seasonal crops due to difficulty to capture the dynamics of perennial crops within a year. The value may not represent for smaller cropland and presented result are only based upon the most current available remote sensing data. As the climate phenomena is a dynamic situation, the current realities may differ from what is depicted in this document.</p>
+<p>Ground check is necessary to ensure if satellite and field situation data are corresponding.</p>
+</section>
+<section id="potential-application">
+<h2>Potential Application<a class="headerlink" href="#potential-application" title="Permalink to this headline">#</a></h2>
+<p>Above products provides an important starting point for continuous monitoring of the crop planting status. Continuous monitoring could inform the following assessments:</p>
+<ol class="simple">
+<li><p>How many districts are behind in planting? If there is a delay in some districts, and is planting acceleration necessary?</p></li>
+<li><p>How many hectares are available for the next season?</p></li>
+<li><p>Is the current harvest enough for domestic consumption?</p></li>
+</ol>
+<p>Decision makers also need phonological data to decide on resource allocation issues or policy design:</p>
+<ol class="simple">
+<li><p>Planting potential for the next months: assigning the distribution of agricultural inputs.</p></li>
+<li><p>Mobilization of extension workers to monitor and implement mitigation strategies: adjustment of irrigation system in anticipation of drought or flood, pest control of infestation/disease to avoid crop failure, reservoir readiness for planting season.</p></li>
+<li><p>Preparation of policy recommendations: assess ongoing situation, harvest estimate, price protection.</p></li>
+</ol>
+<p>This information is necessary for both policy makers, farmers, and other agricultural actors (cooperatives, rural businesses). Negative consequences can be anticipated months ahead and resources can be prioritized on areas with higher risk or greater potential.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/vegetation-conditions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../internet-connectivity/ookla-speedtest-analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ookla’s Number of Speedtest Intelligence Users</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../docs/2023-summer-economic-monitor.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2023 Summer Economic Monitor Insights</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By World Bank Development Data Group<br/>
+  
+    Last updated on Apr 06, 2023.<br/>
+    <div class="extra_footer">
+      <div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
