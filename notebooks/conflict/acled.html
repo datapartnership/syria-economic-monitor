@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Armed Conflict Location and Event Data</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/conflict/acled.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Monitoring vegetation conditions" href="../vegetation-conditions/README.html" />
+    <link rel="prev" title="Ookla’s Number of Speedtest Intelligence Users" href="../internet-connectivity/ookla-speedtest-analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Data Goods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/introduction_to_data_goods.html">
+   Introduction to Data Goods
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../docs/foundational_datasets_and_data_products.html">
+   Foundational Datasets, Data Products, &amp; Sample Indicators
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../earthquake-intensity/earthquake_intensity.html">
+     Earthquake Intensity Map of Syria
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Products
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ndvi/README.html">
+   Agricultural Productivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ntl-analysis/README.html">
+   Nighttime Lights
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../mobility/README.html">
+   Mobility Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../mobility/stops/README.html">
+     Estimating Stops in Lebanon and Syria based on Mobility Traces
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/01a-aoi-and-tessellation.html">
+       Generate Areas of Interest and Tessellation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/01b-convenience-sampling.html">
+       Convenience Sampling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/03a-count-within-aoi.html">
+       Counting Devices within Areas of Interest
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/03b-estimate-stay-locations.html">
+       Estimating Stay Locations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../mobility/activity/README.html">
+     Estimating Activity based on Mobility Traces
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ais-analysis/README.html">
+   Seaborn Trade Activity Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">
+     AIS Data Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/02-trade-estimation.html">
+     AIS Trade Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../traffic/README.html">
+   Traffic Trends at Border Crossings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syria-forest-cover/syria_forest.html">
+   Tree Cover Loss Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../internet-connectivity/README.html">
+   Internet Connectivity Post Earthquake
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../internet-connectivity/ookla-speedtest-analysis.html">
+     Ookla’s Number of Speedtest Intelligence Users
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Armed Conflict Location and Event Data
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../vegetation-conditions/README.html">
+   Monitoring vegetation conditions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../vegetation-conditions/Seasonality_Parameters_Data_Extraction.html">
+     Seasonality Parameters Data Extraction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Insights and Indicators
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../docs/2023-summer-economic-monitor.html">
+   2023 Summer Economic Monitor Insights
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reports/2023-summer-tree-cover-loss.html">
+     Syria Tree Cover Loss (2000 - 2021)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Acknowledgements
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/team.html">
+   Data Goods Team and Acknowledgements
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/datapartnership/syria-economic-monitor/main?urlpath=tree/notebooks/conflict/acled.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/conflict/acled.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/edit/main/notebooks/conflict/acled.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notebooks/conflict/acled.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Armed Conflict Location and Event Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="armed-conflict-location-and-event-data">
+<h1>Armed Conflict Location and Event Data<a class="headerlink" href="#armed-conflict-location-and-event-data" title="Permalink to this headline">#</a></h1>
+<p>This is a crowdsourced dataset that records all the conflicts occuring in a particular region. Access to this dataset is obtained through a partnership between the World Bank and ACLED.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Monthly conflict related fatalities by Area of Control&#39;</span>
+<span class="n">source</span><span class="o">=</span> <span class="s1">&#39;ACLED&#39;</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">acled_aoc</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;aoc&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="p4629">Loading BokehJS ...</span>
+    </div>
+</div><script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    const el = document.getElementById("p4629");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.1.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.1.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+          for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("p4629")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><div class="output text_html">
+<div id="84d0b3e0-047a-46ee-a4b3-57e47901db7d" data-root-id="p4867" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"2f4ef3ea-2516-414a-ad4d-92eaae776216":{"version":"3.1.0","title":"Bokeh Application","defs":[],"roots":[{"type":"object","name":"Column","id":"p4867","attributes":{"children":[{"type":"object","name":"Figure","id":"p4773","attributes":{"width":800,"height":40,"x_range":{"type":"object","name":"DataRange1d","id":"p4775"},"y_range":{"type":"object","name":"DataRange1d","id":"p4774"},"x_scale":{"type":"object","name":"LinearScale","id":"p4787"},"y_scale":{"type":"object","name":"LinearScale","id":"p4789"},"title":{"type":"object","name":"Title","id":"p4776","attributes":{"text":"Monthly conflict related fatalities by Area of Control","text_font_size":"20pt"}},"outline_line_width":0,"toolbar":{"type":"object","name":"Toolbar","id":"p4779","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p4805"},{"type":"object","name":"WheelZoomTool","id":"p4806"},{"type":"object","name":"BoxZoomTool","id":"p4807","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p4808","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p4809"},{"type":"object","name":"ResetTool","id":"p4810"},{"type":"object","name":"HelpTool","id":"p4811"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p4798","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p4799","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p4800"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p4801"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p4791","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p4792","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p4793"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p4794"}}}],"center":[{"type":"object","name":"Grid","id":"p4797","attributes":{"axis":{"id":"p4791"}}},{"type":"object","name":"Grid","id":"p4804","attributes":{"dimension":1,"axis":{"id":"p4798"}}}],"border_fill_alpha":0}},{"type":"object","name":"Figure","id":"p4630","attributes":{"width":800,"height":400,"x_range":{"type":"object","name":"DataRange1d","id":"p4632"},"y_range":{"type":"object","name":"DataRange1d","id":"p4631"},"x_scale":{"type":"object","name":"LinearScale","id":"p4643"},"y_scale":{"type":"object","name":"LinearScale","id":"p4645"},"title":{"type":"object","name":"Title","id":"p4633"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p4719","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p4713","attributes":{"selected":{"type":"object","name":"Selection","id":"p4715","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p4714"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAEBfKDB3QgAAwAMdRHdCAABA8MRNd0IAAIBCv1d3QgAAAC9nYXdCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAEBsT3N4Qg=="},"shape":[32],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"BgAAAAQAAAABAAAACgAAAAMAAAACAAAAAQAAAAEAAAACAAAAAwAAAAgAAAAFAAAACwAAAAYAAAABAAAAAQAAAAkAAAAUAAAAAgAAAAYAAAACAAAAAgAAABgAAAAJAAAAGAAAAAUAAAASAAAAAgAAAA0AAAACAAAADgAAAAMAAAA="},"shape":[32],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p4720","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p4721"}}},"glyph":{"type":"object","name":"Line","id":"p4716","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#4E79A7","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p4717","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#4E79A7","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p4718","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#4E79A7","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p4729","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p4723","attributes":{"selected":{"type":"object","name":"Selection","id":"p4725","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p4724"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAEBfKDB3QgAAgEK/V3dCAAAAL2dhd0IAAECBYWt3QgAAgNNbdXdCAADARlmId0IAAEAzAZJ3QgAAgIX7m3dCAAAAcqOld0IAAIAWmLl3QgAAAANAw3dCAAAAlNzgd0IAAEAH2vN3QgAAgFnU/XdCAABAmHYReEIAAMCEHht4QgAAANcYJXhCAABAKRMveEIAAMAVuzh4QgAAAGi1QnhCAACAVF1MeEIAAMCmV1Z4QgAAAPlRYHhCAAAAGlVpeEIAAEBsT3N4Qg=="},"shape":[29],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"BgAAAAoAAAAEAAAAAQAAAAsAAAARAAAABAAAAAEAAAAFAAAABQAAAAEAAAANAAAADwAAAA8AAAACAAAAAQAAAAwAAAACAAAABAAAAAEAAAA3AAAAHQAAAAwAAAAVAAAALwAAAA4AAAAVAAAAAQAAAAEAAAA="},"shape":[29],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p4730","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p4731"}}},"glyph":{"type":"object","name":"Line","id":"p4726","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#F28E2B","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p4727","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#F28E2B","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p4728","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#F28E2B","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p4739","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p4733","attributes":{"selected":{"type":"object","name":"Selection","id":"p4735","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p4734"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"SwMAAKoCAAA1AQAATwEAAAcBAAAbAQAAQgEAABYBAAD5AAAAGAEAAP0AAADQAAAAqwEAAPAAAAAHAQAA0QAAAMUAAADLAAAAIgEAAP0AAAC5AAAAxAAAABkBAACcAAAAewAAAJ8AAACwAAAA0QAAACkBAAC0AAAAyAAAABMBAADMAAAApwAAAPoAAAAhAQAATAEAAOAAAADnAAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p4740","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p4741"}}},"glyph":{"type":"object","name":"Line","id":"p4736","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#E15759","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p4737","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#E15759","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p4738","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#E15759","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p4749","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p4743","attributes":{"selected":{"type":"object","name":"Selection","id":"p4745","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p4744"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"EQEAAKoBAACSAAAAJgAAAJYAAABuAAAAPAAAAFIAAAApAAAAggAAADAAAAAOAAAAQAAAAEQAAABUAAAAKAAAAEEAAAA3AAAAOwAAAEYAAAAmAAAAOgAAACkAAAAdAAAADAAAAC8AAAAQAAAAEwAAAA8AAAATAAAAGQAAAC8AAAAgAAAAHQAAACcAAAAsAAAAJAAAAA8AAAAdAAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p4750","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p4751"}}},"glyph":{"type":"object","name":"Line","id":"p4746","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#76B7B2","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p4747","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#76B7B2","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p4748","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#76B7B2","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p4759","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p4753","attributes":{"selected":{"type":"object","name":"Selection","id":"p4755","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p4754"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"owAAAG4AAACAAAAAlAAAAIoAAABPAAAAWAAAAFYAAABqAAAAbQAAAIQAAACEAAAAfwAAAGUAAAB6AAAAfAAAAFoAAABOAAAAeQAAAIEAAABIAAAAVwAAAGQAAABrAAAAVQEAAG4AAABTAAAAhwAAAFgAAABXAAAAfAAAAIoAAABcAAAAPAAAAH4AAABGAAAAbAAAAEAAAAAzAAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p4760","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p4761"}}},"glyph":{"type":"object","name":"Line","id":"p4756","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#59A14F","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p4757","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#59A14F","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p4758","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#59A14F","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p4769","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p4763","attributes":{"selected":{"type":"object","name":"Selection","id":"p4765","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p4764"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"UwAAADUAAABEAAAAVgAAAEQAAABKAAAAZgAAADIAAAA0AAAAVwAAAD0AAAArAAAAMwAAACsAAABQAAAAKAAAAC8AAABSAAAANAAAADIAAAAyAAAAJgAAACMAAAAaAAAAGgAAACsAAAAQAAAAIwAAAFkAAAA4AAAALwAAADUAAAAhAAAAbgAAADIAAAA0AAAASAAAABMAAAAZAAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p4770","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p4771"}}},"glyph":{"type":"object","name":"Line","id":"p4766","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#EDC948","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p4767","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#EDC948","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p4768","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#EDC948","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p4635","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p4697"},{"type":"object","name":"WheelZoomTool","id":"p4698"},{"type":"object","name":"BoxZoomTool","id":"p4699","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p4700","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p4701"},{"type":"object","name":"ResetTool","id":"p4702"},{"type":"object","name":"HelpTool","id":"p4703"}]}},"toolbar_location":"above","left":[{"type":"object","name":"LinearAxis","id":"p4690","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p4691","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p4692"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p4693"}}}],"right":[{"type":"object","name":"Legend","id":"p4712","attributes":{"click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p4722","attributes":{"label":{"type":"value","value":"Contested Areas"},"renderers":[{"id":"p4719"}]}},{"type":"object","name":"LegendItem","id":"p4732","attributes":{"label":{"type":"value","value":"Government (SAA) and Syrian democratic forces (SDF)"},"renderers":[{"id":"p4729"}]}},{"type":"object","name":"LegendItem","id":"p4742","attributes":{"label":{"type":"value","value":"Government and allied forces"},"renderers":[{"id":"p4739"}]}},{"type":"object","name":"LegendItem","id":"p4752","attributes":{"label":{"type":"value","value":"Non-state armed groups"},"renderers":[{"id":"p4749"}]}},{"type":"object","name":"LegendItem","id":"p4762","attributes":{"label":{"type":"value","value":"Syrian democratic forces"},"renderers":[{"id":"p4759"}]}},{"type":"object","name":"LegendItem","id":"p4772","attributes":{"label":{"type":"value","value":"Turkish Armed Forces and National Army (opposition)"},"renderers":[{"id":"p4769"}]}}]}}],"below":[{"type":"object","name":"DatetimeAxis","id":"p4647","attributes":{"ticker":{"type":"object","name":"DatetimeTicker","id":"p4648","attributes":{"num_minor_ticks":5,"tickers":[{"type":"object","name":"AdaptiveTicker","id":"p4649","attributes":{"num_minor_ticks":0,"mantissas":[1,2,5],"max_interval":500.0}},{"type":"object","name":"AdaptiveTicker","id":"p4650","attributes":{"num_minor_ticks":0,"base":60,"mantissas":[1,2,5,10,15,20,30],"min_interval":1000.0,"max_interval":1800000.0}},{"type":"object","name":"AdaptiveTicker","id":"p4651","attributes":{"num_minor_ticks":0,"base":24,"mantissas":[1,2,4,6,8,12],"min_interval":3600000.0,"max_interval":43200000.0}},{"type":"object","name":"DaysTicker","id":"p4652","attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}},{"type":"object","name":"DaysTicker","id":"p4653","attributes":{"days":[1,4,7,10,13,16,19,22,25,28]}},{"type":"object","name":"DaysTicker","id":"p4654","attributes":{"days":[1,8,15,22]}},{"type":"object","name":"DaysTicker","id":"p4655","attributes":{"days":[1,15]}},{"type":"object","name":"MonthsTicker","id":"p4656","attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]}},{"type":"object","name":"MonthsTicker","id":"p4657","attributes":{"months":[0,2,4,6,8,10]}},{"type":"object","name":"MonthsTicker","id":"p4658","attributes":{"months":[0,4,8]}},{"type":"object","name":"MonthsTicker","id":"p4659","attributes":{"months":[0,6]}},{"type":"object","name":"YearsTicker","id":"p4660"}]}},"formatter":{"type":"object","name":"DatetimeTickFormatter","id":"p4661"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p4662"}}}],"center":[{"type":"object","name":"Grid","id":"p4689","attributes":{"axis":{"id":"p4647"}}},{"type":"object","name":"Grid","id":"p4696","attributes":{"dimension":1,"axis":{"id":"p4690"}}}]}},{"type":"object","name":"Figure","id":"p4820","attributes":{"width":800,"height":40,"x_range":{"type":"object","name":"DataRange1d","id":"p4822"},"y_range":{"type":"object","name":"DataRange1d","id":"p4821"},"x_scale":{"type":"object","name":"LinearScale","id":"p4834"},"y_scale":{"type":"object","name":"LinearScale","id":"p4836"},"title":{"type":"object","name":"Title","id":"p4823","attributes":{"text":"ACLED","text_font_size":"10pt","text_font_style":"normal"}},"outline_line_width":0,"toolbar":{"type":"object","name":"Toolbar","id":"p4826","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p4852"},{"type":"object","name":"WheelZoomTool","id":"p4853"},{"type":"object","name":"BoxZoomTool","id":"p4854","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p4855","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p4856"},{"type":"object","name":"ResetTool","id":"p4857"},{"type":"object","name":"HelpTool","id":"p4858"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p4845","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p4846","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p4847"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p4848"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p4838","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p4839","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p4840"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p4841"}}}],"center":[{"type":"object","name":"Grid","id":"p4844","attributes":{"axis":{"id":"p4838"}}},{"type":"object","name":"Grid","id":"p4851","attributes":{"dimension":1,"axis":{"id":"p4845"}}}],"border_fill_alpha":0}}]}}],"callbacks":{"type":"map"}}};
+  const render_items = [{"docid":"2f4ef3ea-2516-414a-ad4d-92eaae776216","roots":{"p4867":"84d0b3e0-047a-46ee-a4b3-57e47901db7d"},"root_ids":["p4867"]}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Monthly conflict by type of event&#39;</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">acled_event</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;event_type&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div id="43de818d-fe7c-4e36-ab37-17970da31297" data-root-id="p6588" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"1136cfb6-2caf-4f24-be12-a0b5ab3a121c":{"version":"3.1.0","title":"Bokeh Application","defs":[],"roots":[{"type":"object","name":"Column","id":"p6588","attributes":{"children":[{"type":"object","name":"Figure","id":"p6494","attributes":{"width":800,"height":40,"x_range":{"type":"object","name":"DataRange1d","id":"p6496"},"y_range":{"type":"object","name":"DataRange1d","id":"p6495"},"x_scale":{"type":"object","name":"LinearScale","id":"p6508"},"y_scale":{"type":"object","name":"LinearScale","id":"p6510"},"title":{"type":"object","name":"Title","id":"p6497","attributes":{"text":"Monthly conflict by type of event","text_font_size":"20pt"}},"outline_line_width":0,"toolbar":{"type":"object","name":"Toolbar","id":"p6500","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p6526"},{"type":"object","name":"WheelZoomTool","id":"p6527"},{"type":"object","name":"BoxZoomTool","id":"p6528","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p6529","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p6530"},{"type":"object","name":"ResetTool","id":"p6531"},{"type":"object","name":"HelpTool","id":"p6532"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p6519","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p6520","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p6521"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p6522"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p6512","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p6513","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p6514"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p6515"}}}],"center":[{"type":"object","name":"Grid","id":"p6518","attributes":{"axis":{"id":"p6512"}}},{"type":"object","name":"Grid","id":"p6525","attributes":{"dimension":1,"axis":{"id":"p6519"}}}],"border_fill_alpha":0}},{"type":"object","name":"Figure","id":"p6351","attributes":{"width":800,"height":400,"x_range":{"type":"object","name":"DataRange1d","id":"p6353"},"y_range":{"type":"object","name":"DataRange1d","id":"p6352"},"x_scale":{"type":"object","name":"LinearScale","id":"p6364"},"y_scale":{"type":"object","name":"LinearScale","id":"p6366"},"title":{"type":"object","name":"Title","id":"p6354"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p6440","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p6434","attributes":{"selected":{"type":"object","name":"Selection","id":"p6436","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p6435"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"yAIAALICAABjAQAA1gAAAGgBAAD+AAAALQEAALgAAAAWAQAAfgEAADcBAAA8AQAAbAEAAOQAAADsAAAAqgAAAMUAAAChAAAAEAEAANgAAACgAAAArgAAAKgAAAB+AAAASAEAAI8AAAB6AAAAmwAAAKkAAACsAAAAtwAAACEBAAC3AAAA7gAAANgAAAAXAQAADgEAAI4AAACyAAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p6441","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p6442"}}},"glyph":{"type":"object","name":"Line","id":"p6437","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#4E79A7","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p6438","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#4E79A7","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p6439","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#4E79A7","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p6450","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p6444","attributes":{"selected":{"type":"object","name":"Selection","id":"p6446","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p6445"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"oQEAAAUCAADTAAAA3QAAAHsAAAChAAAA3AAAAMsAAACeAAAA1wAAAOEAAACLAAAACwEAACQBAAD0AAAAhAAAAIMAAADUAAAA8AAAAOQAAADLAAAA0AAAAKYAAACdAAAApgAAAAEBAACOAAAAwwAAABcBAACGAAAABgEAAL0AAACEAAAAeAAAAEIBAAChAAAAzgAAAGkAAAC1AAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p6451","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p6452"}}},"glyph":{"type":"object","name":"Line","id":"p6447","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#F28E2B","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p6448","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#F28E2B","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p6449","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#F28E2B","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p6460","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p6454","attributes":{"selected":{"type":"object","name":"Selection","id":"p6456","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p6455"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AACAIIYcd0IAAICF+5t3QgAAAHKjpXdCAABA5tbqd0IAAIBZ1P13QgAAwIQeG3hC"},"shape":[6],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"BAAAAAMAAAAEAAAAAQAAAAEAAAABAAAA"},"shape":[6],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p6461","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p6462"}}},"glyph":{"type":"object","name":"Line","id":"p6457","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#E15759","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p6458","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#E15759","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p6459","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#E15759","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p6470","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p6464","attributes":{"selected":{"type":"object","name":"Selection","id":"p6466","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p6465"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAANN4Sd0IAAMBygCZ3QgAAQF8oMHdCAACAhfubd0IAAEAH2vN3QgAAwIQeG3hCAADApldWeEI="},"shape":[7],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"BAAAAAoAAAABAAAABAAAAAEAAAABAAAAAwAAAA=="},"shape":[7],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p6471","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p6472"}}},"glyph":{"type":"object","name":"Line","id":"p6467","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#76B7B2","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p6468","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#76B7B2","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p6469","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#76B7B2","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p6480","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p6474","attributes":{"selected":{"type":"object","name":"Selection","id":"p6476","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p6475"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AABAXygwd0IAAAAvZ2F3QgAAwEZZiHdCAADAQeLWd0IAAACU3OB3QgAAQAfa83dCAABAmHYReEIAAABotUJ4QgAAwKZXVnhCAAAA+VFgeEIAAEBsT3N4Qg=="},"shape":[11],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AQAAAAEAAAABAAAABAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAwAAAAIAAAA="},"shape":[11],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p6481","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p6482"}}},"glyph":{"type":"object","name":"Line","id":"p6477","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#59A14F","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p6478","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#59A14F","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p6479","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#59A14F","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p6490","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p6484","attributes":{"selected":{"type":"object","name":"Selection","id":"p6486","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p6485"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAW47/dkIAAMDh4wh3QgAAADTeEndCAACAIIYcd0IAAMBygCZ3QgAAQF8oMHdCAACAsSI6d0IAAMADHUR3QgAAQPDETXdCAACAQr9Xd0IAAAAvZ2F3QgAAQIFha3dCAACA01t1d0IAAID0Xn53QgAAwEZZiHdCAABAMwGSd0IAAICF+5t3QgAAAHKjpXdCAABAxJ2vd0IAAIAWmLl3QgAAAANAw3dCAABAVTrNd0IAAMBB4tZ3QgAAAJTc4HdCAABA5tbqd0IAAEAH2vN3QgAAgFnU/XdCAAAARnwHeEIAAECYdhF4QgAAwIQeG3hCAAAA1xgleEIAAEApEy94QgAAwBW7OHhCAAAAaLVCeEIAAIBUXUx4QgAAwKZXVnhCAAAA+VFgeEIAAAAaVWl4QgAAQGxPc3hC"},"shape":[39],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"YwAAAFEAAABZAAAAcQAAAGEAAABPAAAAQwAAAGIAAABRAAAATgAAAFMAAAA7AAAARAAAAGUAAABhAAAATAAAAFgAAABAAAAAQQAAAEYAAAA+AAAAOAAAAEEAAABfAAAASQAAADUAAABBAAAAYQAAAEwAAABLAAAAOAAAAEcAAABPAAAAOwAAADgAAABGAAAANgAAAH4AAABVAAAA"},"shape":[39],"dtype":"int32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p6491","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p6492"}}},"glyph":{"type":"object","name":"Line","id":"p6487","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#EDC948","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p6488","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#EDC948","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p6489","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#EDC948","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p6356","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p6418"},{"type":"object","name":"WheelZoomTool","id":"p6419"},{"type":"object","name":"BoxZoomTool","id":"p6420","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p6421","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p6422"},{"type":"object","name":"ResetTool","id":"p6423"},{"type":"object","name":"HelpTool","id":"p6424"}]}},"toolbar_location":"above","left":[{"type":"object","name":"LinearAxis","id":"p6411","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p6412","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p6413"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p6414"}}}],"right":[{"type":"object","name":"Legend","id":"p6433","attributes":{"click_policy":"hide","items":[{"type":"object","name":"LegendItem","id":"p6443","attributes":{"label":{"type":"value","value":"Battles"},"renderers":[{"id":"p6440"}]}},{"type":"object","name":"LegendItem","id":"p6453","attributes":{"label":{"type":"value","value":"Explosions/Remote violence"},"renderers":[{"id":"p6450"}]}},{"type":"object","name":"LegendItem","id":"p6463","attributes":{"label":{"type":"value","value":"Protests"},"renderers":[{"id":"p6460"}]}},{"type":"object","name":"LegendItem","id":"p6473","attributes":{"label":{"type":"value","value":"Riots"},"renderers":[{"id":"p6470"}]}},{"type":"object","name":"LegendItem","id":"p6483","attributes":{"label":{"type":"value","value":"Strategic developments"},"renderers":[{"id":"p6480"}]}},{"type":"object","name":"LegendItem","id":"p6493","attributes":{"label":{"type":"value","value":"Violence against civilians"},"renderers":[{"id":"p6490"}]}}]}}],"below":[{"type":"object","name":"DatetimeAxis","id":"p6368","attributes":{"ticker":{"type":"object","name":"DatetimeTicker","id":"p6369","attributes":{"num_minor_ticks":5,"tickers":[{"type":"object","name":"AdaptiveTicker","id":"p6370","attributes":{"num_minor_ticks":0,"mantissas":[1,2,5],"max_interval":500.0}},{"type":"object","name":"AdaptiveTicker","id":"p6371","attributes":{"num_minor_ticks":0,"base":60,"mantissas":[1,2,5,10,15,20,30],"min_interval":1000.0,"max_interval":1800000.0}},{"type":"object","name":"AdaptiveTicker","id":"p6372","attributes":{"num_minor_ticks":0,"base":24,"mantissas":[1,2,4,6,8,12],"min_interval":3600000.0,"max_interval":43200000.0}},{"type":"object","name":"DaysTicker","id":"p6373","attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}},{"type":"object","name":"DaysTicker","id":"p6374","attributes":{"days":[1,4,7,10,13,16,19,22,25,28]}},{"type":"object","name":"DaysTicker","id":"p6375","attributes":{"days":[1,8,15,22]}},{"type":"object","name":"DaysTicker","id":"p6376","attributes":{"days":[1,15]}},{"type":"object","name":"MonthsTicker","id":"p6377","attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]}},{"type":"object","name":"MonthsTicker","id":"p6378","attributes":{"months":[0,2,4,6,8,10]}},{"type":"object","name":"MonthsTicker","id":"p6379","attributes":{"months":[0,4,8]}},{"type":"object","name":"MonthsTicker","id":"p6380","attributes":{"months":[0,6]}},{"type":"object","name":"YearsTicker","id":"p6381"}]}},"formatter":{"type":"object","name":"DatetimeTickFormatter","id":"p6382"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p6383"}}}],"center":[{"type":"object","name":"Grid","id":"p6410","attributes":{"axis":{"id":"p6368"}}},{"type":"object","name":"Grid","id":"p6417","attributes":{"dimension":1,"axis":{"id":"p6411"}}}]}},{"type":"object","name":"Figure","id":"p6541","attributes":{"width":800,"height":40,"x_range":{"type":"object","name":"DataRange1d","id":"p6543"},"y_range":{"type":"object","name":"DataRange1d","id":"p6542"},"x_scale":{"type":"object","name":"LinearScale","id":"p6555"},"y_scale":{"type":"object","name":"LinearScale","id":"p6557"},"title":{"type":"object","name":"Title","id":"p6544","attributes":{"text":"ACLED","text_font_size":"10pt","text_font_style":"normal"}},"outline_line_width":0,"toolbar":{"type":"object","name":"Toolbar","id":"p6547","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p6573"},{"type":"object","name":"WheelZoomTool","id":"p6574"},{"type":"object","name":"BoxZoomTool","id":"p6575","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p6576","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p6577"},{"type":"object","name":"ResetTool","id":"p6578"},{"type":"object","name":"HelpTool","id":"p6579"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p6566","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p6567","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p6568"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p6569"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p6559","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p6560","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p6561"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p6562"}}}],"center":[{"type":"object","name":"Grid","id":"p6565","attributes":{"axis":{"id":"p6559"}}},{"type":"object","name":"Grid","id":"p6572","attributes":{"dimension":1,"axis":{"id":"p6566"}}}],"border_fill_alpha":0}}]}}],"callbacks":{"type":"map"}}};
+  const render_items = [{"docid":"1136cfb6-2caf-4f24-be12-a0b5ab3a121c","roots":{"p6588":"43de818d-fe7c-4e36-ab37-17970da31297"},"root_ids":["p6588"]}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_fig</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s1">&#39;2023-02-05&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-03-31&#39;</span><span class="p">,</span> <span class="s1">&#39;Fatalities between 5th February 2023 and 31st March 2023&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Fatalities between 5th February 2023 and 31st March 2023&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/acled_13_1.png" src="../../_images/acled_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_fig</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="s1">&#39;2022-02-05&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-03-31&#39;</span><span class="p">,</span> <span class="s1">&#39;Fatalities between 5th February 2022 and 31st March 2022&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Fatalities between 5th February 2022 and 31st March 2022&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../../_images/acled_14_1.png" src="../../_images/acled_14_1.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/conflict"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../internet-connectivity/ookla-speedtest-analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ookla’s Number of Speedtest Intelligence Users</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../vegetation-conditions/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Monitoring vegetation conditions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By World Bank Development Data Group<br/>
+  
+    Last updated on Apr 06, 2023.<br/>
+    <div class="extra_footer">
+      <div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
