@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Seasonality Parameters Data Extraction</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2023 Summer Economic Monitor Insights" href="../../docs/2023-summer-economic-monitor.html" />
+    <link rel="prev" title="Monitoring vegetation conditions" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Data Goods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/introduction_to_data_goods.html">
+   Introduction to Data Goods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/foundational_datasets_and_data_products.html">
+   Foundational Datasets, Data Products, &amp; Sample Indicators
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Products
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ndvi/README.html">
+   Agricultural Productivity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ntl-analysis/README.html">
+   Nighttime Lights
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../mobility/README.html">
+   Mobility Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../mobility/stops/README.html">
+     Estimating Stops in Lebanon and Syria based on Mobility Traces
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/01a-aoi-and-tessellation.html">
+       Generate Areas of Interest and Tessellation
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/01b-convenience-sampling.html">
+       Convenience Sampling
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/03a-count-within-aoi.html">
+       Counting Devices within Areas of Interest
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../mobility/stops/03b-estimate-stay-locations.html">
+       Estimating Stay Locations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../mobility/activity/README.html">
+     Estimating Activity based on Mobility Traces
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ais-analysis/README.html">
+   Seaborn Trade Activity Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">
+     AIS Data Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ais-analysis/02-trade-estimation.html">
+     AIS Trade Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../traffic/README.html">
+   Traffic Trends at Border Crossings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syria-forest-cover/syria_forest.html">
+   Tree Cover Loss Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../internet-connectivity/README.html">
+   Internet Connectivity Post Earthquake
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../internet-connectivity/ookla-speedtest-analysis.html">
+     Ookla’s Number of Speedtest Intelligence Users
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Monitoring vegetation conditions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Seasonality Parameters Data Extraction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Insights and Indicators
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../docs/2023-summer-economic-monitor.html">
+   2023 Summer Economic Monitor Insights
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../reports/2023-summer-tree-cover-loss.html">
+     Syria Tree Cover Loss (2000 - 2021)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Acknowledgements
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/team.html">
+   Data Goods Team and Acknowledgements
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/datapartnership/syria-economic-monitor/edit/main/notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-directory">
+   0. Working Directory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software-requirement">
+   1. Software Requirement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#timesat">
+     1.1. TIMESAT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gdal">
+     1.2. GDAL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started-with-timesat">
+   2. Getting started with TIMESAT
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-the-timesat-menu-system">
+     2.1. Starting the TIMESAT menu system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-the-data">
+     2.2. Preparing the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-view">
+     2.3. Image view
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gui">
+     2.4. GUI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process">
+     2.5. Process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#post-processing">
+     2.6. Post processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#output-file">
+     Output file
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Seasonality Parameters Data Extraction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-directory">
+   0. Working Directory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software-requirement">
+   1. Software Requirement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#timesat">
+     1.1. TIMESAT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gdal">
+     1.2. GDAL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started-with-timesat">
+   2. Getting started with TIMESAT
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-the-timesat-menu-system">
+     2.1. Starting the TIMESAT menu system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-the-data">
+     2.2. Preparing the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-view">
+     2.3. Image view
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gui">
+     2.4. GUI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process">
+     2.5. Process
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#post-processing">
+     2.6. Post processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#output-file">
+     Output file
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="seasonality-parameters-data-extraction">
+<h1>Seasonality Parameters Data Extraction<a class="headerlink" href="#seasonality-parameters-data-extraction" title="Permalink to this headline">#</a></h1>
+<p>A working example to detect seasonality parameters in Syria has been developed based on areas where the majority is a cropland. This approach requires a crop type mask and moderate resolution time series Vegetation Indices (VI). In this example, we use data from the MODIS.</p>
+<p><img alt="TIMESAT-gs" src="../../_images/climag-growing-season.png" /></p>
+<p><strong>Figure 1.</strong> Growing season detection on a cropland</p>
+<p>State of planting and harvesting estimates are determined by importing Vegetation Indices (VI) data into <a class="reference external" href="http://web.nateko.lu.se/timesat/timesat.asp">TIMESAT</a> – an open-source program to analyze time-series satellite sensor data. TIMESAT conducts pixel-by-pixel classification of satellite images to determine whether planting has started or not. This process is followed for all areas over multiple years to evaluate current planting vis-à-vis historical values from 2003 - 2023 (in this case with MODIS EVI data).</p>
+<p><img alt="TIMESAT" src="../../_images/climag-timesat-parameters.png" /></p>
+<p><strong>Figure 2.</strong> TIMESAT Parameters</p>
+<p>The main seasonality parameters generated in TIMESAT are (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value. The blue line in Figure 11 shows the raw EVI time series, while the red line shows the EVI values after applying a Savitsky-Golay smoothing algorithm. The phenological parameters detected describe key aspects of the timing of agricultural production and are closely related to the amount of available biomass.</p>
+<p>This section will explain on how to prepare the Vegetation Indices (VI) as input for seasoanlity parameters data extraction.</p>
+<p>This step-by-step guide was tested using Windows 11 running on Thinkpad T480 2019.</p>
+<section id="working-directory">
+<h2>0. Working Directory<a class="headerlink" href="#working-directory" title="Permalink to this headline">#</a></h2>
+<p>For this tutorial, we are working on these folder <code class="docutils literal notranslate"><span class="pre">X:/Temp/modis/syr/</span></code> directory. I have some folder inside this directory:</p>
+<ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">01_tif</span></code> Place for the VI in <code class="docutils literal notranslate"><span class="pre">.tif</span></code> which already clipped with the Cropland.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">02_bil</span></code> Place to put the flat-binary files, result from GDAL conversion</p></li>
+</ol>
+<p>Place to put downloaded VI data, and pre-process temporary files.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code></p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">01_raw_seasonality_metrics</span></code> Place for raw outputs seasonality files generated by TIMESAT</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">02_tif_seasonality_metrics</span></code> Place for ready-to-used seasonality raster (<code class="docutils literal notranslate"><span class="pre">.tif</span></code>) files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">03_extract_date</span></code> Place for extract each seasonality date</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">04_dbf</span></code> Place for <code class="docutils literal notranslate"><span class="pre">dbf</span></code> files generated from Zonal Statistics Tools</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">05_csv</span></code> Final output, statistics information per admin boundary</p></li>
+</ol>
+</li>
+</ol>
+<p>Feel free to use your own preferences for this setting/folder arrangements.</p>
+</section>
+<section id="software-requirement">
+<h2>1. Software Requirement<a class="headerlink" href="#software-requirement" title="Permalink to this headline">#</a></h2>
+<p>This whole process requires the support of several software.</p>
+<section id="timesat">
+<h3>1.1. TIMESAT<a class="headerlink" href="#timesat" title="Permalink to this headline">#</a></h3>
+<p>To investigate the seasonality of satellite time-series data and their relationship with dynamic properties of vegetation, such as phenology and temporal development, we will use <a class="reference external" href="https://web.nateko.lu.se/timesat/timesat.asp">TIMESAT</a> software - a software package for analysing time-series of satellite sensor data.</p>
+<p>TIMESAT available for download via this link <a class="reference external" href="https://web.nateko.lu.se/timesat/timesat.asp?cat=4">https://web.nateko.lu.se/timesat/timesat.asp?cat=4</a>. You are required to register first before downloading the software.</p>
+<p>Details about TIMESAT are available via the guideline, access the PDF through <a class="reference external" href="https://web.nateko.lu.se/personal/Lars.Eklundh/TIMESAT/prog/version33/TIMESAT33_SoftwareManual.pdf">User manual for version 3.3</a></p>
+</section>
+<section id="gdal">
+<h3>1.2. GDAL<a class="headerlink" href="#gdal" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://gdal.org/">GDAL</a> will use to translate the input to flat-binary files and the binary output files into GIS-ready format like a GeoTIFF files. You can install GDAL via <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+</section>
+</section>
+<section id="getting-started-with-timesat">
+<h2>2. Getting started with TIMESAT<a class="headerlink" href="#getting-started-with-timesat" title="Permalink to this headline">#</a></h2>
+<p>You can access TIMESAT from <code class="docutils literal notranslate"><span class="pre">C:/timesat33/compiled/Win64</span></code>, double-click <code class="docutils literal notranslate"><span class="pre">TIMESAT.exe</span></code>.</p>
+<section id="starting-the-timesat-menu-system">
+<h3>2.1. Starting the TIMESAT menu system<a class="headerlink" href="#starting-the-timesat-menu-system" title="Permalink to this headline">#</a></h3>
+<p>The main driver for all TIMESAT processing, Matlab or Fortran, is a menu system. The menu system is divided into three logical areas: data preparation, data processing, and post processing.</p>
+<p><img alt="TIMESAT GUI" src="../../_images/climag-timesat-gui.png" /></p>
+<p><strong>Figure 3.</strong> TIMESAT graphical user interface</p>
+</section>
+<section id="preparing-the-data">
+<h3>2.2. Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">#</a></h3>
+<p><strong>Images input</strong></p>
+<ul>
+<li><p>TIMESAT needs a sequence of vegetation index images covering a particular geographical area. Images should be converted to headerless binary format.</p></li>
+<li><p>The number of images needs to be identical for each year, and each image should represent the same time interval (e.g. one day, 8-days, 10-days, 1 month etc.).</p></li>
+<li><p>If an image representing a certain date is missing, an image denoting missing data should be added. This image should contain numerical values outside the range of the valid data.</p></li>
+<li><p>TIMESAT uses flat binary files: identical to Idrisi <code class="docutils literal notranslate"><span class="pre">.rst</span></code> or ENVI default BSQ formats, except that both ENVI and IDRISI require accompanying header files (<code class="docutils literal notranslate"><span class="pre">.hdr</span></code> and <code class="docutils literal notranslate"><span class="pre">.rdc</span></code> respectively). It means that these data files can be used directly with TIMESAT, without the header files and without renaming. However, the user has to specify the organization of the data in each TIMESAT module.</p></li>
+<li><p>Other data formats (<code class="docutils literal notranslate"><span class="pre">HDF</span></code>, Erdas Imagine <code class="docutils literal notranslate"><span class="pre">.img</span></code>, etc.) have to be converted to flat binary format , to IDRISI or to ENVI formats.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">gdal_translate</span></code> to convert GeoTIFF data to ENVI header less binary format:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>–of<span class="w"> </span>ENVI<span class="w"> </span>input.tif<span class="w"> </span>output.bil
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>List of input files</strong></p>
+<p>A list giving the total number of files and the full filename and path of each image needs to be present. An example is the file <code class="docutils literal notranslate"><span class="pre">syr_data_2022_gee_raw.txt</span></code> below:</p>
+<p><img alt="TIMESAT data list" src="../../_images/climag-timesat-listdata.png" /></p>
+<p><strong>Figure 4.</strong> List of data</p>
+<p>The first row contains the number of data files (images), then comes one image name (includingpath) per row.</p>
+</section>
+<section id="image-view">
+<h3>2.3. Image view<a class="headerlink" href="#image-view" title="Permalink to this headline">#</a></h3>
+<p><strong>Viewing images</strong></p>
+<ul>
+<li><p>Start TSM_imageview from the TIMESAT menu system. Under File, Open image file, browse to the folder <code class="docutils literal notranslate"><span class="pre">02_bil</span></code> and click on one of <code class="docutils literal notranslate"><span class="pre">.bil</span></code> file.</p></li>
+<li><p>The files contain EVI data from the MODIS sensor. Change the choice under Image file type to 16-bit signed integer. Type <code class="docutils literal notranslate"><span class="pre">2229</span></code> under No of rows in image, and <code class="docutils literal notranslate"><span class="pre">3016</span></code> under No of columns per row. Click the Draw button.</p>
+<p><img alt="TIMESAT imageview" src="../../_images/climag-timesat-imageview.png" /></p>
+<p><strong>Figure 5.</strong> Viewing input data</p>
+</li>
+<li><p>To modify the Image display scaling you can increase the Minimum value to about 0 and decrease the Maximum value to about 10000 (enter these numbers in the edit boxes near the bottom left window corner, or use the sliders). Also try out the other options below the image area: Zoom on/off, Lock axes, Grid on/off, Data tip on/off, and Color scale.</p></li>
+</ul>
+<p><strong>Browsing through several files</strong></p>
+<ul>
+<li><p>If you have made sure that your file list correctly points to your vegetation index image data, you may use the function Open file list under File.</p></li>
+<li><p>Click on the Open file list button and browse to folder the file <code class="docutils literal notranslate"><span class="pre">syr_data_2022_gee_raw.txt</span></code>, select it.</p></li>
+<li><p>Click on one of the files, leave the window open and go over to the main window.</p></li>
+<li><p>Choose the correct settings under Format and click the Draw button. You can then point to another file in the list and just click the Draw button again to view this image file.</p>
+<p><img alt="TIMESAT imageviewlist" src="../../_images/climag-timesat-imageviewlist.png" /></p>
+<p><strong>Figure 6.</strong> Viewing list of input data</p>
+</li>
+</ul>
+</section>
+<section id="gui">
+<h3>2.4. GUI<a class="headerlink" href="#gui" title="Permalink to this headline">#</a></h3>
+<p><strong>Loading and processing ASCII time-series files</strong></p>
+<ul>
+<li><p>In this example we will load and process data stored in an ASCII time-series file.</p></li>
+<li><p>Click on TSM_GUI in the TIMESAT menu system</p></li>
+<li><p>Then select File, Open ASCII data file. Use the Browse button to open the file <code class="docutils literal notranslate"><span class="pre">syr_data_2022_gee_raw.txt</span></code>.</p></li>
+<li><p>This file contains EVI data from MODIS for the time period 2021 – 2023. Note the preview of the file contents loaded into the window.</p></li>
+<li><p>The first row shows that there are 3 years of data, 46 observations per year. Press Load data. The raw data from the first row of the file will load into the plotting area of TSM_GUI.</p>
+<p><img alt="TIMESAT imagefilesinput" src="../../_images/climag-timesat-imagefilesinput.png" /></p>
+<p><strong>Figure 7.</strong> Specify input data</p>
+</li>
+<li><p>Next, select and unselect the different check boxes under Data plotting. Note the different fits achieved with <code class="docutils literal notranslate"><span class="pre">Gaussian</span></code>, <code class="docutils literal notranslate"><span class="pre">Logistic</span></code> and <code class="docutils literal notranslate"><span class="pre">Savitsky-Golay</span></code>.</p></li>
+<li><p>The fits are affected by a number of options for detecting spikes, adapting to the upper envelope etc. These options can be controlled by the check boxes and buttons in the GUI either under Common settings or Class-specific settings.</p></li>
+<li><p>There are more options, including the Spike method, Number of envelope iterations and Adaptation strength, that you might want to explore.</p>
+<p><img alt="TIMESAT dataploting" src="../../_images/climag-timesat-dataploting.png" /></p>
+<p><strong>Figure 8.</strong> Data ploting</p>
+</li>
+</ul>
+<p><strong>Setting parameters</strong></p>
+<ul>
+<li><p>We can also edit the exisiting parameters by accessing the input setting tool. Let say we have edit some parameters, and save the setting as file <code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw.set</span></code></p>
+<p><img alt="TIMESAT inputsetting" src="../../_images/climag-timesat-inputsetting.png" /></p>
+<p><strong>Figure 9.</strong> Input setting tool</p>
+</li>
+</ul>
+</section>
+<section id="process">
+<h3>2.5. Process<a class="headerlink" href="#process" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>To start the program click on <code class="docutils literal notranslate"><span class="pre">TSF_process</span></code> in the TIMESAT menu system.</p></li>
+<li><p>TIMESAT will ask for the input settings file. Select the file <code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw.set</span></code>.</p></li>
+<li><p>A command window will then open and <code class="docutils literal notranslate"><span class="pre">TSF_process</span></code> will start running immediately.</p></li>
+<li><p>You can also start <code class="docutils literal notranslate"><span class="pre">TSF_process</span></code> directly from a separate command window by typing <code class="docutils literal notranslate"><span class="pre">TSF_process</span></code>.</p>
+<p><img alt="TIMESAT tsfprocess" src="../../_images/climag-timesat-tsfprocess.png" /></p>
+<p><strong>Figure 10.</strong> TSF_process</p>
+</li>
+<li><p>The program will process the data row by row. As you will notice, when having large data files the processing can take considerable time.</p></li>
+<li><p>Data from the processing are saved to file. Check the contents of your current working directory and note that the two files <code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_TS.tpa</span></code>, <code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_fit.tts</span></code>, and corresponding index files <code class="docutils literal notranslate"><span class="pre">.ndx</span></code> have been created</p></li>
+</ul>
+</section>
+<section id="post-processing">
+<h3>2.6. Post processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">#</a></h3>
+<p>The main TIMESAT processing is now done and we will see how data can be post-processed and viewed. TIMESAT provide a few basic programs for opening and processing the output files: <code class="docutils literal notranslate"><span class="pre">TSM_fileinfo</span></code>, <code class="docutils literal notranslate"><span class="pre">TSM_printseasons</span></code>, <code class="docutils literal notranslate"><span class="pre">TSM_viewfits</span></code>, <code class="docutils literal notranslate"><span class="pre">TSF_fit2time</span></code>, <code class="docutils literal notranslate"><span class="pre">TSF_fit2img</span></code>, <code class="docutils literal notranslate"><span class="pre">TSF_seas2img</span></code>, but for certain processing the user may be required to create tailored software.</p>
+<p>As example, we only utilized <code class="docutils literal notranslate"><span class="pre">TSF_seas2img</span></code> to extract the seasonal parameters</p>
+<p><strong>TSF_seas2img: Creating an image from the seasonality data</strong></p>
+<ul>
+<li><p>This program generates an image from the seasonality parameters generated by Timesat.</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">TSF_seas2img</span></code> in TSM_menu.</p></li>
+<li><p>Now enter the seasonality file <code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_TS.tpa</span></code>. Then specify the seasonality parameter to map. Here we will map the Time of Middle Season, <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
+<li><p>Then specify an interval that is wide enough to cover the second season. A suggestion is to specify this interval to <code class="docutils literal notranslate"><span class="pre">47</span></code> to <code class="docutils literal notranslate"><span class="pre">92</span></code> since this will overlap the second year.</p></li>
+<li><p>Define codes for missing data due to no season found within the interval, and no pixel data at all found at that location.
+Finally, give a name of the output file, and specify its format.</p></li>
+<li><p>Carefully note the format since it is important when viewing the file with TSM_imageview. Here we will give the name begin, and specify output in full precision, <code class="docutils literal notranslate"><span class="pre">16-bit</span></code>.</p>
+<p><img alt="TIMESAT seas2img" src="../../_images/climag-timesat-seas2img.png" /></p>
+<p><strong>Figure 11.</strong> Extract seasonality</p>
+</li>
+<li><p>Below are some outputs, if you run all the command: <code class="docutils literal notranslate"><span class="pre">TSM_fileinfo</span></code>, <code class="docutils literal notranslate"><span class="pre">TSM_printseasons</span></code>, <code class="docutils literal notranslate"><span class="pre">TSM_viewfits</span></code>, <code class="docutils literal notranslate"><span class="pre">TSF_fit2time</span></code>, <code class="docutils literal notranslate"><span class="pre">TSF_fit2img</span></code>, <code class="docutils literal notranslate"><span class="pre">TSF_seas2img</span></code>. The last two generated by <code class="docutils literal notranslate"><span class="pre">TSF_seas2img</span></code>, we will use for further analysis.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_TS.tpa</span></code></p></td>
+<td><p>Binary file containing Timesat parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_fit.tts</span></code></p></td>
+<td><p>Binary file containing fitted data values.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_raw.tts</span></code></p></td>
+<td><p>Binary file containing original time-series values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">timeseriesfile.txt</span></code></p></td>
+<td><p>ASCII file containing fitted data values for selected pixels.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_fit_4792</span></code></p></td>
+<td><p>6-bit signed integer image file containing fitted data value for time step 47 to 92.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_mos_nseas</span></code></p></td>
+<td><p>Binary image file containing no. of seasons.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_mos_both_seasons</span></code></p></td>
+<td><p>Binary image file containing both of seasons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_mos_season1</span></code></p></td>
+<td><p>Binary image file containing the selected seasonality parameter for the first season identified within the time interval specified.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">syr_2022_gee_raw_mos_season2</span></code></p></td>
+<td><p>Binary image file containing the selected seasonality parameter for the second season identified within the time interval specified.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</section>
+<section id="output-file">
+<h3>Output file<a class="headerlink" href="#output-file" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>All TIMESAT output files are header-less binary</p></li>
+<li><p>We need to create a header for each files</p>
+<p><img alt="TIMESAT header" src="../../_images/climag-timesat-header.png" /></p>
+<p><strong>Figure 11.</strong> Header file for flat-binary</p>
+</li>
+<li><p>Translate all the output files to GeoTIFF</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">gdal_translate</span></code>, and here’s the script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>-co<span class="w"> </span><span class="nv">PREDICTOR</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>syr_2022_gee_raw_mos_season1<span class="w"> </span>syr_2022_gee_raw_mos_season1.tif
+</pre></div>
+</div>
+</li>
+<li><p>After all the output data available in GeoTIFF format, feel free to use other software for further processing.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/vegetation-conditions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Monitoring vegetation conditions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../docs/2023-summer-economic-monitor.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2023 Summer Economic Monitor Insights</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By World Bank Development Data Group<br/>
+  
+    Last updated on Apr 06, 2023.<br/>
+    <div class="extra_footer">
+      <div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
