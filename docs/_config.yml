@@ -20,14 +20,12 @@ html:
         <div>
             <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
         </div>
+    google_analytics_id: G-ETJ4QT0E4L
 
 #######################################################################################
 # Execution settings
 execute:
-    execute_notebooks: force
-    allow_errors: true
-    exclude_patterns:
-        - notebooks/**/*.ipynb
+    execute_notebooks: "off"
 
 #######################################################################################
 # Bibliography settings
