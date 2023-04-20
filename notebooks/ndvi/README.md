@@ -1,4 +1,4 @@
-# Agricultural Productivity
+# Vegetation Overview
 
 Satellite images can capture the intensity of vegetation through the light reflected in the visible and near-infrared bands. The Normalized Difference Vegetation Index (NDVI) has often been used as a proxy of seasonal productivity. To assess changes in agricultural production in Syria, we retrieved anomalies in NDVI from the [Anomaly Hotspots of Agricultural Production](https://mars.jrc.ec.europa.eu/asap/download.php) (ASAP) portal.
 
