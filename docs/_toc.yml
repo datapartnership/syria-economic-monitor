@@ -33,7 +33,7 @@ parts:
         sections:
         - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
       - file: notebooks/conflict/acled.ipynb
-   	  - file: notebooks/vegetation-conditions/README
+      - file: notebooks/vegetation-conditions/README
         sections:
         - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
   - caption: Insights and Indicators
