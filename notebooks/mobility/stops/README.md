@@ -1,4 +1,4 @@
-# Estimating Stops in Lebanon and Syria based on Mobility Traces
+# Estimating Stops in Lebanon and Syria based on Mobility Data
 
 In this pilot study, we leverage mobility data to estimate the location formal and informal activity between Lebanon and Syria. The working hypothesis is that by identifying devices in the proximity of trade-related point of interests, such as border checkpoints, and mapping their mobility traces throughout the time horizon, the movement captured may indicate changes in trade flows and potentially identify new trade centers and corridors.
 
