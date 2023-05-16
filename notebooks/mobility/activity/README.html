@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estimating Activity based on Mobility Traces</title>
+    <title>Estimating Activity based on Mobility Data</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -154,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../README.html">
-   Mobility Data
+   Movement Activity Trends
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../stops/README.html">
-     Estimating Stops in Lebanon and Syria based on Mobility Traces
+     Estimating Stops in Lebanon and Syria based on Mobility Data
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
     <label for="toctree-checkbox-3">
@@ -196,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Estimating Activity based on Mobility Traces
+     Estimating Activity based on Mobility Data
     </a>
    </li>
   </ul>
@@ -476,23 +476,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodology">
+   Methodology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations">
+   Limitations
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Estimating Activity based on Mobility Traces</h1>
+                <h1>Estimating Activity based on Mobility Data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodology">
+   Methodology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations">
+   Limitations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -500,14 +547,36 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="estimating-activity-based-on-mobility-traces">
-<h1>Estimating Activity based on Mobility Traces<a class="headerlink" href="#estimating-activity-based-on-mobility-traces" title="Permalink to this headline">#</a></h1>
-<p>By aggregating mobility data, we estimate of the number of devices (thus activity) detected within each tile and for each time period. However, note that the mobility data panel is only a subset of the total population in an area; and does not represent the total population density.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="estimating-activity-based-on-mobility-data">
+<h1>Estimating Activity based on Mobility Data<a class="headerlink" href="#estimating-activity-based-on-mobility-data" title="Permalink to this headline">#</a></h1>
+<p>Less movement typically means less economic activity. Understanding where and when population movement occurs can help inform disaster response and public policy, especially during crises.</p>
+<p>Similarly to <a class="reference external" href="https://www.google.com/covid19/mobility/">COVID-19 Community Mobility Reports</a>, <a class="reference external" href="https://dataforgood.facebook.com/dfg/tools/facebook-population-maps">Facebook Population During Crisis</a> and <a class="reference external" href="https://www.mapbox.com/movement-data">Mapbox Movement Data</a>, we generate a series of crisis-relevant metrics, including the sampled baseline population, <strong>percent</strong> and <strong>z-score</strong> changes in population. The metrics are calculated by counting devices of a mobility data panel in each tile and at each time period and comparing to a baseline period.</p>
+<p>The following map shows the <strong>z-score</strong> on each tile for each time period. The <strong>z-score</strong> shows whether the change in population for that area is statistically different from the baseline period.</p>
 <iframe width="100%" height="500px" src="https://studio.foursquare.com/public/55af1cba-9659-4f10-811b-f7f08dfe2ed8/embed" frameborder="0" allowfullscreen></iframe>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://studio.foursquare.com/public/55af1cba-9659-4f10-811b-f7f08dfe2ed8">Click to see it on Foursquare Studio</a></p>
+</div>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The results presented are obtained in conjunction with <strong>Support to Türkiye Earthquake Impact</strong>. Please refer to <a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/README.html">methodological notes</a> for additional details.</p>
+<p>See <a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/README.html">methodological notes</a> for additional details. The results are obtained in conjunction with the <a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact">Support to Türkiye Earthquake Impact Analysis</a>.</p>
 </div>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h2>
+<p>The methodology presented is an investigative pilot aiming to shed light on the economic situation in Syria and Türkiye leveraging alternative data, when confront with the absence of traditional data and methods.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>In summary, beyond standing-by peer-review, the limitations can be summarized in the following.</p>
+<ul class="simple">
+<li><p>The methodology relies on private intent data in the form of mobilily data. In other words, the input data was not produced or collected to analyze the population of interest or address the research question as its primary goal but repurposed for the public good. The benefits and caveats when using private intent data have been extensively discussed in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span id="id1">[<a class="reference internal" href="../../traffic/README.html#id5" title="World Bank. World Development Report 2021 : Data for Better Lives. World Bank, 2021. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/35218.">World Bank, 2021</a>]</span>.</p></li>
+<li><p>On the one hand, the mobility data panel is spatially and temporally granular and readily available, on the other hand it is created as a convenience sampling which constitutes an important source of bias. The panel composition is not entirely known and susceptible to change, the data collection and the composition of the mobility data panel cannot be controlled.</p></li>
+<li><p>In summary, the results cannot be interpreted to generalize the entirety of population movement but can potentially provide information on movement panels to inform Syrian economic situation, considering time constraints and the scarcity of traditional data sources in the context of Syria.</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -560,7 +629,7 @@ title="Print to PDF"
   
     By World Bank Development Data Group<br/>
   
-    Last updated on Apr 25, 2023.<br/>
+    Last updated on May 16, 2023.<br/>
     <div class="extra_footer">
       <div>
     <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>

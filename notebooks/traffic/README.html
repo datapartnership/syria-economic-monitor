@@ -154,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../mobility/README.html">
-   Mobility Data
+   Movement Activity Trends
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../mobility/stops/README.html">
-     Estimating Stops in Lebanon and Syria based on Mobility Traces
+     Estimating Stops in Lebanon and Syria based on Mobility Data
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
     <label for="toctree-checkbox-3">
@@ -196,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../mobility/activity/README.html">
-     Estimating Activity based on Mobility Traces
+     Estimating Activity based on Mobility Data
     </a>
    </li>
   </ul>
@@ -586,7 +586,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><strong>Very High Resolution Satellite Imagery</strong>: We use very high resolution (VHR) daytime satellite imagery from <a class="reference external" href="https://orbitalinsight.com/">Orbital Insight</a>. Orbital Insight has developed algorithms for detecting cars and trucks from satellite imagery that has less than 1 meter spatial resolution. From such high resolution images, cars and trucks can be easily detected using Orbital Insight’s algorithms. However, a key limitation of using VHR data for detecting trends in traffic is that VHR satellite images used by Orbital Insight are not captured at regular intervals. Consequently, the number of images available can vary across locations.</p></li>
 <li><p><strong>Medium Resolution Synthetic Aperture Radar Satellite Imagery:</strong> We use synthetic aperture radar (SAR) satellite imagery captured from Sentinel-1, which is available at a 10 meter resolution. SAR satellites transmit waves and measure the strength and orientation of waves reflected back to the satellite. Different objects scatter waves differently, and metallic objects such as vehicles produce a strong signal back to the sensor <span id="id1">[<a class="reference internal" href="#id13" title="Dirk Geudtner, Ramón Torres, Paul Snoeij, Malcolm Davidson, and Björn Rommen. Sentinel-1 system capabilities and applications. In 2014 IEEE Geoscience and Remote Sensing Symposium, volume, 1457-1460. 2014. doi:10.1109/IGARSS.2014.6946711.">Geudtner <em>et al.</em>, 2014</a>]</span>. <a class="reference external" href="https://spaceknow.com/">SpaceKnow</a> has developed algorithms that use SAR data from Sentinel-1 to detect trends in congestion. Unlike VHR imagery, SAR data is not able to count the number of vehicles; however, Sentinel-1 captures SAR data at regular intervals (multiple times a month). SpaceKnow leverages SAR data to develop a traffic index, where larger values correspond to more congestion.</p></li>
-<li><p><strong>Mobility Data:</strong> We leverage mobility data from GPS-enabled devices to monitor the number of unique devices at border crossing locations. Mobility data comes from Outlogic, which is further described in <a class="reference internal" href="../mobility/README.html"><span class="doc">Mobility Data</span></a>. The number of unique devices observed at border crossing locations can indicate activity—and traffic—at the crossing. A key advantage of mobility data over satellite imagery is that it is available at all points in time; the dataset captures the timestamp and location of GPS-enable devices. Consequently, the data can be aggregated hourly, daily, or at other intervals. Mobility data may underestimate activity as not everyone may have a GPS-enabled device; however, we check whether trends in mobility data are similar to trends captured from satellite imagery.</p></li>
+<li><p><strong>Mobility Data:</strong> We leverage mobility data from GPS-enabled devices to monitor the number of unique devices at border crossing locations. Mobility data comes from Outlogic, which is further described in <a class="reference internal" href="../mobility/README.html"><span class="doc">Movement Activity Trends</span></a>. The number of unique devices observed at border crossing locations can indicate activity—and traffic—at the crossing. A key advantage of mobility data over satellite imagery is that it is available at all points in time; the dataset captures the timestamp and location of GPS-enable devices. Consequently, the data can be aggregated hourly, daily, or at other intervals. Mobility data may underestimate activity as not everyone may have a GPS-enabled device; however, we check whether trends in mobility data are similar to trends captured from satellite imagery.</p></li>
 </ul>
 <p>For further information, please refer to <span class="xref std std-ref">foundational_datasets</span>.</p>
 </section>
@@ -698,7 +698,7 @@ title="Print to PDF"
   
     By World Bank Development Data Group<br/>
   
-    Last updated on Apr 25, 2023.<br/>
+    Last updated on May 16, 2023.<br/>
     <div class="extra_footer">
       <div>
     <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
