@@ -29,7 +29,7 @@ The below figures show daily trends (and a 7 day moving average from daily data)
 scale: 50%
 align: center
 ---
-Average Trends in Nighttime Lights by Earthquake Intensity
+Average Trends in Nighttime Lights by Earthquake Intensity. The red line indicates February 6, 2023.
 ```
 
 ```{figure} ../reports/figures/ntl_eq_very_strong.png
@@ -37,7 +37,7 @@ Average Trends in Nighttime Lights by Earthquake Intensity
 scale: 50%
 align: center
 ---
-Earthquake Intensity: Very Strong - Trends in Nighttime Lights
+Earthquake Intensity: Very Strong - Trends in Nighttime Lights. The red line indicates February 6, 2023.
 ```
 
 ```{figure} ../reports/figures/ntl_eq_strong.png
@@ -45,7 +45,7 @@ Earthquake Intensity: Very Strong - Trends in Nighttime Lights
 scale: 50%
 align: center
 ---
-Earthquake Intensity: Very Strong - Trends in Nighttime Lights
+Earthquake Intensity: Very Strong - Trends in Nighttime Lights. The red line indicates February 6, 2023.
 ```
 
 ```{figure} ../reports/figures/ntl_border_xing.png
@@ -53,7 +53,7 @@ Earthquake Intensity: Very Strong - Trends in Nighttime Lights
 scale: 50%
 align: center
 ---
-Trends in Nighttime Lights in Border Crossing Locations
+Trends in Nighttime Lights in Border Crossing Locations. The red line indicates February 6, 2023.
 ```
 
 ### Maps of Percent Change in Nighttime Lights
@@ -67,7 +67,7 @@ The below maps show the percent change in nighttime lights. The figures use nigh
 scale: 50%
 align: center
 ---
-Percent Change in Nighttime Lights: January to 3 Days After Earthquake
+Percent Change in Nighttime Lights: January to 3 Days After Earthquake. The two black lines show locations where the earthquake intensity was (a) very strong and (b) strong.
 ```
 
 ```{figure} ../reports/figures/map_ntl_eq_14d.png
@@ -75,7 +75,7 @@ Percent Change in Nighttime Lights: January to 3 Days After Earthquake
 scale: 50%
 align: center
 ---
-Percent Change in Nighttime Lights: January to 2 Weeks After Earthquake
+Percent Change in Nighttime Lights: January to 2 Weeks After Earthquake. The two black lines show locations where the earthquake intensity was (a) very strong and (b) strong.
 ```
 
 ```{figure} ../reports/figures/map_ntl_eq_march.png
@@ -83,7 +83,7 @@ Percent Change in Nighttime Lights: January to 2 Weeks After Earthquake
 scale: 50%
 align: center
 ---
-Percent Change in Nighttime Lights: January to March
+Percent Change in Nighttime Lights: January to March. The two black lines show locations where the earthquake intensity was (a) very strong and (b) strong.
 ```
 
 #### Subdistricts with Moderate or Higher Earthquake Intensity
@@ -93,7 +93,7 @@ Percent Change in Nighttime Lights: January to March
 scale: 50%
 align: center
 ---
-Percent Change in Nighttime Lights: January to 3 Days After Earthquake
+Percent Change in Nighttime Lights: January to 3 Days After Earthquake. The black line show locations where the earthquake intensity was very strong.
 ```
 
 ```{figure} ../reports/figures/map_ntl_eq_14d_strong.png
@@ -101,7 +101,7 @@ Percent Change in Nighttime Lights: January to 3 Days After Earthquake
 scale: 50%
 align: center
 ---
-Percent Change in Nighttime Lights: January to 2 Weeks After Earthquake
+Percent Change in Nighttime Lights: January to 2 Weeks After Earthquake. The black line show locations where the earthquake intensity was very strong.
 ```
 
 ```{figure} ../reports/figures/map_ntl_eq_march_strong.png
@@ -109,6 +109,6 @@ Percent Change in Nighttime Lights: January to 2 Weeks After Earthquake
 scale: 50%
 align: center
 ---
-Percent Change in Nighttime Lights: January to March
+Percent Change in Nighttime Lights: January to March. The black line show locations where the earthquake intensity was very strong.
 ```
 
