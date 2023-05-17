@@ -20,7 +20,10 @@ parts:
             - file: notebooks/mobility/stops/02-validate-mobility-data.ipynb
             - file: notebooks/mobility/stops/03a-count-within-aoi.ipynb
             - file: notebooks/mobility/stops/03b-estimate-stay-locations.ipynb
-          - file: notebooks/mobility/activity/README
+          - url: https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html
+            title: Estimating Activity based on Mobility Data
+          - url: https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html
+            title: Estimating Activity based on Visits to Points of Interest
       - file: notebooks/ais-analysis/README
         sections:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
