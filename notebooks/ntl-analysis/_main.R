@@ -82,6 +82,22 @@ if(RUN_SCRIPTS){
   # and (3) lights excluding gas flaring locations
   source(file.path(ntl_dir, "02_trends_in_ntl.R"))
   
+  
+  
+  source(file.path(ntl_dir, "03_trends_in_ntl.R"))
+  source(file.path(ntl_dir, "03_daily_ntl_border_xing.R"))
+  source(file.path(ntl_dir, "03_daily_ntl_by_eq_intensity.R"))
+  source(file.path(ntl_dir, "03_map_ntl_latest.R"))
+  source(file.path(ntl_dir, "03_maps_ntl_by_eq_intensity.R"))
+  source(file.path(ntl_dir, "03_maps_of_ntl_changes.R"))
+  
+  
+  
+  
+  
+  
+  
+  
 }
 
 
