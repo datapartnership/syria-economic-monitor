@@ -50,7 +50,7 @@ for(year in 2022:2012){
 
 for(year in 2023){
   for(day in 1:366){
-    for(product_id in c("VNP46A1", "VNP46A2")){
+    for(product_id in c("VNP46A2")){
       
       OUT_FILE <- file.path(data_dir, 
                             "NTL BlackMarble",
