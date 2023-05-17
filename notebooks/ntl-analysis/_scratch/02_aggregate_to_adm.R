@@ -4,7 +4,7 @@
 # 2 = more processed)
 
 for(adm_i in c(3,4)){
-  for(product_id in c("VNP46A1", "VNP46A2")){
+  for(product_id in c("VNP46A2")){
     
     # Load/prep gas flaring data ---------------------------------------------------
     #### Gas Flaring
