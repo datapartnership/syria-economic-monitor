@@ -28,6 +28,43 @@ crs(bc_df) <- CRS("+init=epsg:4326")
 bc_sf <- bc_df %>% st_as_sf()
 bc_sf <- st_buffer(bc_sf, dist = 1000)
 
+
+
+# Monthyl ----------------------------------------------------------------------
+monthly_files <- list.files(file.path(ntl_bm_dir, "FinalData", paste0("VNP46A3", "_rasters")))
+
+for(file_i in rev(monthly_files)){
+  
+  OUT_FILE <- file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_temp",
+                        "monthly_files", 
+                        paste0("syr_border_xing_", 
+                               file_i %>% str_replace_all(".tif", ".Rds")))
+  
+  if(!file.exists(OUT_FILE)){
+    
+    print(file_i)
+    
+    r <- raster(file.path(ntl_bm_dir, "FinalData", paste0("VNP46A3", "_rasters"), file_i))
+    
+    bc_df <- bc_sf
+    bc_df$geometry <- NULL
+    bc_df$viirs_bm_mean <- exact_extract(r, bc_sf, 'mean')
+    bc_df$viirs_bm_sum <- exact_extract(r, bc_sf, 'sum')
+    bc_df$viirs_bm_median <- exact_extract(r, bc_sf, 'median')
+    
+    # Add date info
+    year_i <- file_i %>% substring(12,15) %>% as.numeric()
+    month_i  <- file_i %>% substring(17,18) %>% as.numeric()
+    bc_df$date <- paste0(year_i, "_", month_i, "-01") %>% ymd()
+
+    #### Merge NTL with GADM data 
+    bc_df$viirs_bm_mean[bc_df$viirs_bm_sum == 0]           <- 0
+    
+    # Export -----------------------------------------------------------------------
+    saveRDS(bc_df, OUT_FILE)
+  }
+}
+
 # Daily ------------------------------------------------------------------------
 daily_files <- list.files(file.path(ntl_bm_dir, "FinalData", paste0("VNP46A2", "_rasters")))
 
@@ -64,41 +101,4 @@ for(file_i in rev(daily_files)){
     saveRDS(bc_df, OUT_FILE)
   }
 }
-
-# Monthyl ----------------------------------------------------------------------
-monthly_files <- list.files(file.path(ntl_bm_dir, "FinalData", paste0("VNP46A3", "_rasters")))
-
-for(file_i in rev(monthly_files)){
-  
-  OUT_FILE <- file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_temp",
-                        "monthly_files", 
-                        paste0("syr_border_xing_", 
-                               file_i %>% str_replace_all(".tif", ".Rds")))
-  
-  if(!file.exists(OUT_FILE)){
-    
-    print(file_i)
-    
-    r <- raster(file.path(ntl_bm_dir, "FinalData", paste0("VNP46A3", "_rasters"), file_i))
-    
-    bc_df <- bc_sf
-    bc_df$geometry <- NULL
-    bc_df$viirs_bm_mean <- exact_extract(r, bc_sf, 'mean')
-    bc_df$viirs_bm_sum <- exact_extract(r, bc_sf, 'sum')
-    
-    
-    # Add date info
-    year_i <- file_i %>% substring(12,15) %>% as.numeric()
-    month_i  <- file_i %>% substring(17,18) %>% as.numeric()
-    bc_df$date <- paste0(year_i, "_", month_i, "-01") %>% ymd()
-
-    #### Merge NTL with GADM data 
-    bc_df$viirs_bm_mean[bc_df$viirs_bm_sum == 0]           <- 0
-    
-    # Export -----------------------------------------------------------------------
-    saveRDS(bc_df, OUT_FILE)
-  }
-}
-
-
 

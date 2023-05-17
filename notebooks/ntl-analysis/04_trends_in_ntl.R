@@ -11,7 +11,7 @@ gf_sf <- gf_df %>% st_as_sf() %>% st_buffer(dist = 5000)
 gf_sp <- gf_sf %>% as("Spatial")
 
 ## Non GS Locations
-gadm_0_sp <- readRDS(file.path(data_dir, "gadm36_SYR_0_sp.rds"))
+gadm_0_sp <- readRDS(file.path(data_dir, "GADM", "RawData", "gadm36_SYR_0_sp.rds"))
 
 gadm_no_gf_sp <- gDifference(gadm_0_sp, gf_sp, byid=F)
 gadm_no_gf_sp$id <- 1
@@ -20,7 +20,7 @@ gadm_no_gf_sp$id <- 1
 adm_i <- 1
 
 ## GADM
-gadm_sp <- readRDS(file.path(data_dir, paste0("gadm36_SYR_",adm_i,"_sp.rds")))
+gadm_sp <- readRDS(file.path(data_dir, "GADM", "RawData", paste0("gadm36_SYR_",adm_i,"_sp.rds")))
 
 gadm_df <- gadm_sp@data %>%
   dplyr::select(paste0("NAME_", 0:adm_i), paste0("GID_", 0:adm_i)) %>%
@@ -40,7 +40,7 @@ viirs_bm_df <- map_df(1:nrow(ym_df), function(i){
   
   ym_i_df <- ym_df[i,]
   
-  r <- raster(file.path(data_dir,
+  r <- raster(file.path(data_dir, "NTL BlackMarble",
                         paste0("bm_vnp46A3_",ym_i_df$year,"_",ym_i_df$month %>% pad2(),
                                ".tif")))
   

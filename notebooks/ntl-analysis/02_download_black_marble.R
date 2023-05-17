@@ -18,12 +18,36 @@ roi_sp$id <- 1
 roi_sp <- raster::aggregate(roi_sp, by = "id")
 roi_sf <- roi_sp %>% st_as_sf()
 
+# Download annual data --------------------------------------------------------
+# Downloads a raster for each month. If raster already created, skips calling 
+# function.
+
+years <- 2012:2022
+
+for(year_i in years){
+  
+  OUT_FILE <- file.path(data_dir, 
+                        "NTL BlackMarble",
+                        "FinalData",
+                        "VNP46A4_rasters",
+                        paste0("bm_VNP46A4_",year_i,".tif"))
+  
+  if(!file.exists(OUT_FILE)){
+    r <- bm_raster(roi_sf = roi_sf,
+                   product_id = "VNP46A4",
+                   date = year_i,
+                   bearer = BEARER)
+    
+    writeRaster(r, OUT_FILE)
+  }
+}
+
 # Download monthly data --------------------------------------------------------
 # Downloads a raster for each month. If raster already created, skips calling 
 # function.
 
 months <- seq.Date(from = ymd("2022-01-01"),
-                   to = ymd("2023-01-01"),
+                   to = Sys.Date() %>% floor_date(unit = "month"),
                    by = "month") %>%
   as.character()
 
@@ -57,7 +81,7 @@ for(month_ymd in months){
 #   VNP46A1 has more recent data. We download both.
 
 dates <- seq.Date(from = ymd("2022-01-31"),
-                  to = ymd("2023-02-22"),
+                  to = Sys.Date(),
                   by = "day") %>%
   as.character() %>%
   rev()
@@ -69,7 +93,7 @@ date <- "2022-01-15"
 product_id <- "VNP46A2"
 
 for(date in dates){
-  for(product_id in c("VNP46A1", "VNP46A2")){ # , "VNP46A1"
+  for(product_id in c("VNP46A2")){ # , "VNP46A1"
     
     year <- date %>% year()
     day  <- date %>% yday()

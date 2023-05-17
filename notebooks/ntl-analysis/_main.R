@@ -55,7 +55,17 @@ library(httr)
 library(spatialEco)
 
 ## User written script to facilitating downloading black marble NTL data
-source("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/R/download_blackmarble.R")
+source("https://raw.githubusercontent.com/ramarty/blackmarbler/main/R/blackmarbler.R")
+library(purrr)
+library(furrr)
+library(stringr)
+library(rhdf5)
+library(raster)
+library(dplyr)
+library(sf)
+library(lubridate)
+library(dplyr)
+library(zoo)
 
 # Scripts ----------------------------------------------------------------------
 RUN_SCRIPTS <- F
@@ -98,6 +108,9 @@ if(F){
   
   source(file.path(ntl_dir, "05_clean_tur.R"))
   source(file.path(ntl_dir, "05_merge_ntl_eq_data.R"))
+  
+  source(file.path(ntl_dir, "03_border_xing_aggregate.R"))
+  source(file.path(ntl_dir, "03_border_xing_append.R"))
   
 }
 

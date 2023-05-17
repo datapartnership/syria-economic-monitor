@@ -15,8 +15,8 @@ if(DELETE_FILES){
   }
 }
 
-for(adm_i in c(3,4)){
-  for(product_id in c("VNP46A2")){
+for(adm_i in c(2, 3,4)){
+  for(product_id in c("VNP46A3", "VNP46A2")){
     
     # Load/prep gas flaring data ---------------------------------------------------
     #### Gas Flaring
@@ -37,6 +37,12 @@ for(adm_i in c(3,4)){
     gadm_no_gf_sp$id <- 1
     
     # Load data --------------------------------------------------------------------
+    if(adm_i == 2){
+      gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm2_uncs_unocha_20201217.json")) %>%
+        as("Spatial")
+      gadm_sp$date <- NULL
+    }
+    
     if(adm_i == 3){
       gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm3_uncs_unocha_20201217.json")) %>%
         as("Spatial")
@@ -66,7 +72,7 @@ for(adm_i in c(3,4)){
     for(file_i in rev(daily_files)){
       
       OUT_FILE <- file.path(ntl_bm_dir, "FinalData", "aggregated", 
-                            "syr_temp", "daily_files",
+                            "syr_temp", product_id,
                             paste0("syr_admin", 
                                    adm_i, "_", 
                                    file_i %>% str_replace_all(".tif", ".Rds")))
@@ -84,6 +90,7 @@ for(adm_i in c(3,4)){
         
         gadm_id_df$viirs_bm_mean <- exact_extract(r, gadm_sf, 'mean')
         gadm_id_df$viirs_bm_sum <- exact_extract(r, gadm_sf, 'sum')
+        gadm_id_df$viirs_bm_median <- exact_extract(r, gadm_sf, 'median')
         
         gadm_id_df$viirs_bm_gf_mean <- exact_extract(r_gf, gadm_sf, 'mean')
         gadm_id_df$viirs_bm_gf_sum  <- exact_extract(r_gf, gadm_sf, 'sum')
@@ -92,11 +99,21 @@ for(adm_i in c(3,4)){
         gadm_id_df$viirs_bm_nogf_sum  <- exact_extract(r_nogf, gadm_sf, 'sum')
         
         # Add date info
-        year_i <- file_i %>% substring(12,15) %>% as.numeric()
-        day_i  <- file_i %>% substring(17,19) %>% as.numeric()
-        gadm_id_df$year <- year_i
-        gadm_id_df$day  <- day_i
-        gadm_id_df$date <- as.Date(day_i, origin = paste0(year_i-1, "-12-31")) # 1 = Jan 1 of next year
+        if(product_id == "VNP46A2"){
+          year_i <- file_i %>% substring(12,15) %>% as.numeric()
+          day_i  <- file_i %>% substring(17,19) %>% as.numeric()
+          gadm_id_df$year <- year_i
+          gadm_id_df$day  <- day_i
+          gadm_id_df$date <- as.Date(day_i, origin = paste0(year_i-1, "-12-31")) # 1 = Jan 1 of next year
+        }
+        
+        if(product_id == "VNP46A3"){
+          year_i <- file_i %>% substring(12,15) %>% as.numeric()
+          month_i  <- file_i %>% substring(17,19) %>% as.numeric()
+          gadm_id_df$year <- year_i
+          gadm_id_df$month  <- month_i
+          gadm_id_df$date <- ymd(paste0(year_i, "-", month_i, "-01")) # 1 = Jan 1 of next year
+        }
         
         #### Merge NTL with GADM data 
         data_df <- gadm_id_df %>%
