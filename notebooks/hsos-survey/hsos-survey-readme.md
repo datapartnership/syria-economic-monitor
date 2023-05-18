@@ -31,16 +31,16 @@ The main script ([ADD MAIN SCRIPT LINK.do](http://ADDGITHUBURL) loads all packag
 
 ### Humanitarian Assistance
 #### Access to humanitarian assistance
-![IDP access](humani_access_IDP_c.png) ![resident access](humani_access_RES_c.png)
+![IDP access](humani_access_IDP_c.png) | ![resident access](humani_access_RES_c.png)
 
 #### Received assistance in form of cash
-![IDP access](humani_prov_cash_IDP_c.png) ![resident access](humani_prov_cash_RES_c.png)
+![IDP access](humani_prov_cash_IDP_c.png) | ![resident access](humani_prov_cash_RES_c.png)
 
 #### Received assistance in form of food voucher
-![IDP access](humani_prov_voucher_IDP_c.png) ![RES access](humani_prov_voucher_RES_c.png)
+![IDP access](humani_prov_voucher_IDP_c.png) | ![RES access](humani_prov_voucher_RES_c.png)
 
 #### Community did not have access to humanitarian aid
-![IDP access](humani_barr_noavai_IDP_c.png) ![RES access](humani_barr_noavai_RES_c.png)
+![IDP access](humani_barr_noavai_IDP_c.png) | ![RES access](humani_barr_noavai_RES_c.png)
 
 
 ### Welfare of IDP population
