@@ -14,7 +14,7 @@ Support for this edition of the Monitor includes use of alternative data to bett
 
 * Movement between Turkiye and Syria. 
 
-The following sections represent sample insights and analytics, prepared for use by the Syria Economic Monitor team and intended to be combined with other resources and local knowledge to create a complete understanding of the changing economic conditions in this fragile county. Datasets and methods for all insights are presented in the previous sections. 
+The following sections represent sample insights and analytics, prepared for use by the Syria Economic Monitor team and intended to be combined with other resources and local knowledge to create a complete understanding of the changing economic conditions in this fragile county. Datasets and methods for all insights are presented in the previous sections, and a set of indicators have been prepared as an [Excel workbook](https://worldbankgroup.sharepoint.com/:x:/t/DevelopmentDataPartnershipCommunity-WBGroup/EXZkY4Z6vMVMjRVcIBCHqlkBVI4z1b9rP1fyyLQ6aluvWA?e=pFazxV), accessible via the [Project Sharepoint](https://worldbankgroup.sharepoint.com/:f:/r/teams/DevelopmentDataPartnershipCommunity-WBGroup/Shared%20Documents/Projects/Data%20Lab/Syria%20Economic%20Monitor?csf=1&web=1&e=vn3ybj).
 
 ## Nighttime Lights
 
