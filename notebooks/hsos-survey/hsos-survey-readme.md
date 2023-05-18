@@ -31,37 +31,30 @@ The main script ([ADD MAIN SCRIPT LINK.do](http://ADDGITHUBURL) loads all packag
 
 ### Humanitarian Assistance
 #### Access to humanitarian assistance
-![IDP access](humani_access_IDP_c.png)
-![resident access](humani_access_RES_c.png)
+![IDP access](humani_access_IDP_c.png) ![resident access](humani_access_RES_c.png)
 
 #### Received assistance in form of cash
-![IDP access](humani_prov_cash_IDP_c.png)
-![resident access](humani_prov_cash_RES_c.png)
+![IDP access](humani_prov_cash_IDP_c.png) ![resident access](humani_prov_cash_RES_c.png)
 
 #### Received assistance in form of food voucher
-![IDP access](humani_prov_voucher_IDP_c.png)
-![RES access](humani_prov_voucher_RES_c.png)
+![IDP access](humani_prov_voucher_IDP_c.png) ![RES access](humani_prov_voucher_RES_c.png)
 
 #### Community did not have access to humanitarian aid
-![IDP access](humani_barr_noavai_IDP_c.png)
-![RES access](humani_barr_noavai_RES_c.png)
+![IDP access](humani_barr_noavai_IDP_c.png) ![RES access](humani_barr_noavai_RES_c.png)
 
 
 ### Welfare of IDP population
 #### Top priority need is food
-![IDP access](priority1_2_IDP_c.png)
-![RES access](priority1_2_RES_c.png)
+![IDP access](priority1_2_IDP_c.png) ![RES access](priority1_2_RES_c.png)
 
 #### Top priority need is shelter
-![IDP access](priority1_9_IDP_c.png)
-![RES access](priority1_9_RES_c.png)
+![IDP access](priority1_9_IDP_c.png) ![RES access](priority1_9_RES_c.png)
 
 #### rent
 ![all communities](welfare_price_rent_usdc.png)
 
 #### wage for unskilled labor
-![IDP wage](welfare_wage_unskilled_usd_IDP_c.png)
-![RES wage](welfare_wage_unskilled_usd_RES_c.png)
+![IDP wage](welfare_wage_unskilled_usd_IDP_c.png) ![RES wage](welfare_wage_unskilled_usd_RES_c.png)
 
 ### Access to Services
 
