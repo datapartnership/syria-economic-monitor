@@ -112,3 +112,30 @@ align: center
 Percent Change in Nighttime Lights: January to March. The black line show locations where the earthquake intensity was very strong.
 ```
 
+### Maps of Percent Change in Nighttime Lights - Only Considering Gas Flaring Locations
+
+```{figure} ../reports/figures/map_ntl_gf_eq_3d.png
+---
+scale: 50%
+align: center
+---
+Percent Change in Nighttime Lights in Gas Flaring Locations: January to 3 Days After Earthquake. The two black lines show locations where the earthquake intensity was (a) very strong and (b) strong.
+```
+
+```{figure} ../reports/figures/map_ntl_gf_eq_14d.png
+---
+scale: 50%
+align: center
+---
+Percent Change in Nighttime Lights in Gas Flaring Locations: January to 2 Weeks After Earthquake. The two black lines show locations where the earthquake intensity was (a) very strong and (b) strong.
+```
+
+```{figure} ../reports/figures/map_ntl_gf_eq_march.png
+---
+scale: 50%
+align: center
+---
+Percent Change in Nighttime Lights in Gas Flaring Locations: January to March. The two black lines show locations where the earthquake intensity was (a) very strong and (b) strong.
+```
+
+
