@@ -221,7 +221,7 @@ ggsave(filename = file.path(figures_dir, "map_ntl_eq_march.png"),
 # All Syria: Gas Flaring -------------------------------------------------------
 
 #### 3 Days - focus
-mm <- gadm_sf$viirs_bm_gf_mean_3d_pc %>% abs() %>% max()
+mm <- gadm_sf$viirs_bm_gf_mean_3d_pc %>% na.omit() %>% as.vector() %>% abs() %>% max()
 
 ggplot() +
   geom_sf(data = gadm_sf,
@@ -248,7 +248,7 @@ ggsave(filename = file.path(figures_dir, "map_ntl_gf_eq_3d.png"),
        width = 4.5)
 
 #### 14 Days - focus
-mm <- gadm_sf$viirs_bm_gf_mean_14d_pc %>% abs() %>% max()
+mm <- gadm_sf$viirs_bm_gf_mean_14d_pc %>% na.omit() %>% as.vector() %>% abs() %>% max()
 
 ggplot() +
   geom_sf(data = gadm_sf,
@@ -275,7 +275,7 @@ ggsave(filename = file.path(figures_dir, "map_ntl_gf_eq_14d.png"),
        width = 4.5)
 
 #### March - all
-mm <- gadm_sf$viirs_bm_gf_mean_mar_pc %>% abs() %>% max()
+mm <- gadm_sf$viirs_bm_gf_mean_mar_pc %>% na.omit() %>% as.vector() %>% abs() %>% max()
 
 ggplot() +
   geom_sf(data = gadm_sf,
