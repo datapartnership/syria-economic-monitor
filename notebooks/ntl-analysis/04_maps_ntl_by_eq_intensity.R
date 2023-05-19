@@ -17,11 +17,20 @@ ntl_df <- ntl_df %>%
   summarise(viirs_bm_mean_jan = mean(viirs_bm_mean[date %in% ymd("2023-01-01"):ymd("2023-01-31")]),
             viirs_bm_mean_3d = mean(viirs_bm_mean[date %in% ymd("2023-02-07"):ymd("2023-02-09")]),
             viirs_bm_mean_14d = mean(viirs_bm_mean[date %in% ymd("2023-02-07"):ymd("2023-02-20")]),
-            viirs_bm_mean_mar = mean(viirs_bm_mean[date %in% ymd("2023-03-01"):ymd("2023-03-31")])) %>%
+            viirs_bm_mean_mar = mean(viirs_bm_mean[date %in% ymd("2023-03-01"):ymd("2023-03-31")]),
+            
+            viirs_bm_gf_mean_jan = mean(viirs_bm_gf_mean[date %in% ymd("2023-01-01"):ymd("2023-01-31")]),
+            viirs_bm_gf_mean_3d = mean(viirs_bm_gf_mean[date %in% ymd("2023-02-07"):ymd("2023-02-09")]),
+            viirs_bm_gf_mean_14d = mean(viirs_bm_gf_mean[date %in% ymd("2023-02-07"):ymd("2023-02-20")]),
+            viirs_bm_gf_mean_mar = mean(viirs_bm_gf_mean[date %in% ymd("2023-03-01"):ymd("2023-03-31")])) %>%
   ungroup() %>%
   mutate(viirs_bm_mean_3d_pc = (viirs_bm_mean_3d - viirs_bm_mean_jan)/viirs_bm_mean_jan*100,
          viirs_bm_mean_14d_pc = (viirs_bm_mean_14d - viirs_bm_mean_jan)/viirs_bm_mean_jan*100,
-         viirs_bm_mean_mar_pc = (viirs_bm_mean_mar - viirs_bm_mean_jan)/viirs_bm_mean_jan*100)
+         viirs_bm_mean_mar_pc = (viirs_bm_mean_mar - viirs_bm_mean_jan)/viirs_bm_mean_jan*100,
+         
+         viirs_bm_gf_mean_3d_pc = (viirs_bm_gf_mean_3d - viirs_bm_gf_mean_jan)/viirs_bm_gf_mean_jan*100,
+         viirs_bm_gf_mean_14d_pc = (viirs_bm_gf_mean_14d - viirs_bm_gf_mean_jan)/viirs_bm_gf_mean_jan*100,
+         viirs_bm_gf_mean_mar_pc = (viirs_bm_gf_mean_mar - viirs_bm_gf_mean_jan)/viirs_bm_gf_mean_jan*100)
 
 ## Merge with GADM
 gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm3_uncs_unocha_20201217.json")) %>%
@@ -206,5 +215,88 @@ ggplot() +
                        limits = c(-mm, mm))
 
 ggsave(filename = file.path(figures_dir, "map_ntl_eq_march.png"),
+       height = 4.5, 
+       width = 4.5)
+
+# All Syria: Gas Flaring -------------------------------------------------------
+
+#### 3 Days - focus
+mm <- gadm_sf$viirs_bm_gf_mean_3d_pc %>% abs() %>% max()
+
+ggplot() +
+  geom_sf(data = gadm_sf,
+          aes(fill = viirs_bm_gf_mean_3d_pc),
+          color = NA) +
+  geom_sf(data = gadm_all_sf,
+          fill = NA,
+          color = "black") +
+  geom_sf(data = gadm_strong_sf,
+          fill = NA,
+          color = "black") +
+  theme_void() +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5)) +
+  labs(fill = "Percent\nChange\nNTL",
+       title = "Nighttime Lights Percent Change\nJan to 3 Days After Earthquake") +
+  scale_fill_gradient2(low = "red",
+                       mid = "white",
+                       high = "forestgreen",
+                       midpoint = 0,
+                       limits = c(-mm, mm))
+
+ggsave(filename = file.path(figures_dir, "map_ntl_gf_eq_3d.png"),
+       height = 4.5, 
+       width = 4.5)
+
+#### 14 Days - focus
+mm <- gadm_sf$viirs_bm_gf_mean_14d_pc %>% abs() %>% max()
+
+ggplot() +
+  geom_sf(data = gadm_sf,
+          aes(fill = viirs_bm_gf_mean_14d_pc),
+          color = NA) +
+  geom_sf(data = gadm_all_sf,
+          fill = NA,
+          color = "black") +
+  geom_sf(data = gadm_strong_sf,
+          fill = NA,
+          color = "black") +
+  theme_void() +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5)) +
+  labs(fill = "Percent\nChange\nNTL",
+       title = "Nighttime Lights Percent Change\nJan to 2 Weeks After Earthquake") +
+  scale_fill_gradient2(low = "red",
+                       mid = "white",
+                       high = "forestgreen",
+                       midpoint = 0,
+                       limits = c(-mm, mm))
+
+ggsave(filename = file.path(figures_dir, "map_ntl_gf_eq_14d.png"),
+       height = 4.5, 
+       width = 4.5)
+
+#### March - all
+mm <- gadm_sf$viirs_bm_gf_mean_mar_pc %>% abs() %>% max()
+
+ggplot() +
+  geom_sf(data = gadm_sf,
+          aes(fill = viirs_bm_gf_mean_mar_pc),
+          color = NA) +
+  geom_sf(data = gadm_all_sf,
+          fill = NA,
+          color = "black") +
+  geom_sf(data = gadm_strong_sf,
+          fill = NA,
+          color = "black") +
+  theme_void() +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5)) +
+  labs(fill = "Percent\nChange\nNTL",
+       title = "Nighttime Lights Percent Change\nJan to March 2023") +
+  scale_fill_gradient2(low = "red",
+                       mid = "white",
+                       high = "forestgreen",
+                       midpoint = 0,
+                       limits = c(-mm, mm))
+
+ggsave(filename = file.path(figures_dir, "map_ntl_gf_eq_march.png"),
        height = 4.5, 
        width = 4.5)

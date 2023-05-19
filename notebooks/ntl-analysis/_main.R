@@ -51,6 +51,7 @@ library(readxl)
 library(janitor)
 library(glcm)
 library(httr)
+library(zoo)
 
 ## User written script to facilitating downloading black marble NTL data
 source("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/R/download_blackmarble.R")
