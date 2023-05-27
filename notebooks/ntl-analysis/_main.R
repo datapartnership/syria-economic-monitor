@@ -12,9 +12,13 @@ DOWNLOAD_NTL <- F
 #### Root paths
 if(Sys.info()[["user"]] == "robmarty"){
   git_dir  <- "~/Documents/Github/syria-economic-monitor"
+  git_tur_dir  <- "~/Documents/Github/turkiye-earthquake-impact"
   #data_dir <- "~/Documents/Github/syria-economic-monitor/data"
   data_dir <- file.path("~", "Dropbox", "World Bank", "Side Work", "Syria Economic Monitor",
                         "data")
+  
+  data_tur_dir <- file.path("~", "Dropbox", "World Bank", "Side Work", 
+                            "Turkiye Earthquake Impact", "Data")
 } 
 
 #### From root
@@ -89,7 +93,7 @@ if(RUN_SCRIPTS){
   source(file.path(ntl_dir, "04_map_ntl_latest.R"))
   source(file.path(ntl_dir, "04_maps_ntl_by_eq_intensity.R"))
   source(file.path(ntl_dir, "04_maps_of_ntl_changes.R"))
-
+  
 }
 
 
