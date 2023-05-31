@@ -22,8 +22,8 @@ import requests, zipfile, io
 extracts_url = 'https://intelligence.speedtest.net/extracts/Syria/'
 
 # Please replace MyApiKey and MyApiSecret below with your organization's API key.
-username = '7ad367af-00a1-4e3a-b44b-2e960c8c451d'
-password = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ImQ4ZmFmY2I4LWQ0NDgtNGEwMS1hNmUzLWJmMGZhZWU0MWVjNCI.hP22AsNJw-6t7ULKgqrqcVYtnfCOH5WUDJJ30tcj2-k'
+username = 'user_id'
+password = 'password'
 
 
 # By default, the script stores the extract files in the directory where the script is running
