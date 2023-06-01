@@ -116,4 +116,5 @@ In summary, beyond standing-by peer-review, the limitations can be summarized in
 ## References
 
 ```{bibliography}
+:filter: docname in docnames
 ```
