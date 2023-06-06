@@ -424,8 +424,8 @@ label define elec 1 "Main network" 0 "Other"
 label values electricity_main elec
 
 *Electricity hours
-gen electricity_8=1 if electricity_hour=="From 7 to 8 hours" | electricity_hour=="From 5 to 6 hours" | electricity_hour=="From 2 to 4 hours" | electricity_hour=="Less than 2 hours" | electricity_hour=="None"
-replace electricity_8=0 if electricity_hour=="From 9 to 10 hours" | electricity_hour=="From 11 to 12 hours" | electricity_hour=="More than 12 hours"
+gen electricity_8=1 if electricity_hours=="From 7 to 8 hours" | electricity_hours=="From 5 to 6 hours" | electricity_hours=="From 2 to 4 hours" | electricity_hours=="Less than 2 hours" | electricity_hours=="None"
+replace electricity_8=0 if electricity_hours=="From 9 to 10 hours" | electricity_hours=="From 11 to 12 hours" | electricity_hours=="More than 12 hours"
 
 label define elec8 1 "Less than 8" 0 "More than 0"
 label values electricity_8 elec8

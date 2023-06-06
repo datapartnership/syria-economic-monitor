@@ -38,9 +38,9 @@ global hsos 	"${syria}/hsos-survey/"
 global original "$hsos\Original"
 global output "$hsos\Clean data\Intermediate"
 global codebooks "$hsos\Codebooks"
-global line "${figures}\Line Trends"
 global clean "$hsos\Clean data"
 global figures "$hsos\Figures"
+global line "${figures}\Line Trends"
 global maps "$hsos\Shapefiles"
 global dofile "$hsos\Do Files"
 
@@ -50,7 +50,7 @@ global dofile "$hsos\Do Files"
 local importDo 0
 
 *Cleaning of variables, recodification (string to numeric), and definition of indicators.
-local cleaningDo 1
+local cleaningDo 0
 
 *Line trends for indicators of interest by earthquake intensity.
 local linetrendsDo 1
@@ -62,7 +62,7 @@ local graphsDo 1
 local mapsDo 1
 
 *Selection of outputs of interest - Line trends 
-local outputsDo 0
+local outputsDo 1
 
 
 if (`importDo' ==1) { //Change the local above to run or not to run this file
