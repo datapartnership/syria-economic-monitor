@@ -51,8 +51,8 @@ collapse IDP_reportedc	RES_liv_overcrowded60c	IDP_liv_overcrowded60c	SHE_minor_d
 rename RES_humani_prov_electricityc RES_humani_prov_elec 
 rename RES_humani_prov_educationc RES_humani_prov_edu
 
-*iecodebook template using "${clean}\Graficas"
-iecodebook apply using "${clean}\Graficas"
+*iecodebook template using "${codebooks}\Graficas"
+iecodebook apply using "${codebooks}\Graficas"
 
 
 rename IDP_humani_prov_electricityc IDP_humani_prov_elec 
