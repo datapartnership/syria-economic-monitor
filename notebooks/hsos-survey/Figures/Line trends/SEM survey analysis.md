@@ -7,8 +7,6 @@ We use data from the Humanitarian Situation Overview Survey (HSOS) conducted by 
 
 The HSOS includes information on community situations and needs relating to shelter, electricity, water sanitation and hygiene (WASH), food security, livelihoods, health, education, humanitarian assistance, and priority needs. HSOS has disaggregated information on the different conditions and needs of residents and internally displaced persons (IDPs).
 
-Data for the analysis can be downloaded from [Syria Humanitarian Situation Overview Survey](https://reach-info.org/syr/hsos/).
-
 
 ## Methodology
 
@@ -21,7 +19,10 @@ The earthquake exposure measure uses the Modified Mercalli Intensity Scale (mmi)
 
 ## Implementation
 
-Code to replicate the analysis can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/).The [main script](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/HSOS%20SEM%20-%20Master%20do%20file.do) loads all packages and runs all scripts for the analysis. The script to produce the graphs can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/4_Bar%Graphs.do).
+Code to replicate the analysis can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/).
+The [main script](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/HSOS%20SEM%20-%20Master%20do%20file.do) loads all packages and runs all scripts for the analysis.
+The script to produce the graphs can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/4_Bar%Graphs.do).
+All data used in the analysis can be downloaded from [Syria Humanitarian Situation Overview Survey](https://reach-info.org/syr/hsos/).
 
 
 
@@ -49,6 +50,11 @@ humanitarian assistance.
 For IDPs, increases in cash and food were offset by decreases in
 direct food aid and water and sanitation services.
 
+![Figure 1. Communities in which residents had access to humanitarian assistance]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access.png")
+
+![Figure 2. Communities that received humanitarian assistance in the form of cash]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access%cash%.png").
+
+![Figure 3. Communities that received humanitarian assistance in the form of voucher]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access%voucher%.png").
 
 ### Access to Services
 Access to community electricity networks was substantially lower for
@@ -67,6 +73,11 @@ food markets and health services prior to the earthquake and there is
 no significant change in trend observed after the earthquake.
 Nearly all communities in the sample had access to education services
 prior to the earthquake and there is no noticeable effect of the earthquake.
+
+![Figure 4a. Main form of electricity in the community]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\Fig%electricity_mainc.png").
+
+![Figure 4b. Main form of electricity in the community]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\Fig%electricity_8c.png").
+
 
 ### Priority Needs & Coping Strategies
 In the post-earthquake period, the primary needs for the IDP population
@@ -91,6 +102,15 @@ reported a significant increase in food needs directly after the earthquake.
  substantial decreases in reports of sending children to work or to
  early marriage for both residents and IDPs, possibly due to humanitarian
  interventions.  
+
+ ![Figure 5. Communities in which the top priority need is food]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%Top%priority%food%.png").
+
+ ![Figure shelter]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%Top%priority%shelter%.png").
+
+ ![Figure 7a. Communities in which IDPs cope by selling household assets]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%IDP_coping_sellittemc.png").
+
+ ![Figure 7b. Communities in which IDPs cope by selling household savings]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\Fig%IDP_coping_savingc.png").
+
 
 ## Limitations
 The categorical definition of exposure to the earthquake: light, moderate, or strong intensity is highly geographically correlated within the HSOS sample. Of the 346 communities in NWS, 331 were affected strongly by the earthquake and the remaining 15 were affected moderately. In NES, in contrast, only 45 communities were strongly affected, 625 were moderately affected, and 410 were lightly affected. This is to say, nearly all strongly affected communities are in NWS and all lightly affected communities are in NES. NES and NWS differ in important observable and unobservable ways - such as the controlling regime, which limits the conclusions that can be drawn from the data.
