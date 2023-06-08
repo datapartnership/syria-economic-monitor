@@ -119,6 +119,25 @@ gadm_sp <- merge(gadm_sp, ntl_df, by = "adm")
 gadm_sf <- gadm_sp %>% st_as_sf()
 
 # Map --------------------------------------------------------------------------
+leaflet() %>%
+  addTiles() %>%
+  addPolygons(data = gadm_sf[gadm_sf$intensity != "Moderate",],
+              popup = ~adm)
+
+gadm_sf$intensity[gadm_sf$adm %in% c("SY100002",
+                                     "SY050404",
+                                     "SY100403",
+                                     "SY100303",
+                                     "SY100301",
+                                     "SY040303",
+                                     "SY040304",
+                                     "SY040111",
+                                     "SY050403",
+                                     "SY100302",
+                                     "SY100001",
+                                     "SY100400")] <- "Moderate"
+
+
 gadm_sub_sf <- gadm_sf %>%
   st_buffer(dist = 2000) %>%
   dplyr::filter(intensity %in% c("Strong", "Very Strong", "Moderate"))
