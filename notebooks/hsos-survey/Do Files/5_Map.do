@@ -27,6 +27,8 @@ append using "${output}\2023_April_NES_1"
 save "${output}\2023_April_HSOS_1", replace
 
 *
+cd "${maps}"
+
 spshape2dta "${maps}\Admin 4\syr_pplp_adm4_unocha_20210113.shp", replace saving(syria4)
 
 use "syria4"
@@ -97,4 +99,4 @@ merge 1:m ADM3_PCODE using "syria3", keepusing(_ID)
 spmap catIDPs_new using syria3_shp, id(_ID) clm(u) legend(pos(3)) fcolor(Reds) ndo(gs10) legend(title("% of communities where KIs" "reported that residents are" "displaced within their own" "community?", size(1.6) justification(right)))
 
 
-graph export "Map_IDPs_new_earthquake_v2.png", as(png) name("Graph") replace
+graph export "${figures}\Map_IDPs_new_earthquake_v2.png", as(png) name("Graph") replace
