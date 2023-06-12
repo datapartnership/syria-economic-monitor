@@ -37,6 +37,9 @@ earthquake were already receiving humanitarian assistance prior to the
 earthquake. As Figure 1 shows, by March 2023 access to humanitarian aid
 increased for the resident population but remained comparable to
 pre-earthquake levels for the internally displaced population (IDPs).
+
+<img src="1_Fig HA access.png" width="500">
+
 The data suggests that increases for residents were short-lived;
 by April 2023 access to aid was comparable to pre-earthquake levels
 for both populations. There is a notable change in composition of aid
@@ -50,11 +53,10 @@ humanitarian assistance.
 For IDPs, increases in cash and food were offset by decreases in
 direct food aid and water and sanitation services.
 
-![Figure 1. Communities in which residents had access to humanitarian assistance]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access.png")
-
-![Figure 2. Communities that received humanitarian assistance in the form of cash]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access%cash%.png").
-
-![Figure 3. Communities that received humanitarian assistance in the form of voucher]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access%voucher%.png").
+<p float="left">
+  <img src="1_Fig HA access cash .png" width="250" />
+  <img src="1_Fig HA access voucher .png" width="250" />
+</p>
 
 ### Access to Services
 Access to community electricity networks was substantially lower for
@@ -73,10 +75,10 @@ food markets and health services prior to the earthquake and there is
 no significant change in trend observed after the earthquake.
 Nearly all communities in the sample had access to education services
 prior to the earthquake and there is no noticeable effect of the earthquake.
-
-![Figure 4a. Main form of electricity in the community]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\Fig%electricity_mainc.png").
-
-![Figure 4b. Main form of electricity in the community]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\Fig%electricity_8c.png").
+<p float="left">
+<img src="1_Fig electricity_mainc.png" width="250">
+<img src="Fig electricity_8c.png" width="250">
+</p>
 
 
 ### Priority Needs & Coping Strategies
@@ -96,20 +98,25 @@ reported a significant increase in food needs directly after the earthquake.
  Demand for shelter increased for residents and IDPs immediately after the
  earthquake; April data suggests that residents shelter needs are
  increasingly being met whereas shelter remains an important priority
- for IDPs. In terms of coping strategies, IDPs and residents both
- increases sales of household items and productive assets in communities
- strongly affected by the earthquake. Somewhat surprisingly, there are
- substantial decreases in reports of sending children to work or to
- early marriage for both residents and IDPs, possibly due to humanitarian
- interventions.  
+ for IDPs.
 
- ![Figure 5. Communities in which the top priority need is food]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%Top%priority%food%.png").
+<p float="left">
+<img src="1_Fig Top priority food .png"  width="250">
+<img src="1_Fig Top priority shelter .png"  width="250">
+</p>
 
- ![Figure shelter]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%Top%priority%shelter%.png").
+In terms of coping strategies, IDPs and residents both
+increases sales of household items and productive assets in communities
+strongly affected by the earthquake. Somewhat surprisingly, there are
+substantial decreases in reports of sending children to work or to
+early marriage for both residents and IDPs, possibly due to humanitarian
+interventions.  
 
- ![Figure 7a. Communities in which IDPs cope by selling household assets]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%IDP_coping_sellittemc.png").
+<p float="left">
+<img src="Fig IDP_coping_sellittemc.png"  width="250">
+<img src="Fig IDP_coping_savingc.png"  width="250">
+</p>
 
- ![Figure 7b. Communities in which IDPs cope by selling household savings]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\Fig%IDP_coping_savingc.png").
 
 
 ## Limitations
