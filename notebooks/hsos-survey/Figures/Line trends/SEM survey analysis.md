@@ -50,7 +50,7 @@ humanitarian assistance.
 For IDPs, increases in cash and food were offset by decreases in
 direct food aid and water and sanitation services.
 
-![Figure 1. Communities in which residents had access to humanitarian assistance]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access.png")
+![Figure 1. Communities in which residents had access to humanitarian assistance]("\1_Fig%HA%access.png")
 
 ![Figure 2. Communities that received humanitarian assistance in the form of cash]("C:\Users\wb357411\OneDrive%-%WBG\Documents\GitHub\syria-economic-monitor\notebooks\hsos-survey\Figures\Line%trends\1_Fig%HA%access%cash%.png").
 
