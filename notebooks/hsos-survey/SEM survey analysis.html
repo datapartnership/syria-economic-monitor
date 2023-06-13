@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Humanitarian Assistance Survey Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ETJ4QT0E4L"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ETJ4QT0E4L');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/hsos-survey/SEM survey analysis';</script>
+    <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/hsos-survey/SEM survey analysis.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Seaborn Trade Activity Estimation" href="../ais-analysis/README.html" />
+    <link rel="prev" title="Estimating Stay Locations" href="../mobility/stops/03b-estimate-stay-locations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Data Goods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/introduction_to_data_goods.html">Introduction to Data Goods</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/foundational_datasets_and_data_products.html">Foundational Datasets, Data Products, &amp; Sample Indicators</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../earthquake-intensity/earthquake_intensity.html">Earthquake Intensity Map of Syria</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Products</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ntl-analysis/README.html">Nighttime Lights</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mobility/README.html">Movement Activity Trends</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mobility/stops/README.html">Estimating Stops in Lebanon and Syria based on Mobility Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/01b-convenience-sampling.html">Convenience Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/03a-count-within-aoi.html">Counting Devices within Areas of Interest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/03b-estimate-stay-locations.html">Estimating Stay Locations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity based on Mobility Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Humanitarian Assistance Survey Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ais-analysis/README.html">Seaborn Trade Activity Estimation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ais-analysis/01-descriptive-stats.html">AIS Data Exploration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ais-analysis/02-trade-estimation.html">AIS Trade Estimation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../traffic/README.html">Traffic Trends at Border Crossings</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syria-forest-cover/2023-summer-tree-cover-loss.html">Tree Cover Loss Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syria-forest-cover/syria_forest.html">Tree Cover Loss Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../internet-connectivity/README.html">Internet Connectivity Post Earthquake</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../internet-connectivity/ookla-speedtest-analysis.html">Ookla’s Number of Speedtest Intelligence Users</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conflict/acled.html">Armed Conflict Location and Event Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vegetation-conditions/README.html">Monitoring vegetation conditions</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vegetation-conditions/Seasonality_Parameters_Data_Extraction.html">Seasonality Parameters Data Extraction</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Insights and Indicators</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/2023-summer-economic-monitor.html">2023 Summer Economic Monitor Insights</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/team.html">Data Goods Team and Acknowledgements</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/syria-economic-monitor" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/syria-economic-monitor/edit/main/notebooks/hsos-survey/SEM survey analysis.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/datapartnership/syria-economic-monitor/issues/new?title=Issue%20on%20page%20%2Fnotebooks/hsos-survey/SEM survey analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/hsos-survey/SEM survey analysis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Humanitarian Assistance Survey Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#findings">Findings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#humanitarian-assistance">Humanitarian Assistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-services">Access to Services</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#priority-needs-coping-strategies">Priority Needs &amp; Coping Strategies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="humanitarian-assistance-survey-data">
+<h1>Humanitarian Assistance Survey Data<a class="headerlink" href="#humanitarian-assistance-survey-data" title="Permalink to this heading">#</a></h1>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>We use data from the Humanitarian Situation Overview Survey (HSOS) conducted by REACH. REACH is a joint initiative of IMPACT Initiatives, ACTED and the United Nations Institute for Training and Research - Operational Satellite Applications Programme (UNITAR-UNOSAT). The HSOS is collected monthly in Northeast Syria (NES) and Northwest Syria (NWS). The survey uses key informant interviews to collect data at the community (admin4) level. The panel used for the analysis includes 1,426 communities (371 in NWS and 1246 in NES) which are included in all rounds of data collection.</p>
+<p>The HSOS includes information on community situations and needs relating to shelter, electricity, water sanitation and hygiene (WASH), food security, livelihoods, health, education, humanitarian assistance, and priority needs. HSOS has disaggregated information on the different conditions and needs of residents and internally displaced persons (IDPs).</p>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
+<p>In the analysis, we look at trends in the data before and after the earthquake, and whether those trends differ depending on severity of exposure to the earthquake. We use data from December 2022 as the most recent data before the earthquake and April 2023 as the first dataset after the earthquake. Note that we do not include data from January 2023 as it was collected for NWS only, and we do not include data from February 2023 as it was collected during the time of the earthquake.</p>
+<p>We compare outcomes for communities severely impacted by the earthquake before/after the earthquake compared to communities moderately affected or lightly affected. We additionally compare the trends observed before/after the earthquake to the trends for the same three subsets of communities over the same period of time one year earlier. Specifically, we measure trends from December 2022 to March/April 2023, and compare those to trends from December 2021 to March/April 2022.</p>
+<p>The earthquake exposure measure uses the Modified Mercalli Intensity Scale (mmi). From this we derive three groups of communities: light earthquake intensity, moderate intensity, and strong or very strong intensity.</p>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
+<p>Code to replicate the analysis can be found <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/">here</a>.
+The <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/HSOS%20SEM%20-%20Master%20do%20file.do">main script</a> loads all packages and runs all scripts for the analysis.
+The script to produce the graphs can be found <a class="reference external" href="https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/4_Bar%25Graphs.do">here</a>.
+All data used in the analysis can be downloaded from <a class="reference external" href="https://reach-info.org/syr/hsos/">Syria Humanitarian Situation Overview Survey</a>.</p>
+</section>
+<section id="findings">
+<h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
+<section id="humanitarian-assistance">
+<h3>Humanitarian Assistance<a class="headerlink" href="#humanitarian-assistance" title="Permalink to this heading">#</a></h3>
+<p>Communities strongly affected by the earthquake (in Northwest Syria) were
+more likely to receive humanitarian assistance than communities that were
+less affected (in Northeast Syria), both before and after the earthquake.
+Approximately 80% of the communities that were strongly affected by the
+earthquake were already receiving humanitarian assistance prior to the
+earthquake. As Figure 1 shows, by March 2023 access to humanitarian aid
+increased for the resident population but remained comparable to
+pre-earthquake levels for the internally displaced population (IDPs).</p>
+<img src="1_Fig HA access.png" width="700">
+<p>The data suggests that increases for residents were short-lived;
+by April 2023 access to aid was comparable to pre-earthquake levels
+for both populations. There is a notable change in composition of aid
+post-earthquake: cash and food vouchers increase significantly immediately
+after the earthquake as shown in Figures 2 and 3.
+By April, cash assistance had returned to pre-earthquake level but
+provision of food vouchers remained higher than it was in the
+pre-earthquake period.
+For residents, these changes contribute to an overall increase in
+humanitarian assistance.
+For IDPs, increases in cash and food were offset by decreases in
+direct food aid and water and sanitation services.</p>
+<p float="left">
+  <img src="1_Fig HA access cash .png" width="350" />
+  <img src="1_Fig HA access voucher .png" width="350" />
+</p>
+</section>
+<section id="access-to-services">
+<h3>Access to Services<a class="headerlink" href="#access-to-services" title="Permalink to this heading">#</a></h3>
+<p>Access to community electricity networks was substantially lower for
+communities in NWS strongly affected by the earthquake than communities
+that were less affected (in NES). Immediately after the earthquake,
+access to electricity increases substantially in the strongly affected
+communities but does not change in communities lightly or moderately
+affected, as shown in Figure 4. These new connections translate directly
+into improved access for households: in strongly affected communities,
+the proportion of communities reporting less than 8 hours of electricity
+per day drops from two-thirds (pre-earthquake) to less than half
+(post-earthquake). Access to food markets, health services and education
+is not noticeably affected by the earthquake.
+Communities strongly affected by the earthquake had more access to
+food markets and health services prior to the earthquake and there is
+no significant change in trend observed after the earthquake.
+Nearly all communities in the sample had access to education services
+prior to the earthquake and there is no noticeable effect of the earthquake.</p>
+<p float="left">
+<img src="1_Fig electricity_mainc.png" width="350">
+<img src="Fig electricity_8c.png" width="350">
+</p>
+</section>
+<section id="priority-needs-coping-strategies">
+<h3>Priority Needs &amp; Coping Strategies<a class="headerlink" href="#priority-needs-coping-strategies" title="Permalink to this heading">#</a></h3>
+<p>In the post-earthquake period, the primary needs for the IDP population
+are food, shelter, and livelihood support. For residents, the top priority
+needs are food, livelihoods support and water and sanitation services.
+In communities strongly affected by the earthquake, food and shelter
+needs are particularly pronounced; these needs were already higher in
+the pre-earthquake period and the gap increases in the period after the
+earthquake, as shown in Figures 5 and 6. One-third of the strongly
+affected communities report that food is the top priority need for IDPs,
+compared to only about 1 in 10 of the less-affected communities.
+Residents in communities strongly affected by the earthquake also
+reported a significant increase in food needs directly after the earthquake.
+By April, residents’ demand for food had dropped, which is consistent
+with the significant increase in food aid observed in the same communities.
+Demand for shelter increased for residents and IDPs immediately after the
+earthquake; April data suggests that residents shelter needs are
+increasingly being met whereas shelter remains an important priority
+for IDPs.</p>
+<p float="left">
+<img src="1_Fig Top priority food .png"  width="350">
+<img src="1_Fig Top priority shelter .png"  width="350">
+</p>
+<p>In terms of coping strategies, IDPs and residents both
+increases sales of household items and productive assets in communities
+strongly affected by the earthquake. Somewhat surprisingly, there are
+substantial decreases in reports of sending children to work or to
+early marriage for both residents and IDPs, possibly due to humanitarian
+interventions.</p>
+<p float="left">
+<img src="Fig IDP_coping_sellittemc.png"  width="350">
+<img src="Fig IDP_coping_savingc.png"  width="350">
+</p>
+</section>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<p>The categorical definition of exposure to the earthquake: light, moderate, or strong intensity is highly geographically correlated within the HSOS sample. Of the 346 communities in NWS, 331 were affected strongly by the earthquake and the remaining 15 were affected moderately. In NES, in contrast, only 45 communities were strongly affected, 625 were moderately affected, and 410 were lightly affected. This is to say, nearly all strongly affected communities are in NWS and all lightly affected communities are in NES. NES and NWS differ in important observable and unobservable ways - such as the controlling regime, which limits the conclusions that can be drawn from the data.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
+<p>Given the limited variation in the measure of earthquake intensity, the first next step will be to explore distance from the epicenter as a more continuous measure which may be less correlated with other underlying conditions (such as soil characteristics). If we are able to establish parallel trends prior to the earthquake, a difference-in-difference strategy would be appropriate.
+Longer-term, a larger survey sample, ideally nationally-representative  would all for more robust analysis.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/hsos-survey"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../mobility/stops/03b-estimate-stay-locations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estimating Stay Locations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ais-analysis/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Seaborn Trade Activity Estimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#findings">Findings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#humanitarian-assistance">Humanitarian Assistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-services">Access to Services</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#priority-needs-coping-strategies">Priority Needs &amp; Coping Strategies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By World Bank Development Data Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jun 13, 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+    <b>All content (unless otherwise specified) is subject to the <a href="https://raw.githubusercontent.com/worldbank/template/main/LICENSE">World Bank Master Community License Agreement.</a></b>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
