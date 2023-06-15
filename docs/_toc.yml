@@ -11,6 +11,8 @@ parts:
   - caption: Data Products
     chapters:
       - file: notebooks/ntl-analysis/README
+        sections:
+          - file: notebooks/ntl-analysis/ntl-update-6-2023.md
       - file: notebooks/mobility/README
         sections:
           - file: notebooks/mobility/stops/README
@@ -27,6 +29,7 @@ parts:
       - file: notebooks/hsos-survey/SEM survey analysis.md
       - file: notebooks/ais-analysis/README
         sections:
+          - file: notebooks/ais-update-6-2023.md
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
           - file: notebooks/ais-analysis/02-trade-estimation.ipynb
       - file: notebooks/traffic/README
