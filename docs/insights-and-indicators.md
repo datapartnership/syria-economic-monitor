@@ -1,0 +1,3 @@
+# Sampe Insights and Indicators
+
+Some data products have been formatted as comparable indicatos in an [Excel workbook](https://worldbankgroup.sharepoint.com/:x:/t/DevelopmentDataPartnershipCommunity-WBGroup/EXZkY4Z6vMVMjRVcIBCHqlkBVI4z1b9rP1fyyLQ6aluvWA?e=pFazxV), accessible via the [Project Sharepoint](https://worldbankgroup.sharepoint.com/:f:/r/teams/DevelopmentDataPartnershipCommunity-WBGroup/Shared%20Documents/Projects/Data%20Lab/Syria%20Economic%20Monitor?csf=1&web=1&e=vn3ybj). This section includes space for additional analytics, where indicators have been combined to generate new insights. 
