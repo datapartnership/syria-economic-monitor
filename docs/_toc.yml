@@ -45,7 +45,7 @@ parts:
         - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
   - caption: Insights and Indicators
     chapters:
-      - file: docs/2023-summer-economic-monitor
+      - file: docs/insights-and-indicators
   - caption: Acknowledgements
     chapters:
       - file: docs/team
