@@ -38,7 +38,7 @@ earthquake. As Figure 1 shows, by March 2023 access to humanitarian aid
 increased for the resident population but remained comparable to
 pre-earthquake levels for the internally displaced population (IDPs).
 
-<img src="./Figures/Line trends/1_Fig HA access.png" width="700">
+<img src="../notebooks/hsos-survey/Figures/Line trends/1_Fig HA access.png" width="700">
 
 The data suggests that increases for residents were short-lived;
 by April 2023 access to aid was comparable to pre-earthquake levels
@@ -54,8 +54,8 @@ For IDPs, increases in cash and food were offset by decreases in
 direct food aid and water and sanitation services.
 
 <p float="left">
-  <img src="./Figures/Line trends/1_Fig HA access cash .png" width="350" />
-  <img src="./Figures/Line trends/1_Fig HA access voucher .png" width="350" />
+  <img src="../notebooks/hsos-survey/Figures/Line trends/1_Fig HA access cash .png" width="350" />
+  <img src="../notebooks/hsos-survey/Figures/Line trends/1_Fig HA access voucher .png" width="350" />
 </p>
 
 ### Access to Services
@@ -76,8 +76,8 @@ no significant change in trend observed after the earthquake.
 Nearly all communities in the sample had access to education services
 prior to the earthquake and there is no noticeable effect of the earthquake.
 <p float="left">
-<img src="./Figures/Line trends/1_Fig electricity_mainc.png" width="350">
-<img src="./Figures/Line trends/Fig electricity_8c.png" width="350">
+<img src="../notebooks/hsos-survey/Figures/Line trends/1_Fig electricity_mainc.png" width="350">
+<img src="../notebooks/hsos-survey/Figures/Line trends/Fig electricity_8c.png" width="350">
 </p>
 
 
@@ -101,8 +101,8 @@ reported a significant increase in food needs directly after the earthquake.
  for IDPs.
 
 <p float="left">
-<img src="./Figures/Line trends/1_Fig Top priority food .png"  width="350">
-<img src="./Figures/Line trends/1_Fig Top priority shelter .png"  width="350">
+<img src="../notebooks/hsos-survey/Figures/Line trends/1_Fig Top priority food .png"  width="350">
+<img src="../notebooks/hsos-survey/Figures/Line trends/1_Fig Top priority shelter .png"  width="350">
 </p>
 
 In terms of coping strategies, IDPs and residents both
@@ -113,8 +113,8 @@ early marriage for both residents and IDPs, possibly due to humanitarian
 interventions.  
 
 <p float="left">
-<img src="./Figures/Line trends/Fig IDP_coping_sellittemc.png"  width="350">
-<img src="./Figures/Line trends/Fig IDP_coping_savingc.png"  width="350">
+<img src="../notebooks/hsos-survey/Figures/Line trends/Fig IDP_coping_sellittemc.png"  width="350">
+<img src="../notebooks/hsos-survey/Figures/Line trends/Fig IDP_coping_savingc.png"  width="350">
 </p>
 
 
