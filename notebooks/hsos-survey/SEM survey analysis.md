@@ -38,7 +38,12 @@ earthquake. As Figure 1 shows, by March 2023 access to humanitarian aid
 increased for the resident population but remained comparable to
 pre-earthquake levels for the internally displaced population (IDPs).
 
-<img src="../../notebooks/hsos-survey/Figures/Line trends/1_Fig HA access.png" width="700">
+```{figure} ../../reports/figures/1_Fig HA access.png
+---
+scale: 75%
+align: center
+---
+```
 
 The data suggests that increases for residents were short-lived;
 by April 2023 access to aid was comparable to pre-earthquake levels
