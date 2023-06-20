@@ -24,7 +24,7 @@ parts:
             title: Estimating Activity based on Mobility Data
           - url: https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html
             title: Estimating Activity based on Visits to Points of Interest
-      - file: notebooks/hsos-survey/SEM survey analysis.md
+      - file: notebooks/hsos-survey/README.md
       - file: notebooks/ais-analysis/README
         sections:
           - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
