@@ -34,17 +34,22 @@ more likely to receive humanitarian assistance than communities that were
 less affected (in Northeast Syria), both before and after the earthquake.
 Approximately 80% of the communities that were strongly affected by the
 earthquake were already receiving humanitarian assistance prior to the
-earthquake. As Figure 1 shows, by March 2023 access to humanitarian aid
+earthquake. As Figure 9 shows, by March 2023 access to humanitarian aid
 increased for the resident population but remained comparable to
 pre-earthquake levels for the internally displaced population (IDPs).
 
-![HA_Access](./Figures/Line Trends/1_Fig HA access.png)
+```{figure} ./Figures/Line_trends/1_Fig_HA_access.png
+---
+align: center
+---
+Access to Humanitarian Aid
+```
 
 The data suggests that increases for residents were short-lived;
 by April 2023 access to aid was comparable to pre-earthquake levels
 for both populations. There is a notable change in composition of aid
 post-earthquake: cash and food vouchers increase significantly immediately
-after the earthquake as shown in Figures 2 and 3.
+after the earthquake as shown in Figures 10 and 11.
 By April, cash assistance had returned to pre-earthquake level but
 provision of food vouchers remained higher than it was in the
 pre-earthquake period.
@@ -53,10 +58,23 @@ humanitarian assistance.
 For IDPs, increases in cash and food were offset by decreases in
 direct food aid and water and sanitation services.
 
-<p float="left">
-  <img src="../../notebooks/hsos-survey/Figures/Line trends/1_Fig HA access cash .png" width="350" />
-  <img src="../../notebooks/hsos-survey/Figures/Line trends/1_Fig HA access voucher .png" width="350" />
-</p>
+```{figure} ./Figures/Line_trends/1_Fig_HA_access_cash.png
+---
+align: left
+---
+Access to Humanitarian Aid - Cash
+```
+
+```{figure} ./Figures/Line_trends/1_Fig_HA_access_voucher.png
+---
+align: left
+---
+Access to Humanitarian Aid - Voucher
+```
+<!-- <p float="left">
+  <img src="./Figures/Line_trends/1_Fig_HA_access_cash.png" width="350" />
+  <img src="./Figures/Line_trends/1_Fig_HA_access_voucher.png" width="350" />
+</p> -->
 
 ### Access to Services
 Access to community electricity networks was substantially lower for
@@ -64,7 +82,7 @@ communities in NWS strongly affected by the earthquake than communities
 that were less affected (in NES). Immediately after the earthquake,
 access to electricity increases substantially in the strongly affected
 communities but does not change in communities lightly or moderately
-affected, as shown in Figure 4. These new connections translate directly
+affected, as shown in Figure 12. These new connections translate directly
 into improved access for households: in strongly affected communities,
 the proportion of communities reporting less than 8 hours of electricity
 per day drops from two-thirds (pre-earthquake) to less than half
@@ -75,10 +93,25 @@ food markets and health services prior to the earthquake and there is
 no significant change in trend observed after the earthquake.
 Nearly all communities in the sample had access to education services
 prior to the earthquake and there is no noticeable effect of the earthquake.
-<p float="left">
-<img src="../../notebooks/hsos-survey/Figures/Line trends/1_Fig electricity_mainc.png" width="350">
-<img src="../../notebooks/hsos-survey/Figures/Line trends/Fig electricity_8c.png" width="350">
-</p>
+
+```{figure} ./Figures/Line_trends/1_Fig_electricity_mainc.png
+---
+align: left
+---
+Electricity Main Source - Community Network
+```
+
+```{figure} ./Figures/Line_trends/Fig_electricity_8c.png
+---
+align: left
+---
+Less than 8 hours of electricity
+```
+
+<!-- <p float="left">
+<img src="./Figures/Line_trends/1_Fig_electricity_mainc.png" width="350">
+<img src="./Figures/Line_trends/Fig_electricity_8c.png" width="350">
+</p> -->
 
 
 ### Priority Needs & Coping Strategies
@@ -88,7 +121,7 @@ needs are food, livelihoods support and water and sanitation services.
 In communities strongly affected by the earthquake, food and shelter
 needs are particularly pronounced; these needs were already higher in
 the pre-earthquake period and the gap increases in the period after the
-earthquake, as shown in Figures 5 and 6. One-third of the strongly
+earthquake, as shown in Figures 14 and 15. One-third of the strongly
 affected communities report that food is the top priority need for IDPs,
 compared to only about 1 in 10 of the less-affected communities.
 Residents in communities strongly affected by the earthquake also
@@ -100,10 +133,24 @@ reported a significant increase in food needs directly after the earthquake.
  increasingly being met whereas shelter remains an important priority
  for IDPs.
 
-<p float="left">
-<img src="../../notebooks/hsos-survey/Figures/Line trends/1_Fig Top priority food .png"  width="350">
-<img src="../../notebooks/hsos-survey/Figures/Line trends/1_Fig Top priority shelter .png"  width="350">
-</p>
+ ```{figure} ./Figures/Line_trends/1_Fig_Top_priority_food.png
+---
+align: left
+---
+Food as a primary need
+```
+
+```{figure} ./Figures/Line_trends/1_Fig_Top_priority_shelter.png
+---
+align: left
+---
+Shelter as a primary need
+```
+
+<!-- <p float="left">
+<img src="./Figures/Line_trends/1_Fig_Top_priority_food .png"  width="350">
+<img src="./Figures/Line_trends/1_Fig_Top_priority_shelter .png"  width="350">
+</p> -->
 
 In terms of coping strategies, IDPs and residents both
 increases sales of household items and productive assets in communities
@@ -112,10 +159,24 @@ substantial decreases in reports of sending children to work or to
 early marriage for both residents and IDPs, possibly due to humanitarian
 interventions.  
 
-<p float="left">
-<img src="../../notebooks/hsos-survey/Figures/Line trends/Fig IDP_coping_sellittemc.png"  width="350">
-<img src="../../notebooks/hsos-survey/Figures/Line trends/Fig IDP_coping_savingc.png"  width="350">
-</p>
+ ```{figure} ./Figures/Line_trends//Fig_IDP_coping_sellittemc.png
+---
+align: left
+---
+Coping strategies - Selling household items or assets
+```
+
+```{figure} ./Figures/Line_trends/Fig_IDP_coping_savingc.png
+---
+align: left
+---
+Coping strategies - Spending savings
+```
+
+<!-- <p float="left">
+<img src="./Figures/Line_trends/Fig_IDP_coping_sellittemc.png"  width="350">
+<img src="./Figures/Line_trends/Fig_IDP_coping_savingc.png"  width="350">
+</p> -->
 
 
 
