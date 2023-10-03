@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Movement Activity Trends</title>
+    <title>Population Movement Trends</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -72,10 +73,11 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/mobility/README.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Estimating Stops in Lebanon and Syria based on Mobility Data" href="stops/README.html" />
+    <link rel="next" title="Estimating Hubs in Lebanon and Syria through Mobility Data" href="stops/README.html" />
     <link rel="prev" title="2023-06 Update - Nighttime Lights" href="../ntl-analysis/ntl-update-6-2023.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 03, 2023"/>
   </head>
   
   
@@ -84,6 +86,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -170,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ntl-analysis/ntl-update-6-2023.html">2023-06 Update - Nighttime Lights</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Movement Activity Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="stops/README.html">Estimating Stops in Lebanon and Syria based on Mobility Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Population Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="stops/README.html">Estimating Hubs in Lebanon and Syria through Mobility Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="stops/01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stops/01b-convenience-sampling.html">Convenience Sampling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stops/03a-count-within-aoi.html">Counting Devices within Areas of Interest</a></li>
@@ -383,10 +394,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -394,7 +405,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -411,7 +422,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Movement Activity Trends</h1>
+    <h1>Population Movement Trends</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -434,18 +445,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="movement-activity-trends">
-<h1>Movement Activity Trends<a class="headerlink" href="#movement-activity-trends" title="Permalink to this heading">#</a></h1>
-<p>In this pilot study, we leverage mobility data to estimate trade activity (tentatively both formal and informal) and provide insights in the aftermath of the earthquakes near <a class="reference external" href="https://www.usgs.gov/news/featured-story/m78-and-m75-kahramanmaras-earthquake-sequence-near-nurdagi-turkey-turkiye">Nurdağı, Türkiye</a> on February 6, 2023.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="population-movement-trends">
+<h1>Population Movement Trends<a class="headerlink" href="#population-movement-trends" title="Permalink to this heading">#</a></h1>
+<p>This pilot study seeks to demonstrate the potential of mobility data as a powerful tool for estimating population movement trends and, particularly, in context of emergencies and data scarcity.</p>
+<p>Understanding population movement trends is of paramount importance for various fields, including urban planning, disaster response, and public policy formulation. Traditional methods of data collection, such as census surveys and transportation studies, while valuable, often face limitations in terms of scale, timeliness, and granularity. Mobility data, sourced from mobile devices, GPS, and other location-based services, offers an alternative approach that can transcend these limitations. By analyzing anonymized and aggregated location data sample of individuals, we aim to uncover nuanced patterns of movement within urban and rural settings, and gauge the impact of external factors, such as public events or emergencies, on population mobility. It is paramount to emphrasize that this approach does not come with significant limitations, in particular, in terms of sample bias.</p>
+<p>The objectives of this study are threefold:</p>
+<ul class="simple">
+<li><p>To assess the feasibility and accuracy of using mobility data for estimating population movement trends.</p></li>
+<li><p>To develop analytical methods and models that can extract meaningful insights from this data.</p></li>
+<li><p>To showcase the practical applications and relevance of such insights for informed decision-making in various domains.</p></li>
+</ul>
+<p>This pilot study resulted in following (working) outputs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="stops/README.html#mobility-stops"><span class="std std-ref">Estimating Hubs in Lebanon and Syria through Mobility Data</span></a></p></li>
+<li><p><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/README.html">Türkiye-Syria Earquake Impact</a></p></li>
+</ul>
 <section id="data-availability-statement">
 <h2>Data Availability Statement<a class="headerlink" href="#data-availability-statement" title="Permalink to this heading">#</a></h2>
 <p>Data are available upon request through the <a class="reference external" href="https://datapartnership.org">Development Data Partnership</a>. Licensing and access information for all other datasets are included in the documentation.</p>
 </section>
 <section id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>The mobility data represents a subset of the total population in an area, specifically only users that turned on the Location Services device setting on their mobile device. This is not the total population density.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p><strong>Sample Bias:</strong> The sampled population is composed of GPS-enabled devices drawn out from a longituginal mobility data panel. It is important to emphasize the sampled population is obtained via convenience sampling and that the mobility data panel represents only a subset of the total population in an area at a time, specifically only users that turned on location tracking on their mobile device. Thus, derived metrics do not represent the total population density.</p></li>
+<li><p><strong>Incomplete Coverage:</strong> Mobility data is typically collected from sources such as mobile phone networks, GPS devices, or transportation systems. These sources may not be representative of the entire population or all economic activities, leading to sample bias and potentially inaccurate estimations.Not all individuals or businesses have access to devices or services that generate mobility data. This can result in incomplete coverage and potential underrepresentation of certain demographic groups or economic sectors.</p></li>
+<li><p><strong>Lack of Contextual Information:</strong> Mobility data primarily captures movement patterns and geolocation information. It may lack other crucial contextual information, such as transactional data, business types, or specific economic activities, which are essential for accurate estimation of economic activity.</p></li>
+</ul>
 </div>
 </section>
 <div class="toctree-wrapper compound">
@@ -477,11 +504,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../ntl-analysis/ntl-update-6-2023.html"
@@ -497,14 +523,11 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Estimating Stops in Lebanon and Syria based on Mobility Data</p>
+        <p class="prev-next-title">Estimating Hubs in Lebanon and Syria through Mobility Data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -546,7 +569,7 @@ By World Bank Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 20, 2023.
+  Last updated on Oct 03, 2023.
   <br/>
 </p>
   </div>
@@ -570,8 +593,8 @@ By World Bank Development Data Group
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
