@@ -450,62 +450,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
-
-<span class="k">def</span> <span class="nf">get_fig</span><span class="p">(</span><span class="n">acled</span><span class="p">,</span> <span class="n">start_date</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">):</span>
-
-    <span class="c1"># fig, ax = plt.subplots(figsize=(12,6))</span>
-    <span class="c1"># plt.rcParams[&quot;font.family&quot;] = &quot;Arial&quot;</span>
-
-    <span class="k">if</span> <span class="n">start_date</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">acled</span><span class="p">[(</span><span class="n">acled</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">start_date</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">acled</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">end_date</span><span class="p">)]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">acled</span>
-    
-    <span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">vmax</span> <span class="o">=</span> <span class="mi">70</span>
-
-    <span class="c1">#syria_adm3.boundary.plot(ax=ax, color = &#39;#d3d3d3&#39;)</span>
-    <span class="n">p1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;fatalities&#39;</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-    <span class="c1">#turkey_adm2.boundary.plot(ax=ax, edgecolor = &#39;#D3D3D3&#39;, linewidth=0.5)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-
-    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-
-
-
-    <span class="n">sm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">))</span>
-
-
-    <span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
-    <span class="n">dvider_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1.5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="o">**</span><span class="n">dvider_kwargs</span><span class="p">),</span>
-                <span class="c1">#format = matplotlib.ticker.FuncFormatter(lambda x, pos: &#39;&#39;),</span>
-                <span class="c1">#ticks = matplotlib.ticker.FixedLocator([])</span>
-                <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">p1</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="armed-conflict-location-and-event-data-analysis">
+  <section class="tex2jax_ignore mathjax_ignore" id="armed-conflict-location-and-event-data-analysis">
 <h1>Armed Conflict Location and Event Data Analysis<a class="headerlink" href="#armed-conflict-location-and-event-data-analysis" title="Permalink to this heading">#</a></h1>
 <p>The Armed Conflict Location &amp; Event Data Project (ACLED) is a disaggregated data collection, analysis, and crisis mapping project. ACLED collects information on the dates, actors, locations, fatalities, and types of all reported political violence and protest events around the world. The raw data is available through a license obtained by the World Bank</p>
 <section id="calculating-conflict-index">
