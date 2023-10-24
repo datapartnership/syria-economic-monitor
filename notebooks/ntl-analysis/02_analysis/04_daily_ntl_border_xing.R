@@ -19,7 +19,7 @@ ntl_df <- ntl_df %>%
 # Figures: Individual ADM ------------------------------------------------------
 ntl_df %>%
   dplyr::filter(date >= ymd("2022-11-01"),
-                date <= ymd("2023-04-15")) %>%
+                date <= ymd("2023-10-15")) %>%
   dplyr::filter(crossing %in% c("Bab al Hawa",
                                 "Ar Ra'-ee",
                                 "Bab al-Salam")) %>%
