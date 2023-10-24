@@ -473,6 +473,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="monitoring-vegetation-conditions">
 <h1>Monitoring vegetation conditions<a class="headerlink" href="#monitoring-vegetation-conditions" title="Permalink to this heading">#</a></h1>
+<p><strong>Update:</strong> using data from 1 Jan 2002 - 30 Sep 2023</p>
 <p>The importance of monitoring vegetation conditions cannot be overstated, particularly in countries like Syria, where ongoing conflicts and environmental changes have had significant impacts on the landscape. Vegetation serves as an essential component of the Earth’s ecosystem, playing a crucial role in maintaining biodiversity, supporting agriculture, and regulating climate. Continuous monitoring of vegetation dynamics can provide valuable insights into ecosystem health, early warnings of environmental degradation, and identify opportunities for sustainable land management practices.</p>
 <p><img alt="WorldCover" src="../../_images/climag-worldcover.png" /></p>
 <p><strong>Figure 1.</strong> Syria land cover.</p>
@@ -500,8 +501,8 @@ document.write(`
 <li><p>Applying cropland mask, keep only pixels identified as a cropland based on ESA WorldCover.</p></li>
 <li><p>Clipped for Syria and batch export the collection to Google Drive.</p></li>
 </ul>
-<p><img alt="VI" src="../../_images/climag-vi-djf-2023.png" /></p>
-<p><strong>Figure 3.</strong> Vegetation indices, December-January-February 2023.</p>
+<p><img alt="VI" src="../../_images/syr_evi_202309.png" /></p>
+<p><strong>Figure 3.</strong> Vegetation indices, September 2023.</p>
 </section>
 </section>
 <section id="products">
@@ -521,8 +522,8 @@ document.write(`
 <p>The anomaly is calculated based on percentage of the average</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">/</span> <span class="pre">&quot;mean_evi&quot;)</span></code></p>
 <p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> is the long-term average of EVI.</p>
-<p><img alt="RatioAnom" src="../../_images/climag-evi-ratioanom.png" /></p>
-<p><strong>Figure 4.</strong> Ratio anomaly, 6-21 March 2023</p>
+<p><img alt="RatioAnom" src="../../_images/syr_evi_ratioanom_202309.png" /></p>
+<p><strong>Figure 4.</strong> Ratio anomaly, September 2023 - compared to the reference 2012 - 2022</p>
 </section>
 <section id="difference-anomaly">
 <h4>Difference Anomaly<a class="headerlink" href="#difference-anomaly" title="Permalink to this heading">#</a></h4>
@@ -530,8 +531,8 @@ document.write(`
 <p>The anomaly is calculated based on difference from the average</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;mean_evi&quot;</span></code></p>
 <p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> is the long-term average of EVI.</p>
-<p><img alt="DiffAnom" src="../../_images/climag-evi-diffanom.png" /></p>
-<p><strong>Figure 5.</strong> Difference anomaly, 6-21 March 2023</p>
+<p><img alt="DiffAnom" src="../../_images/syr_evi_diffanom_202309.png" /></p>
+<p><strong>Figure 5.</strong> Difference anomaly, September 2023 - compared to the reference 2012 - 2022</p>
 </section>
 <section id="standardized-anomaly">
 <h4>Standardized Anomaly<a class="headerlink" href="#standardized-anomaly" title="Permalink to this heading">#</a></h4>
@@ -539,17 +540,17 @@ document.write(`
 <p>The anomaly is calculated based on difference from the average and standard deviation</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;anomaly</span> <span class="pre">(%)&quot;</span> <span class="pre">=</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;mean_evi&quot;)</span> <span class="pre">/</span> <span class="pre">&quot;std_evi&quot;</span></code></p>
 <p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">std_evi</span></code> is the long-term average and standard deviation of EVI.</p>
-<p><img alt="StdAnom" src="../../_images/climag-evi-stdanom.png" /></p>
-<p><strong>Figure 6.</strong> Standardized anomaly, 6-21 March 2023</p>
+<p><img alt="StdAnom" src="../../_images/syr_evi_stdanom_202309.png" /></p>
+<p><strong>Figure 6.</strong> Standardized anomaly, September 2023 - compared to the reference 2012 - 2022</p>
 </section>
 <section id="vegetation-condition-index-vci">
 <h4>Vegetation Condition Index (VCI)<a class="headerlink" href="#vegetation-condition-index-vci" title="Permalink to this heading">#</a></h4>
-<p>The VCI is a normalized index that ranges from 0 to 100, with higher values indicating better vegetation health. Derived from the EVI data, the VCI provides a concise measure of the overall vegetation condition, enabling the identification of trends and patterns in vegetation dynamics, as well as the evaluation of the effectiveness of management interventions.</p>
-<p>The anomaly is calculated based on difference from the average and standard deviation</p>
+<p>The Vegetation Condition Index (VCI) is a normalized index calculated from the Enhanced Vegetation Index (EVI) data, which ranges from 0 to 100, with higher values indicating better vegetation health. By providing a concise measure of the overall vegetation condition, the VCI enables the identification of trends and patterns in vegetation dynamics and the evaluation of the effectiveness of management interventions.</p>
+<p>To calculate the VCI, the current EVI value is compared to its long-term minimum and maximum values using the following equation:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;vci&quot;</span> <span class="pre">=</span> <span class="pre">100</span> <span class="pre">*</span> <span class="pre">(&quot;evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;min_evi&quot;)</span> <span class="pre">/</span> <span class="pre">(&quot;max_evi&quot;</span> <span class="pre">-</span> <span class="pre">&quot;min_evi&quot;)</span></code></p>
-<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">mean_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">std_evi</span></code> is the long-term average and standard deviation of EVI.</p>
-<p><img alt="VCI" src="../../_images/climag-evi-vci.png" /></p>
-<p><strong>Figure 7.</strong> Vegetation Condition Index, 6-21 March 2023</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">evi</span></code> is current EVI and <code class="docutils literal notranslate"><span class="pre">min_evi</span></code> and <code class="docutils literal notranslate"><span class="pre">max_evi</span></code> is the long-term minimum and maximum of EVI.</p>
+<p><img alt="VCI" src="../../_images/syr_evi_vci_202309.png" /></p>
+<p><strong>Figure 7.</strong> Vegetation Condition Index, September 2023 - compared to the reference 2012 - 2022</p>
 </section>
 </section>
 <section id="phenological-metrics">
@@ -558,20 +559,24 @@ document.write(`
 <section id="start-of-season-sos">
 <h4>Start of Season (SOS)<a class="headerlink" href="#start-of-season-sos" title="Permalink to this heading">#</a></h4>
 <p>The SOS is a critical phenological metric that represents the onset of the growing season. By analyzing the timing of SOS, we can gain insights into how environmental factors, such as temperature and precipitation, impact vegetation growth and development. Understanding the SOS is vital for agricultural planning, as it can inform planting and harvesting schedules, irrigation management, and help predict potential yield outcomes.</p>
-<p><img alt="SOS" src="../../_images/climag-sos-2022.png" /></p>
-<p><strong>Figure 8.</strong> Start of Season, 2022</p>
+<p><img alt="SOS1" src="../../_images/syr_pheno_sos1_2023.png" /></p>
+<p><strong>Figure 8.</strong> Start of Season, Jan - Sep 2023, Season 1</p>
+<p><img alt="SOS2" src="../../_images/syr_pheno_sos2_2023.png" /></p>
+<p><strong>Figure 9.</strong> Start of Season, Jan - Sep 2023, Season 2</p>
 </section>
 <section id="mid-of-season-mos">
 <h4>Mid of Season (MOS)<a class="headerlink" href="#mid-of-season-mos" title="Permalink to this heading">#</a></h4>
 <p>The MOS is an essential phenological parameter that indicates the peak of the growing season. Examining MOS can provide valuable information about the overall health and productivity of vegetation, as it typically corresponds to the period of maximum photosynthetic activity and biomass accumulation. Assessing MOS trends can help identify changes in vegetation dynamics due to climate change, land-use practices, or other environmental stressors, and support the development of effective management strategies for agriculture and natural resources.</p>
-<p><img alt="MOS" src="../../_images/climag-mos-2022.png" /></p>
-<p><strong>Figure 9.</strong> Mid of Season, 2022</p>
+<p><img alt="MOS1" src="../../_images/syr_pheno_mos1_2023.png" /></p>
+<p><strong>Figure 10.</strong> Mid of Season, Jan - Sep 2023, Season 1</p>
+<p><img alt="MOS1" src="../../_images/syr_pheno_mos1_2023.png" /></p>
+<p><strong>Figure 11.</strong> Mid of Season, Jan - Sep 2023, Season 2</p>
 </section>
 <section id="end-of-season-eos">
 <h4>End of Season (EOS)<a class="headerlink" href="#end-of-season-eos" title="Permalink to this heading">#</a></h4>
 <p>The EOS is an important phenological marker signifying the conclusion of the growing season. Investigating the timing of EOS can reveal valuable information about the duration of the growing season and the overall performance of vegetation. EOS trends can help us understand how factors such as temperature, precipitation, and human-induced land-use changes impact ecosystems and their productivity. Information on EOS is also crucial for agricultural management, as it aids in planning harvest schedules and post-harvest activities, and supports the development of informed land management and conservation policies.</p>
-<p><img alt="EOS" src="../../_images/climag-eos-2022.png" /></p>
-<p><strong>Figure 10.</strong> End of Season, 2022</p>
+<p><img alt="EOS" src="../../_images/syr_pheno_eos_2023.png" /></p>
+<p><strong>Figure 12.</strong> End of Season, Jan - Sep 2023</p>
 </section>
 </section>
 </section>
