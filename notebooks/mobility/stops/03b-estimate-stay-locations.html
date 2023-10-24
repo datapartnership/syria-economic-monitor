@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estimating Stay Locations</title>
+    <title>Computing Stay Locations</title>
   
   
   
@@ -182,16 +182,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ntl-analysis/ntl-update-12-2023.html">2023-06 Update - Nighttime Lights</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Population Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="README.html">Estimating Hubs in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="README.html">Estimating cross-border movement in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="01b-convenience-sampling.html">Convenience Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01b-convenience-sampling.html">Constructiong Samples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03a-count-within-aoi.html">Counting Devices within Areas of Interest</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Estimating Stay Locations</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Computing Stay Locations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity based on Mobility Data</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity through on Mobility Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest through Mobility Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../hsos-survey/README.html">Humanitarian Assistance Survey Data</a></li>
@@ -423,7 +423,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Estimating Stay Locations</h1>
+    <h1>Computing Stay Locations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -434,7 +434,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mobility-data-panel">Mobility Data Panel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mobility-data">Mobility Data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-analysis">Trajectory Analysis</a><ul class="nav section-nav flex-column">
@@ -460,47 +460,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estimating-stay-locations">
-<h1>Estimating Stay Locations<a class="headerlink" href="#estimating-stay-locations" title="Permalink to this heading">#</a></h1>
-<p>In this notebook, we estimate stay locations as described in the <a class="reference internal" href="README.html"><span class="doc std std-doc">methodological notes</span></a> of this pilot study leveraging <a class="reference external" href="https://scikit-mobility.github.io/scikit-mobility/">scikit-mobility</a>.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
-<span class="kn">import</span> <span class="nn">geopandas</span>
-<span class="kn">import</span> <span class="nn">h3</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">skmob</span>
-<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
-<span class="kn">from</span> <span class="nn">skmob.measures.individual</span> <span class="kn">import</span> <span class="n">distance_straight_line</span>
-<span class="kn">from</span> <span class="nn">skmob.preprocessing</span> <span class="kn">import</span> <span class="n">clustering</span><span class="p">,</span> <span class="n">compression</span><span class="p">,</span> <span class="n">detection</span><span class="p">,</span> <span class="n">filtering</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_parameters docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://papermill.readthedocs.io/en/latest/usage-parameterize.html</span>
-<span class="n">DASK_SCHEDULER_ADDRESS</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
-<span class="n">DATE</span> <span class="o">=</span> <span class="s2">&quot;2022-01-01&quot;</span>
-<span class="n">YEAR</span> <span class="o">=</span> <span class="mi">2022</span>
-<span class="n">QUARTER</span> <span class="o">=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="computing-stay-locations">
+<h1>Computing Stay Locations<a class="headerlink" href="#computing-stay-locations" title="Permalink to this heading">#</a></h1>
+<p>In this notebook, we estimate stay locations as described in the <a class="reference internal" href="README.html"><span class="doc std std-doc">methodological notes</span></a> of this pilot study using <a class="reference external" href="https://scikit-mobility.github.io/scikit-mobility/">scikit-mobility</a>.</p>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<section id="mobility-data-panel">
-<h3>Mobility Data Panel<a class="headerlink" href="#mobility-data-panel" title="Permalink to this heading">#</a></h3>
+<section id="mobility-data">
+<h3>Mobility Data<a class="headerlink" href="#mobility-data" title="Permalink to this heading">#</a></h3>
 <p>In this step, we import the filtered down panel of longitudinal location data generated by <code class="docutils literal notranslate"><span class="pre">devices</span></code> identified within the proximity of the <strong>Area of Interest</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,7 +482,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Reading with <a class="reference external" href="https://www.dask.org">dask</a>,</p>
+<p>Reading with <a class="reference external" href="https://www.dask.org">Dask</a>,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">PATH</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">)</span>
@@ -533,12 +499,7 @@ document.write(`
 </div>
 </div>
 <p>Finally, the number of observations,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3241357
 </pre></div>
@@ -28619,403 +28580,6 @@ document.write(`
 <img alt="../../../_images/9864c68210ecd93b688808546b8ee4c8efb44bbc1b5f3722f0addced9dc06a23.png" src="../../../_images/9864c68210ecd93b688808546b8ee4c8efb44bbc1b5f3722f0addced9dc06a23.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_f</span> <span class="o">=</span> <span class="n">cstdf</span><span class="p">[</span><span class="n">cstdf</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user</span><span class="p">]</span><span class="o">.</span><span class="n">plot_trajectory</span><span class="p">(</span><span class="n">max_points</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span><span class="n">start_end_markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">cstdf</span><span class="p">[</span><span class="n">cstdf</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user</span><span class="p">]</span><span class="o">.</span><span class="n">plot_stops</span><span class="p">(</span><span class="n">map_f</span><span class="o">=</span><span class="n">map_f</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;head&gt;    
-    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
-    
-        &lt;script&gt;
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        &lt;/script&gt;
-    
-    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
-    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
-    
-            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
-            &lt;style&gt;
-                #map_79d2cc48301078d39804f5433ca5b737 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            &lt;/style&gt;
-        
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.3.0/leaflet-dvf.markers.min.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;    
-    
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_79d2cc48301078d39804f5433ca5b737&quot; &gt;&lt;/div&gt;
-        
-&lt;/body&gt;
-&lt;script&gt;    
-    
-            var map_79d2cc48301078d39804f5433ca5b737 = L.map(
-                &quot;map_79d2cc48301078d39804f5433ca5b737&quot;,
-                {
-                    center: [34.54879570007324, 37.10710906982422],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 12,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-            L.control.scale().addTo(map_79d2cc48301078d39804f5433ca5b737);
-
-            
-
-        
-    
-            var tile_layer_22db797de3d4b047885472c7e8d11568 = L.tileLayer(
-                &quot;https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png&quot;,
-                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\&quot;http://cartodb.com/attributions\&quot;\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\&quot;http://cartodb.com/attributions\&quot;\u003eattributions\u003c/a\u003e&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        function geo_json_b8727c80dafd7581838dc4fedfc80d82_styler(feature) {
-            switch(feature.id) {
-                default:
-                    return {&quot;color&quot;: &quot;#EF0096&quot;, &quot;dashArray&quot;: &quot;0, 0&quot;, &quot;opacity&quot;: 0.75, &quot;weight&quot;: 2};
-            }
-        }
-
-        function geo_json_b8727c80dafd7581838dc4fedfc80d82_onEachFeature(feature, layer) {
-            layer.on({
-            });
-        };
-        var geo_json_b8727c80dafd7581838dc4fedfc80d82 = L.geoJson(null, {
-                onEachFeature: geo_json_b8727c80dafd7581838dc4fedfc80d82_onEachFeature,
-            
-                style: geo_json_b8727c80dafd7581838dc4fedfc80d82_styler,
-        });
-
-        function geo_json_b8727c80dafd7581838dc4fedfc80d82_add (data) {
-            geo_json_b8727c80dafd7581838dc4fedfc80d82
-                .addData(data)
-                .addTo(map_79d2cc48301078d39804f5433ca5b737);
-        }
-            geo_json_b8727c80dafd7581838dc4fedfc80d82_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[36.22554, 33.428574], [36.246826, 33.43243], [36.338482, 33.538479], [36.576202, 33.775059], [36.75703, 34.134556], [36.738163, 34.548796], [37.107109, 34.589687], [37.449692, 34.571354], [37.973579, 34.513233], [40.129368, 35.341732], [40.127777, 35.333836], [40.130487, 35.334677], [40.128796, 35.332855]], &quot;type&quot;: &quot;LineString&quot;}, &quot;id&quot;: &quot;0&quot;, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
-
-        
-    
-            var marker_716f748573bb3197b87389f9ac20b03a = L.marker(
-                [33.42857360839844, 36.22554016113281],
-                {}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-            var icon_25c9d05b6c1ed0fbb70472191e3d602c = L.AwesomeMarkers.icon(
-                {&quot;extraClasses&quot;: &quot;fa-rotate-0&quot;, &quot;icon&quot;: &quot;info-sign&quot;, &quot;iconColor&quot;: &quot;white&quot;, &quot;markerColor&quot;: &quot;green&quot;, &quot;prefix&quot;: &quot;glyphicon&quot;}
-            );
-            marker_716f748573bb3197b87389f9ac20b03a.setIcon(icon_25c9d05b6c1ed0fbb70472191e3d602c);
-        
-    
-        var popup_d1403788a34db11dd21a0ab94613c165 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_6123cc00994f3a2f7921b50c6eea9760 = $(`&lt;div id=&quot;html_6123cc00994f3a2f7921b50c6eea9760&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;&lt;i&gt;Start&lt;/i&gt;&lt;BR&gt;2022/01/01 02:01&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/33.42857360839844,36.22554016113281&quot; target=&quot;_blank&quot;&gt;33.4286, 36.2255&lt;/a&gt;&lt;/div&gt;`)[0];
-            popup_d1403788a34db11dd21a0ab94613c165.setContent(html_6123cc00994f3a2f7921b50c6eea9760);
-        
-
-        marker_716f748573bb3197b87389f9ac20b03a.bindPopup(popup_d1403788a34db11dd21a0ab94613c165)
-        ;
-
-        
-    
-    
-            var marker_ee1b12a02793d29b86184ca029817359 = L.marker(
-                [35.332855224609375, 40.1287956237793],
-                {}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-            var icon_efdc2225c7dd4c3abb54d66a1d3258ea = L.AwesomeMarkers.icon(
-                {&quot;extraClasses&quot;: &quot;fa-rotate-0&quot;, &quot;icon&quot;: &quot;info-sign&quot;, &quot;iconColor&quot;: &quot;white&quot;, &quot;markerColor&quot;: &quot;red&quot;, &quot;prefix&quot;: &quot;glyphicon&quot;}
-            );
-            marker_ee1b12a02793d29b86184ca029817359.setIcon(icon_efdc2225c7dd4c3abb54d66a1d3258ea);
-        
-    
-        var popup_0e5cdb7eb68291746c44148d00cdebd0 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_017a5fdd5f78807fa0f7f4fd39d5e128 = $(`&lt;div id=&quot;html_017a5fdd5f78807fa0f7f4fd39d5e128&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;&lt;i&gt;End&lt;/i&gt;&lt;BR&gt;2022/01/01 17:19&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/35.332855224609375,40.1287956237793&quot; target=&quot;_blank&quot;&gt;35.3329, 40.1288&lt;/a&gt;&lt;/div&gt;`)[0];
-            popup_0e5cdb7eb68291746c44148d00cdebd0.setContent(html_017a5fdd5f78807fa0f7f4fd39d5e128);
-        
-
-        marker_ee1b12a02793d29b86184ca029817359.bindPopup(popup_0e5cdb7eb68291746c44148d00cdebd0)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_0ae665c79a33d5fbbcca4bdbe27d5391 = new L.RegularPolygonMarker(
-                [33.42857360839844, 36.22554016113281],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#68023F&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#68023F&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_b741811e6a102686a0797f4bc4f3ace1 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_dcbc0864110d905e232ae9192ead103b = $(`&lt;div id=&quot;html_dcbc0864110d905e232ae9192ead103b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/33.42857360839844,36.22554016113281&quot; target=&quot;_blank&quot;&gt;33.4286, 36.2255&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 02:01&lt;BR&gt;Dep: 2022/01/01 05:21&lt;BR&gt;Cluster: 10&lt;/div&gt;`)[0];
-            popup_b741811e6a102686a0797f4bc4f3ace1.setContent(html_dcbc0864110d905e232ae9192ead103b);
-        
-
-        regular_polygon_marker_0ae665c79a33d5fbbcca4bdbe27d5391.bindPopup(popup_b741811e6a102686a0797f4bc4f3ace1)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_482b17f1182bc9ded53aa1b7c8d34116 = new L.RegularPolygonMarker(
-                [33.432430267333984, 36.246826171875],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#7CFFFA&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#7CFFFA&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_9d53f748ec0194a6e799ac247e171932 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_8d1c2235d954f12ae43616b09750ab35 = $(`&lt;div id=&quot;html_8d1c2235d954f12ae43616b09750ab35&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/33.432430267333984,36.246826171875&quot; target=&quot;_blank&quot;&gt;33.4324, 36.2468&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 05:36&lt;BR&gt;Dep: 2022/01/01 05:56&lt;BR&gt;Cluster: 9&lt;/div&gt;`)[0];
-            popup_9d53f748ec0194a6e799ac247e171932.setContent(html_8d1c2235d954f12ae43616b09750ab35);
-        
-
-        regular_polygon_marker_482b17f1182bc9ded53aa1b7c8d34116.bindPopup(popup_9d53f748ec0194a6e799ac247e171932)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_983625f65a70c3e3d3a2b1f235f1fc48 = new L.RegularPolygonMarker(
-                [33.53847885131836, 36.33848190307617],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#FF71FD&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#FF71FD&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_91c9f705657f63c870234385f08057c6 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_d3f9bf7bdf6b2178a4b2fac4f7ec0ac8 = $(`&lt;div id=&quot;html_d3f9bf7bdf6b2178a4b2fac4f7ec0ac8&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/33.53847885131836,36.33848190307617&quot; target=&quot;_blank&quot;&gt;33.5385, 36.3385&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 06:06&lt;BR&gt;Dep: 2022/01/01 07:45&lt;BR&gt;Cluster: 8&lt;/div&gt;`)[0];
-            popup_91c9f705657f63c870234385f08057c6.setContent(html_d3f9bf7bdf6b2178a4b2fac4f7ec0ac8);
-        
-
-        regular_polygon_marker_983625f65a70c3e3d3a2b1f235f1fc48.bindPopup(popup_91c9f705657f63c870234385f08057c6)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_19bbea8dd752909e78ce0d64f78c3617 = new L.RegularPolygonMarker(
-                [33.77505874633789, 36.576202392578125],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#009FFA&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#009FFA&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_5dad47af30c7ce4ab2556c56063dec39 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_31c83e66922c292e84be62a7c57211dc = $(`&lt;div id=&quot;html_31c83e66922c292e84be62a7c57211dc&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/33.77505874633789,36.576202392578125&quot; target=&quot;_blank&quot;&gt;33.7751, 36.5762&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 08:01&lt;BR&gt;Dep: 2022/01/01 08:29&lt;BR&gt;Cluster: 7&lt;/div&gt;`)[0];
-            popup_5dad47af30c7ce4ab2556c56063dec39.setContent(html_31c83e66922c292e84be62a7c57211dc);
-        
-
-        regular_polygon_marker_19bbea8dd752909e78ce0d64f78c3617.bindPopup(popup_5dad47af30c7ce4ab2556c56063dec39)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_455a2d64c29329c469ad19ecfdad0219 = new L.RegularPolygonMarker(
-                [34.13455581665039, 36.75703048706055],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#9400E6&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#9400E6&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_eacbc2a8d380455bae147cf3c3c74e3f = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_6c47328664385c8a28394c5e13c646f6 = $(`&lt;div id=&quot;html_6c47328664385c8a28394c5e13c646f6&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/34.13455581665039,36.75703048706055&quot; target=&quot;_blank&quot;&gt;34.1346, 36.757&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 08:29&lt;BR&gt;Dep: 2022/01/01 08:50&lt;BR&gt;Cluster: 6&lt;/div&gt;`)[0];
-            popup_eacbc2a8d380455bae147cf3c3c74e3f.setContent(html_6c47328664385c8a28394c5e13c646f6);
-        
-
-        regular_polygon_marker_455a2d64c29329c469ad19ecfdad0219.bindPopup(popup_eacbc2a8d380455bae147cf3c3c74e3f)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_dfdac2089e3100b9f302207e08ef347e = new L.RegularPolygonMarker(
-                [34.54879570007324, 36.738162994384766],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#003C86&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#003C86&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_1813ca858518fe608207e7dd68cabf24 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_671f8b58bc8790ebe1d68d05a3c00019 = $(`&lt;div id=&quot;html_671f8b58bc8790ebe1d68d05a3c00019&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/34.54879570007324,36.738162994384766&quot; target=&quot;_blank&quot;&gt;34.5488, 36.7382&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 08:56&lt;BR&gt;Dep: 2022/01/01 09:30&lt;BR&gt;Cluster: 5&lt;/div&gt;`)[0];
-            popup_1813ca858518fe608207e7dd68cabf24.setContent(html_671f8b58bc8790ebe1d68d05a3c00019);
-        
-
-        regular_polygon_marker_dfdac2089e3100b9f302207e08ef347e.bindPopup(popup_1813ca858518fe608207e7dd68cabf24)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_278c274268ae5fbfbcd0b3caeeddae70 = new L.RegularPolygonMarker(
-                [34.58968734741211, 37.10710906982422],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#FFDC3D&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#FFDC3D&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_06d62697ba33d40f98621b38532f1743 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_7658d3fd77405c6d31bccded615d4a62 = $(`&lt;div id=&quot;html_7658d3fd77405c6d31bccded615d4a62&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/34.58968734741211,37.10710906982422&quot; target=&quot;_blank&quot;&gt;34.5897, 37.1071&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 09:56&lt;BR&gt;Dep: 2022/01/01 10:18&lt;BR&gt;Cluster: 4&lt;/div&gt;`)[0];
-            popup_06d62697ba33d40f98621b38532f1743.setContent(html_7658d3fd77405c6d31bccded615d4a62);
-        
-
-        regular_polygon_marker_278c274268ae5fbfbcd0b3caeeddae70.bindPopup(popup_06d62697ba33d40f98621b38532f1743)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_46738fc39c17caa28a0149458a2541b7 = new L.RegularPolygonMarker(
-                [34.571353912353516, 37.44969177246094],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#00E307&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#00E307&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_3e8e4736fbd99b53e45e0a20528ab819 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_f3254f6146ffe2c85535afa74bc53062 = $(`&lt;div id=&quot;html_f3254f6146ffe2c85535afa74bc53062&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/34.571353912353516,37.44969177246094&quot; target=&quot;_blank&quot;&gt;34.5714, 37.4497&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 10:18&lt;BR&gt;Dep: 2022/01/01 10:39&lt;BR&gt;Cluster: 3&lt;/div&gt;`)[0];
-            popup_3e8e4736fbd99b53e45e0a20528ab819.setContent(html_f3254f6146ffe2c85535afa74bc53062);
-        
-
-        regular_polygon_marker_46738fc39c17caa28a0149458a2541b7.bindPopup(popup_3e8e4736fbd99b53e45e0a20528ab819)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_6dc930a79bf6de6bce9070f77d9d41d7 = new L.RegularPolygonMarker(
-                [34.51323318481445, 37.97357940673828],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#F60239&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#F60239&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_65a9f6bb6eb01ee03c16efdd18325246 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_025bfb1bf1ccfa0308db68ba1f6df510 = $(`&lt;div id=&quot;html_025bfb1bf1ccfa0308db68ba1f6df510&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/34.51323318481445,37.97357940673828&quot; target=&quot;_blank&quot;&gt;34.5132, 37.9736&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 10:58&lt;BR&gt;Dep: 2022/01/01 14:22&lt;BR&gt;Cluster: 2&lt;/div&gt;`)[0];
-            popup_65a9f6bb6eb01ee03c16efdd18325246.setContent(html_025bfb1bf1ccfa0308db68ba1f6df510);
-        
-
-        regular_polygon_marker_6dc930a79bf6de6bce9070f77d9d41d7.bindPopup(popup_65a9f6bb6eb01ee03c16efdd18325246)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_43a266338c824a003f11ffd101a5e1f0 = new L.RegularPolygonMarker(
-                [35.341732025146484, 40.12936782836914],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#008607&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#008607&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_188a079c204604b57836410482cf4b5c = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_4e3019db1a5b41d58034f44cdc55e594 = $(`&lt;div id=&quot;html_4e3019db1a5b41d58034f44cdc55e594&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/35.341732025146484,40.12936782836914&quot; target=&quot;_blank&quot;&gt;35.3417, 40.1294&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 14:31&lt;BR&gt;Dep: 2022/01/01 15:12&lt;BR&gt;Cluster: 1&lt;/div&gt;`)[0];
-            popup_188a079c204604b57836410482cf4b5c.setContent(html_4e3019db1a5b41d58034f44cdc55e594);
-        
-
-        regular_polygon_marker_43a266338c824a003f11ffd101a5e1f0.bindPopup(popup_188a079c204604b57836410482cf4b5c)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_6f6debcbd0e67b3a614cbc067a82c30b = new L.RegularPolygonMarker(
-                [35.33383560180664, 40.127777099609375],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#6A0213&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#6A0213&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_8d2914d8f33a3558c4b84c3135790aa4 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_d0bfff679a8307251684451e4004d03a = $(`&lt;div id=&quot;html_d0bfff679a8307251684451e4004d03a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/35.33383560180664,40.127777099609375&quot; target=&quot;_blank&quot;&gt;35.3338, 40.1278&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 15:26&lt;BR&gt;Dep: 2022/01/01 16:36&lt;BR&gt;Cluster: 0&lt;/div&gt;`)[0];
-            popup_8d2914d8f33a3558c4b84c3135790aa4.setContent(html_d0bfff679a8307251684451e4004d03a);
-        
-
-        regular_polygon_marker_6f6debcbd0e67b3a614cbc067a82c30b.bindPopup(popup_8d2914d8f33a3558c4b84c3135790aa4)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_8a8584cee40cc7cfc67a198cb3e59b63 = new L.RegularPolygonMarker(
-                [35.33467674255371, 40.1304874420166],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#6A0213&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#6A0213&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_2a5af26150f71e732edc63e861576308 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_5cb405f2471a8d8c9cee957c011dd34e = $(`&lt;div id=&quot;html_5cb405f2471a8d8c9cee957c011dd34e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/35.33467674255371,40.1304874420166&quot; target=&quot;_blank&quot;&gt;35.3347, 40.1305&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 16:47&lt;BR&gt;Dep: 2022/01/01 17:19&lt;BR&gt;Cluster: 0&lt;/div&gt;`)[0];
-            popup_2a5af26150f71e732edc63e861576308.setContent(html_5cb405f2471a8d8c9cee957c011dd34e);
-        
-
-        regular_polygon_marker_8a8584cee40cc7cfc67a198cb3e59b63.bindPopup(popup_2a5af26150f71e732edc63e861576308)
-        ;
-
-        
-    
-    
-            var regular_polygon_marker_b8e1a3e25c8191fe0a2f795d77030e66 = new L.RegularPolygonMarker(
-                [35.332855224609375, 40.1287956237793],
-                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#6A0213&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#6A0213&quot;, &quot;fillOpacity&quot;: 0.3, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;numberOfSides&quot;: 4, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 12, &quot;rotation&quot;: 0, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_79d2cc48301078d39804f5433ca5b737);
-        
-    
-        var popup_7d8d716f4a3adf2c56772f256efe2e87 = L.popup({&quot;maxWidth&quot;: 300});
-
-        
-            var html_9e3d8e01be695b0592bd9eb1ee5dfd37 = $(`&lt;div id=&quot;html_9e3d8e01be695b0592bd9eb1ee5dfd37&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;User: 2ead885647a9d64fc5e6a98b313624bf18cf36fe7e47593d2c9ec9b4351d17cc98d9e10e589cfb4206dc747116e2e1f93fd7a6f6103edf8d5a64b4e207c6aec7&lt;BR&gt;Coord: &lt;a href=&quot;https://www.google.co.uk/maps/place/35.332855224609375,40.1287956237793&quot; target=&quot;_blank&quot;&gt;35.3329, 40.1288&lt;/a&gt;&lt;BR&gt;Arr: 2022/01/01 17:19&lt;BR&gt;Dep: 2022/01/01 17:51&lt;BR&gt;Cluster: 0&lt;/div&gt;`)[0];
-            popup_7d8d716f4a3adf2c56772f256efe2e87.setContent(html_9e3d8e01be695b0592bd9eb1ee5dfd37);
-        
-
-        regular_polygon_marker_b8e1a3e25c8191fe0a2f795d77030e66.bindPopup(popup_7d8d716f4a3adf2c56772f256efe2e87)
-        ;
-
-        
-    
-&lt;/script&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
-</div>
 </section>
 </section>
 </section>
@@ -29084,7 +28648,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mobility-data-panel">Mobility Data Panel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mobility-data">Mobility Data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trajectory-analysis">Trajectory Analysis</a><ul class="nav section-nav flex-column">

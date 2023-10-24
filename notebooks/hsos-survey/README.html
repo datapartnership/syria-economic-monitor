@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Seaborn Trade Activity Estimation" href="../ais-analysis/README.html" />
-    <link rel="prev" title="Estimating Stay Locations" href="../mobility/stops/03b-estimate-stay-locations.html" />
+    <link rel="prev" title="Computing Stay Locations" href="../mobility/stops/03b-estimate-stay-locations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="Oct 24, 2023"/>
@@ -182,16 +182,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ntl-analysis/ntl-update-12-2023.html">2023-06 Update - Nighttime Lights</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../mobility/README.html">Population Movement Trends</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../mobility/stops/README.html">Estimating Hubs in Lebanon and Syria through Mobility Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mobility/README.html">Movement Trends</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mobility/stops/README.html">Estimating cross-border movement in Lebanon and Syria through Mobility Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mobility/stops/01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/01b-convenience-sampling.html">Convenience Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/01b-convenience-sampling.html">Constructiong Samples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mobility/stops/03a-count-within-aoi.html">Counting Devices within Areas of Interest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/03b-estimate-stay-locations.html">Estimating Stay Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mobility/stops/03b-estimate-stay-locations.html">Computing Stay Locations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity based on Mobility Data</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity through on Mobility Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest through Mobility Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Humanitarian Assistance Survey Data</a></li>
@@ -490,7 +490,7 @@ pre-earthquake levels for the internally displaced population (IDPs).</p>
 <figure class="align-center" id="id1">
 <img alt="../../_images/1_Fig_HA_access.png" src="../../_images/1_Fig_HA_access.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Access to Humanitarian Aid</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Access to Humanitarian Aid</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The data suggests that increases for residents were short-lived;
@@ -508,13 +508,13 @@ direct food aid and water and sanitation services.</p>
 <figure class="align-left" id="id2">
 <img alt="../../_images/1_Fig_HA_access_cash.png" src="../../_images/1_Fig_HA_access_cash.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Access to Humanitarian Aid - Cash</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Access to Humanitarian Aid - Cash</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-left" id="id3">
 <img alt="../../_images/1_Fig_HA_access_voucher.png" src="../../_images/1_Fig_HA_access_voucher.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Access to Humanitarian Aid - Voucher</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Access to Humanitarian Aid - Voucher</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- <p float="left">
@@ -543,13 +543,13 @@ prior to the earthquake and there is no noticeable effect of the earthquake.</p>
 <figure class="align-left" id="id4">
 <img alt="../../_images/1_Fig_electricity_mainc.png" src="../../_images/1_Fig_electricity_mainc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Electricity Main Source - Community Network</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Electricity Main Source - Community Network</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-left" id="id5">
 <img alt="../../_images/Fig_electricity_8c.png" src="../../_images/Fig_electricity_8c.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Less than 8 hours of electricity</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Less than 8 hours of electricity</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- <p float="left">
@@ -579,13 +579,13 @@ for IDPs.</p>
 <figure class="align-left" id="id6">
 <img alt="../../_images/1_Fig_Top_priority_food.png" src="../../_images/1_Fig_Top_priority_food.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Food as a primary need</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Food as a primary need</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-left" id="id7">
 <img alt="../../_images/1_Fig_Top_priority_shelter.png" src="../../_images/1_Fig_Top_priority_shelter.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Shelter as a primary need</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Shelter as a primary need</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- <p float="left">
@@ -601,13 +601,13 @@ interventions.</p>
 <figure class="align-left" id="id8">
 <img alt="../../_images/Fig_IDP_coping_sellittemc.png" src="../../_images/Fig_IDP_coping_sellittemc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Coping strategies - Selling household items or assets</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Coping strategies - Selling household items or assets</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-left" id="id9">
 <img alt="../../_images/Fig_IDP_coping_savingc.png" src="../../_images/Fig_IDP_coping_savingc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Coping strategies - Spending savings</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Coping strategies - Spending savings</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- <p float="left">
@@ -663,7 +663,7 @@ Longer-term, a larger survey sample, ideally nationally-representative  would al
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Estimating Stay Locations</p>
+        <p class="prev-next-title">Computing Stay Locations</p>
       </div>
     </a>
     <a class="right-next"

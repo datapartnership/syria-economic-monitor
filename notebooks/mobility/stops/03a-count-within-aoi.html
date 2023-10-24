@@ -73,8 +73,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://datapartnership.github.io/datapartnership/syria-economic-monitor/notebooks/mobility/stops/03a-count-within-aoi.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Estimating Stay Locations" href="03b-estimate-stay-locations.html" />
-    <link rel="prev" title="Convenience Sampling" href="01b-convenience-sampling.html" />
+    <link rel="next" title="Computing Stay Locations" href="03b-estimate-stay-locations.html" />
+    <link rel="prev" title="Constructiong Samples" href="01b-convenience-sampling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="Oct 24, 2023"/>
@@ -182,16 +182,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ntl-analysis/ntl-update-12-2023.html">2023-06 Update - Nighttime Lights</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Population Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="README.html">Estimating Hubs in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="README.html">Estimating cross-border movement in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="01b-convenience-sampling.html">Convenience Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01b-convenience-sampling.html">Constructiong Samples</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Counting Devices within Areas of Interest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03b-estimate-stay-locations.html">Estimating Stay Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03b-estimate-stay-locations.html">Computing Stay Locations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity based on Mobility Data</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity through on Mobility Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest through Mobility Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../hsos-survey/README.html">Humanitarian Assistance Survey Data</a></li>
@@ -841,6 +841,10 @@ document.write(`
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is a partial disclosure. Additional content in this section was suppressed from this notebook to adhere to the data classification policy.</p>
+</div>
 </section>
 <section id="generate-time-series">
 <h2>Generate Time Series<a class="headerlink" href="#generate-time-series" title="Permalink to this heading">#</a></h2>
@@ -921,7 +925,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Convenience Sampling</p>
+        <p class="prev-next-title">Constructiong Samples</p>
       </div>
     </a>
     <a class="right-next"
@@ -929,7 +933,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Estimating Stay Locations</p>
+        <p class="prev-next-title">Computing Stay Locations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

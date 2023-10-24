@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estimating Hubs in Lebanon and Syria through Mobility Data</title>
+    <title>Estimating cross-border movement in Lebanon and Syria through Mobility Data</title>
   
   
   
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Generate Areas of Interest and Tessellation" href="01a-aoi-and-tessellation.html" />
-    <link rel="prev" title="Population Movement Trends" href="../README.html" />
+    <link rel="prev" title="Movement Trends" href="../README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="Oct 24, 2023"/>
@@ -182,16 +182,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ntl-analysis/ntl-update-12-2023.html">2023-06 Update - Nighttime Lights</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Population Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Estimating Hubs in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Estimating cross-border movement in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="01b-convenience-sampling.html">Convenience Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01b-convenience-sampling.html">Constructiong Samples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03a-count-within-aoi.html">Counting Devices within Areas of Interest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03b-estimate-stay-locations.html">Estimating Stay Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03b-estimate-stay-locations.html">Computing Stay Locations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity based on Mobility Data</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity through on Mobility Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest through Mobility Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../hsos-survey/README.html">Humanitarian Assistance Survey Data</a></li>
@@ -423,7 +423,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Estimating Hubs in Lebanon and Syria through Mobility Data</h1>
+    <h1>Estimating cross-border movement in Lebanon and Syria through Mobility Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -435,10 +435,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-sampling">Convenience Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-strategy">Sampling Strategy</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#findings">Findings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lb-sy-stay-locations">LB-SY Stay Locations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lb-sy-movement-corridors">LB-SY Movement Corridors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-and-informal-activity">Formal and Informal Activity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-in-time-comparison">Point-in-time Comparison</a></li>
 </ul>
@@ -456,17 +458,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estimating-hubs-in-lebanon-and-syria-through-mobility-data">
-<span id="mobility-stops"></span><h1>Estimating Hubs in Lebanon and Syria through Mobility Data<a class="headerlink" href="#estimating-hubs-in-lebanon-and-syria-through-mobility-data" title="Permalink to this heading">#</a></h1>
-<p>This pilot study seeks to explore leveraging mobility data to estimate the location of movement hubs and, in particular, estimate the location of formal and informal activity between Lebanon and Syria. The working hypothesis is that by identifying devices in the proximity of trade-associated point of interests, such as border checkpoints, and mapping their mobility traces throughout the time horizon, the movement captured may indicate changes in trade patterns and potentially identify new trade centers and corridors.</p>
-<p>The results presented are the stay locations (or “stops”) generated by sub-panels composed of (A) devices seen at 6 border checkpoints and (B) devices seen in the proximity of border, except the 6 checkpoints. The sub-panels aim to estimate formal and informal trade activities, respectively.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><strong>The results are aggregated on governorate-level and on H3 tiles for a more granular outlook and are available as interactive maps</strong></p>
-<ul class="simple">
-<li><p><strong><a class="reference external" href="https://studio.foursquare.com/public/dfb1946b-4f16-4e19-8546-d353ab82a84c">LB-SY Stay Locations</a></strong></p></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="estimating-cross-border-movement-in-lebanon-and-syria-through-mobility-data">
+<span id="mobility-stops"></span><h1>Estimating cross-border movement in Lebanon and Syria through Mobility Data<a class="headerlink" href="#estimating-cross-border-movement-in-lebanon-and-syria-through-mobility-data" title="Permalink to this heading">#</a></h1>
+<p>This pilot exploratory study seeks to leverage mobility data to estimate the location of activity and, in particular, tentatively estimate the location of formal and informal activity between Lebanon and Syria. The working hypothesis is that by identifying devices seen in the proximity of point of interests, such as border checkpoints, and mapping their mobility traces throughout the time horizon, the movement captured may indicate changes in trade patterns and potentially identify new trade centers and corridors.</p>
+<p>The results presented are the stay locations (or “stops”) generated by sub-panels composed of (A) devices seen at 6 border checkpoints and (B) devices seen in the proximity of border, except the 6 checkpoints. The sub-panels aim to estimate “formal” activity” and “informal” activity, respectively.</p>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <p>The WB Data Lab team obtained a high-frequency longitudinal panel of human mobility. The data consisted of anonymized timestamped geographical points generated by 639,233 GPS-enabled devices, located in Lebanon and Syria and spanning the period of January 1, 2020, to October 15, 2022. The mobility data panel has been provided pro-bono by <a class="reference external" href="https://outlogic.io">Outlogic</a> through the proposal <a class="reference external" href="https://portal.datapartnership.org/readableproposal/407">Syria Economic Monitor (Outlogic)</a> of the <a class="reference external" href="https://datapartnership.org">Development Data Partnership</a>.</p>
@@ -474,12 +469,12 @@ document.write(`
 </section>
 <section id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
-<p>In this working methodology, we propose to investigate and map sub-panels of devices’ mobility traces based on convenience sampling. The working hypothesis is that by selecting sub-panels of devices based on whether they were detected in the proximity of points of interest (POIs) and reconstructing their mobility traces – in other words, where they went and where they stopped throughout the horizon – the movement captured could suggest trade activity that, more importantly, could be located and quantified if combined with other datasets.</p>
-<p>The sampling method - convenience sampling, a non-probability form of sampling - is a <strong>significant</strong> limitation of this approach. Nevertheless, in the face of significant data scarcity in Syria <span id="id1">[<a class="reference internal" href="../../traffic/README.html#id7" title="World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/37617.">World Bank, 2022</a>]</span> and thanks to the mobility data’s availability and finer granularity, we propose to utilize and trace the movement of different sub-panels of devices to tentatively identify and pinpoint formal and informal cross-border trade activity. Particularly, we define sub-panels composed of (A) devices seen at six border checkpoints and (B) devices seen in the proximity of border, except the six checkpoints.</p>
+<p>In this working methodology, we propose to investigate and map the mobility traces of sub-panels (or sub-samples) of devices. The working hypothesis is that by selecting sub-panels of devices based on whether they were detected in the proximity of points of interest (POIs) and reconstructing their mobility traces – in other words, where they went and where they stopped throughout the horizon – the movement captured could suggest trade activity that, more importantly, could be located and quantified if combined with other datasets.</p>
+<p>The sampling strategy - convenience sampling, a non-probability form of sampling - is a <strong>significant</strong> limitation of this approach. Nevertheless, in the face of significant data scarcity in Syria <span id="id1">[<a class="reference internal" href="../../traffic/README.html#id7" title="World Bank. Syria Economic Monitor - Spring 2022 : Lost Generation of Syrians. Economic Updates and Modeling, World Bank, 2022. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/37617.">World Bank, 2022</a>]</span> and thanks to the mobility data’s availability and finer granularity, we propose to utilize and trace the movement of different sub-panels of devices to tentatively identify and pinpoint formal and informal cross-border trade activity. Particularly, we define sub-panels composed of (A) devices seen at six border checkpoints and (B) devices seen in the proximity of border, except the six checkpoints.</p>
 <p>We rely on a loose definition of cross-border flows, as “movement of people and goods between regions and between countries” <span id="id2">[<a class="reference internal" href="../../traffic/README.html#id4" title="Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/18241.">Kunaka, 2014</a>]</span> that, in this study, is quantified by the number stay locations and by the number of “trips” observed throughout the horizon, according to the methodology described by <span id="id3">[<a class="reference internal" href="../../traffic/README.html#id3" title="Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In Geographic Information Science. Volume 3234, volume 3234, 106–124. 2004. doi:10.1007/978-3-540-30231-5_8.">Hariharan and Toyama, 2004</a>]</span>.</p>
-<section id="convenience-sampling">
-<h3>Convenience Sampling<a class="headerlink" href="#convenience-sampling" title="Permalink to this heading">#</a></h3>
-<p>From the mobility data panel, devices are drawn out to compose sub-panels based on which devices visited preselected points of interest (POIs), such as border checkpoints or unofficial border crossings. The sub-panel composition criterium is if a device was detected within the proximity of a point of interest at least once throughout the time horizon.</p>
+<section id="sampling-strategy">
+<h3>Sampling Strategy<a class="headerlink" href="#sampling-strategy" title="Permalink to this heading">#</a></h3>
+<p>Devices are drawn out from the mobility data panel to compose sub-panels. The sub-panel composition criterium is whether the device was detected within the proximity of a point of interest at least once throughout the time horizon.</p>
 <p><strong>The following are the selected points of interest.</strong></p>
 <ul class="simple">
 <li><p>Six official border crossing checkpoints between Lebanon and Syria</p>
@@ -493,7 +488,7 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><strong>Based on the points of interest above, we define the areas of interest below that aim to capture (A) formal movement and (B) informal movement along the Lebanese Syrian border.</strong></p>
+<p><strong>Based on the points of interest above, we define the areas of interest below that aim to capture cross-border (A) “formal” activity and (B) “informal” activity along the Lebanese Syrian border.</strong></p>
 <ul class="simple">
 <li><p><strong>(A)</strong> The area within a 2Km distance of any six official border crossing checkpoints</p></li>
 <li><p><strong>(B)</strong> The area within a 500-meter buffer strip along the Lebanese Syrian border, except <strong>(A)</strong>.</p></li>
@@ -508,35 +503,37 @@ document.write(`
 </section>
 <section id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
-<p>The results presented are the number of stay locations and the intra-day origin-destination flux (number of trips) computed from the devices’ traces and presented for each sub-panel as interactive maps either on governorate or on H3 tiles.</p>
-<ul>
-<li><p><strong><a class="reference external" href="https://studio.foursquare.com/public/dfb1946b-4f16-4e19-8546-d353ab82a84c">LB-SY Stay Locations</a></strong></p>
-<p>This interactive map displays the number of stay locations aggregated quarterly between 2020-Q1 and 2022-Q4 (until October 15) on H3 resolution 10.</p>
-</li>
-</ul>
+<section id="lb-sy-stay-locations">
+<h3><a class="reference external" href="https://studio.foursquare.com/public/dfb1946b-4f16-4e19-8546-d353ab82a84c">LB-SY Stay Locations</a><a class="headerlink" href="#lb-sy-stay-locations" title="Permalink to this heading">#</a></h3>
+<p>The results below are the quarterly number of stay locations (or “stops”) generated by each sub-panel, that can be visualized as an interactive map below.</p>
 <iframe width="760px" height="600px" src="https://studio.foursquare.com/public/dfb1946b-4f16-4e19-8546-d353ab82a84c/embed" frameborder="0" allowfullscreen></iframe>
-<br>
-<ul>
-<li><p><strong><a class="reference external" href="https://flowmap.blue/1sUVqVAcRzGgyd5UhhATCbNnQE8pIuSezQbQ7IHEA7mQ/bea7957?v=34.168743%2C38.252112%2C6.11%2C0%2C0&amp;a=0&amp;as=0&amp;b=1&amp;bo=88&amp;c=0&amp;ca=1&amp;d=0&amp;fe=1&amp;lt=1&amp;lfm=ALL&amp;t=20220101T000000%2C20221016T000000&amp;col=RdPu&amp;f=0">LB-SY Movement Corridors</a></strong></p>
+<figure class="align-default" id="id18">
+<a class="reference internal image-reference" href="notebooks/docs/images/logo.png"><img alt="notebooks/docs/images/logo.png" src="notebooks/docs/images/logo.png" style="height: 0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">This interactive map displays the number of stay locations aggregated quarterly between 2020-Q1 and 2022-Q4 (until October 15) on H3 resolution 10. The stay locations are generated by sub-panels A (“formal”) and B (“informal”).</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="lb-sy-movement-corridors">
+<h3><a class="reference external" href="https://flowmap.blue/1sUVqVAcRzGgyd5UhhATCbNnQE8pIuSezQbQ7IHEA7mQ/bea7957?v=34.168743%2C38.252112%2C6.11%2C0%2C0&amp;a=0&amp;as=0&amp;b=1&amp;bo=88&amp;c=0&amp;ca=1&amp;d=0&amp;fe=1&amp;lt=1&amp;lfm=ALL&amp;t=20220101T000000%2C20221016T000000&amp;col=RdPu&amp;f=0">LB-SY Movement Corridors</a><a class="headerlink" href="#lb-sy-movement-corridors" title="Permalink to this heading">#</a></h3>
 <p>This interactive map displays the origin-destination flux pairs by governorate or by H3 tiles. The user can choose the region of interest/sub-panel, change color, change date range, filter by origin and destination and filter incoming or outcoming flux from selected.</p>
-</li>
-</ul>
+</section>
 <section id="formal-and-informal-activity">
 <h3>Formal and Informal Activity<a class="headerlink" href="#formal-and-informal-activity" title="Permalink to this heading">#</a></h3>
 <p>The working hypothesis is that movement captured within preselected regions of interest, e.g., within the proximity of border checkpoints, could be proportional to trade flows and, thus, could potentially inform the dynamics of population movement and trade corridors, in the absence of other data sources.</p>
 <blockquote>
 <div><p><strong>“Activity” is defined as the number of stay locations generated by sub-panels of devices based on whether they were detected at least once in the proximity of points-of-interest through the time horizon. We approximate formal activity based on the stay locations generated by the sub-panel of devices seen within a 2Km distance from border checkpoints and informal activity based on the stay locations generated by the sub-panel of devices seen within a 500-meter border strip between Lebanon and Syria, excluding official border checkpoints.</strong></p>
 </div></blockquote>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <img alt="../../../_images/SEM_Figure_13A.jpg" src="../../../_images/SEM_Figure_13A.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021: The figure is a snapshot of the change in informal activity in Apr-Jul 2021 (the optimal smuggling period) compared to Dec 2020-Mar 2021. In red, 75 percent or more decrease in informal activity; in green, areas with a 75 percent or more increase.</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Change in informal activity in Apr-Jul 2021 compared to Dec-Mar 2021: The figure is a snapshot of the change in informal activity in Apr-Jul 2021 (the optimal smuggling period) compared to Dec 2020-Mar 2021. In red, 75 percent or more decrease in informal activity; in green, areas with a 75 percent or more increase.</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id19">
+<figure class="align-center" id="id20">
 <img alt="../../../_images/SEM_Figure_13B.jpg" src="../../../_images/SEM_Figure_13B.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Normalized difference between formal and informal activity in Apr-Jul 2021: The image presents a snapshot map of the sub-panels’ activity. The activity index is a normalized difference between the formal and informal sub-panels and ranges from –1 to 1 (informal to formal). For instance, an activity index of –0.5 indicates that informal sub-panel’s devices were 3 times as many as the formal sub-panel’s devices within an area.</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Normalized difference between formal and informal activity in Apr-Jul 2021: The image presents a snapshot map of the sub-panels’ activity. The activity index is a normalized difference between the formal and informal sub-panels and ranges from –1 to 1 (informal to formal). For instance, an activity index of –0.5 indicates that informal sub-panel’s devices were 3 times as many as the formal sub-panel’s devices within an area.</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -548,17 +545,20 @@ document.write(`
 </section>
 <section id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
-<p>The methodology presented is an investigative pilot aiming to shed light on the economic situation in Syria leveraging alternative data, when confront with the absence of traditional daat and methods.</p>
+<p>The methodology relies on private intent data in the form of mobile location data. In other words, the input data was not produced or collected to analyze the population of interest or address the research question as its primary goal but repurposed for the public good. The benefits and caveats when using private intent data have been extensively discussed in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span id="id4">[<a class="reference internal" href="../../traffic/README.html#id5" title="World Bank. World Development Report 2021 : Data for Better Lives. World Bank, 2021. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/35218.">World Bank, 2021</a>]</span>. On the one hand, the mobility data panel is spatially and temporally granular and readily available, on the other hand it is created as a convenience sampling which constitutes an important source of bias. The panel composition is not entirely known and susceptible to change, the data collection and the composition of the mobility data panel cannot be controlled. For example, Outlogic has reported a significant data reduction since April 30, 2022, which impacted the panel composition.</p>
+<p>A significant limitation is that the methodology is based on convenience sampling, which is a non-probabilistic sampling method. One of the criticisms of convenience sampling is that the results are not easily generalizable to the entire population. It is important to emphasize that in the current implementation, no treatment regarding the origin-destination or transportation mode is in place. In other words, we consider all trips not only trips that are border crossings. The idea was to select devices based on where they were seen once and map their mobility traces - where they went and where they stopped.</p>
+<p>In summary, the results cannot be interpreted to generalize the entirety of population movement but can potentially provide information on movement panels to inform Syrian economic situation, considering time constraints and the scarcity of traditional data sources in the context of Syria.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>In summary, beyond standing-by peer-review, the limitations can be summarized in the following.</p>
+<p>Here are some limitations associated with mobility data:</p>
+<p><strong>Limitations:</strong></p>
 <ul class="simple">
-<li><p>The methodology relies on private intent data in the form of mobile location data. In other words, the input data was not produced or collected to analyze the population of interest or address the research question as its primary goal but repurposed for the public good. The benefits and caveats when using private intent data have been extensively discussed in the <a class="reference external" href="https://wdr2021.worldbank.org">World Development Report 2021</a> <span id="id4">[<a class="reference internal" href="../../traffic/README.html#id5" title="World Bank. World Development Report 2021 : Data for Better Lives. World Bank, 2021. License: CC BY 3.0 IGO. URL: http://hdl.handle.net/10986/35218.">World Bank, 2021</a>]</span>.</p></li>
-<li><p>On the one hand, the mobility data panel is spatially and temporally granular and readily available, on the other hand it is created as a convenience sampling which constitutes an important source of bias. The panel composition is not entirely known and susceptible to change, the data collection and the composition of the mobility data panel cannot be controlled. For example, Outlogic has reported a significant data reduction since April 30, 2022, which impacted the panel composition.</p></li>
-<li><p>It is important to emphasize that in the current implementation, no treatment regarding the origin-destination or transportation mode is in place. In other words, we consider all trips not only trips that are border crossings. The idea was to select devices based on where they were seen once and map their mobility traces - where they went and where they stopped.</p></li>
-<li><p>A significant limitation is that the methodology is based on convenience sampling, which is a non-probabilistic sampling method. One of the criticisms of convenience sampling is that the results are not easily generalizable to the entire population. 3</p></li>
-<li><p>Due to the nature of the problem and the cardinality, the results can be complex and better analyzed and interpreted when looking at the interactive maps, instead of annual indicators.</p></li>
-<li><p>In summary, the results cannot be interpreted to generalize the entirety of population movement but can potentially provide information on movement panels to inform Syrian economic situation, considering time constraints and the scarcity of traditional data sources in the context of Syria.</p></li>
+<li><p><strong>Sampling Bias:</strong> Mobility data is primarily collected through convenience sampling and lacks the controlled methodology of randomized trials.</p></li>
+<li><p><strong>Selection Bias:</strong> Users who opt to share their mobility data may not be representative of the entire population, potentially introducing selection bias.</p></li>
+<li><p><strong>Privacy Concerns:</strong> The collection of mobility data may raise privacy issues, as it can sometimes be linked to individuals, potentially violating their privacy.</p></li>
+<li><p><strong>Data Quality:</strong> Data quality can vary, and errors, inaccuracies, or missing data points may be present, which can affect the reliability of analyses.</p></li>
+<li><p><strong>Temporal and Spatial Resolution:</strong> Mobility data may not capture all movements or may lack fine-grained temporal or spatial resolution, limiting its utility for some applications.</p></li>
+<li><p><strong>Lack of Contextual Information:</strong> Mobility data primarily captures movement patterns and geolocation information. It may lack other crucial contextual information, such as transactional data, business types, or specific economic activities, which are essential for accurate estimation of economic activity.</p></li>
 </ul>
 </div>
 </section>
@@ -621,7 +621,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Population Movement Trends</p>
+        <p class="prev-next-title">Movement Trends</p>
       </div>
     </a>
     <a class="right-next"
@@ -650,10 +650,12 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-sampling">Convenience Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-strategy">Sampling Strategy</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#findings">Findings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lb-sy-stay-locations">LB-SY Stay Locations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lb-sy-movement-corridors">LB-SY Movement Corridors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-and-informal-activity">Formal and Informal Activity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-in-time-comparison">Point-in-time Comparison</a></li>
 </ul>

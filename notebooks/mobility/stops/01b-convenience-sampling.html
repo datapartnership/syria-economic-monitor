@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Convenience Sampling</title>
+    <title>Constructiong Samples</title>
   
   
   
@@ -182,16 +182,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../ntl-analysis/ntl-update-12-2023.html">2023-06 Update - Nighttime Lights</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Population Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="README.html">Estimating Hubs in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Movement Trends</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="README.html">Estimating cross-border movement in Lebanon and Syria through Mobility Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="01a-aoi-and-tessellation.html">Generate Areas of Interest and Tessellation</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Convenience Sampling</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Constructiong Samples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03a-count-within-aoi.html">Counting Devices within Areas of Interest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03b-estimate-stay-locations.html">Estimating Stay Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03b-estimate-stay-locations.html">Computing Stay Locations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity based on Mobility Data</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html">Estimating Activity through on Mobility Data</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html">Estimating Activity based on Visits to Points of Interest through Mobility Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../hsos-survey/README.html">Humanitarian Assistance Survey Data</a></li>
@@ -423,7 +423,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Convenience Sampling</h1>
+    <h1>Constructiong Samples</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -438,7 +438,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mobility-data">Mobility Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-strategy">Sampling Strategy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-out-devices">Drawing out Devices</a></li>
 </ul>
 </li>
@@ -457,9 +457,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="convenience-sampling">
-<h1>Convenience Sampling<a class="headerlink" href="#convenience-sampling" title="Permalink to this heading">#</a></h1>
-<p>In this step, we create sub-panels <strong>A</strong> (formal) and <strong>B</strong> (informal) as described in the <a class="reference internal" href="README.html"><span class="doc std std-doc">methodological notes</span></a> of this pilot study. The sub-panels are composed of longitudial mobility data generated by GPS-enabled devices based on whether they detected in the proximity of points of interest <span class="xref myst">Region A or Region B</span> throughout the time horizon.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="constructiong-samples">
+<h1>Constructiong Samples<a class="headerlink" href="#constructiong-samples" title="Permalink to this heading">#</a></h1>
+<p>In this step, we create sub-panels <strong>A</strong> (formal) and <strong>B</strong> (informal) as described in the <a class="reference internal" href="README.html"><span class="doc std std-doc">methodological notes</span></a> of this pilot study. The sub-panels are composed of longitudinal mobility data generated by GPS-enabled devices based on whether they were detected within the proximity of <span class="xref myst">Region A or Region B</span> throughout the time horizon.</p>
 <p>The <strong>A</strong> (formal) and <strong>B</strong> (informal) sub-panels are respectively defined as follows.</p>
 <ul>
 <li><p>Sub-Panel <strong>A</strong>:</p>
@@ -482,24 +482,16 @@ document.write(`
 </li>
 </ul>
 <p>Finally, we generate a working dataset from the raw mobility data by drawing devices out to compose sub-panels <strong>A</strong> and <strong>B</strong>. Finally, we persist the data in an efficient partitioning layout for further analysis.</p>
-<div class="cell tag_hide-cell docutils container">
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_parameters tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell content</span>
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
-<span class="kn">import</span> <span class="nn">geopandas</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_parameters docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
 <span class="c1"># https://papermill.readthedocs.io/en/latest/usage-parameterize.html</span>
 <span class="n">DASK_SCHEDULER_ADDRESS</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -508,9 +500,8 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <section id="area-of-interest">
 <h3>Area of Interest<a class="headerlink" href="#area-of-interest" title="Permalink to this heading">#</a></h3>
 <p>On the previous step, we defiend the area(s) of interest. Here, we selected it.</p>
@@ -733,18 +724,6 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span><span class="o">.</span><span class="n">npartitions</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32576
-</pre></div>
-</div>
-</div>
-</div>
 <p>Removing rows without <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -755,8 +734,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="sampling">
-<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h2>
+<section id="sampling-strategy">
+<h2>Sampling Strategy<a class="headerlink" href="#sampling-strategy" title="Permalink to this heading">#</a></h2>
 <p>We select sub-panels of devices using convenience sampling, a non-probability form of sampling. The sampling method is a <strong>key limitation</strong> of this approach.</p>
 <p>First, let’s calculate the total number of devices.</p>
 <div class="cell docutils container">
@@ -776,14 +755,8 @@ document.write(`
 <p>Now, let’s calculate the <strong>sub-panel</strong> by drawing out devices detected within the <code class="docutils literal notranslate"><span class="pre">AOI</span></code> at least <strong>once</strong> throughout the time horizon.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">devices</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;h3_10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">])][</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">devices</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">])][</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 <span class="n">devices</span> <span class="o">=</span> <span class="n">devices</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-12-19 20:57:05,860 - distributed.scheduler - WARNING - Received heartbeat from unregistered worker &#39;tcp://127.0.0.1:52557&#39;.
-2022-12-19 20:57:05,864 - distributed.scheduler - WARNING - Received heartbeat from unregistered worker &#39;tcp://127.0.0.1:52562&#39;.
 </pre></div>
 </div>
 </div>
@@ -930,7 +903,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mobility-data">Mobility Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-strategy">Sampling Strategy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-out-devices">Drawing out Devices</a></li>
 </ul>
 </li>
