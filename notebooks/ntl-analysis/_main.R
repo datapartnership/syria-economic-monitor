@@ -11,14 +11,11 @@ DOWNLOAD_NTL <- F
 # Filepaths --------------------------------------------------------------------
 #### Root paths
 if(Sys.info()[["user"]] == "robmarty"){
+  
   git_dir  <- "~/Documents/Github/syria-economic-monitor"
-  git_tur_dir  <- "~/Documents/Github/turkiye-earthquake-impact"
-  #data_dir <- "~/Documents/Github/syria-economic-monitor/data"
   data_dir <- file.path("~", "Dropbox", "World Bank", "Side Work", "Syria Economic Monitor",
                         "data")
-  
-  data_tur_dir <- file.path("~", "Dropbox", "World Bank", "Side Work", 
-                            "Turkiye Earthquake Impact", "Data")
+
 } 
 
 #### From root
@@ -30,10 +27,16 @@ gas_flare_dir  <- file.path(data_dir, "Global Gas Flaring")
 gadm_dir  <- file.path(data_dir, "GADM")
 eq_intensity_dir <- file.path(data_dir, "Earthquake Intensity")
 unocha_dir <- file.path(data_dir, "UNOCHA")
+bc_dir      <- file.path(data_dir, "Border Crossings")
+
 figures_dir <- file.path(git_dir, "reports", "figures")
+
+code_dir <- file.path(git_dir, "notebooks", "ntl-analysis")
+clean_dir <- file.path(code_dir, "01_clean_data")
 
 # Packages and functions -------------------------------------------------------
 ## R packages
+
 library(dplyr)
 library(readr)
 library(purrr)
@@ -53,27 +56,39 @@ library(leaflet.extras)
 library(h3jsr)
 library(readxl)
 library(janitor)
+library(geosphere)
 library(glcm)
 library(httr)
 library(zoo)
-
-## User written script to facilitating downloading black marble NTL data
-source("https://raw.githubusercontent.com/ramarty/download_blackmarble/main/R/download_blackmarble.R")
+library(blackmarbler)
+library(stringr)
+library(terra)
+library(spatialEco)
 
 # Scripts ----------------------------------------------------------------------
 RUN_SCRIPTS <- F
 
 if(RUN_SCRIPTS){
   
+  # Clean dataset of gas flaring locations; produces a dataset of gas flaring
+  # locations in Syria
+  source(file.path(clean_dir, "01_clean_gas_flaring_data.R"))
+  
   # Download black marble nighttime lights data into monthly rasters 
   # for Syria.
   # NOTE: Requires a bearer token from NASA. To aquire, see documentation here:
   # https://github.com/ramarty/download_blackmarble
-  if(DOWNLOAD_NTL) source(file.path(ntl_dir, "01_download_black_marble.R"))
+  if(DOWNLOAD_NTL) source(file.path(clean_dir, "01_download_black_marble.R"))
   
-  # Clean dataset of gas flaring locations; produces a dataset of gas flaring
-  # locations in Syria
-  source(file.path(ntl_dir, "01_clean_gas_flaring_data.R"))
+  source(file.path(clean_dir, "03_border_xing_aggregate.R"))
+  source(file.path(clean_dir, "04_syr_tur_aggregate.R"))
+  source(file.path(clean_dir, "05_syr_tur_append_aggregations.R"))
+  source(file.path(clean_dir, "06_merge_ntl_eq_data.R"))
+  
+  
+  
+  
+
   
   # Produce a map of nighttime lights, using the latest month of data
   source(file.path(ntl_dir, "02_map_ntl_latest.R"))

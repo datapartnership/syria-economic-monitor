@@ -15,7 +15,7 @@ if(DELETE_FILES){
   }
 }
 
-for(adm_i in c(2, 3,4)){
+for(adm_i in c(2, 3, 4)){
   for(product_id in c("VNP46A3", "VNP46A2")){
     
     # Load/prep gas flaring data ---------------------------------------------------
@@ -126,20 +126,6 @@ for(adm_i in c(2, 3,4)){
         # Export -----------------------------------------------------------------------
         saveRDS(data_df, OUT_FILE)
       }
-      
-      # viirs_bm_df <- map_df(daily_files, function(file_i){ # nrow(ym_df)
-      # 
-      #   
-      #   return(gadm_id_df)
-      # })
-      
-      
-      
-      # # Export -----------------------------------------------------------------------
-      # write_csv(data_df, file.path(ntl_bm_dir, "FinalData", "aggregated", 
-      #                              paste0("syr_admin_daily",
-      #                                     adm_i, "_", product_id, ".csv")))
-      
       
     }
   }
