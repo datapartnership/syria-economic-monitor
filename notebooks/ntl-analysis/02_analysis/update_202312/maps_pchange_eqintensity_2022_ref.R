@@ -63,12 +63,12 @@ df_wide$ntl_pc[df_wide$ntl_pc %in% Inf] <- 0
 
 df_geom <- df %>%
   dplyr::filter(date %in% ymd("2021-01-01")) %>%
-  dplyr::select(uid, eq_intensity_str, dist_syr) %>%
+  dplyr::select(uid, eq_intensity_str, dist_syr, country) %>%
   left_join(df_wide, by = "uid")
 
 # Maps -------------------------------------------------------------------------
 df_sub <- df_geom %>%
-  dplyr::filter(eq_intensity_str %in% c("Very Strong", "Strong") )
+  dplyr::filter( (eq_intensity_str %in% c("Very Strong", "Strong")) | (country %in% "Syria")  )
 
 vstrong <- df_geom %>%
   dplyr::filter(eq_intensity_str %in% c("Very Strong", "Strong")) %>%
@@ -99,6 +99,7 @@ p <- ggplot() +
                                   0,
                                   50,
                                   100),
+                       limits = c(-100, 100),
                        labels = c("< -100",
                                   "-50",
                                   "0",
