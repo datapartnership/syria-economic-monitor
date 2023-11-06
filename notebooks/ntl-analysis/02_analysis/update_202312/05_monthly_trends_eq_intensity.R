@@ -133,7 +133,7 @@ syr_adm_df %>%
              scales = "free_y") +
   labs(x = NULL,
        y = NULL,
-       title = "Syria: ADM3 Locations Very Strongly Effected",
+       title = "Syria: ADM3 Locations Strongly Effected",
        color = NULL) +
   scale_color_manual(values = c("darkorange", "black")) +
   theme_classic2() +
