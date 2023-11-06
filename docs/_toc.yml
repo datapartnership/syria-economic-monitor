@@ -7,7 +7,7 @@ parts:
       - file: docs/introduction_to_data_goods
       - file: docs/foundational_datasets_and_data_products
         sections:
-        - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
+          - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
   - caption: Data Products
     chapters:
       - file: notebooks/ntl-analysis/README
@@ -18,15 +18,15 @@ parts:
         sections:
           - file: notebooks/mobility/stops/README
             sections:
-            - file: notebooks/mobility/stops/01a-aoi-and-tessellation.ipynb
-            - file: notebooks/mobility/stops/01b-convenience-sampling.ipynb
-            - file: notebooks/mobility/stops/02-validate-mobility-data.ipynb
-            - file: notebooks/mobility/stops/03a-count-within-aoi.ipynb
-            - file: notebooks/mobility/stops/03b-estimate-stay-locations.ipynb
+              - file: notebooks/mobility/stops/01a-aoi-and-tessellation.ipynb
+              - file: notebooks/mobility/stops/01b-convenience-sampling.ipynb
+              - file: notebooks/mobility/stops/02-validate-mobility-data.ipynb
+              - file: notebooks/mobility/stops/03a-count-within-aoi.ipynb
+              - file: notebooks/mobility/stops/03b-estimate-stay-locations.ipynb
           - url: https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/activity.html
-            title: Estimating Activity based on Mobility Data
+            title: Estimating Activity through on Mobility Data
           - url: https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html
-            title: Estimating Activity based on Visits to Points of Interest
+            title: Estimating Activity based on Visits to Points of Interest through Mobility Data
       - file: notebooks/hsos-survey/README.md
       - file: notebooks/ais-analysis/README
         sections:
@@ -36,14 +36,14 @@ parts:
       - file: notebooks/traffic/README
       - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
         sections:
-        - file: notebooks/syria-forest-cover/syria_forest.ipynb
+          - file: notebooks/syria-forest-cover/syria_forest.ipynb
       - file: notebooks/internet-connectivity/README
         sections:
-        - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
+          - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
       - file: notebooks/conflict/acled.ipynb
       - file: notebooks/vegetation-conditions/README
         sections:
-        - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
+          - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
   - caption: Insights and Indicators
     chapters:
       - file: docs/insights-and-indicators
