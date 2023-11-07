@@ -32,6 +32,8 @@ We examine trends in daily nighttime lights from before and after the February 6
 
 ![](../../reports/figures/pchange_ntl_2022_2023.png)
 
+![](../../reports/figures/pchange_ntl_nogf_2022_2023.png)
+
 ![](../../reports/figures/pchange_ntl_monthly.png)
 
 

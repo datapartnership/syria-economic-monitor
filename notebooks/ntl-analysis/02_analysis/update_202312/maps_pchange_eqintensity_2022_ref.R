@@ -50,16 +50,17 @@ df_wide <- df %>%
   st_drop_geometry(geometry) %>%
   
   group_by(uid, period) %>%
-  dplyr::summarise(viirs_bm_mean = mean(viirs_bm_mean)) %>%
+  dplyr::summarise(viirs_bm_mean = mean(viirs_bm_mean),
+                   viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean)) %>%
   ungroup() %>%
   
-  dplyr::select(uid, period, viirs_bm_mean) %>%
+  dplyr::select(uid, period, viirs_bm_mean, viirs_bm_nogf_mean) %>%
   pivot_wider(id_cols = c(uid),
               names_from = period,
-              values_from = viirs_bm_mean) %>%
-  dplyr::mutate(ntl_pc = (yr2023 - yr2022) / yr2022 * 100)
+              values_from = c(viirs_bm_mean, viirs_bm_nogf_mean)) %>%
+  dplyr::mutate(ntl_pc = (viirs_bm_mean_yr2023 - viirs_bm_mean_yr2022) / viirs_bm_mean_yr2022 * 100,
+                ntl_nogf_pc = (viirs_bm_nogf_mean_yr2023 - viirs_bm_nogf_mean_yr2022) / viirs_bm_nogf_mean_yr2022 * 100)
 
-df_wide$ntl_pc[df_wide$ntl_pc %in% Inf] <- 0
 
 df_geom <- df %>%
   dplyr::filter(date %in% ymd("2021-01-01")) %>%
@@ -79,10 +80,14 @@ vstrong <- st_intersection(vstrong, df_sub %>%
 
 df_sub$ntl_pc[df_sub$ntl_pc > 100]  <- 100
 df_sub$ntl_pc[df_sub$ntl_pc < -100] <- -100
+
+df_sub$ntl_nogf_pc[df_sub$ntl_nogf_pc > 100]  <- 100
+df_sub$ntl_nogf_pc[df_sub$ntl_nogf_pc < -100] <- -100
+
 p <- ggplot() +
   geom_sf(data = syr_0_sf,
           color = "gray30") +
-  geom_sf(data = df_sub[df_sub$eq_intensity_str %in% c("Very Strong", "Strong", "Moderate"),],
+  geom_sf(data = df_sub,
           aes(fill = ntl_pc),
           size = 0,
           color = "gray50") +
@@ -119,4 +124,42 @@ ggsave(p,
 
 
 
+p <- ggplot() +
+  geom_sf(data = syr_0_sf,
+          color = "gray30") +
+  geom_sf(data = df_sub,
+          aes(fill = ntl_nogf_pc),
+          size = 0,
+          color = "gray50") +
+  geom_sf(data = vstrong,
+          fill = NA,
+          color = "black",
+          linewidth = 0.5) +
+  scale_fill_gradient2(low = "firebrick2",
+                       mid = "white",
+                       high = "forestgreen",
+                       midpoint = 0,
+                       breaks = c(-100,
+                                  -50,
+                                  0,
+                                  50,
+                                  100),
+                       limits = c(-100, 100),
+                       labels = c("< -100",
+                                  "-50",
+                                  "0",
+                                  "50",
+                                  "> 100")) +
+  labs(fill = "Percent\nChange",
+       title = "Percent Change: Jan - Aug 2022 to Jan - Aug 2023",
+       subtitle = "Nighttime lights from gas flaring locations removed",
+       caption = "Black line indicates Very Strong or Strong earthquake intensity.\nPercent only shown for regions at least moderately effected by earthquake.\nShowing locations in Turkey at least strongly effected by the earthquake.") +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5, face = "italic"),
+        plot.caption = element_text(size = 6))
+
+ggsave(p,
+       filename = file.path(figures_dir, "pchange_ntl_nogf_2022_2023.png"),
+       height = 5, width = 10)
 
