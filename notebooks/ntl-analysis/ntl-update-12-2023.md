@@ -16,15 +16,15 @@ We examine trends in daily nighttime lights from before and after the February 6
 
 > *Average Trends in Nighttime Lights by Earthquake Intensity. The red line indicates February, 2023.*
 
-![](../../reports/figures/syr_eqintensity_verystrong_monthly.png)
+![](../../reports/figures/syr_eqintensity_adm_verystrong_monthly.png)
 
 > *Average Trends in Nighttime Lights by Earthquake Intensity. The red line indicates February, 2023.*
 
-![](../../reports/figures/syr_eqintensity_strong_monthly.png)
+![](../../reports/figures/syr_eqintensity_adm_strong_monthly.png)
 
 > *Average Trends in Nighttime Lights by Earthquake Intensity. The red line indicates February, 2023.*
 
-![](../../reports/figures/tur_eqintensity_verystrong_monthly.png)
+![](../../reports/figures/tur_eqintensity_adm_verystrong_monthly.png)
 
 > *Average Trends in Nighttime Lights by Earthquake Intensity. The red line indicates February, 2023.*
 
