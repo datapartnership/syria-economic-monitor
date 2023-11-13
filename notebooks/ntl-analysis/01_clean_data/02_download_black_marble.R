@@ -41,7 +41,7 @@ bm_raster(roi_sf = roi_sf,
 
 bm_raster(roi_sf = roi_sf,
           product_id = "VNP46A2",
-          date = seq.Date(from = ymd("2022-01-01"), to = Sys.Date(), by = "day") %>% rev(),
+          date = seq.Date(from = ymd("2023-06-01"), to = Sys.Date(), by = "day") %>% rev(),
           bearer = bearer,
           output_location_type = "file",
           file_dir = file.path(data_dir, 
