@@ -1,6 +1,6 @@
 # 2023-12 Update - Nighttime Lights
 
-We examine trends in daily nighttime lights from before and after the February 6 earthquake. 
+We examine trends in daily nighttime lights from before and after the February 6 earthquake.
 
 ### Monthly Trends in Nighttime Lights by Earthquake Intensity
 

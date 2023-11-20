@@ -1,7 +1,7 @@
 # Percent Change
 
 # Load/prep geometries ---------------------------------------------------------
-syr_0_sf <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm0_uncs_unocha_20201217.json")) 
+syr_0_sf <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm0_uncs_unocha_20201217.json"))
 
 syr_sf <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm3_uncs_unocha_20201217.json")) %>%
   dplyr::select(ADM1_EN, ADM2_EN, ADM3_EN)
@@ -17,7 +17,7 @@ syr_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
                             paste0("syr", "_admin_adm",
                                    3, "_", "monthly", ".Rds"))) %>%
   mutate(country = "Syria",
-         adm = ADM3_EN %>% tolower() %>% tools::toTitleCase()) 
+         adm = ADM3_EN %>% tolower() %>% tools::toTitleCase())
 
 syr_sf <- syr_sf %>%
   left_join(syr_df, by = c("ADM1_EN", "ADM2_EN", "ADM3_EN"))
@@ -27,7 +27,7 @@ tur_df <- readRDS(file.path(ntl_bm_dir, "FinalData", "aggregated",
                             paste0("tur", "_admin_adm",
                                    2, "_", "monthly", ".Rds"))) %>%
   mutate(country = "Turkey",
-         adm = adm2_en %>% tolower() %>% tools::toTitleCase()) 
+         adm = adm2_en %>% tolower() %>% tools::toTitleCase())
 
 tur_sf <- tur_sf %>%
   right_join(tur_df, by = "pcode")
@@ -48,12 +48,12 @@ df_wide <- df %>%
   ungroup() %>%
   dplyr::filter(!is.na(period)) %>%
   st_drop_geometry(geometry) %>%
-  
+
   group_by(uid, period) %>%
   dplyr::summarise(viirs_bm_mean = mean(viirs_bm_mean),
                    viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean)) %>%
   ungroup() %>%
-  
+
   dplyr::select(uid, period, viirs_bm_mean, viirs_bm_nogf_mean) %>%
   pivot_wider(id_cols = c(uid),
               names_from = period,
@@ -75,7 +75,7 @@ vstrong <- df_geom %>%
   dplyr::filter(eq_intensity_str %in% c("Very Strong", "Strong")) %>%
   st_union()
 
-vstrong <- st_intersection(vstrong, df_sub %>% 
+vstrong <- st_intersection(vstrong, df_sub %>%
                              st_union())
 
 df_sub$ntl_pc[df_sub$ntl_pc > 100]  <- 100
