@@ -1,6 +1,6 @@
 # Append Syria NTL Aggregations into One Dataset
 
-#### Prep earthquake data
+# Prep earthquake data ---------------------------------------------------------
 eq_int_to_str <- function(df){
   
   df %>%
@@ -38,13 +38,12 @@ tur_adm2_eq <- tur_adm2_eq %>%
   dplyr::select(pcode, eq_intensity) %>%
   eq_int_to_str()
 
-
-
+# Append -----------------------------------------------------------------------
 
 adm_i <- 2
 time_name <- "daily"
 country_code <- "tur"
-for(adm_i in c(2,3,4)){
+for(adm_i in c(0,1,2,3,4)){
   for(time_name in c("monthly", "daily")){
     for(country_code in c("tur", "syr")){
       
@@ -87,6 +86,10 @@ for(adm_i in c(2,3,4)){
       saveRDS(df, file.path(ntl_bm_dir, "FinalData", "aggregated",
                             paste0(country_code, "_admin_adm",
                                    adm_i, "_", time_name, ".Rds")))
+      
+      write_dta(df, file.path(ntl_bm_dir, "FinalData", "aggregated",
+                            paste0(country_code, "_admin_adm",
+                                   adm_i, "_", time_name, ".dta")))
     }
   }
 }
