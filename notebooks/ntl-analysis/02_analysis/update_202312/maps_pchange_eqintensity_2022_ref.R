@@ -54,13 +54,7 @@ df_wide <- df %>%
                    viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean),
                    viirs_bm_gf_mean   = mean(viirs_bm_gf_mean)) %>%
   ungroup() %>%
-<<<<<<< HEAD
-  
   dplyr::select(uid, period, viirs_bm_mean, viirs_bm_nogf_mean, viirs_bm_gf_mean) %>%
-=======
-
-  dplyr::select(uid, period, viirs_bm_mean, viirs_bm_nogf_mean) %>%
->>>>>>> bf3e092f6f4ad0636c5032a6d92f6cc743be374e
   pivot_wider(id_cols = c(uid),
               names_from = period,
               values_from = c(viirs_bm_mean, viirs_bm_nogf_mean, viirs_bm_gf_mean)) %>%
