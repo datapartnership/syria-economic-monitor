@@ -22,9 +22,6 @@ if(DELETE_FILES){
     file.remove(f_i)
   }
   
-  
-  
-  
   f_to_rm <- file.path(ntl_bm_dir, "FinalData", "aggregated", "syr_temp", "monthly") %>%
     list.files(full.names = T,
                pattern = "*.Rds")
@@ -49,7 +46,7 @@ adm_i <- 2
 product_id <- "daily"
 country_code <- "syr"
 
-for(adm_i in c(2, 3,4)){
+for(adm_i in 0:4){
   for(product_id in c("monthly", "daily")){
     for(country_code in c("tur", "syr")){
       
@@ -85,6 +82,19 @@ for(adm_i in c(2, 3,4)){
       
       # Load data --------------------------------------------------------------------
       if(country_code == "syr"){
+        
+        if(adm_i == 0){
+          gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm0_uncs_unocha_20201217.json")) %>%
+            as("Spatial")
+          gadm_sp$date <- NULL
+        }
+        
+        if(adm_i == 1){
+          gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm1_uncs_unocha_20201217.json")) %>%
+            as("Spatial")
+          gadm_sp$date <- NULL
+        }
+        
         if(adm_i == 2){
           gadm_sp <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm2_uncs_unocha_20201217.json")) %>%
             as("Spatial")
@@ -111,8 +121,21 @@ for(adm_i in c(2, 3,4)){
       
       if(country_code == "tur"){
         
-        gadm_sp <- read_sf(file.path(data_dir, "turkey_administrativelevels0_1_2", "tur_polbna_adm2.shp")) %>%
-          as("Spatial")
+        if(adm_i == 0){
+          gadm_sp <- read_sf(file.path(data_dir, "turkey_administrativelevels0_1_2", "tur_polbnda_adm0.shp")) %>%
+            as("Spatial")
+        }
+        
+        if(adm_i == 1){
+          gadm_sp <- read_sf(file.path(data_dir, "turkey_administrativelevels0_1_2", "tur_polbnda_adm1.shp")) %>%
+            as("Spatial")
+        }
+        
+        if(adm_i == 2){
+          gadm_sp <- read_sf(file.path(data_dir, "turkey_administrativelevels0_1_2", "tur_polbna_adm2.shp")) %>%
+            as("Spatial")
+        }
+
         
       }
       
