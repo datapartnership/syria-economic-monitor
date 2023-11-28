@@ -6,6 +6,7 @@
 
 #install.packages(c("here", "tidyverse", "visdat", "summarytools", "readxl", "ggplot2", "Hmisc", "devtools"))
 #devtools::install_github("hadley/scales")
+#install.packages('RMySQL', repos='http://cran.us.r-project.org')
 
 library(here)
 library(tidyverse)
@@ -18,11 +19,16 @@ library(scales)
 library(dplyr)
 library(viridis)
 library(ggrepel)
+library(sf)
+library(haven)
+library(RColorBrewer)
 
-# Colors -----------------------------------------------------------------------
+# Colors and shapefiles --------------------------------------------------------
 
 pie_colors <- c("#66c2e0", "#fae10b", "#fc8d62", "darkseagreen3", "lightpink1", "lightsteelblue1")
 bar_colors <- c("#66c2e0", "#fae10b", "#fc8d62")
+
+syria_shp <- st_read(here("Data", "Raw", "syr_admbnda_adm3_uncs_unocha_20201217-polygon.shp"))
 
 # Codes ------------------------------------------------------------------------
 

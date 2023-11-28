@@ -4,37 +4,69 @@
 # 2_demographics
 ######################################################################
 
+###############################
+# MSNA 2022
+###############################
+
 # Population distribution ------------------------------------------------------
 
+  # 2022
   pop_2022 <- msna_2022 %>%
     group_by(q_7_1, q_k9) %>%
     summarise(pop = sum(q_r12, na.rm = TRUE),
-              .groups = 'drop')
-  
-  # Variables processing
-  pop_2022 <- pop_2022 %>%
+              .groups = 'drop') %>%
     mutate(
       subdis_code = str_split(q_k9, " - ", simplify = TRUE)[, 1],
       subdis_name = str_split(q_k9, " - ", simplify = TRUE)[, 2],
-      hh_pop_type = as.numeric(as.character(case_when(
-        q_7_1 == "Host population" ~ "1",
-        q_7_1 == "Internally displaced person (IDP)" ~ "2",
-        q_7_1 == "Returnee (returned in 2022)" ~ "3",
-        TRUE ~ as.character(q_7_1)
-      ))),
-      ADM3_PCODE = subdis_code,
-      catIDPs_new = cut(pop, breaks = c(-Inf, 0, 325, 650, 975, 1300, 1625, 1950, 2275, Inf),
-                        labels = c("0", "1 - 325", "326 - 650", "651 - 975", "976 - 1300", "1301 - 1625", "1626 - 1950", "1951 - 2275", "2276 - 2600"))
-    ) %>%
-    select(ADM3_PCODE, subdis_code, subdis_name, hh_pop_type, pop, catIDPs_new)
+      ADM3_PCODE = subdis_code) %>%
+    select(ADM3_PCODE, subdis_code, subdis_name, q_7_1, pop)
+
+  unique_pop <- unique(pop_2022$q_7_1)
   
-  pop_2022 %>%
-    write_csv(
-      here("Data",
-           "Coded",
-           "pop_2022.csv"
-      )
-    )
+  for (i in unique_pop) {
+    
+    subset_data <- pop_2022 %>% filter(q_7_1 == i)
+    merged_data <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    
+    pop_map <- ggplot(merged_data) +
+      geom_sf(aes(fill = pop)) +
+      scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "white") +
+      ggtitle(i) +
+      theme_minimal() +
+      theme(legend.position = "right") +
+      labs(fill = "Population")
+    
+    ggsave(here("Output", "2022", paste0("/pop_", i, ".png")), plot = pop_map, width = 7, height = 6, units = "in", dpi = 300)
+  }
+  
+  # 2023
+  pop_2023 <- msna_2023 %>%
+    group_by(q_7_1, q_k9) %>%
+    summarise(pop = sum(q_r12, na.rm = TRUE),
+              .groups = 'drop') %>%
+    mutate(
+      subdis_code = str_split(q_k9, " - ", simplify = TRUE)[, 1],
+      subdis_name = str_split(q_k9, " - ", simplify = TRUE)[, 2],
+      ADM3_PCODE = subdis_code) %>%
+    select(ADM3_PCODE, subdis_code, subdis_name, q_7_1, pop)
+  
+  unique_pop <- unique(pop_2023$q_7_1)
+  
+  for (i in unique_pop) {
+    
+    subset_data <- pop_2023 %>% filter(q_7_1 == i)
+    merged_data <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    
+    pop_map <- ggplot(merged_data) +
+      geom_sf(aes(fill = pop)) +
+      scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "white") +
+      ggtitle(i) +
+      theme_minimal() +
+      theme(legend.position = "right") +
+      labs(fill = "Population")
+    
+    ggsave(here("Output", "2023", paste0("/pop_", i, ".png")), plot = pop_map, width = 7, height = 6, units = "in", dpi = 300)
+  }
   
 # HH characteristics ----------------------------------------------------
 

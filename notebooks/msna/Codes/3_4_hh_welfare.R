@@ -7,10 +7,7 @@
 # % of HHs by number of hours of access to electricity -------------------------
 
 electr_2022 <- msna_2022 %>%
-  filter(!is.na(q_15_1)) %>%
-  mutate(
-    q_15_1 = ifelse(q_15_1 %in% c("16-21 hours per day", "22+ hours per day"), "16+ hours per day", q_15_1),
-  )
+  filter(!is.na(q_15_1))
 
 unique_q_k10 <- unique(wat_2022$q_k10)
 
@@ -48,7 +45,7 @@ for (value in unique_q_k10) {
 
 wat_2022 <- msna_2022 %>%
   filter(!is.na(q_11_1)) %>%
-  mutate(q_11_1 = ifelse(q_11_1 == "Not enough water to meet any of the above needs", "No", "Yes"))
+  mutate()
 
 unique_q_k10 <- unique(wat_2022$q_k10)
 
@@ -121,10 +118,7 @@ for (value in unique_q_k10) {
 # Main reason limiting household’s ability to meet their basic needs -----------
 
 limits_2022 <- msna_2022 %>%
-  select(id, q_k10, q_16_3_1, q_7_1) %>%
-  rename(
-    limit = q_16_3_1,
-  ) %>%
+  select(id, q_k10, limit, q_7_1) %>%
   mutate(id = id,
          ones = 1,
          limit = ifelse(limit %in% c("Other (please specify)",
@@ -220,10 +214,8 @@ for (value in unique_q_k10) {
 # Household income over the last 3 months --------------------------------------
 
 income_2022 <- msna_2022 %>%
-  select(q_16_4_currency, q_16_4_a, q_16_4_b, q_k10, q_16_4, q_7_1) %>%
-  filter(q_16_4 == "Yes") %>%
-  mutate(q_16_4_b = q_16_4_b/0.0071,
-         q_16_4_a = ifelse(q_16_4_currency == "Turkish Lira (TRY)", q_16_4_b, q_16_4_a)) # SYP to TRY on August 1, 2022
+  select(income, q_k10, q_16_4, q_7_1) %>%
+  filter(q_16_4 == "Yes")
 
 unique_q_k10 <- unique(income_2022$q_k10)
 
@@ -232,7 +224,7 @@ for (value in unique_q_k10) {
     subset_data <- income_2022 %>%
       filter(q_k10 == value)
     
-    hist_chart <- ggplot(subset_data, aes(x = factor(q_7_1), y = q_16_4_a)) +
+    hist_chart <- ggplot(subset_data, aes(x = factor(q_7_1), y = income)) +
       geom_boxplot(fill = "lightblue", color = "blue") +
       labs(title = "",
            x = "Population type",

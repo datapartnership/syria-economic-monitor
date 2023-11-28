@@ -4,41 +4,42 @@
 # 3_2_aid
 ######################################################################
 
-# % HH having received aid in the 3 months -------------------------------------
+# % of HH having received aid in the 3 months ----------------------------------
 
   aid_2022 <- msna_2022 %>%
     group_by(q_k10, q_k9, q_7_1) %>%
     summarise(
-      per_aid_hh_rec = mean(q_17_1 == "Yes", na.rm = TRUE) * 100,
+      per_aid_hh = mean(q_17_1 == "Yes", na.rm = TRUE) * 100,
       .groups = 'drop'
-    )
-  
-  aid_2022 <- aid_2022 %>%
+    ) %>%
     mutate(
       subdis_code = str_split(q_k9, " - ", simplify = TRUE)[, 1],
       subdis_name = str_split(q_k9, " - ", simplify = TRUE)[, 2],
-      type_location = as.numeric(as.character(case_when(
-        as.character(q_k10) == "Camp" ~ "1",
-        as.character(q_k10) == "Community" ~ "2",
-        as.character(q_k10) == "Neighborhood" ~ "3",
-        TRUE ~ as.character(q_k10)
-      ))),
-      ADM3_PCODE = subdis_code,
-      catIDPs_new = cut(per_aid_hh_rec, breaks = c(-Inf, 0, 25, 50, 75, Inf),
-                        labels = c("0%", "1% - 24%", "25% - 49%", "50% - 74%", "75% - 100%"))
-    ) %>%
-    select(ADM3_PCODE, subdis_code, subdis_name, type_location, per_aid_hh_rec, catIDPs_new)
+      ADM3_PCODE = subdis_code) %>%
+    select(ADM3_PCODE, subdis_code, subdis_name, q_k10, per_aid_hh, q_7_1)
   
-  levels(aid_2022$type_location) <- c("Camp", "Community", "Neighborhood")
-
-  aid_2022 %>%
-    write_csv(
-      here("Data",
-           "Coded",
-           "aid_dis_2022.csv"
-      )
-    )
-
+  unique_q_k10 <- unique(aid_2022$q_k10)
+  unique_pop <- unique(pop_2022$q_7_1)
+  
+  for (i in unique_pop) {
+    for (j in unique_q_k10) {
+    
+    subset_data <- aid_2022 %>% filter(q_7_1 == i, q_k10 == j)
+    merged_data <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    
+    pop_map <- ggplot(merged_data) +
+      geom_sf(aes(fill = per_aid_hh)) +
+      scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "white") +
+      ggtitle(i) +
+      theme_minimal() +
+      theme(legend.position = "right") +
+      labs(fill = "Percentage")
+    
+    ggsave(here("Output", "2022", paste0("/aid_", i, "_", j, ".png")), plot = pop_map, width = 7, height = 6, units = "in", dpi = 300)
+    }
+  }
+  
+  
 # Aid satisfaction -------------------------------------------------------------
 
 aid_2022 <- msna_2022 %>%

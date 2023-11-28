@@ -40,12 +40,7 @@ ggsave(here("Output", "bar_unsaf_girls.png"), bar_chart, width = 10, height = 6)
 # Main safety and security concerns in the past 3 months -----------------------
 
 safety_2022 <- msna_2022 %>%
-  select(id, q_16_8, q_k10) %>%
-  separate(
-    q_16_8, 
-    into = c("safety_1", "safety_2", "safety_3", "safety_4", "safety_5"), 
-    sep = "; "
-  ) %>%
+  select(id, starts_with("safety_"), q_k10) %>%
   pivot_longer(cols = starts_with("safety"), names_to = "safety_q", values_to = "safety_r") %>%
   filter(!is.na(safety_r), safety_r != "Don't know/unsure", safety_r != "Prefer not to answer") %>%
   mutate(ones = 1,
@@ -94,17 +89,28 @@ bar_chart <- ggplot(safety_2022, aes(x = percentage, y = safety_r, fill = q_k10)
 ggsave(here("Output", "bar_sec.png"), bar_chart, width = 9, height = 6)
 
 
-# High levels of stress experienced by a hh member ------------------------------
+# Levels of stress experienced by a hh member ----------------------------------
 
-stress_2022 <- msna_2022 %>%
-  select(starts_with("q_8_5_"), q_k10, q_7_1) %>%
-  mutate(stress = ifelse(q_8_5_0 == "Yes" | q_8_5_1 == "Yes" | q_8_5_2 == "Yes" | q_8_5_3 == "Yes", "Yes", "No"),
-         stress = ifelse((q_8_5_0 == "No" & is.na(stress)) | (q_8_5_1 == "No" & is.na(stress)) | (q_8_5_2 == "No" & is.na(stress)) | (q_8_5_3 == "No" & is.na(stress)), "No", stress),
-         ones = 1) %>%
-  filter(!is.na(stress)) %>%
-  group_by(stress, q_k10, q_7_1) %>%
-  summarise(total = sum(ones, na.rm = TRUE),
-            .groups = 'drop')
+  # 2022
+  stress_2022 <- msna_2022 %>%
+    select(starts_with("q_8_5_"), q_7_1) %>%
+    mutate(stress = ifelse(q_8_5_0 == "Yes" | q_8_5_1 == "Yes" | q_8_5_2 == "Yes" | q_8_5_3 == "Yes", "Yes", "No"),
+           stress = ifelse((q_8_5_0 == "No" & is.na(stress)) | (q_8_5_1 == "No" & is.na(stress)) | (q_8_5_2 == "No" & is.na(stress)) | (q_8_5_3 == "No" & is.na(stress)), "No", stress),
+           ones = 1) %>%
+    filter(!is.na(stress)) %>%
+    group_by(stress, q_7_1) %>%
+    summarise(total = sum(ones, na.rm = TRUE),
+              .groups = 'drop')
+  # 2023
+  stress_2023 <- msna_2023 %>%
+    select(starts_with("q_8_5_"), q_7_1) %>%
+    mutate(stress = ifelse(q_8_5_0 == "Yes" | q_8_5_1 == "Yes" | q_8_5_2 == "Yes" | q_8_5_3 == "Yes", "Yes", "No"),
+           stress = ifelse((q_8_5_0 == "No" & is.na(stress)) | (q_8_5_1 == "No" & is.na(stress)) | (q_8_5_2 == "No" & is.na(stress)) | (q_8_5_3 == "No" & is.na(stress)), "No", stress),
+           ones = 1) %>%
+    filter(!is.na(stress)) %>%
+    group_by(stress, q_7_1) %>%
+    summarise(total = sum(ones, na.rm = TRUE),
+              .groups = 'drop')
 
 unique_q_k10 <- unique(stress_2022$q_k10)
 

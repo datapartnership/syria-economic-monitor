@@ -226,12 +226,7 @@ for (value in unique_q_k10) {
 # Adequacy issues in the hh shelter --------------------------------------------
 
 issues_2022 <- msna_2022 %>%
-  select(id, q_10_4, q_k10, q_7_1) %>%
-  separate(
-    q_10_4, 
-    into = c("issues_1", "issues_2", "issues_3", "issues_4", "issues_5"), 
-    sep = "; "
-  ) %>%
+  select(id, starts_with("issues_"), q_k10, q_7_1) %>%
   pivot_longer(cols = starts_with("issues"), names_to = "issues_q", values_to = "issues_r") %>%
   filter(!is.na(issues_r)) %>%
   mutate(ones = 1,
