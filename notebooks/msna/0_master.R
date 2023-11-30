@@ -23,12 +23,10 @@ library(sf)
 library(haven)
 library(RColorBrewer)
 
-# Colors and shapefiles --------------------------------------------------------
+# Colors -----------------------------------------------------------------------
 
 pie_colors <- c("#66c2e0", "#fae10b", "#fc8d62", "darkseagreen3", "lightpink1", "lightsteelblue1")
 bar_colors <- c("#66c2e0", "#fae10b", "#fc8d62")
-
-syria_shp <- st_read(here("Data", "Raw", "syr_admbnda_adm3_uncs_unocha_20201217-polygon.shp"))
 
 # Codes ------------------------------------------------------------------------
 

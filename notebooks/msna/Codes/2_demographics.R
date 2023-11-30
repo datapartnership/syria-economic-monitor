@@ -26,10 +26,14 @@
   for (i in unique_pop) {
     
     subset_data <- pop_2022 %>% filter(q_7_1 == i)
-    merged_data <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    pop_map <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    merged_data <- left_join(pop_map, earthquake, by = "ADM3_PCODE") %>%
+      mutate(earthquake = ifelse(is.na(earthquake), 0, 1))
     
     pop_map <- ggplot(merged_data) +
-      geom_sf(aes(fill = pop)) +
+      geom_sf(aes(fill = pop), color = "black") +
+      geom_sf(data = merged_data[merged_data$earthquake == 1, ], 
+              fill = "transparent", color = "red", size = 5, alpha = 0) + # Set alpha to 0 for transparency
       scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "white") +
       ggtitle(i) +
       theme_minimal() +
@@ -55,10 +59,14 @@
   for (i in unique_pop) {
     
     subset_data <- pop_2023 %>% filter(q_7_1 == i)
-    merged_data <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    pop_map <- left_join(syria_shp, subset_data, by = "ADM3_PCODE")
+    merged_data <- left_join(pop_map, earthquake, by = "ADM3_PCODE") %>%
+      mutate(earthquake = ifelse(is.na(earthquake), 0, 1))
     
     pop_map <- ggplot(merged_data) +
-      geom_sf(aes(fill = pop)) +
+      geom_sf(aes(fill = pop), color = "black") +
+      geom_sf(data = merged_data[merged_data$earthquake == 1, ], 
+              fill = "transparent", color = "red", size = 5, alpha = 0) + # Set alpha to 0 for transparency
       scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "white") +
       ggtitle(i) +
       theme_minimal() +
