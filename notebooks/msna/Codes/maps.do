@@ -58,7 +58,7 @@
 		label values catIDPs_new cat
 		*/
 		
-		* Population
+		* Percentage of hh with access to aid
 		gen catIDPs_new=. 
 		replace catIDPs_new=1 if pop==0
 		replace catIDPs_new=2 if pop>0 & pop<=325
@@ -77,7 +77,7 @@
 
 ******************* Map 
 
-	* Population
+	*
 	forvalues i=1/3 {
 		
 		preserve 
@@ -93,6 +93,8 @@
 		
 		restore
 	}
+
+
 
 	*spshape2dta "${data}\Raw\syr_admbnda_adm3_uncs_unocha_20201217-polygon.shp", replace saving(syria3)
 	

@@ -36,7 +36,7 @@ for (value in unique_year) {
           axis.text = element_blank(),
           axis.title = element_blank(),
           panel.grid = element_blank()) +
-    scale_fill_manual(values = pie_colors4) +
+    scale_fill_manual(values = pie_colors) +
     facet_wrap(~q_7_1, ncol = 3) 
   
   ggsave(here("Output", paste0("pie_elec_", gsub(" ", "_", value), ".png")), plot = pie_chart, width = 9, height = 6, units = "in", dpi = 300)
@@ -75,7 +75,7 @@ nutri <- sample_2023 %>%
           axis.text = element_blank(),
           axis.title = element_blank(),
           panel.grid = element_blank()) +
-    scale_fill_manual(values = pie_colors4) +
+    scale_fill_manual(values = pie_colors) +
     facet_wrap(~q_7_1, ncol = 3) 
   
   ggsave(here("Output", "pie_nut_2023.png"), plot = pie_chart, width = 9, height = 6, units = "in", dpi = 300)
@@ -205,7 +205,7 @@ for (value in unique_year) {
           axis.text = element_blank(),
           axis.title = element_blank(),
           panel.grid = element_blank()) +
-    scale_fill_manual(values = pie_colors4) +
+    scale_fill_manual(values = pie_colors) +
     facet_wrap(~q_7_1, ncol = 3) 
   
   ggsave(here("Output", paste0("pie_bn_", gsub(" ", "_", value), ".png")), plot = pie_chart, width = 9, height = 6, units = "in", dpi = 300)
