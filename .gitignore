@@ -87,3 +87,7 @@ target/
 
 # Jupyter Book
 _build/
+
+/data
+
+/notebooks/hsos-survey/Figures
