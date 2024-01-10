@@ -56,15 +56,15 @@ Understanding the dynamics of crop growth and development in Syria requires a co
 
 Temperature and rainfall are key drivers of phenological stages such as germination, flowering, and maturation. For instance, variations in monthly temperatures can significantly impact the growth rate and health of crops [8]. Warmer temperatures may accelerate growth in certain crops but can also increase evapotranspiration and water demand. On the other hand, cooler temperatures might slow down growth or even damage sensitive crops.
 
-![Temperature](./images/syr_cli_temperature_202302.png)
+![Temperature](./images/syr_cli_temperature_202309.png)
 
-**Figure 5.** Mean temperature, December 2022 - February 2023.
+**Figure 5.** Mean temperature, September 2023.
 
 Similarly, rainfall patterns play a crucial role in determining water availability for crops. Adequate rainfall is essential for crop survival and productivity, but excessive or insufficient rainfall can lead to adverse conditions like flooding or drought, respectively [9].
 
-![Rainfall](./images/syr_cli_rainfall_202302.png)
+![Rainfall](./images/syr_cli_rainfall_202309.png)
 
-**Figure 6.** Accumulated rainfall, December 2022 - February 2023.
+**Figure 6.** Accumulated rainfall, September 2023.
 
 By analyzing these climate data alongside vegetation indices and phenological information, we can correlate climate trends with vegetation dynamics. 
 
@@ -851,105 +851,105 @@ This section delves into the analysis of annual and monthly trends in planting a
 ::::{tab-set}
 :::{tab-item} Syria
 :sync: key1
-![AA92](./images/plot_syr_adm0_annual_pheno_anomaly.png)
+![AA92](./images/plot_syr_adm0_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 92.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Damascus
 :sync: key2
-![AA93](./images/plot_syr_adm1_Damascus_annual_pheno_anomaly.png)
+![AA93](./images/plot_syr_adm1_Damascus_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 93.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Aleppo
 :sync: key3
-![AA94](./images/plot_syr_adm1_Aleppo_annual_pheno_anomaly.png)
+![AA94](./images/plot_syr_adm1_Aleppo_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 94.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Rural Damascus
 :sync: key4
-![AA95](./images/plot_syr_adm1_Rural_Damascus_annual_pheno_anomaly.png)
+![AA95](./images/plot_syr_adm1_Rural_Damascus_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 95.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Homs
 :sync: key5
-![AA96](./images/plot_syr_adm1_Homs_annual_pheno_anomaly.png)
+![AA96](./images/plot_syr_adm1_Homs_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 96.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Hama
 :sync: key6
-![AA97](./images/plot_syr_adm1_Hama_annual_pheno_anomaly.png)
+![AA97](./images/plot_syr_adm1_Hama_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 97.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Lattakia
 :sync: key7
-![AA98](./images/plot_syr_adm1_Lattakia_annual_pheno_anomaly.png)
+![AA98](./images/plot_syr_adm1_Lattakia_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 98.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Idleb
 :sync: key8
-![AA99](./images/plot_syr_adm1_Idleb_annual_pheno_anomaly.png)
+![AA99](./images/plot_syr_adm1_Idleb_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 99.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Al-Hasakeh
 :sync: key9
-![AA100](./images/plot_syr_adm1_Al-Hasakeh_annual_pheno_anomaly.png)
+![AA100](./images/plot_syr_adm1_Al-Hasakeh_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 100.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Deir-ez-Zor
 :sync: key10
-![AA101](./images/plot_syr_adm1_Deir-ez-Zor_annual_pheno_anomaly.png)
+![AA101](./images/plot_syr_adm1_Deir-ez-Zor_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 101.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Tartous
 :sync: key11
-![AA102](./images/plot_syr_adm1_Tartous_annual_pheno_anomaly.png)
+![AA102](./images/plot_syr_adm1_Tartous_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 102.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Ar-Raqqa
 :sync: key12
-![AA103](./images/plot_syr_adm1_Ar-Raqqa_annual_pheno_anomaly.png)
+![AA103](./images/plot_syr_adm1_Ar-Raqqa_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 103.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Dar'a
 :sync: key13
-![AA104](./images/plot_syr_adm1_Dar'a_annual_pheno_anomaly.png)
+![AA104](./images/plot_syr_adm1_Dar'a_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 104.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} As-Sweida
 :sync: key14
-![AA105](./images/plot_syr_adm1_As-Sweida_annual_pheno_anomaly.png)
+![AA105](./images/plot_syr_adm1_As-Sweida_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 105.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Quneitra
 :sync: key15
-![AA106](./images/plot_syr_adm1_Quneitra_annual_pheno_anomaly.png)
+![AA106](./images/plot_syr_adm1_Quneitra_annual_pheno_anomaly_with_LTA_2003_2022.png)
 
 **Figure 106.** Annual Harvest and Planting Anomaly, 2003-2023
 :::
@@ -960,105 +960,105 @@ This section delves into the analysis of annual and monthly trends in planting a
 ::::{tab-set}
 :::{tab-item} Syria
 :sync: key1
-![MA107](./images/plot_syr_adm0_monthly_pheno_anomaly_heatmap.png)
+![MA107](./images/plot_syr_adm0_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 107.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Damascus
 :sync: key2
-![MA108](./images/plot_syr_adm1_Damascus_monthly_pheno_anomaly_heatmap.png)
+![MA108](./images/plot_syr_adm1_Damascus_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 108.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Aleppo
 :sync: key3
-![MA109](./images/plot_syr_adm1_Aleppo_monthly_pheno_anomaly_heatmap.png)
+![MA109](./images/plot_syr_adm1_Aleppo_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 109.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Rural Damascus
 :sync: key4
-![MA110](./images/plot_syr_adm1_Rural_Damascus_monthly_pheno_anomaly_heatmap.png)
+![MA110](./images/plot_syr_adm1_Rural_Damascus_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 110.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Homs
 :sync: key5
-![MA111](./images/plot_syr_adm1_Homs_monthly_pheno_anomaly_heatmap.png)
+![MA111](./images/plot_syr_adm1_Homs_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 111.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Hama
 :sync: key6
-![MA112](./images/plot_syr_adm1_Hama_monthly_pheno_anomaly_heatmap.png)
+![MA112](./images/plot_syr_adm1_Hama_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 112.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Lattakia
 :sync: key7
-![MA113](./images/plot_syr_adm1_Lattakia_monthly_pheno_anomaly_heatmap.png)
+![MA113](./images/plot_syr_adm1_Lattakia_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 113.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Idleb
 :sync: key8
-![MA114](./images/plot_syr_adm1_Idleb_monthly_pheno_anomaly_heatmap.png)
+![MA114](./images/plot_syr_adm1_Idleb_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 114.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Al-Hasakeh
 :sync: key9
-![MA115](./images/plot_syr_adm1_Al-Hasakeh_monthly_pheno_anomaly_heatmap.png)
+![MA115](./images/plot_syr_adm1_Al-Hasakeh_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 115.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Deir-ez-Zor
 :sync: key10
-![MA116](./images/plot_syr_adm1_Deir-ez-Zor_monthly_pheno_anomaly_heatmap.png)
+![MA116](./images/plot_syr_adm1_Deir-ez-Zor_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 116.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Tartous
 :sync: key11
-![MA117](./images/plot_syr_adm1_Tartous_monthly_pheno_anomaly_heatmap.png)
+![MA117](./images/plot_syr_adm1_Tartous_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 117.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Ar-Raqqa
 :sync: key12
-![MA118](./images/plot_syr_adm1_Ar-Raqqa_monthly_pheno_anomaly_heatmap.png)
+![MA118](./images/plot_syr_adm1_Ar-Raqqa_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 118.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Dar'a
 :sync: key13
-![MA119](./images/plot_syr_adm1_Dar'a_monthly_pheno_anomaly_heatmap.png)
+![MA119](./images/plot_syr_adm1_Dar'a_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 119.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} As-Sweida
 :sync: key14
-![MA120](./images/plot_syr_adm1_As-Sweida_monthly_pheno_anomaly_heatmap.png)
+![MA120](./images/plot_syr_adm1_As-Sweida_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 120.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
 
 :::{tab-item} Quneitra
 :sync: key15
-![MA121](./images/plot_syr_adm1_Quneitra_monthly_pheno_anomaly_heatmap.png)
+![MA121](./images/plot_syr_adm1_Quneitra_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png)
 
 **Figure 121.** Monthly Harvest and Planting Anomaly, 2003-2023
 :::
