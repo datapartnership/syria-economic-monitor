@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -77,7 +77,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Air Pollution in Syria" href="../google-earth-engine/air-pollution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Dec 12, 2023"/>
+    <meta name="docbuild:last-update" content="Jan 10, 2024"/>
   </head>
   
   
@@ -85,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -128,12 +128,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -475,7 +483,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="monitoring-vegetation-conditions">
 <h1>Monitoring vegetation conditions<a class="headerlink" href="#monitoring-vegetation-conditions" title="Permalink to this heading">#</a></h1>
@@ -515,11 +523,11 @@ document.write(`
 <h3>Climate<a class="headerlink" href="#climate" title="Permalink to this heading">#</a></h3>
 <p>Understanding the dynamics of crop growth and development in Syria requires a comprehensive approach that includes the analysis of climate data. Monthly temperature and rainfall patterns are pivotal factors influencing agricultural cycles. By integrating time-series data of these climate parameters into our analysis, we can gain deeper insights into how environmental conditions affect crop growth [7].</p>
 <p>Temperature and rainfall are key drivers of phenological stages such as germination, flowering, and maturation. For instance, variations in monthly temperatures can significantly impact the growth rate and health of crops [8]. Warmer temperatures may accelerate growth in certain crops but can also increase evapotranspiration and water demand. On the other hand, cooler temperatures might slow down growth or even damage sensitive crops.</p>
-<p><img alt="Temperature" src="../../_images/syr_cli_temperature_202302.png" /></p>
-<p><strong>Figure 5.</strong> Mean temperature, December 2022 - February 2023.</p>
+<p><img alt="Temperature" src="../../_images/syr_cli_temperature_202309.png" /></p>
+<p><strong>Figure 5.</strong> Mean temperature, September 2023.</p>
 <p>Similarly, rainfall patterns play a crucial role in determining water availability for crops. Adequate rainfall is essential for crop survival and productivity, but excessive or insufficient rainfall can lead to adverse conditions like flooding or drought, respectively [9].</p>
-<p><img alt="Rainfall" src="../../_images/syr_cli_rainfall_202302.png" /></p>
-<p><strong>Figure 6.</strong> Accumulated rainfall, December 2022 - February 2023.</p>
+<p><img alt="Rainfall" src="../../_images/syr_cli_rainfall_202309.png" /></p>
+<p><strong>Figure 6.</strong> Accumulated rainfall, September 2023.</p>
 <p>By analyzing these climate data alongside vegetation indices and phenological information, we can correlate climate trends with vegetation dynamics.</p>
 <p>Monthly temperature derived from <a class="reference external" href="https://doi.org/10.24381/cds.68d2bb30">ERA5-Land</a>, and rainfall data come from <a class="reference external" href="https://www.chc.ucsb.edu/data/chirps">CHRIPS</a>.</p>
 </section>
@@ -1204,91 +1212,91 @@ Quneitra</label><div class="sd-tab-content docutils">
 <input checked="checked" id="sd-tab-item-82" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key1" for="sd-tab-item-82">
 Syria</label><div class="sd-tab-content docutils">
-<p><img alt="AA92" src="notebooks/vegetation-conditions/images/plot_syr_adm0_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA92" src="../../_images/plot_syr_adm0_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 92.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-83" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key2" for="sd-tab-item-83">
 Damascus</label><div class="sd-tab-content docutils">
-<p><img alt="AA93" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Damascus_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA93" src="../../_images/plot_syr_adm1_Damascus_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 93.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-84" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key3" for="sd-tab-item-84">
 Aleppo</label><div class="sd-tab-content docutils">
-<p><img alt="AA94" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Aleppo_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA94" src="../../_images/plot_syr_adm1_Aleppo_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 94.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-85" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key4" for="sd-tab-item-85">
 Rural Damascus</label><div class="sd-tab-content docutils">
-<p><img alt="AA95" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Rural_Damascus_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA95" src="../../_images/plot_syr_adm1_Rural_Damascus_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 95.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-86" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key5" for="sd-tab-item-86">
 Homs</label><div class="sd-tab-content docutils">
-<p><img alt="AA96" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Homs_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA96" src="../../_images/plot_syr_adm1_Homs_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 96.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-87" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key6" for="sd-tab-item-87">
 Hama</label><div class="sd-tab-content docutils">
-<p><img alt="AA97" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Hama_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA97" src="../../_images/plot_syr_adm1_Hama_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 97.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-88" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key7" for="sd-tab-item-88">
 Lattakia</label><div class="sd-tab-content docutils">
-<p><img alt="AA98" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Lattakia_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA98" src="../../_images/plot_syr_adm1_Lattakia_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 98.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-89" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key8" for="sd-tab-item-89">
 Idleb</label><div class="sd-tab-content docutils">
-<p><img alt="AA99" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Idleb_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA99" src="../../_images/plot_syr_adm1_Idleb_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 99.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-90" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key9" for="sd-tab-item-90">
 Al-Hasakeh</label><div class="sd-tab-content docutils">
-<p><img alt="AA100" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Al-Hasakeh_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA100" src="../../_images/plot_syr_adm1_Al-Hasakeh_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 100.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-91" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key10" for="sd-tab-item-91">
 Deir-ez-Zor</label><div class="sd-tab-content docutils">
-<p><img alt="AA101" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Deir-ez-Zor_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA101" src="../../_images/plot_syr_adm1_Deir-ez-Zor_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 101.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-92" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key11" for="sd-tab-item-92">
 Tartous</label><div class="sd-tab-content docutils">
-<p><img alt="AA102" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Tartous_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA102" src="../../_images/plot_syr_adm1_Tartous_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 102.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-93" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key12" for="sd-tab-item-93">
 Ar-Raqqa</label><div class="sd-tab-content docutils">
-<p><img alt="AA103" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Ar-Raqqa_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA103" src="../../_images/plot_syr_adm1_Ar-Raqqa_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 103.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-94" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key13" for="sd-tab-item-94">
 Dar’a</label><div class="sd-tab-content docutils">
-<p><img alt="AA104" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Dar'a_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA104" src="../../_images/plot_syr_adm1_Dar'a_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 104.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-95" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key14" for="sd-tab-item-95">
 As-Sweida</label><div class="sd-tab-content docutils">
-<p><img alt="AA105" src="notebooks/vegetation-conditions/images/plot_syr_adm1_As-Sweida_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA105" src="../../_images/plot_syr_adm1_As-Sweida_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 105.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-96" name="sd-tab-set-14" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key15" for="sd-tab-item-96">
 Quneitra</label><div class="sd-tab-content docutils">
-<p><img alt="AA106" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Quneitra_annual_pheno_anomaly.png" /></p>
+<p><img alt="AA106" src="../../_images/plot_syr_adm1_Quneitra_annual_pheno_anomaly_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 106.</strong> Annual Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 </div>
@@ -1297,91 +1305,91 @@ Quneitra</label><div class="sd-tab-content docutils">
 <input checked="checked" id="sd-tab-item-97" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key1" for="sd-tab-item-97">
 Syria</label><div class="sd-tab-content docutils">
-<p><img alt="MA107" src="notebooks/vegetation-conditions/images/plot_syr_adm0_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA107" src="../../_images/plot_syr_adm0_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 107.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-98" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key2" for="sd-tab-item-98">
 Damascus</label><div class="sd-tab-content docutils">
-<p><img alt="MA108" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Damascus_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA108" src="../../_images/plot_syr_adm1_Damascus_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 108.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-99" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key3" for="sd-tab-item-99">
 Aleppo</label><div class="sd-tab-content docutils">
-<p><img alt="MA109" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Aleppo_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA109" src="../../_images/plot_syr_adm1_Aleppo_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 109.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-100" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key4" for="sd-tab-item-100">
 Rural Damascus</label><div class="sd-tab-content docutils">
-<p><img alt="MA110" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Rural_Damascus_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA110" src="../../_images/plot_syr_adm1_Rural_Damascus_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 110.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-101" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key5" for="sd-tab-item-101">
 Homs</label><div class="sd-tab-content docutils">
-<p><img alt="MA111" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Homs_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA111" src="../../_images/plot_syr_adm1_Homs_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 111.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-102" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key6" for="sd-tab-item-102">
 Hama</label><div class="sd-tab-content docutils">
-<p><img alt="MA112" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Hama_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA112" src="../../_images/plot_syr_adm1_Hama_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 112.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-103" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key7" for="sd-tab-item-103">
 Lattakia</label><div class="sd-tab-content docutils">
-<p><img alt="MA113" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Lattakia_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA113" src="../../_images/plot_syr_adm1_Lattakia_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 113.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-104" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key8" for="sd-tab-item-104">
 Idleb</label><div class="sd-tab-content docutils">
-<p><img alt="MA114" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Idleb_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA114" src="../../_images/plot_syr_adm1_Idleb_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 114.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-105" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key9" for="sd-tab-item-105">
 Al-Hasakeh</label><div class="sd-tab-content docutils">
-<p><img alt="MA115" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Al-Hasakeh_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA115" src="../../_images/plot_syr_adm1_Al-Hasakeh_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 115.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-106" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key10" for="sd-tab-item-106">
 Deir-ez-Zor</label><div class="sd-tab-content docutils">
-<p><img alt="MA116" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Deir-ez-Zor_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA116" src="../../_images/plot_syr_adm1_Deir-ez-Zor_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 116.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-107" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key11" for="sd-tab-item-107">
 Tartous</label><div class="sd-tab-content docutils">
-<p><img alt="MA117" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Tartous_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA117" src="../../_images/plot_syr_adm1_Tartous_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 117.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-108" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key12" for="sd-tab-item-108">
 Ar-Raqqa</label><div class="sd-tab-content docutils">
-<p><img alt="MA118" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Ar-Raqqa_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA118" src="../../_images/plot_syr_adm1_Ar-Raqqa_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 118.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-109" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key13" for="sd-tab-item-109">
 Dar’a</label><div class="sd-tab-content docutils">
-<p><img alt="MA119" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Dar'a_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA119" src="../../_images/plot_syr_adm1_Dar'a_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 119.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-110" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key14" for="sd-tab-item-110">
 As-Sweida</label><div class="sd-tab-content docutils">
-<p><img alt="MA120" src="notebooks/vegetation-conditions/images/plot_syr_adm1_As-Sweida_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA120" src="../../_images/plot_syr_adm1_As-Sweida_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 120.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 <input id="sd-tab-item-111" name="sd-tab-set-15" type="radio">
 </input><label class="sd-tab-label" data-sync-id="key15" for="sd-tab-item-111">
 Quneitra</label><div class="sd-tab-content docutils">
-<p><img alt="MA121" src="notebooks/vegetation-conditions/images/plot_syr_adm1_Quneitra_monthly_pheno_anomaly_heatmap.png" /></p>
+<p><img alt="MA121" src="../../_images/plot_syr_adm1_Quneitra_monthly_pheno_anomaly_heatmap_with_LTA_2003_2022.png" /></p>
 <p><strong>Figure 121.</strong> Monthly Harvest and Planting Anomaly, 2003-2023</p>
 </div>
 </div>
@@ -1482,6 +1490,7 @@ Quneitra</label><div class="sd-tab-content docutils">
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1542,7 +1551,7 @@ By World Bank Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 12, 2023.
+  Last updated on Jan 10, 2024.
   <br/>
 </p>
   </div>
@@ -1566,8 +1575,8 @@ By World Bank Development Data Group
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>
