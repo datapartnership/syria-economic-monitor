@@ -25,7 +25,7 @@ library(RColorBrewer)
 
 # Colors -----------------------------------------------------------------------
 
-pie_colors <- c("#66c2e0", "#fae10b", "#fc8d62", "darkseagreen3", "lightpink1", "lightsteelblue1")
+pie_colors <- c("#66c2e0", "#fae10b", "#fc8d62", "darkseagreen3", "lightpink1", "lightsteelblue1", "darkblue")
 bar_colors <- c("#66c2e0", "#fae10b", "#fc8d62")
 
 # Codes ------------------------------------------------------------------------
