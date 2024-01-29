@@ -33,4 +33,4 @@ Restrictions may apply to the data that support the findings of this study. Data
 
 ## License
 
-The repository is licensed under the [World Bank Master Community License Agreement](LICENSE.md).
+The repository is licensed under the [Mozilla Public License](https://www.mozilla.org/en-US/MPL).
