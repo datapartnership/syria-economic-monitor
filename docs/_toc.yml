@@ -5,7 +5,7 @@ parts:
   - caption: Introduction to Data Goods
     chapters:
       - file: docs/introduction_to_data_goods
-      - file: docs/foundational_datasets_and_data_products
+      - file: docs/data
         sections:
           - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
   - caption: Data Products
