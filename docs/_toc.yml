@@ -5,11 +5,10 @@ parts:
   - caption: Introduction to Data Goods
     chapters:
       - file: docs/introduction_to_data_goods
-      - file: docs/foundational_datasets_and_data_products
-        sections:
-          - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
+      - file: docs/data
   - caption: Data Products
     chapters:
+      - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
       - file: notebooks/ntl-analysis/README
         sections:
           - file: notebooks/ntl-analysis/ntl-update-6-2023.md
