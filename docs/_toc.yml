@@ -6,10 +6,9 @@ parts:
     chapters:
       - file: docs/introduction_to_data_goods
       - file: docs/data
-        sections:
-          - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
   - caption: Data Products
     chapters:
+      - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
       - file: notebooks/ntl-analysis/README
         sections:
           - file: notebooks/ntl-analysis/ntl-update-6-2023.md
