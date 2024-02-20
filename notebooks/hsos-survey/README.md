@@ -1,12 +1,10 @@
-# Humanitarian Assistance Survey Data
-
+# Humanitarian Assistance Survey
 
 ## Data
 
 We use data from the Humanitarian Situation Overview Survey (HSOS) conducted by REACH. REACH is a joint initiative of IMPACT Initiatives, ACTED and the United Nations Institute for Training and Research - Operational Satellite Applications Programme (UNITAR-UNOSAT). The HSOS is collected monthly in Northeast Syria (NES) and Northwest Syria (NWS). The survey uses key informant interviews to collect data at the community (admin4) level. The panel used for the analysis includes 1,426 communities (371 in NWS and 1246 in NES) which are included in all rounds of data collection.
 
 The HSOS includes information on community situations and needs relating to shelter, electricity, water sanitation and hygiene (WASH), food security, livelihoods, health, education, humanitarian assistance, and priority needs. HSOS has disaggregated information on the different conditions and needs of residents and internally displaced persons (IDPs).
-
 
 ## Methodology
 
@@ -16,7 +14,6 @@ We compare outcomes for communities severely impacted by the earthquake before/a
 
 The earthquake exposure measure uses the Modified Mercalli Intensity Scale (mmi). From this we derive three groups of communities: light earthquake intensity, moderate intensity, and strong or very strong intensity.
 
-
 ## Implementation
 
 Code to replicate the analysis can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/).
@@ -24,11 +21,10 @@ The [main script](https://github.com/datapartnership/syria-economic-monitor/tree
 The script to produce the graphs can be found [here](https://github.com/datapartnership/syria-economic-monitor/tree/main/notebooks/hsos-survey/notebooks/hsos-survey/Do%20Files/4_Bar%Graphs.do).
 All data used in the analysis can be downloaded from [Syria Humanitarian Situation Overview Survey](https://reach-info.org/syr/hsos/).
 
-
-
 ## Findings
 
 ### Humanitarian Assistance
+
 Communities strongly affected by the earthquake (in Northwest Syria) were
 more likely to receive humanitarian assistance than communities that were
 less affected (in Northeast Syria), both before and after the earthquake.
@@ -77,6 +73,7 @@ Access to Humanitarian Aid - Voucher
 </p> -->
 
 ### Access to Services
+
 Access to community electricity networks was substantially lower for
 communities in NWS strongly affected by the earthquake than communities
 that were less affected (in NES). Immediately after the earthquake,
@@ -113,8 +110,8 @@ Less than 8 hours of electricity
 <img src="./Figures/Line_trends/Fig_electricity_8c.png" width="350">
 </p> -->
 
-
 ### Priority Needs & Coping Strategies
+
 In the post-earthquake period, the primary needs for the IDP population
 are food, shelter, and livelihood support. For residents, the top priority
 needs are food, livelihoods support and water and sanitation services.
@@ -157,7 +154,7 @@ increases sales of household items and productive assets in communities
 strongly affected by the earthquake. Somewhat surprisingly, there are
 substantial decreases in reports of sending children to work or to
 early marriage for both residents and IDPs, possibly due to humanitarian
-interventions.  
+interventions.
 
  ```{figure} ./Figures/Line_trends//Fig_IDP_coping_sellittemc.png
 ---
@@ -178,12 +175,11 @@ Coping strategies - Spending savings
 <img src="./Figures/Line_trends/Fig_IDP_coping_savingc.png"  width="350">
 </p> -->
 
-
-
 ## Limitations
+
 The categorical definition of exposure to the earthquake: light, moderate, or strong intensity is highly geographically correlated within the HSOS sample. Of the 346 communities in NWS, 331 were affected strongly by the earthquake and the remaining 15 were affected moderately. In NES, in contrast, only 45 communities were strongly affected, 625 were moderately affected, and 410 were lightly affected. This is to say, nearly all strongly affected communities are in NWS and all lightly affected communities are in NES. NES and NWS differ in important observable and unobservable ways - such as the controlling regime, which limits the conclusions that can be drawn from the data.
 
-
 ## Next Steps
+
 Given the limited variation in the measure of earthquake intensity, the first next step will be to explore distance from the epicenter as a more continuous measure which may be less correlated with other underlying conditions (such as soil characteristics). If we are able to establish parallel trends prior to the earthquake, a difference-in-difference strategy would be appropriate.
 Longer-term, a larger survey sample, ideally nationally-representative  would all for more robust analysis.

@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: The results do not reflect the final estimations by the World Bank. Country borders or names do not necessarily reflect the World Bank Group’s official position. This map is for illustrative purposes and does not imply the expression of any opinion on the part of the World Bank, concerning the legal status of any country or territory or concerning the delimitation of frontiers or boundaries."
+title: "Support for the World Bank Syria Economic Monitor"
+authors:
+  - affiliation: World Bank
+    family-names: Sarva
+    given-names: Sahiti
+  - affiliation: World Bank
+    family-names: Stefanini Vicente
+    given-names: Gabriel
+    orcid: 0000-0001-6530-3780
+  - affiliation: World Bank
+    family-names: Marty
+    given-names: Robert
+    orcid: 0000-0002-3164-3813
+  - affiliation: World Bank
+    family-names: Chamorro
+    given-names: Andres
+  - affiliation: World Bank
+    family-names: Ruth Jones
+    given-names: Maria
+  - affiliation: World Bank
+    family-names: Istanto
+    given-names: Benny
+  - affiliation: World Bank
+    family-names: Krambeck
+    given-names: Holly
+keywords:
+  - Syria
+  - ACLED
+  - AIS
+  - Global Forest Watch
+  - NASA Black Marble
+  - Nighttime Lights
+repository-code: https://github.com/datapartnership/blackmarblepy/tree/v24.02
+type: report
+version: v24.02

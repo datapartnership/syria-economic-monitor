@@ -24,7 +24,7 @@ The below figures show daily trends (and a 7 day moving average from daily data)
 
 > *Trends in Nighttime Lights in Border Crossing Locations. The red line indicates February 6, 2023.*
 
-### 
+###
 
 ### Maps of Percent Change in Nighttime Lights
 
