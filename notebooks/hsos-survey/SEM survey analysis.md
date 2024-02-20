@@ -110,7 +110,7 @@ increases sales of household items and productive assets in communities
 strongly affected by the earthquake. Somewhat surprisingly, there are
 substantial decreases in reports of sending children to work or to
 early marriage for both residents and IDPs, possibly due to humanitarian
-interventions.  
+interventions.
 
 <p float="left">
 <img src="../../notebooks/hsos-survey/Figures/Line trends/Fig IDP_coping_sellittemc.png"  width="350">

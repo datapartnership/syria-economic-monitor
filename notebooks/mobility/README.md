@@ -10,7 +10,7 @@ This pilot study seeks to demonstrate the potential of mobility data as a powerf
 
 This pilot study resulted in following (experimental) outputs:
 
-- {ref}`mobility-stops`
+- [Estimating cross-border movement in Lebanon and Syria through Mobility Data](stops/README.md)
 - [Türkiye-Syria Earquake Impact](https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/README.html)
 
 ## Data
