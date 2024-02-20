@@ -1,5 +1,7 @@
 # Support for World Bank Syria Economic Monitor
 
+[![DOI](https://zenodo.org/badge/533928832.svg)](https://zenodo.org/doi/10.5281/zenodo.10685156)
+
 > Using Alternative Data to Understand Changing Trends in Trade and Economic Activity
 
 ## Challenge
