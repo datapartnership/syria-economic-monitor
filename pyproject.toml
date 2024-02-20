@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.21.0", "hatch-vcs>=0.3.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "syria-economic-monitor"
+description = "Support for the World Bank Syria Economic Monitor"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { file = "LICENSE" }
+keywords = ["nighttime lights", "nasa black marble"]
+authors = [{ name = "World Bank Data Lab", email = "datalab@worldbank.org" }]
+maintainers = [
+	{ name = "Gabriel Stefanini Vicente", email = "gvicente@worldbank.org" },
+	{ name = "José Manuel Delgado Blasco", email = "jdelgadoblasco@worldbank.org" },
+]
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"Intended Audience :: Science/Research",
+	"Topic :: Scientific/Engineering",
+]
+requires-python = ">=3.10"
+dynamic = ["version"]
+
+[project.optional-dependencies]
+docs = [
+	"docutils==0.17.1",     # https://jupyterbook.org/en/stable/content/citations.html?highlight=docutils#citations-and-bibliographies
+	"jupyter-book>=0.15.1",
+]
+[project.urls]
+"Homepage" = "https://datapartnership.github.io/syria-economic-monitor"
+"Bug Reports" = "https://github.com/datapartnership/syria-economic-monitor/issues"
+"Source" = "https://github.com/datapartnership/syria-economic-monitor"
+
+[tool.codespell]
+skip = './.git,docs/_build,docs/bibliography.bib,*.py,*.R,*.png,*.gz,*.whl'
+ignore-regex = '^\s*"image\/png":\s.*'
+ignore-words-list = "gost,"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/*"]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
