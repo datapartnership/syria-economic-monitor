@@ -10,13 +10,13 @@ The importance of monitoring vegetation conditions cannot be overstated, particu
 
 **Figure 2.** Syria land cover.
 
-Remote sensing techniques, such as those employed through the use of Moderate Resolution Imaging Spectroradiometer ([MODIS](https://modis.gsfc.nasa.gov/about/)) Terra ([MOD13Q1](https://lpdaac.usgs.gov/products/mod13q1v061/)) and Aqua ([MYD13Q1](https://lpdaac.usgs.gov/products/myd13q1v061/)) Vegetation Indices 16-day L3 Global 250m time series data, have revolutionized the way we monitor vegetation conditions [2]. By deriving variables such as ratio anomaly, difference anomaly, standardized anomaly, and vegetation condition index, these analyses enable the quantification of vegetation changes over time and across vast spatial extents. 
+Remote sensing techniques, such as those employed through the use of Moderate Resolution Imaging Spectroradiometer ([MODIS](https://modis.gsfc.nasa.gov/about/)) Terra ([MOD13Q1](https://lpdaac.usgs.gov/products/mod13q1v061/)) and Aqua ([MYD13Q1](https://lpdaac.usgs.gov/products/myd13q1v061/)) Vegetation Indices 16-day L3 Global 250m time series data, have revolutionized the way we monitor vegetation conditions [2]. By deriving variables such as ratio anomaly, difference anomaly, standardized anomaly, and vegetation condition index, these analyses enable the quantification of vegetation changes over time and across vast spatial extents.
 
 Regular vegetation monitoring provides numerous benefits, including the ability to detect and mitigate the impacts of deforestation, land degradation, and desertification, as well as monitor crop health and inform agricultural decision-making [3]. Furthermore, such monitoring can guide policymakers in the development of adaptive strategies and environmental policies, ensuring a sustainable future for the country and its people.
 
 Building on the foundation of monitoring vegetation conditions using MODIS MOD13Q1 and MYD13Q1 time series data, a more comprehensive understanding of vegetation dynamics in cropland areas can be achieved by incorporating phenological analysis. This is particularly important in a country like Syria, where agriculture is a vital sector for the economy and food security [4]. Accurate and timely information on crop phenology can significantly enhance agricultural management, resource allocation, and the overall resilience of the farming sector.
 
-To achieve this, the use of [TIMESAT](https://web.nateko.lu.se/timesat/timesat.asp), a software tool designed for the analysis of time series data, can be employed to extract critical phenological parameters such as the Start of Season (SOS), Mid of Season (MOS), and End of Season (EOS) from the Enhanced Vegetation Index (EVI) data [5]. By first clipping the EVI data to the cropland extent, the analysis becomes more focused on the regions of interest, ensuring that the extracted parameters are directly relevant to agricultural practices. 
+To achieve this, the use of [TIMESAT](https://web.nateko.lu.se/timesat/timesat.asp), a software tool designed for the analysis of time series data, can be employed to extract critical phenological parameters such as the Start of Season (SOS), Mid of Season (MOS), and End of Season (EOS) from the Enhanced Vegetation Index (EVI) data [5]. By first clipping the EVI data to the cropland extent, the analysis becomes more focused on the regions of interest, ensuring that the extracted parameters are directly relevant to agricultural practices.
 
 This phenological information can then be used to guide farmers and agricultural stakeholders in making timely and informed decisions, such as when to plant, irrigate, or harvest their crops. Moreover, it can help identify potential threats to crop health and yield, such as disease outbreaks, pest infestations, or the effects of climate change, allowing for proactive and targeted interventions. Ultimately, incorporating phenological analysis into vegetation monitoring efforts provides a more holistic and actionable understanding of the complex dynamics that govern agricultural productivity and environmental sustainability.
 
@@ -26,7 +26,7 @@ In this study, we utilize a range of high-quality datasets to analyze vegetation
 
 ### Crop extent
 
-We used the new [ESA World Cover](https://esa-worldcover.org/en) map 10m LULC to mask out areas which aren't of interest in computing the EVI, i.e. built-up, water, forest, etc. The cropland class has value equal to 40, which will be used within Google Earth Engine to generate the mask. 
+We used the new [ESA World Cover](https://esa-worldcover.org/en) map 10m LULC to mask out areas which aren't of interest in computing the EVI, i.e. built-up, water, forest, etc. The cropland class has value equal to 40, which will be used within Google Earth Engine to generate the mask.
 
 There are many ways to download the WorldCover, as explained in the WorldCover [Data Access](https://esa-worldcover.org/en/data-access) page.
 
@@ -66,13 +66,13 @@ Similarly, rainfall patterns play a crucial role in determining water availabili
 
 **Figure 6.** Accumulated rainfall, September 2023.
 
-By analyzing these climate data alongside vegetation indices and phenological information, we can correlate climate trends with vegetation dynamics. 
+By analyzing these climate data alongside vegetation indices and phenological information, we can correlate climate trends with vegetation dynamics.
 
 Monthly temperature derived from [ERA5-Land](https://doi.org/10.24381/cds.68d2bb30), and rainfall data come from [CHRIPS](https://www.chc.ucsb.edu/data/chirps).
 
 ## Limitations and Assumptions
 
-Getting VI data with good quality for all period are challenging (pixels covered with cloud, snow/ice, aerosol quantity, shadow) for optic data (MODIS). Cultivated area year by year are varies, due to MODIS data quality and crop type is not described, so the seasonal parameters are for general cropland. 
+Getting VI data with good quality for all period are challenging (pixels covered with cloud, snow/ice, aerosol quantity, shadow) for optic data (MODIS). Cultivated area year by year are varies, due to MODIS data quality and crop type is not described, so the seasonal parameters are for general cropland.
 
 At this point, the analysis is also limited to seasonal crops due to difficulty to capture the dynamics of perennial crops within a year. The value may not represent for smaller cropland and presented result are only based upon the most current available remote sensing data. As the climate phenomena is a dynamic situation, the current realities may differ from what is depicted in this document.
 
@@ -136,7 +136,7 @@ A how-to guideline on calculating the phenological metrics are available through
 
 We utilized GEE to acquire a time series of EVI data. The EVI data was then processed using the ArcPy library in ArcGIS to generate long-term statistics and derive various vegetation indices products. Following this, we employed the TIMESAT software to extract seasonality parameters from the processed vegetation data.
 
-In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data. 
+In this study, we employed a three-step coding approach to analyze the time series EVI data and derive vegetation index products. The first step utilized GEE to efficiently batch download the time series EVI data.
 
 * The code for downloading timeseries EVI in GEE: [gee-batch-export-mxd13q1.js](/gee-batch-export-mxd13q1.js)
 
@@ -150,7 +150,7 @@ Lastly, another ArcPy script was employed to compute various vegetation index de
 
 ## Result
 
-We present a summary of the key derived variables employed in our analysis to monitor vegetation conditions and dynamics within Syria's cropland areas. 
+We present a summary of the key derived variables employed in our analysis to monitor vegetation conditions and dynamics within Syria's cropland areas.
 
 ### Anomaly and Vegetation Condition
 
@@ -479,35 +479,35 @@ This section presents a comprehensive analysis of planting and harvest cycles in
 
 		**Figure 42.** Annual Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Tartous
 		:sync: key10
 		![AHP43](./images/plot_syr_adm1_Tartous_annual_pheno.png)
 
 		**Figure 43.** Annual Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Ar-Raqqa
 		:sync: key11
 		![AHP44](./images/plot_syr_adm1_Ar-Raqqa_annual_pheno.png)
 
 		**Figure 44.** Annual Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Dar'a
 		:sync: key12
 		![AHP45](./images/plot_syr_adm1_Dar'a_annual_pheno.png)
 
 		**Figure 45.** Annual Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} As-Sweida
 		:sync: key13
 		![AHP46](./images/plot_syr_adm1_As-Sweida_annual_pheno.png)
 
 		**Figure 46.** Annual Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Quneitra
 		:sync: key14
 		![AHP47](./images/plot_syr_adm1_Quneitra_annual_pheno.png)
@@ -581,35 +581,35 @@ This section presents a comprehensive analysis of planting and harvest cycles in
 
 		**Figure 56.** Monthly Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Tartous
 		:sync: key10
 		![MHP57](./images/plot_syr_adm1_Tartous_monthly_pheno.png)
 
 		**Figure 57.** Monthly Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Ar-Raqqa
 		:sync: key11
 		![MHP58](./images/plot_syr_adm1_Ar-Raqqa_monthly_pheno.png)
 
 		**Figure 58.** Monthly Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Dar'a
 		:sync: key12
 		![MHP59](./images/plot_syr_adm1_Dar'a_monthly_pheno.png)
 
 		**Figure 59.** Monthly Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} As-Sweida
 		:sync: key13
 		![MHP60](./images/plot_syr_adm1_As-Sweida_monthly_pheno.png)
 
 		**Figure 60.** Monthly Harvest and Planting, 2003-2023
 		:::
-		
+
 		:::{tab-item} Quneitra
 		:sync: key14
 		![MHP61](./images/plot_syr_adm1_Quneitra_monthly_pheno.png)
@@ -703,35 +703,35 @@ This section presents a comprehensive analysis of planting and harvest cycles in
 
 		**Figure 72.** Annual Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Tartous
 		:sync: key10
 		![ART73](./images/plot_syr_adm1_Tartous_annual_preciptavg.png)
 
 		**Figure 73.** Annual Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Ar-Raqqa
 		:sync: key11
 		![ART74](./images/plot_syr_adm1_Ar-Raqqa_annual_preciptavg.png)
 
 		**Figure 74.** Annual Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Dar'a
 		:sync: key12
 		![ART75](./images/plot_syr_adm1_Dar'a_annual_preciptavg.png)
 
 		**Figure 75.** Annual Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} As-Sweida
 		:sync: key13
 		![ART76](./images/plot_syr_adm1_As-Sweida_annual_preciptavg.png)
 
 		**Figure 76.** Annual Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Quneitra
 		:sync: key14
 		![ART77](./images/plot_syr_adm1_Quneitra_annual_preciptavg.png)
@@ -805,35 +805,35 @@ This section presents a comprehensive analysis of planting and harvest cycles in
 
 		**Figure 86.** Monthly Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Tartous
 		:sync: key10
 		![MRT87](./images/plot_syr_adm1_Tartous_monthly_preciptavg.png)
 
 		**Figure 87.** Monthly Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Ar-Raqqa
 		:sync: key11
 		![MRT88](./images/plot_syr_adm1_Ar-Raqqa_monthly_preciptavg.png)
 
 		**Figure 88.** Monthly Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Dar'a
 		:sync: key12
 		![MRT89](./images/plot_syr_adm1_Dar'a_monthly_preciptavg.png)
 
 		**Figure 89.** Monthly Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} As-Sweida
 		:sync: key13
 		![MRT90](./images/plot_syr_adm1_As-Sweida_monthly_preciptavg.png)
 
 		**Figure 90.** Monthly Rainfall and Temperature, 2003-2023
 		:::
-		
+
 		:::{tab-item} Quneitra
 		:sync: key14
 		![MRT91](./images/plot_syr_adm1_Quneitra_monthly_preciptavg.png)
@@ -1068,7 +1068,7 @@ This section delves into the analysis of annual and monthly trends in planting a
 
 The aggregate data in admin0, 1, 2 and 3 level, along with the maps and charts are available in the Sharepoint: [link](https://worldbankgroup.sharepoint.com/:f:/r/teams/DevelopmentDataPartnershipCommunity-WBGroup/Shared%20Documents/Projects/Data%20Lab/Syria%20Economic%20Monitor/Data/vegetation-conditions?csf=1&web=1&e=4XhouQ) - accessible from internal network.
 
-## Potential Application 
+## Potential Application
 
 Above products provides an important starting point for continuous monitoring of the crop planting status. Continuous monitoring could inform the following assessments:
 
@@ -1095,6 +1095,3 @@ This information is necessary for both policy makers, farmers, and other agricul
 7. Peel, M. C., Finlayson, B. L., and McMahon, T. A.: Updated world map of the Köppen-Geiger climate classification, Hydrol. Earth Syst. Sci., 11, 1633–1644, https://doi.org/10.5194/hess-11-1633-2007, 2007
 8. Porter John R and Semenov Mikhail A 2005Crop responses to climatic variation. Phil. Trans. R. Soc. B. 360:2021–2035. http://doi.org/10.1098/rstb.2005.1752
 9. Rockström, J., & Falkenmark, M. (2000). Semiarid crop production from a hydrological perspective: Gap between potential and actual yields. Critical Reviews in Plant Sciences, 19(4), 319-346. https://doi.org/10.1080/07352680091139259
-
-
-

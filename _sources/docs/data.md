@@ -7,13 +7,11 @@
 The following is the list of all Datasets used in this Data Good:
 
 ```{note}
-**Project Sharepoint** links are only accessible to the project team. For permissions to access these data, please write to the contact provided. 
-
-The **Development Data Hub** is the World Bank's central data catalogue and includes meta-data and license information.Where feasible, all datasets that can be obtained through the Development Data Hub have been placed in a special collection: [Syria Economic Monitor Data Collection](https://datacatalog.worldbank.org/int/search/collections/sem). 
+**Project Sharepoint** links are only accessible to the project team. For permissions to access these data, please write to the contact provided. The **Development Data Hub** is the World Bank's central data catalogue and includes meta-data and license information.Where feasible, all datasets that can be obtained through the Development Data Hub have been placed in a special collection: [Syria Economic Monitor Data Collection](https://datacatalog.worldbank.org/int/search/collections/sem).
 ```
 
 ```{table}
-:name: foundational_datasets
+:name: datasets
 
 | **ID** | **Name**                                      | **License**            | **Description**                                                                                                       | **Update Frequency**                                              | **Access**                                                                            | **Contact**                                  |
 |--------|-----------------------------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------|
@@ -34,7 +32,7 @@ The **Development Data Hub** is the World Bank's central data catalogue and incl
 
 ## Data Products Summary
 
-**Data Products** are produced using the **Foundational Datasets** and can be further used to generate indicators and insights. All Data Products include documentation, references to original data sources (and/or information on how to access them), and a description of their limitations.
+**Data Products** are produced using the **Datasets** and can be further used to generate indicators and insights. All Data Products include documentation, references to original data sources (and/or information on how to access them), and a description of their limitations.
 
 Following is a summary of Data Products used in this Data Good:
 
@@ -53,14 +51,14 @@ Following is a summary of Data Products used in this Data Good:
 
 ## Sample Indicators
 
-**Indicators** can be derived from a combination of **Foundational Datasets** and **Data Products**. By combining Foundational Datasets and Data Products, teams can, on-demand, develop a large array of indicators to meet their project needs. Indicators can presented side-by-side in an Excel workbook -- a format that is generally accessible to the widest audiences.  Because all indicators are based on the same underlying data, they are comparable with each other, across geographies and across time.
+**Indicators** can be derived from a combination of **Datasets** and **Data Products**. By combining Datasets and Data Products, teams can, on-demand, develop a large array of indicators to meet their project needs. Indicators can presented side-by-side in an Excel workbook -- a format that is generally accessible to the widest audiences.  Because all indicators are based on the same underlying data, they are comparable with each other, across geographies and across time.
 
 For this project, sample indicators have been derived and aggregated at the governorate level and by year, to show changing trends in each governorate over time. Here is a link to the **Indicators Excel workbook** (accessible to team members via SharePoint): [Excel workbook](https://worldbankgroup.sharepoint.com/:x:/t/DevelopmentDataPartnershipCommunity-WBGroup/EXZkY4Z6vMVMjRVcIBCHqlkBVI4z1b9rP1fyyLQ6aluvWA?e=pFazxV), and following is a summary of sample indicators.
 
 ```{table}
 :name: indicators
 
-| **ID** | **Name**                                           | **Indicator (units)**         | **Potential Update Frequency** | **Foundational Datasets and Data Products Used (ID#)** |
+| **ID** | **Name**                                           | **Indicator (units)**         | **Potential Update Frequency** | **Datasets and Data Products Used (ID#)** |
 |---------------|-----------------------------------------------------------|--------------------------------------|---------------------------------------|--------------------------------|
 |     i         |     Population                                            |     Number of people                 |     Annual                            |     1,9                        |
 |     ii        |     Agriculture Indicators                                |     Sum of Z-Scores                  |     Annually                          |     1,E                        |
