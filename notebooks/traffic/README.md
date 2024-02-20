@@ -12,7 +12,7 @@ We test to the use of three data sources for monitoring trends in traffic at bor
 
 * __Mobility Data:__ We leverage mobility data from GPS-enabled devices to monitor the number of unique devices at border crossing locations. Mobility data comes from Outlogic, which is further described in {doc}`../mobility/README`. The number of unique devices observed at border crossing locations can indicate activity---and traffic---at the crossing. A key advantage of mobility data over satellite imagery is that it is available at all points in time; the dataset captures the timestamp and location of GPS-enable devices. Consequently, the data can be aggregated hourly, daily, or at other intervals. Mobility data may underestimate activity as not everyone may have a GPS-enabled device; however, we check whether trends in mobility data are similar to trends captured from satellite imagery.
 
-For further information, please refer to {ref}`foundational_datasets`.
+For more information, please refer to {ref}`datasets`.
 
 ## Implementation
 

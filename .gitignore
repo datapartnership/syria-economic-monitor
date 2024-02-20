@@ -88,6 +88,9 @@ target/
 # Jupyter Book
 _build/
 
-/data
-
-/notebooks/hsos-survey/Figures
+# Project-specific files
+.jupyter/
+.ruff_cache
+.python_version
+data/
+notebooks/hsos-survey/Figures

@@ -6,7 +6,7 @@ Nighttime lights have become a commonly used resource to estimate changes in loc
 
 We use nighttime lights data from the VIIRS Black Marble dataset. Raw nighttime lights data requires correction due to cloud cover and stray light, such as lunar light. The Black Marble dataset applies advanced algorithms to correct raw nighttime light values and calibrate data so that trends in lights over time can be meaningfully analyzed. From VIIRS Black Marble, we use monthly data from January 2012 through August 2022—where data is available at a 500-meter resolution.
 
-For further information, please refer to {ref}`foundational_datasets`.
+For more information, please refer to {ref}`datasets`.
 
 ## Methodology
 
@@ -25,7 +25,7 @@ Data for the analysis can be downloaded from:
 * __Black Marble Nighttime Lights:__ There are two options to access the data:
 
   * The code [here](https://github.com/datapartnership/syria-economic-monitor/blob/main/notebooks/ntl-analysis/01_download_black_marble.R) downloads raw data from the [NASA archive](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A3/) and processes the data for Syria---mosaicing raster tiles together to cover Syria. Running the code requires a NASA bearer token; the documentation [here](https://github.com/ramarty/download_blackmarble) describes how to obtain a token.
-  
+
   * Pre-processed data can be downloaded from [here](https://datacatalog.worldbank.org/int/data/dataset/0063879/syria__night_time_lights), using the __Night Time Lights BlackMarble Data__
 
 ## Findings

@@ -19,4 +19,3 @@ Once the data was obtained from the Ookla Speedtest portal, the point data were 
 The limitation of Ookla's Speedtest connectivity relies on user-generated tests. Although the average number of users who take a test remain relatively consistent per month, it is subject to fluctuation. The dataset also does not contain information about the same latitude and longitude consistently. However, given aggregated data is used (at admin 1 or admin 2 levels), the findings can still be useful.
 
 ## Next Steps
-

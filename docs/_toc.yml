@@ -9,10 +9,17 @@ parts:
   - caption: Data Products
     chapters:
       - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
-      - file: notebooks/ntl-analysis/README
+      - file: notebooks/conflict/acled.ipynb
+      - file: notebooks/hsos-survey/README.md
+
+      - file: notebooks/ais-analysis/README
         sections:
-          - file: notebooks/ntl-analysis/ntl-update-6-2023.md
-          - file: notebooks/ntl-analysis/ntl-update-12-2023.md
+          - file: notebooks/ais-analysis/ais-update-6-2023.md
+          - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
+          - file: notebooks/ais-analysis/02-trade-estimation.ipynb
+      - file: notebooks/internet-connectivity/README
+        sections:
+          - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
       - file: notebooks/mobility/README
         sections:
           - file: notebooks/mobility/stops/README
@@ -26,24 +33,18 @@ parts:
             title: Estimating Activity through on Mobility Data
           - url: https://datapartnership.org/turkiye-earthquake-impact/notebooks/mobility/visits.html
             title: Estimating Activity based on Visits to Points of Interest through Mobility Data
-      - file: notebooks/hsos-survey/README.md
-      - file: notebooks/ais-analysis/README
+      - file: notebooks/ntl-analysis/README
         sections:
-          - file: notebooks/ais-analysis/ais-update-6-2023.md
-          - file: notebooks/ais-analysis/01-descriptive-stats.ipynb
-          - file: notebooks/ais-analysis/02-trade-estimation.ipynb
-      - file: notebooks/traffic/README
-      - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
-        sections:
-          - file: notebooks/syria-forest-cover/syria_forest.ipynb
-      - file: notebooks/internet-connectivity/README
-        sections:
-          - file: notebooks/internet-connectivity/ookla-speedtest-analysis.ipynb
-      - file: notebooks/conflict/acled.ipynb
-      - file: notebooks/google-earth-engine/air-pollution.ipynb
+          - file: notebooks/ntl-analysis/ntl-update-6-2023.md
+          - file: notebooks/ntl-analysis/ntl-update-12-2023.md
+          - file: notebooks/traffic/README
       - file: notebooks/vegetation-conditions/README
         sections:
           - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
+      - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
+        sections:
+          - file: notebooks/syria-forest-cover/syria_forest.ipynb
+      - file: notebooks/google-earth-engine/air-pollution.ipynb
   - caption: Insights and Indicators
     chapters:
       - file: docs/insights-and-indicators
