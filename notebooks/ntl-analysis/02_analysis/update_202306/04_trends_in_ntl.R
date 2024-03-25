@@ -37,28 +37,28 @@ ym_df <- ym_df[!((ym_df$year %in% 2022) & (ym_df$month %in% 9:12)),]
 
 viirs_bm_df <- map_df(1:nrow(ym_df), function(i){
   print(i)
-  
+
   ym_i_df <- ym_df[i,]
-  
+
   r <- raster(file.path(data_dir,
                         paste0("bm_vnp46A3_",ym_i_df$year,"_",ym_i_df$month %>% pad2(),
                                ".tif")))
-  
+
   r_gf   <- r %>% crop(gf_sp) %>% mask(gf_sp)
   r_nogf <- r %>% crop(gadm_no_gf_sp) %>% mask(gadm_no_gf_sp)
-  
+
   gadm_id_df$viirs_bm_mean <- exact_extract(r, gadm_sp, 'mean')
   gadm_id_df$viirs_bm_sum <- exact_extract(r, gadm_sp, 'sum')
-  
+
   gadm_id_df$viirs_bm_gf_mean <- exact_extract(r_gf, gadm_sp, 'mean')
   gadm_id_df$viirs_bm_gf_sum  <- exact_extract(r_gf, gadm_sp, 'sum')
-  
+
   gadm_id_df$viirs_bm_nogf_mean <- exact_extract(r_nogf, gadm_sp, 'mean')
   gadm_id_df$viirs_bm_nogf_sum  <- exact_extract(r_nogf, gadm_sp, 'sum')
-  
+
   gadm_id_df$year <- ym_i_df$year
   gadm_id_df$month <- ym_i_df$month
-  
+
   return(gadm_id_df)
 })
 
@@ -124,5 +124,3 @@ p <- ggarrange(p_bm, p_bm_gf, p_bm_nogf,
 ggsave(p,
        filename = file.path(figures_dir, "ntl_trends_adm1.png"),
        height = 13, width = 11)
-
-

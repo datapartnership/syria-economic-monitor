@@ -42,5 +42,3 @@ gs_df <- gs_df %>%
   dplyr::mutate(uid = 1:n())
 
 saveRDS(gs_df, file.path(data_dir, "gas_flare_locations.Rds"))
-
-

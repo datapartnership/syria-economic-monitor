@@ -2,24 +2,24 @@
  * MODIS Vegetation Indices (MOD13Q1 & MYD13Q1)
  *
  * Set of script to:
- * - Combine the two 16-day composites into a synthethic 8-day composite 
- *   containing data from both Aqua and Terra 
+ * - Combine the two 16-day composites into a synthethic 8-day composite
+ *   containing data from both Aqua and Terra
  * - Applying QC Bitmask
  * - Clipped for Ukraine and batch export the collection to Google Drive
- * 
+ *
  * Contact: Benny Istanto. Climate Geographer - GOST/DECAT/DECDG, The World Bank
  * If you found a mistake, send me an email to bistanto@worldbank.org
- * 
+ *
  * Changelog:
  * 2022-03-10 first draft
  *
  * ------------------------------------------------------------------------------
  */
 
-/* 
+/*
  * BOUNDARY
  */
- 
+
 // Bounding box Ukraine
 // var bbox_ukr = ee.Geometry.Rectangle(21.7, 43.7, 40.7, 52.4);
 // var bnd_ukr = ee.FeatureCollection("users/bennyistanto/datasets/shp/bnd/ukr_bnd_adm0_geoboundaries");
@@ -37,7 +37,7 @@ Map.setCenter(38.555, 35.001, 7); // Syria
 /*
  * QC BITMASK FUNCTIONs
  */
- 
+
  //---
 /*
  * Bitmask for SummaryQA
@@ -46,7 +46,7 @@ Map.setCenter(38.555, 35.001, 7); // Syria
  *    1: Marginal data, useful but look at detailed QA for more information
  *    2: Pixel covered with snow/ice
  *    3: Pixel is cloudy
- * 
+ *
  * Bitmask for DetailedQA
  *  Bits 0-1: VI quality (MODLAND QA Bits)
  *    0: VI produced with good quality
@@ -102,12 +102,12 @@ Map.setCenter(38.555, 35.001, 7); // Syria
 // Example: A mask with "Good data, use with confidence" would be bitwiseExtract(image, 0, 1).eq(0)
 
 /*
- * Utility to extract bitmask values. 
- * Look up the bit-ranges in the catalog. 
- * 
+ * Utility to extract bitmask values.
+ * Look up the bit-ranges in the catalog.
+ *
  * value - ee.Number of ee.Image to extract from.
  * fromBit - int or ee.Number with the first bit.
- * toBit - int or ee.Number with the last bit (inclusive). 
+ * toBit - int or ee.Number with the last bit (inclusive).
  *         Defaults to fromBit.
  */
 function bitwiseExtract(value, fromBit, toBit) {
@@ -122,7 +122,7 @@ function bitwiseExtract(value, fromBit, toBit) {
 var modisQA_mask = function(image) {
   var sqa = image.select('SummaryQA');
   var dqa = image.select('DetailedQA');
-  var viQualityFlagsS = bitwiseExtract(sqa, 0, 1); 
+  var viQualityFlagsS = bitwiseExtract(sqa, 0, 1);
   var viQualityFlagsD = bitwiseExtract(dqa, 0, 1);
   // var viUsefulnessFlagsD = bitwiseExtract(dqa, 2, 5);
   var viSnowIceFlagsD = bitwiseExtract(dqa, 14);
@@ -140,7 +140,7 @@ var modisQA_mask = function(image) {
 /*
  * DATE AND DATA
  */
- 
+
 // 8-days MODIS EVI/NDVI Dataset Availability:
 // Terra - https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MOD13Q1?hl=en
 // Aqua - https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MYD13Q1?hl=en
@@ -196,7 +196,7 @@ var viVis = {
 Map.addLayer(mxd13q1_cleaned_sorted.select('EVI').first().clip(syr), viVis, 'VI');
 
 /*
- * DOWNLOADS 
+ * DOWNLOADS
  */
 
 // // Test for 1 image
@@ -206,7 +206,7 @@ Map.addLayer(mxd13q1_cleaned_sorted.select('EVI').first().clip(syr), viVis, 'VI'
 //   scale: 250,
 //   maxPixels: 1e13,
 //   region: ukr
-// });      
+// });
 
 // Batch export
 mxd13q1_cleaned_sorted
@@ -225,7 +225,7 @@ mxd13q1_cleaned_sorted
         maxPixels: 1e13,
         region: syr,
         crs: 'EPSG:4326'
-      });      
+      });
     });
 });
 
@@ -233,7 +233,7 @@ mxd13q1_cleaned_sorted
 
 /*
  * Exporting image without clicking RUN button
- * 
+ *
  * 1. Run your Google Earth Engine code;
  * 2. Wait until all the tasks are listed (the Run buttons are shown);
  * 3. Click two computer keys fn and f12 at the same time and bring up console;
@@ -241,29 +241,29 @@ mxd13q1_cleaned_sorted
  *    and menubar View > Developer > JavaScript Console (Chrome)
  * 4. Copy and paste (line 267-276 below) into the console, press Enter;
  * 5. Wait until the code sends messages to the server to run all the tasks (you wait and relax);
- * 6. Wait until GEE shows the dialogue window asking you to click "Run"; 
+ * 6. Wait until GEE shows the dialogue window asking you to click "Run";
  *    then Copy and paste (line 278-289 below), press Enter
- *    Notes: 
- *    Please bear in mind, the time execution is depend on the image size you will export. 
+ *    Notes:
+ *    Please bear in mind, the time execution is depend on the image size you will export.
  *    Example, 1 year data for Ukraine on MODIS VI takes a minute to popup a window "Task: Initiate image export".
- * 7. Keep your computer open until all the tasks (Runs) are done 
+ * 7. Keep your computer open until all the tasks (Runs) are done
  *    (you probably need to set your computer to never sleep).
  */
 
 /**
  * Copyright (c) 2017 Dongdong Kong. All rights reserved.
- * This work is licensed under the terms of the MIT license.  
+ * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  *
  * Batch execute GEE Export task
  *
  * First of all, You need to generate export tasks. And run button was shown.
- *   
- * Then press F12 get into console, then paste those scripts in it, and press 
- * enter. All the task will be start automatically. 
+ *
+ * Then press F12 get into console, then paste those scripts in it, and press
+ * enter. All the task will be start automatically.
  * (Firefox and Chrome are supported. Other Browsers I didn't test.)
- * 
- * @Author: 
+ *
+ * @Author:
  *  Dongdong Kong, 28 Aug' 2017, Sun Yat-sen University
  *  yzq.yang, 17 Sep' 2021
  */

@@ -4,7 +4,7 @@
 
 The [Global Forest Watch](https://www.globalforestwatch.org/) is an online platform for monitoring changes in global forest cover. Its tree coverage data are sourced from a [University of Maryland time-series analysis of Landsat images](http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.7.html) that show global forest extent and change. These data can be downloaded for free, as .tiff files.
 
-Following are example of what these files look like rendered using QGIS, in Syria, covering the period 2000-2021. The intensity of the red color is commensurate with the intensity of forest cover loss. The basemaps sourced from Google terrain maps, which are available using the [OpenLayers](https://plugins.qgis.org/plugins/openlayers_plugin/) QGIS plugin. 
+Following are example of what these files look like rendered using QGIS, in Syria, covering the period 2000-2021. The intensity of the red color is commensurate with the intensity of forest cover loss. The basemaps sourced from Google terrain maps, which are available using the [OpenLayers](https://plugins.qgis.org/plugins/openlayers_plugin/) QGIS plugin.
 
 ![](images/syria-tree-loss-2.png)
 
@@ -20,7 +20,7 @@ Global Forest Watch uses these geospatial data to derive statistics for annual h
 
 From the Forest Watch Dashboard, we can download .csv files of annual hectares of tree cover loss, aggregated by Admin 1, as well as a separate file that includes the ID numbers and matched names of the administrative areas.
 
-The first step is to merge the Admin 1 ID table with the data table. Then, we can create a table of cumulative annual tree cover loss, aggregated by Admin 1. With that, we can generate simple statistics about which areas are responsible for the most tree-cover loss over time and when. 
+The first step is to merge the Admin 1 ID table with the data table. Then, we can create a table of cumulative annual tree cover loss, aggregated by Admin 1. With that, we can generate simple statistics about which areas are responsible for the most tree-cover loss over time and when.
 
 ## Findings
 
@@ -38,4 +38,4 @@ The table, below, shows the three governorates responsible for more than 90% of 
 
 ## Limitations
 
-Global Forest Watch data can detect tree-cover loss but cannot detect the causes of the tree cover loss -- that is, whether the loss is due to deforestation, forest fire, or other natural cause. 
+Global Forest Watch data can detect tree-cover loss but cannot detect the causes of the tree cover loss -- that is, whether the loss is due to deforestation, forest fire, or other natural cause.

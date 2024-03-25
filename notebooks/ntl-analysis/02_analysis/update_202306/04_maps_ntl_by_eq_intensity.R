@@ -3,7 +3,7 @@
 # Load / clean NTL data ========================================================
 
 # Lights -----------------------------------------------------------------------
-ntl_syr_df <- read_csv(file.path(ntl_bm_dir, "FinalData", "aggregated", "syr_temp", 
+ntl_syr_df <- read_csv(file.path(ntl_bm_dir, "FinalData", "aggregated", "syr_temp",
                                  "syr_admin_adm3_daily.csv"))
 
 ntl_tur_df <- readRDS(file.path(data_tur_dir, "NTL BlackMarble", "FinalData", "aggregated",
@@ -26,7 +26,7 @@ ntl_df <- bind_rows(ntl_syr_df,
 eq_syr_df <- read_csv(file.path(data_dir, "Earthquake Intensity by admin regions", "syria_adm3_earthquake_intensity.csv"))
 eq_tur_df <- read_csv(file.path(data_dir, "Earthquake Intensity by admin regions", "turkiye_admin2_earthquake_intensity_max.csv"))
 
-syr_pcode <- read_csv(file.path(ntl_bm_dir, "FinalData", "aggregated", "syr_temp", 
+syr_pcode <- read_csv(file.path(ntl_bm_dir, "FinalData", "aggregated", "syr_temp",
                                 "syr_admin_adm3_daily.csv")) %>%
   distinct(ADM2_EN, ADM3_EN, ADM3_PCODE) %>%
   dplyr::mutate(adm23 = paste(ADM2_EN, ADM3_EN),
@@ -68,7 +68,7 @@ ntl_df <- ntl_df %>%
             viirs_bm_mean_3d = mean(viirs_bm_mean[date %in% ymd("2023-02-07"):ymd("2023-02-09")]),
             viirs_bm_mean_14d = mean(viirs_bm_mean[date %in% ymd("2023-02-07"):ymd("2023-02-20")]),
             viirs_bm_mean_mar = mean(viirs_bm_mean[date %in% ymd("2023-03-01"):ymd("2023-03-31")]),
-            
+
             viirs_bm_gf_mean_jan = mean(viirs_bm_gf_mean[date %in% ymd("2023-01-01"):ymd("2023-01-31")]),
             viirs_bm_gf_mean_3d = mean(viirs_bm_gf_mean[date %in% ymd("2023-02-07"):ymd("2023-02-09")]),
             viirs_bm_gf_mean_14d = mean(viirs_bm_gf_mean[date %in% ymd("2023-02-07"):ymd("2023-02-20")]),
@@ -77,7 +77,7 @@ ntl_df <- ntl_df %>%
   mutate(viirs_bm_mean_3d_pc = (viirs_bm_mean_3d - viirs_bm_mean_jan)/viirs_bm_mean_jan*100,
          viirs_bm_mean_14d_pc = (viirs_bm_mean_14d - viirs_bm_mean_jan)/viirs_bm_mean_jan*100,
          viirs_bm_mean_mar_pc = (viirs_bm_mean_mar - viirs_bm_mean_jan)/viirs_bm_mean_jan*100,
-         
+
          viirs_bm_gf_mean_3d_pc = (viirs_bm_gf_mean_3d - viirs_bm_gf_mean_jan)/viirs_bm_gf_mean_jan*100,
          viirs_bm_gf_mean_14d_pc = (viirs_bm_gf_mean_14d - viirs_bm_gf_mean_jan)/viirs_bm_gf_mean_jan*100,
          viirs_bm_gf_mean_mar_pc = (viirs_bm_gf_mean_mar - viirs_bm_gf_mean_jan)/viirs_bm_gf_mean_jan*100)
@@ -85,7 +85,7 @@ ntl_df <- ntl_df %>%
 # Merge with polygons ----------------------------------------------------------
 
 #### ADM0 Polygons
-gadm_syr0_sf <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm0_uncs_unocha_20201217.json")) 
+gadm_syr0_sf <- read_sf(file.path(unocha_dir, "RawData", "syr_admbnda_adm0_uncs_unocha_20201217.json"))
 
 #### Polygons
 ## Syr
@@ -98,8 +98,8 @@ gadm_syr_sp@data <- gadm_syr_sp@data %>%
   dplyr::mutate(country = "syr")
 
 ## Tur
-gadm_tur_sp <- read_sf(dsn = file.path(data_tur_dir, 
-                                       "turkey_administrativelevels0_1_2", 
+gadm_tur_sp <- read_sf(dsn = file.path(data_tur_dir,
+                                       "turkey_administrativelevels0_1_2",
                                        "tur_polbna_adm2.shp")) %>%
   as("Spatial")
 
@@ -196,7 +196,7 @@ p <- ggplot() +
   scale_color_manual(values = c("dodgerblue3"))
 
 ggsave(p, filename = file.path(figures_dir, "map_ntl_eq_3d_strong.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 #### 7 Days - focus
@@ -227,7 +227,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_eq_14d_strong.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 #### March - focus
@@ -258,7 +258,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_eq_march_strong.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 # All Syria --------------------------------------------------------------------
@@ -298,7 +298,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_eq_3d.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 #### 14 Days - focus
@@ -331,7 +331,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_eq_14d.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 #### March - all
@@ -364,7 +364,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_eq_march.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 # All Syria: Gas Flaring -------------------------------------------------------
@@ -399,7 +399,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_gf_eq_3d.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 #### 14 Days - focus
@@ -432,7 +432,7 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_gf_eq_14d.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
 
 #### March - all
@@ -465,5 +465,5 @@ p <- ggplot() +
 
 ggsave(p,
        filename = file.path(figures_dir, "map_ntl_gf_eq_march.png"),
-       height = 4.5, 
+       height = 4.5,
        width = 4.5)
