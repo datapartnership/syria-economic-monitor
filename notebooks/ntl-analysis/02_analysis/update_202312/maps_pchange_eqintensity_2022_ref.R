@@ -162,4 +162,3 @@ p <- ggplot() +
 ggsave(p,
        filename = file.path(figures_dir, "pchange_ntl_nogf_2022_2023.png"),
        height = 5, width = 10)
-

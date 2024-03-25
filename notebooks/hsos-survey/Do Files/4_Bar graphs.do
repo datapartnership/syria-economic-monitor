@@ -1,6 +1,6 @@
 ********************************************************************
 * REACH Humanitarian Situation Overview of Syria
-* Do-file: Indicators 
+* Do-file: Indicators
 * Details: Bar graphs
 * Author: Alejandra Quevedo (al.quevedo0420@gmail.com)(acardona@worldbank.org)
 ********************************************************************
@@ -22,7 +22,7 @@ label values treated_3 treatment
 drop if treated_3==.
 *This generates a sample of 1426 for each month
 
-*Count of variables by treatment. 
+*Count of variables by treatment.
 gen freq=1
 egen totalc=total(freq), by (id treated_3)
 
@@ -39,7 +39,7 @@ foreach i of local varg {
 
 *Continous var
 local vard  price_rent_usd RES_wage_unskilled_usd IDP_wage_unskilled_usd
- 
+
 foreach i of local vard {
 	egen `i'c=mean(`i'), by(id treated_3)
 }
@@ -48,34 +48,34 @@ foreach i of local vard {
 
 collapse IDP_reportedc	RES_liv_overcrowded60c	IDP_liv_overcrowded60c	SHE_minor_damage60c	RES_humani_accessc	IDP_humani_accessc	RES_humani_barr_noavaic	IDP_humani_barr_noavaic	electricity_mainc	electricity_8c	water_pipedc	water_privatec	foodmark_accessc	market_accessc	food_source_purchase_outcommc	health_access_inlocc	education_functc	RES_edu_50c	IDP_edu_50c	SHE_damagec	RES_humani_prov_shelterc	RES_humani_prov_healthc	RES_humani_prov_nfic	RES_humani_prov_electricityc	RES_humani_prov_foodc	RES_humani_prov_agric	RES_humani_prov_livelic	RES_humani_prov_educationc	RES_humani_prov_washc	RES_humani_prov_wintec	RES_humani_prov_legalc	RES_humani_prov_gbvc	RES_humani_prov_cpc	RES_humani_prov_exploc	RES_humani_prov_mentalc	RES_humani_prov_cashc	RES_humani_prov_voucherc	IDP_humani_prov_shelterc	IDP_humani_prov_healthc	IDP_humani_prov_nfic	IDP_humani_prov_electricityc	IDP_humani_prov_foodc	IDP_humani_prov_agric	IDP_humani_prov_livelic	IDP_humani_prov_educationc	IDP_humani_prov_washc	IDP_humani_prov_wintec	IDP_humani_prov_legalc	IDP_humani_prov_gbvc	IDP_humani_prov_cpc	IDP_humani_prov_exploc	IDP_humani_prov_mentalc	IDP_humani_prov_cashc	IDP_humani_prov_voucherc	RES_coping_sellittemc	RES_coping_sellproduc	RES_coping_sellhac	RES_coping_childworkc	RES_coping_begc	RES_coping_earlymc	RES_coping_forcedmc	RES_coping_borrowc	RES_coping_creditc	RES_coping_riskworkc	RES_coping_illegalworkc	RES_coping_skiprentc	RES_coping_savingc	RES_coping_schoolc	RES_coping_migc	RES_coping_otherc	RES_coping_nousec	IDP_coping_sellittemc	IDP_coping_sellproduc	IDP_coping_sellhac	IDP_coping_childworkc	IDP_coping_begc	IDP_coping_earlymc	IDP_coping_forcedmc	IDP_coping_borrowc	IDP_coping_creditc	IDP_coping_riskworkc	IDP_coping_illegalworkc	IDP_coping_skiprentc	IDP_coping_savingc	IDP_coping_schoolc	IDP_coping_migc	IDP_coping_otherc	IDP_coping_nousec	sewage_connectc	water_funct_7c	IDP_priority1_1c	IDP_priority1_2c	IDP_priority1_3c	IDP_priority1_4c	IDP_priority1_5c	IDP_priority1_6c	IDP_priority1_7c	IDP_priority1_8c	IDP_priority1_9c	IDP_priority1_10c	IDP_priority1_11c	IDP_priority1_12c	IDP_priority2_1c	IDP_priority2_2c	IDP_priority2_3c	IDP_priority2_4c	IDP_priority2_5c	IDP_priority2_6c	IDP_priority2_7c	IDP_priority2_8c	IDP_priority2_9c	IDP_priority2_10c	IDP_priority2_11c	IDP_priority2_12c	IDP_priority3_1c	IDP_priority3_2c	IDP_priority3_3c	IDP_priority3_4c	IDP_priority3_5c	IDP_priority3_6c	IDP_priority3_7c	IDP_priority3_8c	IDP_priority3_9c	IDP_priority3_10c	IDP_priority3_11c	IDP_priority3_12c	RES_priority1_1c	RES_priority1_2c	RES_priority1_3c	RES_priority1_4c	RES_priority1_5c	RES_priority1_6c	RES_priority1_7c	RES_priority1_8c	RES_priority1_9c	RES_priority1_10c	RES_priority1_11c	RES_priority1_12c	RES_priority2_1c	RES_priority2_2c	RES_priority2_3c	RES_priority2_4c	RES_priority2_5c	RES_priority2_6c	RES_priority2_7c	RES_priority2_8c	RES_priority2_9c	RES_priority2_10c	RES_priority2_11c	RES_priority2_12c	RES_priority3_1c	RES_priority3_2c	RES_priority3_3c	RES_priority3_4c	RES_priority3_5c	RES_priority3_6c	RES_priority3_7c	RES_priority3_8c	RES_priority3_9c	RES_priority3_10c	RES_priority3_11c	RES_priority3_12c price_rent_usdc RES_wage_unskilled_usdc IDP_wage_unskilled_usdc , by (id treated_3)
 
-rename RES_humani_prov_electricityc RES_humani_prov_elec 
+rename RES_humani_prov_electricityc RES_humani_prov_elec
 rename RES_humani_prov_educationc RES_humani_prov_edu
 
 *iecodebook template using "${codebooks}\Graficas"
 iecodebook apply using "${codebooks}\Graficas"
 
 
-rename IDP_humani_prov_electricityc IDP_humani_prov_elec 
+rename IDP_humani_prov_electricityc IDP_humani_prov_elec
 rename IDP_humani_prov_educationc IDP_humani_prov_edu
 
 betterbar RES_humani_prov_shelterc RES_humani_prov_healthc RES_humani_prov_nfic RES_humani_prov_elec RES_humani_prov_foodc RES_humani_prov_agric RES_humani_prov_livelic RES_humani_prov_edu RES_humani_prov_washc RES_humani_prov_wintec RES_humani_prov_legalc RES_humani_prov_gbvc RES_humani_prov_cpc RES_humani_prov_exploc RES_humani_prov_mentalc RES_humani_prov_cashc RES_humani_prov_voucherc, over(id) ///
 	title ("% of communities receiving each type of humanitarian aid: residents", size (small)) ///
 	xtitle("Percentage of communities")
-	
+
 graph export "${figures}\Fig HA RES.png", as(png) name("Graph") replace
-	
-	
+
+
 betterbar IDP_humani_prov_shelterc IDP_humani_prov_healthc IDP_humani_prov_nfic IDP_humani_prov_elec IDP_humani_prov_foodc IDP_humani_prov_agric IDP_humani_prov_livelic IDP_humani_prov_edu IDP_humani_prov_washc IDP_humani_prov_wintec IDP_humani_prov_legalc IDP_humani_prov_gbvc IDP_humani_prov_cpc IDP_humani_prov_exploc IDP_humani_prov_mentalc IDP_humani_prov_cashc IDP_humani_prov_voucherc, over(id) ///
 	title ("% of communities receiving each type of humanitarian aid: IDP", size (small)) ///
 	xtitle("Percentage of communities")
-	
+
 graph export "${figures}\Fig HA IDP.png", as(png) name("Graph") replace
 
 
 betterbar RES_coping_sellittemc RES_coping_sellproduc RES_coping_sellhac RES_coping_childworkc RES_coping_begc RES_coping_earlymc RES_coping_forcedmc RES_coping_borrowc RES_coping_creditc RES_coping_riskworkc RES_coping_illegalworkc RES_coping_skiprentc RES_coping_savingc RES_coping_schoolc RES_coping_migc, over(id) ///
 	title ("% of communities per coping strategies: Residents", size (small)) ///
 	xtitle("Percentage of communities")
-	
+
 graph export "${figures}\Fig coping RES.png", as(png) name("Graph") replace
 
 
@@ -83,7 +83,5 @@ graph export "${figures}\Fig coping RES.png", as(png) name("Graph") replace
 betterbar IDP_coping_sellittemc IDP_coping_sellproduc IDP_coping_sellhac IDP_coping_childworkc IDP_coping_begc IDP_coping_earlymc IDP_coping_forcedmc IDP_coping_borrowc IDP_coping_creditc IDP_coping_riskworkc IDP_coping_illegalworkc IDP_coping_skiprentc IDP_coping_savingc IDP_coping_schoolc IDP_coping_migc, over(id) ///
 	title ("% of communities per coping strategies: IDP", size (small)) ///
 	xtitle("Percentage of communities") xlabel(0 (20) 100)
-	
+
 graph export "${figures}\Fig coping IDP.png", as(png) name("Graph") replace
-
-

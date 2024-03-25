@@ -7,11 +7,11 @@
 
 ///////////////	INTRODUCTION //////////////////////////////////////////////
 
-*Data: HSOS contains information at community level on indicators related to the humanitarian situation in Northwestern (NWS) and Norteastern (NES) regions of Syria. 
+*Data: HSOS contains information at community level on indicators related to the humanitarian situation in Northwestern (NWS) and Norteastern (NES) regions of Syria.
 
-*Time frame: the months use were selected based on the availability of information for both NWS and NES. For example, January has info only on NWS while December has information on both months. 
+*Time frame: the months use were selected based on the availability of information for both NWS and NES. For example, January has info only on NWS while December has information on both months.
 
-*Files: raw data is contained in excel files downloaded from the website of REACH Initiative. Along, with data on earthquake intensity. For processing the excel data the command iecodebook was used, codebooks used to run the code are all available. 
+*Files: raw data is contained in excel files downloaded from the website of REACH Initiative. Along, with data on earthquake intensity. For processing the excel data the command iecodebook was used, codebooks used to run the code are all available.
 
 clear all
 set more off
@@ -57,14 +57,14 @@ global dofile "$hsos\Do Files"
 	local importDo 0
 
 	if (`importDo' ==1) { //Change the local above to run or not to run this file
-	 do "${dofile}\1_Import.do"   
+	 do "${dofile}\1_Import.do"
 	}
 
 *Cleaning of variables, recodification (string to numeric), and definition of indicators.
 	local cleaningDo 0
 
 	if (`cleaningDo' ==1) { //Change the local above to run or not to run this file
-	 do "${dofile}\2_Cleaning.do"   
+	 do "${dofile}\2_Cleaning.do"
 	}
 
 
@@ -72,7 +72,7 @@ global dofile "$hsos\Do Files"
 	local linetrendsDo 0
 
 	if (`linetrendsDo' ==1) { //Change the local above to run or not to run this file
-	 do "${dofile}\3_Line Trends.do"   
+	 do "${dofile}\3_Line Trends.do"
 	}
 
 
@@ -80,25 +80,19 @@ global dofile "$hsos\Do Files"
 	local graphsDo 0
 
 	if (`graphsDo' ==1) { //Change the local above to run or not to run this file
-	 do "${dofile}\4_Bar graphs.do"   
+	 do "${dofile}\4_Bar graphs.do"
 	}
 
 *Map of IDPs displaced because earthquake.
 	local mapsDo 1
 
 	if (`mapsDo' ==1) { //Change the local above to run or not to run this file
-	 do "${dofile}\5_Map.do"   
+	 do "${dofile}\5_Map.do"
 	}
-	
-*Selection of outputs of interest - Line trends 
+
+*Selection of outputs of interest - Line trends
 	local outputsDo 1
-	
+
 	if (`outputsDo' ==1) { //Change the local above to run or not to run this file
-	 do "${dofile}\6_Outputs.do"   
+	 do "${dofile}\6_Outputs.do"
 	}
-
-
-
-
-
-
