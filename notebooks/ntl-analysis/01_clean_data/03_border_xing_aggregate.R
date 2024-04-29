@@ -21,26 +21,26 @@ monthly_files <- list.files(file.path(ntl_bm_dir, "FinalData", paste0("monthly",
 
 ntl_monthly_df <- map_df(monthly_files, function(file_i){
   print(file_i)
-  
+
   r <- rast(file.path(ntl_bm_dir, "FinalData", paste0("monthly", "_rasters"), file_i))
-  
+
   bc_df <- bc_sf
   bc_df$geometry <- NULL
   bc_df$viirs_bm_mean <- exact_extract(r, bc_sf, 'mean')
   bc_df$viirs_bm_sum <- exact_extract(r, bc_sf, 'sum')
   bc_df$viirs_bm_median <- exact_extract(r, bc_sf, 'median')
-  
+
   # Add date info
-  bc_df$date <- file_i %>% 
-    str_replace_all("VNP46A3_t", "") %>% 
+  bc_df$date <- file_i %>%
+    str_replace_all("VNP46A3_t", "") %>%
     str_replace_all(".tif", "") %>%
-    str_replace_all("_", "-") %>% 
-    paste0("-01") %>% 
+    str_replace_all("_", "-") %>%
+    paste0("-01") %>%
     ymd()
-  
-  #### Merge NTL with GADM data 
+
+  #### Merge NTL with GADM data
   bc_df$viirs_bm_mean[bc_df$viirs_bm_sum == 0]           <- 0
-  
+
   return(bc_df)
 })
 
@@ -52,28 +52,27 @@ daily_files <- list.files(file.path(ntl_bm_dir, "FinalData", paste0("daily", "_r
 
 ntl_daily_df <- map_df(daily_files, function(file_i){
   print(file_i)
-  
+
   r <- rast(file.path(ntl_bm_dir, "FinalData", paste0("daily", "_rasters"), file_i))
-  
+
   bc_df <- bc_sf
   bc_df$geometry <- NULL
   bc_df$viirs_bm_mean <- exact_extract(r, bc_sf, 'mean')
   bc_df$viirs_bm_sum <- exact_extract(r, bc_sf, 'sum')
-  
+
   # Add date info
-  bc_df$date <- file_i %>% 
-    str_replace_all("VNP46A2_t", "") %>% 
+  bc_df$date <- file_i %>%
+    str_replace_all("VNP46A2_t", "") %>%
     str_replace_all(".tif", "") %>%
-    str_replace_all("_", "-") %>% 
+    str_replace_all("_", "-") %>%
     ymd()
-  
-  #### Merge NTL with GADM data 
+
+  #### Merge NTL with GADM data
   bc_df$viirs_bm_mean[bc_df$viirs_bm_sum == 0]           <- 0
-  
+
   return(bc_df)
 })
 
 write_csv(ntl_daily_df, file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_daily.csv"))
 saveRDS(ntl_daily_df,   file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_daily.Rds"))
 write_dta(ntl_daily_df,   file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_daily.dta"))
-
