@@ -27,7 +27,7 @@ df %>%
   dplyr::summarise(viirs_bm_mean = mean(viirs_bm_mean),
                    viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean)) %>%
   ggplot() +
-  geom_vline(xintercept = ymd("2023-02-01"), color = "red") + 
+  geom_vline(xintercept = ymd("2023-02-01"), color = "red") +
   geom_line(aes(x = date,
                 y = viirs_bm_mean,
                 color = "NTL"),
@@ -46,7 +46,7 @@ df %>%
   theme_classic2() +
   theme(strip.background = element_blank(),
         strip.text = element_text(face = "bold"),
-        plot.title = element_text(hjust = 0.5, face = "bold")) 
+        plot.title = element_text(hjust = 0.5, face = "bold"))
 
 ggsave(filename = file.path(figures_dir, "syr_eqintensity_monthly.png"),
        height = 4, width = 10)
@@ -57,7 +57,7 @@ df %>%
   dplyr::summarise(viirs_bm_mean = mean(viirs_bm_mean),
                    viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean)) %>%
   ggplot() +
-  geom_vline(xintercept = ymd("2023-02-01"), color = "red") + 
+  geom_vline(xintercept = ymd("2023-02-01"), color = "red") +
   geom_line(aes(x = date,
                 y = viirs_bm_mean,
                 color = "NTL"),
@@ -91,7 +91,7 @@ syr_adm_df <- df %>%
 syr_adm_df %>%
   dplyr::filter(eq_intensity_str %in% "Very Strong") %>%
   ggplot() +
-  geom_vline(xintercept = ymd("2023-02-01"), color = "red") + 
+  geom_vline(xintercept = ymd("2023-02-01"), color = "red") +
   geom_line(aes(x = date,
                 y = viirs_bm_mean,
                 color = "NTL"),
@@ -110,7 +110,7 @@ syr_adm_df %>%
   theme_classic2() +
   theme(strip.background = element_blank(),
         strip.text = element_text(face = "bold"),
-        plot.title = element_text(hjust = 0.5, face = "bold")) 
+        plot.title = element_text(hjust = 0.5, face = "bold"))
 
 ggsave(filename = file.path(figures_dir, "syr_eqintensity_adm_verystrong_monthly.png"),
        height = 4, width = 8)
@@ -120,7 +120,7 @@ ggsave(filename = file.path(figures_dir, "syr_eqintensity_adm_verystrong_monthly
 syr_adm_df %>%
   dplyr::filter(eq_intensity_str %in% "Strong") %>%
   ggplot() +
-  geom_vline(xintercept = ymd("2023-02-01"), color = "red") + 
+  geom_vline(xintercept = ymd("2023-02-01"), color = "red") +
   geom_line(aes(x = date,
                 y = viirs_bm_mean,
                 color = "NTL"),
@@ -139,7 +139,7 @@ syr_adm_df %>%
   theme_classic2() +
   theme(strip.background = element_blank(),
         strip.text = element_text(face = "bold"),
-        plot.title = element_text(hjust = 0.5, face = "bold")) 
+        plot.title = element_text(hjust = 0.5, face = "bold"))
 
 ggsave(filename = file.path(figures_dir, "syr_eqintensity_adm_strong_monthly.png"),
        height = 10, width = 14)
@@ -151,12 +151,12 @@ tur_adm_df <- df %>%
   dplyr::filter(country == "Turkey") %>%
   group_by(date, adm, eq_intensity_str) %>%
   dplyr::summarise(viirs_bm_mean = mean(viirs_bm_mean),
-                   viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean)) 
+                   viirs_bm_nogf_mean = mean(viirs_bm_nogf_mean))
 
 tur_adm_df %>%
   dplyr::filter(eq_intensity_str %in% "Very Strong") %>%
   ggplot() +
-  geom_vline(xintercept = ymd("2023-02-01"), color = "red") + 
+  geom_vline(xintercept = ymd("2023-02-01"), color = "red") +
   geom_line(aes(x = date,
                 y = viirs_bm_mean,
                 color = "NTL"),
@@ -175,7 +175,7 @@ tur_adm_df %>%
   theme_classic2() +
   theme(strip.background = element_blank(),
         strip.text = element_text(face = "bold"),
-        plot.title = element_text(hjust = 0.5, face = "bold")) 
+        plot.title = element_text(hjust = 0.5, face = "bold"))
 
 ggsave(filename = file.path(figures_dir, "tur_eqintensity_adm_verystrong_monthly.png"),
        height = 10, width = 14)

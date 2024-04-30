@@ -184,7 +184,3 @@ ntl_df %>%
 
 ggsave(filename = file.path(figures_dir, "ntl_gf_eq_avg.png"),
        height = 4, width = 6)
-
-
-
-

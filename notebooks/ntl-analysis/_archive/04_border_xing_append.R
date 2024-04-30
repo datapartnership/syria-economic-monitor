@@ -1,4 +1,4 @@
-# Append NTL Data at Border Crossings 
+# Append NTL Data at Border Crossings
 
 # Load data --------------------------------------------------------------------
 daily_df <- file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_temp", "daily_files") %>%
@@ -17,4 +17,3 @@ write_csv(monthly_df, file.path(ntl_bm_dir, "FinalData", "aggregated", "border_x
 
 saveRDS(daily_df, file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_daily.Rds"))
 saveRDS(monthly_df, file.path(ntl_bm_dir, "FinalData", "aggregated", "border_xing_monthly.Rds"))
-

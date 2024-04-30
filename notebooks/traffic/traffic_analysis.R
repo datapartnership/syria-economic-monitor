@@ -17,7 +17,7 @@
 #### Root paths
 if(Sys.info()[["user"]] == "robmarty"){
   git_dir <- "~/Documents/Github/syria-economic-monitor"
-} 
+}
 
 #### From root
 traffic_dir <- file.path(git_dir, "notebooks", "ntl-analysis")
@@ -62,21 +62,21 @@ sn_df <- sn_df %>%
   dplyr::filter(name_orbit %in% c("Al Abbudiyah desc21",
                                   "Matraba orbit1",
                                   "Al Aridah desc21")) %>%
-  
+
   ungroup() %>%
   group_by(name) %>%
   mutate(bp_perc33 = quantile(border_point, 0.33)) %>%
   ungroup() %>%
-  
+
   mutate(border_point_adj = border_point - bp_perc33)
 
 sn_df$border_point_adj[sn_df$border_point_adj < 0] <- 0
 
-sn_df$border_point_adj[sn_df$name %in% "Matraba"] <- sn_df$border_point[sn_df$name %in% "Matraba"] 
+sn_df$border_point_adj[sn_df$name %in% "Matraba"] <- sn_df$border_point[sn_df$name %in% "Matraba"]
 
 # 6. Aggregate to monthly level ------------------------------------------------
 sn_m_df <- sn_df %>%
-  
+
   mutate(date = date %>% floor_date(unit = "months")) %>%
   group_by(date, name) %>%
   dplyr::summarise(border_point_adj = border_point_adj %>% mean) %>%
@@ -84,7 +84,7 @@ sn_m_df <- sn_df %>%
   mutate(source = "SpaceKnow")
 
 ol_m_df <- ol_df %>%
-  
+
   mutate(date = date %>% floor_date(unit = "months")) %>%
   group_by(date, aoi) %>%
   dplyr::summarise(device_count = device_count %>% mean) %>%
@@ -93,12 +93,12 @@ ol_m_df <- ol_df %>%
   mutate(source = "Outlogic")
 
 oi_m_df <- oi_df %>%
-  
+
   mutate(date = date %>% floor_date(unit = "month")) %>%
   group_by(date, object, aoi_name) %>%
   dplyr::summarise(value = max(measured_count)) %>%
   ungroup() %>%
-  
+
   group_by(date, aoi_name) %>%
   dplyr::summarise(value = sum(value, na.rm = T)) %>%
   dplyr::rename(name = aoi_name) %>%
@@ -108,7 +108,7 @@ month_df <- bind_rows(ol_m_df,
                       oi_m_df,
                       sn_m_df) %>%
   dplyr::filter(date >= ymd("2020-01-01"),
-                date <= ymd("2022-12-31")) 
+                date <= ymd("2022-12-31"))
 
 # 7. Figure --------------------------------------------------------------------
 p_ol <- month_df %>%
@@ -138,17 +138,17 @@ p_sn <- month_df %>%
         strip.background = element_blank())
 
 p_oi <- oi_df %>%
-  
+
   mutate(date = date %>% floor_date(unit = "month")) %>%
   group_by(date, object, aoi_name) %>%
   dplyr::summarise(value = max(measured_count)) %>%
   ungroup() %>%
-  
+
   dplyr::filter(date >= ymd("2020-01-01"),
                 date <= ymd("2022-12-31")) %>%
-  
+
   mutate(object = object %>% tools::toTitleCase() %>% factor(levels = c("Truck", "Car"))) %>%
-  
+
   ggplot() +
   geom_col(aes(x = date, y = value, fill = object),
            width = 10) +
@@ -173,6 +173,3 @@ p_all <- ggarrange(p_oi + xlim(c(ymd("2020-01-01"), ymd("2022-12-20"))),
 
 ggsave(p_all, filename = file.path(figures_dir, "2021_border_trends_clean.png"),
        height = 9, width = 10)
-
-
-

@@ -9,62 +9,62 @@ r_2013 <- file.path(data_dir) %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2013),
              full.names = T) %>%
   str_subset(paste0("0", 1:8, ".tif")) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 r_2015 <- file.path(data_dir) %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2015),
              full.names = T) %>%
   str_subset(paste0("0", 1:8, ".tif")) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 r_2017 <- file.path(data_dir) %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2017),
              full.names = T) %>%
   str_subset(paste0("0", 1:8, ".tif")) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 r_2019 <- file.path(data_dir) %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2019),
              full.names = T) %>%
   str_subset(paste0("0", 1:8, ".tif")) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 r_2020 <- file.path(ntl_bm_dir, "FinalData", "monthly_rasters") %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2020),
              full.names = T) %>%
   str_subset(paste0("0", 1:8, ".tif")) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 r_2021 <- file.path(data_dir) %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2021),
              full.names = T) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 r_2022 <- file.path(data_dir) %>%
   list.files(pattern = paste0("bm_vnp46A3_", 2022),
              full.names = T) %>%
   str_subset(paste0("0", 1:8, ".tif")) %>%
-  stack() %>% 
+  stack() %>%
   calc(fun = mean) %>%
-  crop(gadm_sp) %>% 
+  crop(gadm_sp) %>%
   mask(gadm_sp)
 
 ## Gas Flare Locations
@@ -105,41 +105,41 @@ gadm1_sp_df$NAME_1 <- gadm1_sp$NAME_1
 # Maps -------------------------------------------------------------------------
 # Function to make raster change object
 mk_r_diff_cat <- function(r_start, r_end){
-  
+
   r_diff <- r_end - r_start
-  
+
   r_out <- r_diff
   r_out[] <- NA
-  
+
   r_out[r_start > 1] <- 0
   r_out[r_diff > 1]  <- 1
   r_out[r_diff < -1] <- -1
-  
+
   r_out_df <- rasterToPoints(r_out, spatial = TRUE) %>% as.data.frame()
   names(r_out_df) <- c("value", "x", "y")
-  
-  return(r_out_df)  
+
+  return(r_out_df)
 }
 
 for(base_year in c(2019, 2020, 2021)){
-  
+
   if(base_year %in% 2019) r_base <- r_2019
   if(base_year %in% 2020) r_base <- r_2020
   if(base_year %in% 2021) r_base <- r_2021
-  
-  r_df <- mk_r_diff_cat(r_base, r_2022) 
-  
+
+  r_df <- mk_r_diff_cat(r_base, r_2022)
+
   ## Plot
   p <- ggplot() +
-    geom_raster(data = r_df[r_df$value == 0,], 
+    geom_raster(data = r_df[r_df$value == 0,],
                 aes(x = x, y = y,
                     fill = "No Change"),
                 alpha = 0.8) +
-    geom_raster(data = r_df[r_df$value == 1,], 
+    geom_raster(data = r_df[r_df$value == 1,],
                 aes(x = x, y = y,
                     fill = "New Lights"),
                 alpha = 0.8) +
-    geom_raster(data = r_df[r_df$value == -1,], 
+    geom_raster(data = r_df[r_df$value == -1,],
                 aes(x = x, y = y,
                     fill = "Lights Lost"),
                 alpha = 0.8) +
@@ -164,11 +164,10 @@ for(base_year in c(2019, 2020, 2021)){
           legend.position = c(0.8, 0.2),
           plot.background = element_rect(fill = "white")) +
     scale_fill_manual(values = c("firebrick3", "green3", "dodgerblue")) +
-    coord_quickmap() 
-  
+    coord_quickmap()
+
   ggsave(p,
          filename = file.path(figures_dir, paste0("ntl_change_cat_",base_year,".png")),
          height = 4, width = 4, dpi = 1000)
-  
-}
 
+}
