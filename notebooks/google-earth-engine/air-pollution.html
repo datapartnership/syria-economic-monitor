@@ -75,7 +75,7 @@
     <link rel="prev" title="Tree Cover Loss Analysis" href="../syria-forest-cover/syria_forest.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Feb 20, 2024"/>
+    <meta name="docbuild:last-update" content="Apr 30, 2024"/>
   </head>
   
   
@@ -476,7 +476,15 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
-<span class="n">show</span><span class="p">(</span><span class="n">get_line_chart</span><span class="p">(</span><span class="n">monthly_no2_national</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Air Pollution in Syria (NO2 levels)&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;Source: Google Earth Engine&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;ADM0_EN&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="s1">&#39;NO2_column_number_density&#39;</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span>
+    <span class="n">get_line_chart</span><span class="p">(</span>
+        <span class="n">monthly_no2_national</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Air Pollution in Syria (NO2 levels)&quot;</span><span class="p">,</span>
+        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;Source: Google Earth Engine&quot;</span><span class="p">,</span>
+        <span class="n">category</span><span class="o">=</span><span class="s2">&quot;ADM0_EN&quot;</span><span class="p">,</span>
+        <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;NO2_column_number_density&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -805,7 +813,15 @@ if (force === true) {
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
-<span class="n">show</span><span class="p">(</span><span class="n">get_line_chart</span><span class="p">(</span><span class="n">monthly_no2_adm1</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Air Pollution in Syria (NO2 levels)&#39;</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;Source: Google Earth Engine&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;ADM1_EN&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="s1">&#39;NO2_column_number_density&#39;</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span>
+    <span class="n">get_line_chart</span><span class="p">(</span>
+        <span class="n">monthly_no2_adm1</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Air Pollution in Syria (NO2 levels)&quot;</span><span class="p">,</span>
+        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;Source: Google Earth Engine&quot;</span><span class="p">,</span>
+        <span class="n">category</span><span class="o">=</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span>
+        <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;NO2_column_number_density&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1140,15 +1156,21 @@ if (force === true) {
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">monthly_no2</span><span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">monthly_no2</span><span class="p">[</span><span class="n">monthly_no2</span><span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">adm</span><span class="p">]</span> 
+<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">monthly_no2</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">monthly_no2</span><span class="p">[</span><span class="n">monthly_no2</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
 
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
-        <span class="n">child</span><span class="o">=</span><span class="n">get_line_chart</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Air Pollution at Admin 2 (NO2 levels)&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: Google Earth Engine&quot;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;ADM2_EN&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="s1">&#39;NO2_column_number_density&#39;</span><span class="p">),</span>
-                    <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-                <span class="p">)</span>
-                <span class="p">)</span>
+            <span class="n">child</span><span class="o">=</span><span class="n">get_line_chart</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">,</span>
+                <span class="s2">&quot;Air Pollution at Admin 2 (NO2 levels)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Source: Google Earth Engine&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="s2">&quot;ADM2_EN&quot;</span><span class="p">,</span>
+                <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;NO2_column_number_density&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1482,16 +1504,27 @@ if (force === true) {
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Georgia&quot;</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">syria_adm2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">monthly_no2</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM2_EN&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;NO2_column_number_density&#39;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">syria_adm2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">monthly_no2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM2_EN&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;NO2_column_number_density&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span>
+<span class="p">)</span>
 
-<span class="n">subtitle</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Source: Air Pollution levels from Google Earth Engine, shapefiles from HdX&#39;</span>
+<span class="n">subtitle</span> <span class="o">=</span> <span class="s2">&quot;Source: Air Pollution levels from Google Earth Engine, shapefiles from HdX&quot;</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">subtitle</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
-        <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">subtitle</span><span class="p">,</span>
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+    <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;NO2 levels in Admin 2 Regions&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;NO2 levels in Admin 2 Regions&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1502,16 +1535,20 @@ if (force === true) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">syria_adm4</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../../data/shapefiles/syr_pplp_adm4_unocha_20210113/syr_pplp_adm4_unocha_20210113.shp&#39;</span><span class="p">)</span>
-<span class="n">damascus</span> <span class="o">=</span> <span class="n">syria_adm4</span><span class="p">[</span><span class="n">syria_adm4</span><span class="p">[</span><span class="s1">&#39;ADM2_EN&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Damascus&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">syria_adm4</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
+    <span class="s2">&quot;../../data/shapefiles/syr_pplp_adm4_unocha_20210113/syr_pplp_adm4_unocha_20210113.shp&quot;</span>
+<span class="p">)</span>
+<span class="n">damascus</span> <span class="o">=</span> <span class="n">syria_adm4</span><span class="p">[</span><span class="n">syria_adm4</span><span class="p">[</span><span class="s2">&quot;ADM2_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Damascus&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">syria_adm3</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../../data/shapefiles/syr_pplp_adm4_unocha_20210113/syr_admbnda_adm3_uncs_unocha_20201217.json&#39;</span><span class="p">)</span>
-<span class="n">damascus_adm3</span> <span class="o">=</span> <span class="n">syria_adm3</span><span class="p">[</span><span class="n">syria_adm3</span><span class="p">[</span><span class="s1">&#39;ADM2_EN&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Damascus&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">syria_adm3</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
+    <span class="s2">&quot;../../data/shapefiles/syr_pplp_adm4_unocha_20210113/syr_admbnda_adm3_uncs_unocha_20201217.json&quot;</span>
+<span class="p">)</span>
+<span class="n">damascus_adm3</span> <span class="o">=</span> <span class="n">syria_adm3</span><span class="p">[</span><span class="n">syria_adm3</span><span class="p">[</span><span class="s2">&quot;ADM2_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Damascus&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1519,7 +1556,7 @@ if (force === true) {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buffer_radius</span> <span class="o">=</span> <span class="mf">0.005</span>
-<span class="n">damascus</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">damascus</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">buffer_radius</span><span class="p">))</span>
+<span class="n">damascus</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">damascus</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">buffer_radius</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1536,7 +1573,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">damascus</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;../../data/air_pollution/damascus_neighborhoods.shp&#39;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;ESRI Shapefile&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">damascus</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span>
+    <span class="s2">&quot;../../data/air_pollution/damascus_neighborhoods.shp&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;ESRI Shapefile&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1636,7 +1675,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 20, 2024.
+  Last updated on Apr 30, 2024.
   <br/>
 </p>
   </div>

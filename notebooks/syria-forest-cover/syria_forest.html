@@ -75,7 +75,7 @@
     <link rel="prev" title="Tree Cover Loss Analysis" href="2023-summer-tree-cover-loss.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Feb 20, 2024"/>
+    <meta name="docbuild:last-update" content="Apr 30, 2024"/>
   </head>
   
   
@@ -471,7 +471,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span><span class="p">,</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Image</span>
 </pre></div>
 </div>
 </div>
@@ -602,9 +602,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create pivot table of tree cover loss by admin1 and year</span>
-<span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">merged_df</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;umd_tree_cover_loss__ha&quot;</span><span class="p">,</span>
-                       <span class="n">index</span><span class="o">=</span><span class="s2">&quot;adm1&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">,</span>
-                       <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">merged_df</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;umd_tree_cover_loss__ha&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="s2">&quot;adm1&quot;</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="c1"># Display the pivot table</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
@@ -953,39 +958,56 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Set font family</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sans-serif&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;font.family&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;sans-serif&quot;</span>
 
 <span class="c1"># Group data by admin1 and year, and calculate cumulative tree cover loss</span>
-<span class="n">grouped_df</span> <span class="o">=</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;adm1&#39;</span><span class="p">,</span> <span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">])[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;cummulative loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;adm1&#39;</span><span class="p">)[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">grouped_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;adm1&quot;</span><span class="p">,</span> <span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">])[</span><span class="s2">&quot;umd_tree_cover_loss__ha&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;cummulative loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;adm1&quot;</span><span class="p">)[</span>
+    <span class="s2">&quot;umd_tree_cover_loss__ha&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 
 <span class="c1"># Convert year column to integers</span>
-<span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;integer&#39;</span><span class="p">)</span>
+<span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="s2">&quot;integer&quot;</span>
+<span class="p">)</span>
 
 <span class="c1"># Replace NaN values with None</span>
-<span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">[</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">]),</span> <span class="kc">None</span>
+<span class="p">)</span>
 
 <span class="c1"># Create line chart of cumulative tree cover loss over time, by admin1</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;umd_tree_cover_loss__year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cummulative loss&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;adm1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">grouped_df</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Tree Cover Loss (ha)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Cumulative Syria Tree Cover Loss from 2000-2021, by Governorate&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;umd_tree_cover_loss__year&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cummulative loss&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;adm1&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">grouped_df</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Tree Cover Loss (ha)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s2">&quot;Cumulative Syria Tree Cover Loss from 2000-2021, by Governorate&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Governorate&#39;</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Governorate&quot;</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
 <span class="c1"># Set background color and grid</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#F2F4F7&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#F2F4F7&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Save chart as a PNG file</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;images/syria-tree-loss-chart.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;images/syria-tree-loss-chart.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1001,7 +1023,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group data by admin1 and calculate tree cover loss</span>
-<span class="n">total_loss</span> <span class="o">=</span> <span class="nb">round</span> <span class="p">(</span><span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;adm1&#39;</span><span class="p">)[</span><span class="s1">&#39;umd_tree_cover_loss__ha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">total_loss</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">merged_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;adm1&quot;</span><span class="p">)[</span><span class="s2">&quot;umd_tree_cover_loss__ha&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Calculate percentage of the total tree cover loss for each admin1</span>
 <span class="n">percentage_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">total_loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
@@ -1022,9 +1044,21 @@ document.write(`
 
 <span class="c1"># Display the results (customize the local name for an admin1 area)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the most tree cover loss is </span><span class="si">{</span><span class="n">most_loss</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">total_loss</span><span class="p">[</span><span class="n">most_loss</span><span class="p">]</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the second most tree cover loss is </span><span class="si">{</span><span class="n">second_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">second_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The governorate with the third most tree cover loss is </span><span class="si">{</span><span class="n">third_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">third_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="n">Markdown</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;The governorate with the most tree cover loss is </span><span class="si">{</span><span class="n">most_loss</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">total_loss</span><span class="p">[</span><span class="n">most_loss</span><span class="p">]</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="n">Markdown</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;The governorate with the second most tree cover loss is </span><span class="si">{</span><span class="n">second_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">second_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="n">Markdown</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;The governorate with the third most tree cover loss is </span><span class="si">{</span><span class="n">third_most_loss_adm1</span><span class="si">}</span><span class="s2">, with </span><span class="si">{</span><span class="n">third_most_loss</span><span class="si">}</span><span class="s2"> hectares lost, which represents </span><span class="si">{</span><span class="n">percentage_of_total_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the total loss across all governorates.&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1134,7 +1168,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 20, 2024.
+  Last updated on Apr 30, 2024.
   <br/>
 </p>
   </div>

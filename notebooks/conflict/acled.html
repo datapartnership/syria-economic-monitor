@@ -75,7 +75,7 @@
     <link rel="prev" title="Earthquake Intensity Map of Syria" href="../earthquake-intensity/earthquake_intensity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Feb 20, 2024"/>
+    <meta name="docbuild:last-update" content="Apr 30, 2024"/>
   </head>
   
   
@@ -478,8 +478,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">syria_adm0</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../../data/shapefiles/syr_pplp_adm4_unocha_20210113/syr_admbnda_adm0_uncs_unocha_20201217.json&#39;</span><span class="p">)</span>
-<span class="n">acled_adm0</span> <span class="o">=</span> <span class="n">get_acled_by_admin</span><span class="p">(</span><span class="n">syria_adm0</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:32632&#39;</span><span class="p">),</span> <span class="n">acled</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ADM0_EN&#39;</span><span class="p">])</span>
+<span class="n">syria_adm0</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
+    <span class="s2">&quot;../../data/shapefiles/syr_pplp_adm4_unocha_20210113/syr_admbnda_adm0_uncs_unocha_20201217.json&quot;</span>
+<span class="p">)</span>
+<span class="n">acled_adm0</span> <span class="o">=</span> <span class="n">get_acled_by_admin</span><span class="p">(</span>
+    <span class="n">syria_adm0</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:32632&quot;</span><span class="p">),</span> <span class="n">acled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ADM0_EN&quot;</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -497,17 +501,27 @@ document.write(`
 <span class="n">bokeh</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">silence</span><span class="p">(</span><span class="n">MISSING_RENDERERS</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">measure_names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">:</span><span class="s1">&#39;Number of Conflict Events&#39;</span><span class="p">,</span> <span class="s1">&#39;fatalities&#39;</span><span class="p">:</span><span class="s1">&#39;Number of Fatalities&#39;</span><span class="p">}</span>
-<span class="n">measure_colors</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">:</span><span class="s1">&#39;#4E79A7&#39;</span><span class="p">,</span> <span class="s1">&#39;fatalities&#39;</span><span class="p">:</span><span class="s1">&#39;#F28E2B&#39;</span><span class="p">}</span>
-<span class="c1">#acled_adm0 = get_acled_by_admin(syria_adm2_crs, acled, columns = [&#39;ADM2_EN&#39;, &#39;ADM1_EN&#39;])</span>
-<span class="k">for</span> <span class="n">measure</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">,</span> <span class="s1">&#39;fatalities&#39;</span><span class="p">]:</span>
-
+<span class="n">measure_names</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nrEvents&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of Conflict Events&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fatalities&quot;</span><span class="p">:</span> <span class="s2">&quot;Number of Fatalities&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">measure_colors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;nrEvents&quot;</span><span class="p">:</span> <span class="s2">&quot;#4E79A7&quot;</span><span class="p">,</span> <span class="s2">&quot;fatalities&quot;</span><span class="p">:</span> <span class="s2">&quot;#F28E2B&quot;</span><span class="p">}</span>
+<span class="c1"># acled_adm0 = get_acled_by_admin(syria_adm2_crs, acled, columns = [&#39;ADM2_EN&#39;, &#39;ADM1_EN&#39;])</span>
+<span class="k">for</span> <span class="n">measure</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;nrEvents&quot;</span><span class="p">,</span> <span class="s2">&quot;fatalities&quot;</span><span class="p">]:</span>
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
-        <span class="n">child</span><span class="o">=</span><span class="n">get_bar_chart</span><span class="p">(</span><span class="n">acled_adm0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;National Trend in </span><span class="si">{</span><span class="n">measure_names</span><span class="p">[</span><span class="n">measure</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>  <span class="n">subtitle</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;ADM0_EN&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="n">measure</span><span class="p">,</span> <span class="n">color_code</span> <span class="o">=</span> <span class="n">measure_colors</span><span class="p">[</span><span class="n">measure</span><span class="p">]),</span>
-                    <span class="n">title</span><span class="o">=</span><span class="n">measure_names</span><span class="p">[</span><span class="n">measure</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-                <span class="p">)</span>
-                <span class="p">)</span>
+            <span class="n">child</span><span class="o">=</span><span class="n">get_bar_chart</span><span class="p">(</span>
+                <span class="n">acled_adm0</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;National Trend in </span><span class="si">{</span><span class="n">measure_names</span><span class="p">[</span><span class="n">measure</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>
+                <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="s2">&quot;ADM0_EN&quot;</span><span class="p">,</span>
+                <span class="n">measure</span><span class="o">=</span><span class="n">measure</span><span class="p">,</span>
+                <span class="n">color_code</span><span class="o">=</span><span class="n">measure_colors</span><span class="p">[</span><span class="n">measure</span><span class="p">],</span>
+            <span class="p">),</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">measure_names</span><span class="p">[</span><span class="n">measure</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -836,7 +850,17 @@ if (force === true) {
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">acled_intensity</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Conflict index by earthquake intensity&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span> <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subtitle</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;category_max_feb06&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="s1">&#39;conflictIndex&#39;</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span>
+    <span class="n">get_line_plot</span><span class="p">(</span>
+        <span class="n">acled_intensity</span><span class="p">,</span>
+        <span class="s2">&quot;Conflict index by earthquake intensity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>
+        <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">category</span><span class="o">=</span><span class="s2">&quot;category_max_feb06&quot;</span><span class="p">,</span>
+        <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;conflictIndex&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1173,16 +1197,24 @@ if (force === true) {
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">acled_adm2</span> <span class="o">=</span> <span class="n">get_acled_by_admin</span><span class="p">(</span><span class="n">syria_adm2_crs</span><span class="p">,</span> <span class="n">acled</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ADM2_EN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADM1_EN&#39;</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">acled_adm2</span><span class="p">[</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">adm</span><span class="p">]</span> 
+<span class="n">acled_adm2</span> <span class="o">=</span> <span class="n">get_acled_by_admin</span><span class="p">(</span><span class="n">syria_adm2_crs</span><span class="p">,</span> <span class="n">acled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ADM2_EN&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM1_EN&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">acled_adm2</span><span class="p">[</span><span class="n">acled_adm2</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
 
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
-        <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Conflict Index by admin 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span> <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subtitle</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;ADM2_EN&#39;</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="s1">&#39;conflictIndex&#39;</span><span class="p">),</span>
-                    <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-                <span class="p">)</span>
-                <span class="p">)</span>
+            <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">,</span>
+                <span class="s2">&quot;Conflict Index by admin 2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Source: ACLED&quot;</span><span class="p">,</span>
+                <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="s2">&quot;ADM2_EN&quot;</span><span class="p">,</span>
+                <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;conflictIndex&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1526,10 +1558,17 @@ if (force === true) {
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_notebook</span><span class="p">()</span>
-<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Monthly conflict related fatalities by Area of Control&#39;</span>
-<span class="n">source</span><span class="o">=</span> <span class="s1">&#39;ACLED&#39;</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Monthly conflict related fatalities by Area of Control&quot;</span>
+<span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;ACLED&quot;</span>
 
-<span class="n">show</span><span class="p">(</span><span class="n">get_line_plot</span><span class="p">(</span><span class="n">acled_aoc</span><span class="p">[</span><span class="n">acled_aoc</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">&gt;</span><span class="mi">2016</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span> <span class="n">source</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;aoc&#39;</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span>
+    <span class="n">get_line_plot</span><span class="p">(</span>
+        <span class="n">acled_aoc</span><span class="p">[</span><span class="n">acled_aoc</span><span class="p">[</span><span class="s2">&quot;event_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;</span> <span class="mi">2016</span><span class="p">],</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+        <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+        <span class="n">category</span><span class="o">=</span><span class="s2">&quot;aoc&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1958,7 +1997,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 20, 2024.
+  Last updated on Apr 30, 2024.
   <br/>
 </p>
   </div>
