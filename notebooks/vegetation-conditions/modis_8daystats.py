@@ -24,16 +24,17 @@ VERSION
 TODO
     xx
 """
+
 import os
 import arcpy
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # To avoid overwriting outputs, change overwriteOutput option to False.
 arcpy.env.overwriteOutput = True
 
 # ISO3 Country Code
-iso3 = "mmr" # Myanmar
+iso3 = "mmr"  # Myanmar
 
 # Change the data and output folder
 input_folder = "X:\\Temp\\modis\\{}\\gee\\02_positive\\temp".format(iso3)
@@ -49,7 +50,7 @@ for file in os.listdir(input_folder):
         date_str = parts[-1].split(".")[0]  # remove the file extension
         date = datetime.strptime(date_str, "%Y%m%d")
         doy = date.strftime("%j")
-        
+
         if doy == "366" and not calendar.isleap(date.year):
             # This is not a leap year but has a DOY 366, skip it.
             continue
@@ -60,17 +61,23 @@ for file in os.listdir(input_folder):
 
 # Define statistic names
 # Statistics type.
-    # MEAN — The mean (average) of the inputs will be calculated.
-    # MAJORITY — The majority (value that occurs most often) of the inputs will be determined.
-    # MAXIMUM — The maximum (largest value) of the inputs will be determined.
-    # MEDIAN — The median of the inputs will be calculated. Note: The input must in integers
-    # MINIMUM — The minimum (smallest value) of the inputs will be determined.
-    # MINORITY — The minority (value that occurs least often) of the inputs will be determined.
-    # RANGE — The range (difference between largest and smallest value) of the inputs will be calculated.
-    # STD — The standard deviation of the inputs will be calculated.
-    # SUM — The sum (total of all values) of the inputs will be calculated.
-    # VARIETY — The variety (number of unique values) of the inputs will be calculated.
-stat_names = {"MAXIMUM": "max", "MINIMUM": "min", "MEAN": "avg", "MEDIAN": "med", "STD": "std"}
+# MEAN — The mean (average) of the inputs will be calculated.
+# MAJORITY — The majority (value that occurs most often) of the inputs will be determined.
+# MAXIMUM — The maximum (largest value) of the inputs will be determined.
+# MEDIAN — The median of the inputs will be calculated. Note: The input must in integers
+# MINIMUM — The minimum (smallest value) of the inputs will be determined.
+# MINORITY — The minority (value that occurs least often) of the inputs will be determined.
+# RANGE — The range (difference between largest and smallest value) of the inputs will be calculated.
+# STD — The standard deviation of the inputs will be calculated.
+# SUM — The sum (total of all values) of the inputs will be calculated.
+# VARIETY — The variety (number of unique values) of the inputs will be calculated.
+stat_names = {
+    "MAXIMUM": "max",
+    "MINIMUM": "min",
+    "MEAN": "avg",
+    "MEDIAN": "med",
+    "STD": "std",
+}
 
 for groupkey, files in groups.items():
     print(files)
@@ -88,12 +95,13 @@ for groupkey, files in groups.items():
         if arcpy.Exists(os.path.join(output_folder, filename)):
             print(filename + " exists")
         else:
-            stat_type = list(stat_names.keys())[list(stat_names.values()).index(list(stat_names.values())[i])]
-            
+            stat_type = list(stat_names.keys())[
+                list(stat_names.values()).index(list(stat_names.values())[i])
+            ]
+
             arcpy.CheckOutExtension("spatial")
             outCellStatistics = arcpy.sa.CellStatistics(files, stat_type, "DATA")
             outCellStatistics.save(os.path.join(output_folder, filename))
             arcpy.CheckInExtension("spatial")
 
             print(filename + " completed")
-    

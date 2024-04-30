@@ -23,7 +23,7 @@ label values treated_3 treatment
 drop if treated_3==.
 *This generates a sample of 1426 for each month
 
-*Count of variables by treatment. 
+*Count of variables by treatment.
 gen freq=1
 egen totalc=total(freq), by (id treated_3)
 
@@ -63,7 +63,7 @@ graph export "${line}\1_Fig `a'.png", as(png) name("Graph") replace
 
 }
 
-  
+
 
 *Graph 1
 *HA aid received
@@ -76,7 +76,7 @@ twoway (line RES_humani_accessc0 RES_humani_accessc1 RES_humani_accessc2 id if i
 graph export "${line}\1_Fig HA access.png", as(png) name("Graph") replace
 
 
-*Graph 2 
+*Graph 2
 *Cash
 separate RES_humani_prov_cashc, by(treated_3)
 separate IDP_humani_prov_cashc, by(treated_3)

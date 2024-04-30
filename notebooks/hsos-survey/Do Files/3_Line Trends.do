@@ -1,6 +1,6 @@
 ********************************************************************
 * REACH Humanitarian Situation Overview of Syria
-* Do-file: Indicators 
+* Do-file: Indicators
 * Details: Line graph of indicators.
 * Author: Alejandra Quevedo (al.quevedo0420@gmail.com)(acardona@worldbank.org)
 ********************************************************************
@@ -22,7 +22,7 @@ label values treated_3 treatment
 drop if treated_3==.
 *This generates a sample of 1426 for each month
 
-*Count of variables by treatment. 
+*Count of variables by treatment.
 gen freq=1
 egen totalc=total(freq), by (id treated_3)
 
@@ -40,7 +40,7 @@ foreach i of local varg {
 
 *Continous var
 local vard  price_rent_sp RES_wage_unskilled_sp IDP_wage_unskilled_sp
- 
+
 foreach i of local vard {
 	egen `i'c=mean(`i'), by(id treated_3)
 }
@@ -91,7 +91,7 @@ twoway (line `a'0 `a'1 `a'2 id if id<=3) (line `a'0 `a'1 `a'2 id if id>=4, lcolo
 graph export "${line}\Fig `a'.png", as(png) name("Graph") replace
 
 }
-             
+
 
 ***Graphs of continious variables: Rent Price
 
@@ -105,7 +105,7 @@ graph export "${line}\Fig price_rent_spc.png", as(png) name("Graph") replace
 
 *Wages
 
-local varlinec2 RES_wage_unskilled_spc IDP_wage_unskilled_spc 
+local varlinec2 RES_wage_unskilled_spc IDP_wage_unskilled_spc
 
 local titlec2 `" "Wage of unskilled labor of RES" "Wage of unskilled labor of IDP""'
 
@@ -131,7 +131,7 @@ twoway (line RES_humani_accessc0 RES_humani_accessc1 RES_humani_accessc2 id if i
 graph export "${line}\Fig HA access_v2.png", as(png) name("Graph") replace
 
 
-*Graph 2 
+*Graph 2
 twoway (line RES_humani_prov_cashc0 RES_humani_prov_cashc1 RES_humani_prov_cashc2 id if id<=3) (line RES_humani_prov_cashc0 RES_humani_prov_cashc1 RES_humani_prov_cashc2 id if id>=4, lcolor (ebblue orange dkgreen))(line IDP_humani_prov_cashc0 IDP_humani_prov_cashc1 IDP_humani_prov_cashc2 id if id<=3, lcolor (ebblue orange dkgreen) lpattern(dash dash dash)) (line IDP_humani_prov_cashc0 IDP_humani_prov_cashc1 IDP_humani_prov_cashc2 id if id>=4, lcolor (ebblue orange dkgreen) lpattern(dash dash dash)), legend(order(1 "RES: Light" 2 "RES: Moderate" 3 "RES: Strong/Very Strong" 7 "IDP: Light" 8 "IDP: Moderate" 9 "IDP: Strong/Very Strong")) legend(col (3) pos(6)) xtitle(Date) ytitle(% of communities) graphregion(color(white)) xlabel( ,valuelabel) ylabel(0 (10) 100)
 
 graph export "${line}\Fig HA access cash_v2.png", as(png) name("Graph") replace

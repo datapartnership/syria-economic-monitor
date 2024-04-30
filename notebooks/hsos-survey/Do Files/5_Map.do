@@ -17,7 +17,7 @@ keep Governorate Governoratepcode District Districtpcode Subdistrict Subdistrict
 gen year=2023
 gen month=04
 gen region="`i'"
-		
+
 save "${output}\2023_April_`i'_1", replace
 }
 
@@ -73,7 +73,7 @@ egen count3= total(count), by(Subdistrictpcode)
 
 gen IDPs_newp=IDPs_new3/count3*100
 
-gen catIDPs_new=. 
+gen catIDPs_new=.
 replace catIDPs_new=1 if IDPs_newp==0
 replace catIDPs_new=2 if IDPs_newp>0 & IDPs_newp<25
 replace catIDPs_new=3 if IDPs_newp>=25 & IDPs_newp<50

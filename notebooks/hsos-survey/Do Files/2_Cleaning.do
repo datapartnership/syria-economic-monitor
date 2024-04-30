@@ -1,13 +1,13 @@
 ********************************************************************
 * REACH Humanitarian Situation Overview of Syria
 * Do-file: Processing and cleaning
-* Details: Codification of variables as needed for indicators. 
+* Details: Codification of variables as needed for indicators.
 * Author: Alejandra Quevedo (al.quevedo0420@gmail.com)(acardona@worldbank.org)
 ********************************************************************
 clear
 
 use "${output}\HSOS_clean"
- 
+
 
 *Community
 encode community_code, gen(community_num)
@@ -25,7 +25,7 @@ label values id id
 
 
 *Variables of education
-*In education, edit to match information from march 2023. 
+*In education, edit to match information from march 2023.
 replace education_funct="Education services were functioning" if education_funct=="Education services were functioning in person"
 
 
@@ -165,13 +165,13 @@ replace IDP_reported1=0 if IDP_reported=="No"
 
 label define yesno 1 "Yes" 0 "No"
 
-drop IDP_reported 
+drop IDP_reported
 rename IDP_reported1 IDP_reported
 label values IDP_reported yesno
 
 gen RES_reported1=1 if RES_reported=="Yes"
 replace RES_reported1=0 if RES_reported=="No"
-drop RES_reported 
+drop RES_reported
 rename RES_reported1 RES_reported
 label values RES_reported yesno
 
@@ -245,7 +245,7 @@ rename IDP_humani_access_m IDP_humani_access
 label values RES_humani_access yesno
 label value IDP_humani_access yesno
 
-*Education variables. 
+*Education variables.
 gen education_funct1=1 if education_funct=="Education services were functioning"
 replace education_funct1=0 if education_funct=="Education services were not functioning"
 
@@ -269,7 +269,7 @@ gen date = ym(year, month)
 format %tm date
 
 
-*Variables of RES & IDP living conditions 
+*Variables of RES & IDP living conditions
 local liv IDP_liv_unfinished IDP_liv_damaged IDP_liv_tents IDP_liv_makeshift IDP_liv_overcrowded RES_liv_unfinished RES_liv_damaged RES_liv_overcrowded
 
 foreach i of local liv {
@@ -299,19 +299,19 @@ drop `i'
 rename `i'1 `i'
 }
 
-*Indicator of shelters damage. 1 if they report any kind of damage in the shelters. 
+*Indicator of shelters damage. 1 if they report any kind of damage in the shelters.
 gen SHE_damage=1 if SHE_complete_damage!=7 | SHE_major_damage!=7 | SHE_minor_damage!=7
 replace SHE_damage=0 if SHE_damage==.
 
 
 *Indicators of RES & IDP living conditions
-gen RES_liv_overcrowded60=1 if RES_liv_overcrowded==1 | RES_liv_overcrowded==2 |RES_liv_overcrowded==3 
+gen RES_liv_overcrowded60=1 if RES_liv_overcrowded==1 | RES_liv_overcrowded==2 |RES_liv_overcrowded==3
 replace RES_liv_overcrowded60=0 if RES_liv_overcrowded==4 | RES_liv_overcrowded==5 | RES_liv_overcrowded==6 | RES_liv_overcrowded==7
 
-gen IDP_liv_overcrowded60=1 if IDP_liv_overcrowded==1 | IDP_liv_overcrowded==2 |IDP_liv_overcrowded==3 
+gen IDP_liv_overcrowded60=1 if IDP_liv_overcrowded==1 | IDP_liv_overcrowded==2 |IDP_liv_overcrowded==3
 replace IDP_liv_overcrowded60=0 if IDP_liv_overcrowded==4 | IDP_liv_overcrowded==5 | IDP_liv_overcrowded==6 | IDP_liv_overcrowded==7
 
-gen SHE_minor_damage60=1 if SHE_minor_damage==1 | SHE_minor_damage==2 | SHE_minor_damage==3 
+gen SHE_minor_damage60=1 if SHE_minor_damage==1 | SHE_minor_damage==2 | SHE_minor_damage==3
 replace SHE_minor_damage60=0 if SHE_minor_damage==4 | SHE_minor_damage==5 | SHE_minor_damage==6 | SHE_minor_damage==7
 
 
@@ -339,7 +339,7 @@ foreach i of local access {
 	rename `i'_1 `i'
 }
 
-*Variable of top priorities. 
+*Variable of top priorities.
 encode RES_priority, gen (RES_priority1)
 encode RES_priority_2, gen (RES_priority2)
 encode RES_priority_3, gen (RES_priority3)
@@ -366,32 +366,32 @@ encode IDP_priority_3, gen (IDP_priority3)
 
 forvalues i = 1/12 {
 gen RES_priority1_`i'=1 if RES_priority1==`i'
-replace RES_priority1_`i'=0 if RES_priority1_`i'==. & RES_priority1!=6	
+replace RES_priority1_`i'=0 if RES_priority1_`i'==. & RES_priority1!=6
 }
 
 forvalues i = 1/12 {
 gen RES_priority2_`i'=1 if RES_priority2==`i'
-replace RES_priority2_`i'=0 if RES_priority2_`i'==. & RES_priority2!=6	
+replace RES_priority2_`i'=0 if RES_priority2_`i'==. & RES_priority2!=6
 }
 
 forvalues i = 1/12 {
 gen RES_priority3_`i'=1 if RES_priority3==`i'
-replace RES_priority3_`i'=0 if RES_priority3_`i'==. & RES_priority3!=6	
+replace RES_priority3_`i'=0 if RES_priority3_`i'==. & RES_priority3!=6
 }
 
 forvalues i = 1/12 {
 gen IDP_priority1_`i'=1 if IDP_priority1==`i'
-replace IDP_priority1_`i'=0 if IDP_priority1_`i'==. & IDP_priority1!=6	
+replace IDP_priority1_`i'=0 if IDP_priority1_`i'==. & IDP_priority1!=6
 }
 
 forvalues i = 1/12 {
 gen IDP_priority2_`i'=1 if IDP_priority2==`i'
-replace IDP_priority2_`i'=0 if IDP_priority2_`i'==. & IDP_priority2!=6	
+replace IDP_priority2_`i'=0 if IDP_priority2_`i'==. & IDP_priority2!=6
 }
 
 forvalues i = 1/12 {
 gen IDP_priority3_`i'=1 if IDP_priority3==`i'
-replace IDP_priority3_`i'=0 if IDP_priority3_`i'==. & IDP_priority3!=6	
+replace IDP_priority3_`i'=0 if IDP_priority3_`i'==. & IDP_priority3!=6
 }
 
 /*
@@ -411,7 +411,7 @@ gen IDP_priority_shelter=1 if IDP_priority=="Shelter"
 replace IDP_priority_shelter=0 if IDP_priority_shelter==. & IDP_priority!="NA - No IDPs in the assessed location"
 */
 
-*Creating, communities that do not receive humanitarian aid. 
+*Creating, communities that do not receive humanitarian aid.
 gen RES_humani_no=1 if RES_humani_access==0
 gen IDP_humani_no=1 if IDP_humani_access==0
 
@@ -430,9 +430,9 @@ replace electricity_8=0 if electricity_hours=="From 9 to 10 hours" | electricity
 label define elec8 1 "Less than 8" 0 "More than 0"
 label values electricity_8 elec8
 
-*Water source, private water trucing and piped water network. 
+*Water source, private water trucing and piped water network.
 gen water_piped=1 if water_source=="Piped water network"
-replace water_piped=0 if water_piped==. 
+replace water_piped=0 if water_piped==.
 
 label define piped 1 "Piped water network" 0 "Other"
 label values water_piped piped
@@ -443,8 +443,8 @@ replace water_private=0 if water_private==.
 label define priv 1 "Private water trucking" 0 "Other"
 label values water_private priv
 
-*Label 
-/*local prov RES_humani_prov_food RES_humani_prov_health RES_humani_prov_cash IDP_humani_prov_food IDP_humani_prov_health IDP_humani_prov_cash RES_priority_liveli RES_priority_food IDP_priority_food IDP_priority_shelter food_source_purchase_outcomm 
+*Label
+/*local prov RES_humani_prov_food RES_humani_prov_health RES_humani_prov_cash IDP_humani_prov_food IDP_humani_prov_health IDP_humani_prov_cash RES_priority_liveli RES_priority_food IDP_priority_food IDP_priority_shelter food_source_purchase_outcomm
 
 
 foreach i of local prov {
@@ -453,5 +453,3 @@ foreach i of local prov {
 */
 
 save "${clean}\HSOS_analysis", replace
-
-

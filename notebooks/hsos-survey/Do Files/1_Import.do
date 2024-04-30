@@ -1,6 +1,6 @@
 ********************************************************************
 * REACH Humanitarian Situation Overview of Syria
-* Do-file: Import of data, cleaning, append. 
+* Do-file: Import of data, cleaning, append.
 * Author: Alejandra Quevedo (al.quevedo0420@gmail.com)(acardona@worldbank.org)
 ********************************************************************
 
@@ -12,7 +12,7 @@ clear
 
 local reg NWS NES
 foreach i of local reg {
-	
+
 import excel "${original}\REACH_SYR_HSOS_Dataset_December2021_`i'", sheet("Dataset") firstrow clear
 
 
@@ -28,8 +28,8 @@ iecodebook apply using "${codebooks}\cleaning_Dec21_v3.xlsx"
 gen year=2021
 gen month=12
 gen region="`i'"
-		
-save "${output}\2021_December_`i'", replace	
+
+save "${output}\2021_December_`i'", replace
 }
 
 ***December, 2022***
@@ -51,7 +51,7 @@ iecodebook apply using "${codebooks}\cleaning_Dec22_v3.xlsx"
 gen year=2022
 gen month=12
 gen region="`i'"
-		
+
 save "${output}\2022_December_`i'", replace
 }
 
@@ -75,7 +75,7 @@ iecodebook apply using "${codebooks}\cleaning_Mar22_v3.xlsx"
 gen year=2022
 gen month=03
 gen region="`i'"
-		
+
 save "${output}\2022_Mar_`i'", replace
 }
 
@@ -97,7 +97,7 @@ iecodebook apply using "${codebooks}\cleaning_Mar23NWS_v3.xlsx"
 gen year=2023
 gen month=03
 gen region="NWS"
-		
+
 save "${output}\2023_March_NWS", replace
 
 *NES
@@ -117,7 +117,7 @@ iecodebook apply using "${codebooks}\cleaning_Mar23NES_v3.xlsx"
 gen year=2023
 gen month=03
 gen region="NES"
-		
+
 save "${output}\2023_March_NES", replace
 
 
@@ -140,7 +140,7 @@ iecodebook apply using "${codebooks}\cleaning_Apr22_v3.xlsx"
 gen year=2022
 gen month=04
 gen region="`i'"
-		
+
 save "${output}\2022_April_`i'", replace
 }
 
@@ -163,12 +163,12 @@ iecodebook apply using "${codebooks}\cleaning_Apr23_v3.xlsx"
 gen year=2023
 gen month=04
 gen region="`i'"
-		
+
 save "${output}\2023_April_`i'", replace
 }
 ***************
 ***************
-*Append of regions. 
+*Append of regions.
 use "${output}\2022_December_NES"
 append using "${output}\2022_December_NWS"
 save "${output}\2022_December_HSOS", replace
@@ -211,26 +211,26 @@ append using "${output}\2022_April_HSOS"
 
 
 *****Clean to only have the panel data.
-*To see which variables are repeated across de 4 months of interest. 
+*To see which variables are repeated across de 4 months of interest.
 duplicates tag community_code, generate(panel_code)
 *When panel_code=3, it means the observations has 3 duplicates and it is repeated in the 4 months.
 drop if panel_code!=5
-*This leave us with 1,491 community for which we have information. 
+*This leave us with 1,491 community for which we have information.
 
 save "${output}\HSOS_clean", replace
 
 
 ********
-******** Merge with intensity dataset. 
+******** Merge with intensity dataset.
 import delimited "${original}\syria_adm4_earthquake_intensity.csv", clear
-*This is the dataset found in the share file. 
+*This is the dataset found in the share file.
 
 rename adm4_en community
 rename adm3_en subdistrict
 
 
 duplicates tag community subdistrict, gen(dup)
-**There is one observation repeated that affects the merge that I will conduct later. It is the community Suran, subdistrict Suran which is repeated twice. It is not in our data so I delete it. 
+**There is one observation repeated that affects the merge that I will conduct later. It is the community Suran, subdistrict Suran which is repeated twice. It is not in our data so I delete it.
 
 drop if dup==1
 
@@ -264,7 +264,7 @@ drop if _merge==2
 drop PP_NAME_EN PP_PCODE PPClassNum PPClassTit ADM4_EN ADM3_EN ADM3_PCODE ADM2_EN ADM2_PCODE ADM1_EN ADM1_PCODE ADM0_EN ADM0_PCODE mi pga pgv Population _merge
 
 **************
-order year month 
+order year month
 drop panel_code
 
 save "${output}\HSOS_clean", replace
