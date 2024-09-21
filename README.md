@@ -26,7 +26,7 @@ The following reports featured insights from our project’s data and analyses.
 
 - [Syria Economic Monitor, Spring 2022 : Lost Generation of Syrians](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099335506102250271/idu06190a00a0d128048450a4660ae3b937ae4bd)
 - [Syria Economic Monitor, Winter 2022/23: Syria’s Economy in Ruins after a Decade-long War](https://openknowledge.worldbank.org/entities/publication/74944b29-bdf4-47a6-9a8e-b1e8c83a5ff2)
-- [Syria Economic Monitor, Summer 2023 : The Economic Aftershocks of Large Earthquakes](hhttps://openknowledge.worldbank.org/entities/publication/45cbbf41-e0dc-4009-83ae-3c01162d7385)
+- [Syria Economic Monitor, Summer 2023 : The Economic Aftershocks of Large Earthquakes](https://documents1.worldbank.org/curated/en/099540309012311026/pdf/IDU0a8823acd034ac04efd0abc20842c479023f4.pdf?_gl=1*dlrxdp*_gcl_au*MTcyOTI1MDk0Ni4xNzI1NDUwNDMy)
 
 ### Contents
 
