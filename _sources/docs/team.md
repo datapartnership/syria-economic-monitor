@@ -4,8 +4,8 @@ The Data Lab would like to express our sincere gratutude and appreciation for th
 
 | **Name**                                                   | **Role**                                                                                  | **Team**           |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------ |
-| [Holly Krambeck](mailto:hkrambeck@worldbank.org)           | Data Lab Program Manager                                                                             | WB Data Lab, DECDG |
-| [Robert Andrew Marty](mailto:rmarty@worldbank.org)         | Analyst - Cross border activity   monitoring and economic analysis using nighttime lights | DIME               |
+| [Holly Krambeck](mailto:hkrambeck@worldbank.org)           | Data Lab Program Manager - Tree cover loss                                                                          | WB Data Lab, DECDG |
+| [Robert Andrew Marty](mailto:rmarty@worldbank.org)         | Data Scientist - Cross border activity   monitoring and economic analysis using nighttime lights | DIME               |
 | [Maria Ruth Jones](mailto:mjones5@worldbank.org)           | Senior Economist - Field surveys                                                          | DIME               |
 | [Gabriel Stefanini Vicente](mailto:gvicente@worldbank.org) | Data Scientist - Cross border activity   monitoring using GPS data                        | WB Data Lab, DECDG |
 | [Andres Chamorro](mailto:achamorroelizond@worldbank.org)   | Geographer - Tracking shipping routes,   change in agricultural production                | GOST, DECDG        |
