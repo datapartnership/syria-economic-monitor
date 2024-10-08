@@ -40,5 +40,4 @@ body:
   id: assignment-summary
   attributes:
     label: Project Assignment
-    description: Please provide a summary of the project and assignment and, when available, upload work plan shared with client. 
-    
+    description: Please provide a summary of the project and assignment and, when available, upload work plan shared with client.
