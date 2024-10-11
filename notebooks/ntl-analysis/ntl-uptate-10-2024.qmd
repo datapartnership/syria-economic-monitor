@@ -956,6 +956,7 @@ ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
 
 ntl_df %>%
   mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd("2018-01-01")) %>%
   ggplot() +
   geom_col(aes(x = date, y = ntl_sum),
            fill = wbg_color_light) +
@@ -971,6 +972,7 @@ ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
 
 ntl_df %>%
   mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd("2018-01-01")) %>%
   dplyr::select(date, ADM0_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
   pivot_longer(cols = -c(date, ADM0_EN)) %>%
   dplyr::mutate(name = case_when(
