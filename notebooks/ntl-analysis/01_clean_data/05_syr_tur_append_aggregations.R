@@ -43,9 +43,9 @@ tur_adm2_eq <- tur_adm2_eq %>%
 adm_i <- 2
 time_name <- "daily"
 country_code <- "tur"
-for(adm_i in c(0,1,2,3,4)){
-  for(time_name in c("monthly", "daily")){
-    for(country_code in c("tur", "syr")){
+for(adm_i in c(0:4)){
+  for(time_name in c("annual", "monthly", "daily")){
+    for(country_code in c("syr")){
       
       print(paste(adm_i, time_name, country_code))
       
@@ -55,6 +55,19 @@ for(adm_i in c(0,1,2,3,4)){
                        pattern = "*.Rds") %>%
         str_subset(paste0("admin", adm_i, "_")) %>%
         map_df(readRDS) 
+      
+      # if(adm_i %in% 4){
+      #   if(country_code == "syr"){
+      #     df <- df %>%
+      #       dplyr::rename("ADM0_EN" = "\"ADM0_EN\"",
+      #                     "ADM1_EN" = "\"ADM1_EN\"",
+      #                     "ADM2_EN" = "\"ADM2_EN\"",
+      #                     "ADM3_EN" = "\"ADM3_EN\"",
+      #                     "ADM4_EN" = "\"ADM4_EN\"")
+      #   }
+      # }
+      
+      df$geometry <- NULL
       
       if(country_code %in% "tur"){
         if(adm_i %in% 2){
@@ -88,11 +101,10 @@ for(adm_i in c(0,1,2,3,4)){
                                    adm_i, "_", time_name, ".Rds")))
       
       write_dta(df, file.path(ntl_bm_dir, "FinalData", "aggregated",
-                            paste0(country_code, "_admin_adm",
-                                   adm_i, "_", time_name, ".dta")))
+                              paste0(country_code, "_admin_adm",
+                                     adm_i, "_", time_name, ".dta")))
     }
   }
 }
-
 
 

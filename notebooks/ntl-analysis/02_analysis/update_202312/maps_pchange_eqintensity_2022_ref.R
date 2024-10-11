@@ -42,8 +42,8 @@ df <- bind_rows(
 
 df_wide <- df %>%
   dplyr::mutate(period = case_when(
-    date %in% ymd("2022-01-01"):ymd("2022-08-01") ~ "yr2022",
-    date %in% ymd("2023-01-01"):ymd("2023-08-01") ~ "yr2023"
+    date %in% ymd("2022-01-01"):ymd("2022-10-01") ~ "yr2022",
+    date %in% ymd("2023-01-01"):ymd("2023-10-01") ~ "yr2023"
   )) %>%
   ungroup() %>%
   dplyr::filter(!is.na(period)) %>%
@@ -72,9 +72,9 @@ df_geom <- df %>%
 df_sub <- df_geom %>%
   dplyr::filter( (eq_intensity_str %in% c("Very Strong", "Strong")) | (country %in% "Syria")  )
 
-df_sub <- df_geom %>%
-  dplyr::filter( ((eq_intensity_str %in% c("Very Strong", "Strong")) & (country %in% "Turkey")) | 
-                   ((eq_intensity_str %in% c("Very Strong", "Strong", "Moderate")) & (country %in% "Syria")))
+# df_sub <- df_geom %>%
+#   dplyr::filter( ((eq_intensity_str %in% c("Very Strong", "Strong")) & (country %in% "Turkey")) | 
+#                    ((eq_intensity_str %in% c("Very Strong", "Strong", "Moderate")) & (country %in% "Syria")))
 
 vstrong <- df_geom %>%
   dplyr::filter(eq_intensity_str %in% c("Very Strong", "Strong")) %>%
@@ -123,7 +123,7 @@ p <- ggplot() +
                                   "50",
                                   "> 100")) +
   labs(fill = "Percent\nChange",
-       title = "Percent Change: Jan - Aug 2022 to Jan - Aug 2023",
+       title = "Percent Change: Jan - Oct 2022 to Jan - Oct 2023",
        caption = "Black line indicates Very Strong or Strong earthquake intensity.\nPercent only shown for regions at least moderately effected by earthquake.\nShowing locations in Turkey at least strongly effected by the earthquake.") +
   theme_void() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
@@ -163,7 +163,7 @@ p <- ggplot() +
                                   "50",
                                   "> 100")) +
   labs(fill = "Percent\nChange",
-       title = "Percent Change: Jan - Aug 2022 to Jan - Aug 2023",
+       title = "Percent Change: Jan - Oct 2022 to Jan - Oct 2023",
        subtitle = "Nighttime lights from gas flaring locations removed",
        caption = "Black line indicates Very Strong or Strong earthquake intensity.\nPercent only shown for regions at least moderately effected by earthquake.\nShowing locations in Turkey at least strongly effected by the earthquake.") +
   theme_void() +
@@ -203,7 +203,7 @@ p <- ggplot() +
                                   "50",
                                   "> 100")) +
   labs(fill = "Percent\nChange",
-       title = "Percent Change: Jan - Aug 2022 to Jan - Aug 2023",
+       title = "Percent Change: Jan - Oct 2022 to Jan - Oct 2023",
        subtitle = "Nighttime lights only from gas flaring locations",
        caption = "Black line indicates Very Strong or Strong earthquake intensity.\nPercent only shown for regions at least moderately effected by earthquake.\nShowing locations in Turkey at least strongly effected by the earthquake.") +
   theme_void() +

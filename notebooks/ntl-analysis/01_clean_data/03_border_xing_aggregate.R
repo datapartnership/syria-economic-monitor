@@ -32,10 +32,9 @@ ntl_monthly_df <- map_df(monthly_files, function(file_i){
   
   # Add date info
   bc_df$date <- file_i %>% 
-    str_replace_all("VNP46A3_t", "") %>% 
+    str_replace_all(".*qflag_t", "") %>% 
     str_replace_all(".tif", "") %>%
-    str_replace_all("_", "-") %>% 
-    paste0("-01") %>% 
+    paste0("-01") %>%
     ymd()
   
   #### Merge NTL with GADM data 
@@ -62,13 +61,12 @@ ntl_daily_df <- map_df(daily_files, function(file_i){
   
   # Add date info
   bc_df$date <- file_i %>% 
-    str_replace_all("VNP46A2_t", "") %>% 
+    str_replace_all(".*qflag_t", "") %>% 
     str_replace_all(".tif", "") %>%
-    str_replace_all("_", "-") %>% 
     ymd()
   
   #### Merge NTL with GADM data 
-  bc_df$viirs_bm_mean[bc_df$viirs_bm_sum == 0]           <- 0
+  bc_df$viirs_bm_mean[bc_df$viirs_bm_sum == 0] <- 0
   
   return(bc_df)
 })
