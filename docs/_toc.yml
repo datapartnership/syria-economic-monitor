@@ -10,6 +10,7 @@ parts:
     chapters:
       - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
       - file: notebooks/conflict/acled.ipynb
+      - file: notebooks/conflict/acled-update-october24.ipynb
       - file: notebooks/hsos-survey/README.md
 
       - file: notebooks/ais-analysis/README
@@ -46,10 +47,10 @@ parts:
     chapters:
       - file: notebooks/conflict/acled-update-october24.ipynb
       - file: notebooks/aviation/aviation_update.ipynb
-      - file: notebooks/vegetation-conditions/ChangeMaps.ipynb  
+      - file: notebooks/vegetation-conditions/ChangeMaps.ipynb
       - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
         sections:
-        - file: notebooks/syria-forest-cover/syria_forest.ipynb       
+        - file: notebooks/syria-forest-cover/syria_forest.ipynb
   - caption: Acknowledgements
     chapters:
       - file: docs/team
