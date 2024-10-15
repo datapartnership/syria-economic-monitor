@@ -49,7 +49,8 @@ parts:
       - file: notebooks/vegetation-conditions/ChangeMaps.ipynb  
       - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
         sections:
-        - file: notebooks/syria-forest-cover/syria_forest.ipynb       
+        - file: notebooks/syria-forest-cover/syria_forest.ipynb
+      - file: notebooks/ais-analysis/fall-2024/update.md
   - caption: Acknowledgements
     chapters:
       - file: docs/team
