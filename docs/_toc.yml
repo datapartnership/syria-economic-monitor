@@ -6,11 +6,10 @@ parts:
     chapters:
       - file: docs/introduction_to_data_goods
       - file: docs/data
-  - caption: Data Products
+  - caption: Syria Economic Monitor 2023
     chapters:
       - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
       - file: notebooks/conflict/acled.ipynb
-      - file: notebooks/conflict/acled-update-october24.ipynb
       - file: notebooks/hsos-survey/README.md
 
       - file: notebooks/ais-analysis/README
@@ -42,13 +41,15 @@ parts:
       - file: notebooks/vegetation-conditions/README
         sections:
           - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
+      - file: notebooks/google-earth-engine/air-pollution.ipynb
+  - caption: Syria Economic Monitor 2024 Updates
+    chapters:
+      - file: notebooks/conflict/acled-update-october24.ipynb
+      - file: notebooks/aviation/aviation_update.ipynb
+      - file: notebooks/vegetation-conditions/ChangeMaps.ipynb  
       - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
         sections:
-          - file: notebooks/syria-forest-cover/syria_forest.ipynb
-      - file: notebooks/google-earth-engine/air-pollution.ipynb
-  - caption: Insights and Indicators
-    chapters:
-      - file: docs/insights-and-indicators
+        - file: notebooks/syria-forest-cover/syria_forest.ipynb       
   - caption: Acknowledgements
     chapters:
       - file: docs/team
