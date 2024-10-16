@@ -10,7 +10,6 @@ parts:
     chapters:
       - file: notebooks/earthquake-intensity/earthquake_intensity.ipynb
       - file: notebooks/conflict/acled.ipynb
-      - file: notebooks/conflict/acled-update-october24.ipynb
       - file: notebooks/hsos-survey/README.md
 
       - file: notebooks/ais-analysis/README
