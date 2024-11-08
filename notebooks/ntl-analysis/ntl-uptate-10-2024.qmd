@@ -167,7 +167,7 @@ if(!file.exists(OUT_PATH)){
 ntl_months <- seq.Date(ymd("2012-01-01"), to = ymd("2024-06-01"), by = "month") %>%
   as.character()
 
-ntl_months <- seq.Date(ymd("2018-01-01"), to = ymd("2024-06-01"), by = "month") %>%
+ntl_months <- seq.Date(ymd("2018-01-01"), to = ymd("2024-09-01"), by = "month") %>%
   as.character()
 
 #### Colors
@@ -450,9 +450,12 @@ for(unit in c("adm0",
         }
         
         if(unit == "bordercrossings"){
-          roi_sf <- st_read(file.path(data_dir, "Border Crossing Locations - All", 
-                                      "FinalData",
-                                      "border_crossings_1500m.shp"))
+          roi_sf <- read_csv(file.path(data_dir, "Border Crossing Locations - All", 
+                                      "RawData",
+                                      "syria_border_crossings.csv")) %>%
+            st_as_sf(coords = c("longitude", "latitude"),
+                     crs = 4326) %>%
+            st_buffer(1500)
         }
         
         if(unit == "cities5km"){
@@ -1303,49 +1306,77 @@ ntl_df %>%
 ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
                             paste0("ntl_", "bordercrossings", "_", "annual", ".Rds")))
 
-top_adm <- ntl_df %>%
-  filter(date == 2023) %>%
-  arrange(-ntl_sum) %>%
-  pull(name) %>%
-  head(30)
-
 ntl_df %>%
-  filter(name %in% top_adm) %>%
+  filter(border_country %in% "Iraq") %>%
   ggplot() +
   geom_col(aes(x = date, y = ntl_sum),
            fill = wbg_color_light) +
-  facet_wrap(~name) +
+  facet_wrap(~crossing_name_1) +
   labs(x = NULL,
-       y = "Nighttime Lights") +
+       y = "Nighttime Lights",
+       title = "Border Crossings with Iraq") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Jordan") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Jordan") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Lebanon") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Lebanon") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Turkey") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Turkey") +
   theme_manual
 ```
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
-                            paste0("ntl_", "bordercrossings", "_", "annual", ".Rds")))
-
-ntl_df %>%
-  dplyr::rename(city_name = name) %>%
-  dplyr::select(date, city_name, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
-  pivot_longer(cols = -c(date, city_name)) %>%
-  dplyr::mutate(name = case_when(
-    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
-    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
-  )) %>%
-  dplyr::filter(city_name %in% top_adm) %>%
-  ggplot() +
-  geom_line(aes(x = date,
-                y = value,
-                color = name),
-            size = 1) +
-  labs(color = NULL,
-       x = NULL,
-       y = "NTL") +
-  facet_wrap(~city_name) +
-  scale_color_manual(values = c(wbg_color_light,
-                                wbg_color_dark)) +
-  theme_manual +
-  theme(legend.position = "top")
+# ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+#                             paste0("ntl_", "bordercrossings", "_", "annual", ".Rds")))
+# 
+# ntl_df %>%
+#   dplyr::rename(city_name = name) %>%
+#   dplyr::select(date, city_name, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+#   pivot_longer(cols = -c(date, city_name)) %>%
+#   dplyr::mutate(name = case_when(
+#     name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+#     name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+#   )) %>%
+#   dplyr::filter(city_name %in% top_adm) %>%
+#   ggplot() +
+#   geom_line(aes(x = date,
+#                 y = value,
+#                 color = name),
+#             size = 1) +
+#   labs(color = NULL,
+#        x = NULL,
+#        y = "NTL") +
+#   facet_wrap(~city_name) +
+#   scale_color_manual(values = c(wbg_color_light,
+#                                 wbg_color_dark)) +
+#   theme_manual +
+#   theme(legend.position = "top")
 ```
 
 ### Monthly
@@ -1354,47 +1385,82 @@ ntl_df %>%
 ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
                             paste0("ntl_", "bordercrossings", "_", "monthly", ".Rds")))
 
+ntl_df <- ntl_df %>% 
+  dplyr::mutate(date = date %>% ymd())
+
 ntl_df %>%
-  mutate(date = date %>% ymd()) %>%
-  filter(date >= ymd("2018-01-01")) %>%
-  filter(name %in% top_adm) %>%
+  filter(border_country %in% "Iraq") %>%
   ggplot() +
   geom_col(aes(x = date, y = ntl_sum),
            fill = wbg_color_light) +
-  facet_wrap(~name) +
+  facet_wrap(~crossing_name_1) +
   labs(x = NULL,
-       y = "Nighttime Lights") +
+       y = "Nighttime Lights",
+       title = "Border Crossings with Iraq") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Jordan") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Jordan") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Lebanon") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Lebanon") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Turkey") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Turkey") +
   theme_manual
 ```
 
 ```{r}
-ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
-                            paste0("ntl_", "bordercrossings", "_", "monthly", ".Rds")))
-
-ntl_df %>%
-  mutate(date = date %>% ymd()) %>%
-  filter(date >= ymd("2018-01-01")) %>%
-  dplyr::rename(city_name = name) %>%
-  dplyr::select(date, city_name, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
-  pivot_longer(cols = -c(date, city_name)) %>%
-  dplyr::mutate(name = case_when(
-    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
-    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
-  )) %>%
-  dplyr::filter(city_name %in% top_adm) %>%
-  ggplot() +
-  geom_line(aes(x = date,
-                y = value,
-                color = name),
-            size = 1) +
-  labs(color = NULL,
-       x = NULL,
-       y = "NTL") +
-  facet_wrap(~city_name) +
-  scale_color_manual(values = c(wbg_color_light,
-                                wbg_color_dark)) +
-  theme_manual +
-  theme(legend.position = "top")
+# ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+#                             paste0("ntl_", "bordercrossings", "_", "monthly", ".Rds")))
+# 
+# ntl_df %>%
+#   mutate(date = date %>% ymd()) %>%
+#   filter(date >= ymd("2018-01-01")) %>%
+#   dplyr::rename(city_name = name) %>%
+#   dplyr::select(date, city_name, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+#   pivot_longer(cols = -c(date, city_name)) %>%
+#   dplyr::mutate(name = case_when(
+#     name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+#     name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+#   )) %>%
+#   dplyr::filter(city_name %in% top_adm) %>%
+#   ggplot() +
+#   geom_line(aes(x = date,
+#                 y = value,
+#                 color = name),
+#             size = 1) +
+#   labs(color = NULL,
+#        x = NULL,
+#        y = "NTL") +
+#   facet_wrap(~city_name) +
+#   scale_color_manual(values = c(wbg_color_light,
+#                                 wbg_color_dark)) +
+#   theme_manual +
+#   theme(legend.position = "top")
 ```
 
 ## Top Cities
