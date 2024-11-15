@@ -34,6 +34,8 @@ iso3_code    <- "SYR"
 iso2_code    <- "SY"
 pc_base_year <- 2019
 
+DAILY_START <- "2023-01-01"
+
 #### Packages
 library(tidyverse)
 library(sf)
@@ -168,6 +170,9 @@ ntl_months <- seq.Date(ymd("2012-01-01"), to = ymd("2024-06-01"), by = "month") 
   as.character()
 
 ntl_months <- seq.Date(ymd("2018-01-01"), to = ymd("2024-09-01"), by = "month") %>%
+  as.character()
+
+ntl_days <- seq.Date(from = ymd("2024-01-01"), to = ymd("2024-12-31"), by = "day") %>%
   as.character()
 
 #### Colors
@@ -364,6 +369,26 @@ saveRDS(gs_5km_sf, file.path(gas_flare_dir, "finaldata", "gas_flare_locations_5k
 saveRDS(gs_10km_sf, file.path(gas_flare_dir, "finaldata", "gas_flare_locations_10km.Rds"))
 ```
 
+## Prep ADM4 File
+
+```{r}
+if(F){
+  roi_sf <- read_sf(file.path(data_dir, 
+                              "Syria Boundaries",
+                              "syr_admin_20240711.gdb"),
+                    "syr_pplp_humanitarian_location_unocha")
+  roi_sf <- roi_sf %>%
+    st_buffer(5000)
+  
+  write_sf(roi_sf, file.path(data_dir, 
+                             "Syria Boundaries",
+                             "syria_adm4_5km.geojson"),
+           delete_dsn = T,
+           delete_layer = T)
+}
+
+```
+
 
 ## Download Nighttime Lights
 
@@ -377,6 +402,7 @@ roi_sf <- load_gadm(0)
 dir.create(file.path(ntl_bm_dir, "rasters"))
 dir.create(file.path(ntl_bm_dir, "rasters", "annual"))
 dir.create(file.path(ntl_bm_dir, "rasters", "monthly"))
+dir.create(file.path(ntl_bm_dir, "rasters", "daily"))
 
 r <- bm_raster(roi_sf = roi_sf,
                product_id = "VNP46A4",
@@ -391,6 +417,13 @@ r <- bm_raster(roi_sf = roi_sf,
                bearer = nasa_bearer,
                output_location_type = "file",
                file_dir = file.path(ntl_bm_dir, "rasters", "monthly"))
+
+r <- bm_raster(roi_sf = roi_sf,
+               product_id = "VNP46A2",
+               date = ntl_days,
+               bearer = nasa_bearer,
+               output_location_type = "file",
+               file_dir = file.path(ntl_bm_dir, "rasters", "daily"))
 
 ```
 
@@ -407,11 +440,13 @@ for(unit in c("adm0",
               "adm1", 
               "adm2",
               "adm3",
+              "adm4",
+              "adm4_5km",
               "bordercrossings",
               "cities5km",
               "cities10km",
               "citiesbuff")){
-  for(time_type in c("annual", "monthly")){
+  for(time_type in c("annual", "monthly", "daily")){
     
     if(time_type == "annual"){
       time_vec <- 2012:2023
@@ -419,6 +454,17 @@ for(unit in c("adm0",
     
     if(time_type == "monthly"){
       time_vec <- ntl_months
+    }
+    
+    if(time_type == "daily"){
+      #time_vec <- ntl_days
+      
+      time_vec <- file.path(ntl_bm_dir, "rasters", "daily") %>%
+        list.files() %>%
+        str_replace_all("VNP46A2_Gap_Filled_DNB_BRDF-Corrected_NTL_qflag_t", "") %>%
+        str_replace_all(".tif", "") %>%
+        str_replace_all("_", "-")
+      
     }
     
     for(time_i in time_vec){
@@ -449,10 +495,16 @@ for(unit in c("adm0",
           roi_sf <- load_boundaries(3)
         }
         
+        if(unit == "adm4_5km"){
+            roi_sf <- read_sf(file.path(data_dir, 
+                             "Syria Boundaries",
+                             "syria_adm4_5km.geojson"))
+        }
+        
         if(unit == "bordercrossings"){
           roi_sf <- read_csv(file.path(data_dir, "Border Crossing Locations - All", 
-                                      "RawData",
-                                      "syria_border_crossings.csv")) %>%
+                                       "RawData",
+                                       "syria_border_crossings.csv")) %>%
             st_as_sf(coords = c("longitude", "latitude"),
                      crs = 4326) %>%
             st_buffer(1500)
@@ -485,8 +537,21 @@ for(unit in c("adm0",
             str_replace_all("-", "_")
         }
         
-        ntl_r <- rast(file.path(ntl_bm_dir, "rasters", time_type, 
-                                paste0(bm_product,"_NearNadir_Composite_Snow_Free_qflag_t",time_raster_i,".tif")))
+        if(time_type == "daily"){
+          bm_product <- "VNP46A2"
+          
+          time_raster_i <- time_i %>% 
+            substring(1, 10) %>%
+            str_replace_all("-", "_")
+        }
+        
+        if(time_type %in% c("daily")){
+          ntl_r <- rast(file.path(ntl_bm_dir, "rasters", time_type, 
+                                  paste0("VNP46A2_Gap_Filled_DNB_BRDF-Corrected_NTL_qflag_t",time_raster_i,".tif")))
+        } else{
+          ntl_r <- rast(file.path(ntl_bm_dir, "rasters", time_type, 
+                                  paste0(bm_product,"_NearNadir_Composite_Snow_Free_qflag_t",time_raster_i,".tif")))
+        }
         
         #### Gas Flaring Mask
         gs_5km_sf  <- readRDS(file.path(gas_flare_dir, "finaldata", "gas_flare_locations_5km.Rds"))
@@ -528,11 +593,12 @@ for(unit in c("adm0",
               "adm1", 
               "adm2",
               "adm3",
+              "adm4_5km",
               "bordercrossings",
               "cities5km",
               "cities10km",
               "citiesbuff")){
-  for(time_type in c("annual", "monthly")){
+  for(time_type in c("annual", "monthly", "daily")){
     
     ntl_df <- file.path(ntl_bm_dir, "aggregated_individual_files", unit, time_type) %>%
       list.files(full.names = T,
@@ -997,6 +1063,51 @@ ntl_df %>%
   theme(legend.position = "top")
 ```
 
+### Daily
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm0", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~ADM0_EN) +
+  labs(x = NULL,
+       y = "Nighttime Lights") +
+  theme_manual
+```
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm0", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  dplyr::select(date, ADM0_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+  pivot_longer(cols = -c(date, ADM0_EN)) %>%
+  dplyr::mutate(name = case_when(
+    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+  )) %>%
+  ggplot() +
+  geom_line(aes(x = date,
+                y = value,
+                color = name),
+            linewidth = 1) +
+  labs(color = NULL,
+       x = NULL,
+       y = "NTL") +
+  facet_wrap(~ADM0_EN) +
+  scale_color_manual(values = c(wbg_color_light,
+                                wbg_color_dark)) +
+  theme_manual +
+  theme(legend.position = "top")
+```
 
 ## ADM 1: Top ADM Units
 
@@ -1076,6 +1187,54 @@ ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
 ntl_df %>%
   mutate(date = date %>% ymd()) %>%
   filter(date >= ymd("2018-01-01")) %>%
+  dplyr::select(date, uid, ADM1_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+  pivot_longer(cols = -c(date, uid, ADM1_EN)) %>%
+  dplyr::mutate(name = case_when(
+    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+  )) %>%
+  filter(uid %in% top_adm) %>%
+  ggplot() +
+  geom_line(aes(x = date,
+                y = value,
+                color = name),
+            linewidth = 1) +
+  labs(color = NULL,
+       x = NULL,
+       y = "NTL") +
+  facet_wrap(~ADM1_EN) +
+  scale_color_manual(values = c(wbg_color_light,
+                                wbg_color_dark)) +
+  theme_manual +
+  theme(legend.position = "top")
+```
+
+### Daily
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm1", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  filter(uid %in% top_adm) %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~ADM1_EN) +
+  labs(x = NULL,
+       y = "Nighttime Lights") +
+  theme_manual 
+```
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm1", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
   dplyr::select(date, uid, ADM1_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
   pivot_longer(cols = -c(date, uid, ADM1_EN)) %>%
   dplyr::mutate(name = case_when(
@@ -1198,6 +1357,54 @@ ntl_df %>%
   theme(legend.position = "top")
 ```
 
+### Daily
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm2", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  filter(ADM2_EN %in% top_adm) %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~ADM2_EN) +
+  labs(x = NULL,
+       y = "Nighttime Lights") +
+  theme_manual
+```
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm2", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  dplyr::select(date, ADM2_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+  pivot_longer(cols = -c(date, ADM2_EN)) %>%
+  dplyr::mutate(name = case_when(
+    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+  )) %>%
+  filter(ADM2_EN %in% top_adm) %>%
+  ggplot() +
+  geom_line(aes(x = date,
+                y = value,
+                color = name),
+            linewidth = 1) +
+  labs(color = NULL,
+       x = NULL,
+       y = "NTL") +
+  facet_wrap(~ADM2_EN) +
+  scale_color_manual(values = c(wbg_color_light,
+                                wbg_color_dark)) +
+  theme_manual +
+  theme(legend.position = "top")
+```
+
 ## ADM 3: Top ADM Units
 
 ### Annual
@@ -1276,6 +1483,54 @@ ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
 ntl_df %>%
   mutate(date = date %>% ymd()) %>%
   filter(date >= ymd("2018-01-01")) %>%
+  dplyr::select(date, ADM3_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+  pivot_longer(cols = -c(date, ADM3_EN)) %>%
+  dplyr::mutate(name = case_when(
+    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+  )) %>%
+  filter(ADM3_EN %in% top_adm) %>%
+  ggplot() +
+  geom_line(aes(x = date,
+                y = value,
+                color = name),
+            linewidth = 1) +
+  labs(color = NULL,
+       x = NULL,
+       y = "NTL") +
+  facet_wrap(~ADM3_EN) +
+  scale_color_manual(values = c(wbg_color_light,
+                                wbg_color_dark)) +
+  theme_manual +
+  theme(legend.position = "top")
+```
+
+### Daily
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm3", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  filter(ADM3_EN %in% top_adm) %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~ADM3_EN) +
+  labs(x = NULL,
+       y = "Nighttime Lights") +
+  theme_manual
+```
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "adm3", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
   dplyr::select(date, ADM3_EN, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
   pivot_longer(cols = -c(date, ADM3_EN)) %>%
   dplyr::mutate(name = case_when(
@@ -1387,6 +1642,61 @@ ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated",
 
 ntl_df <- ntl_df %>% 
   dplyr::mutate(date = date %>% ymd())
+
+ntl_df %>%
+  filter(border_country %in% "Iraq") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Iraq") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Jordan") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Jordan") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Lebanon") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Lebanon") +
+  theme_manual
+
+ntl_df %>%
+  filter(border_country %in% "Turkey") %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~crossing_name_1) +
+  labs(x = NULL,
+       y = "Nighttime Lights",
+       title = "Border Crossings with Turkey") +
+  theme_manual
+```
+
+### Daily
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "bordercrossings", "_", "daily", ".Rds")))
+
+ntl_df <- ntl_df %>% 
+  dplyr::mutate(date = date %>% ymd()) %>%
+  dplyr::filter(date >= ymd(DAILY_START))
 
 ntl_df %>%
   filter(border_country %in% "Iraq") %>%
@@ -1565,6 +1875,54 @@ ntl_df %>%
   theme(legend.position = "top")
 ```
 
+### Daily
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "citiesbuff", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  filter(geoname_id %in% top_adm) %>%
+  ggplot() +
+  geom_col(aes(x = date, y = ntl_sum),
+           fill = wbg_color_light) +
+  facet_wrap(~name) +
+  labs(x = NULL,
+       y = "Nighttime Lights") +
+  theme_manual
+```
+
+```{r}
+ntl_df <- readRDS(file.path(ntl_bm_dir, "aggregated", 
+                            paste0("ntl_", "cities5km", "_", "daily", ".Rds")))
+
+ntl_df %>%
+  mutate(date = date %>% ymd()) %>%
+  filter(date >= ymd(DAILY_START)) %>%
+  dplyr::rename(city_name = name) %>%
+  dplyr::select(date, city_name, geoname_id, ntl_gf_10km_sum, ntl_nogf_10km_sum) %>%
+  pivot_longer(cols = -c(date, city_name, geoname_id)) %>%
+  dplyr::mutate(name = case_when(
+    name == "ntl_gf_10km_sum" ~ "NTL: Gas Flares",
+    name == "ntl_nogf_10km_sum" ~ "NTL: No Gas Flares"
+  )) %>%
+  dplyr::filter(geoname_id %in% top_adm) %>%
+  ggplot() +
+  geom_line(aes(x = date,
+                y = value,
+                color = name),
+            size = 1) +
+  labs(color = NULL,
+       x = NULL,
+       y = "NTL") +
+  facet_wrap(~city_name) +
+  scale_color_manual(values = c(wbg_color_light,
+                                wbg_color_dark)) +
+  theme_manual +
+  theme(legend.position = "top")
+```
 
 # % Change Maps: From 2019
 
