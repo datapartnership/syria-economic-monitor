@@ -50,7 +50,7 @@ parts:
         sections:
           - file: notebooks/vegetation-conditions/evi-analytics.ipynb
           - file: notebooks/vegetation-conditions/drought.ipynb
-          - file: notebooks/vegetation-conditions/lulc.ipynb 
+          - file: notebooks/vegetation-conditions/lulc.ipynb
           - file: notebooks/vegetation-conditions/ChangeMaps.ipynb
       - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
         sections:
