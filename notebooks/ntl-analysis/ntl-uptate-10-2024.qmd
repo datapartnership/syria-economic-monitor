@@ -88,11 +88,11 @@ theme_manual <- theme_classic2() +
         plot.title = element_text(face = "bold"))
 
 #### GADM Boundaries
-for(i in 0:3){
-  for(iso3_i in iso3_code){
-    gadm(iso3_code, level=i, path = file.path(gadm_dir))
-  }
-} 
+# for(i in 0:3){
+#   for(iso3_i in iso3_code){
+#     gadm(iso3_code, level=i, path = file.path(gadm_dir))
+#   }
+# } 
 
 #### Load GADM Functions
 load_gadm <- function(i){
@@ -104,6 +104,7 @@ load_gadm <- function(i){
         st_as_sf()
     })
 }
+
 
 #### Load Boundaries
 load_boundaries <- function(i){
@@ -127,6 +128,12 @@ load_boundaries <- function(i){
       mutate(uid = 1:n())
   }
   
+  if(i == 4){
+    roi_sf <- st_read(file.path(data_dir, "Syria Boundaries", "syria_adm4_5km.geojson")) %>%
+      mutate(uid = 1:n()) %>%
+      dplyr::select(uid, admin4Name_en)
+  }
+  
   return(roi_sf)
 }
 
@@ -136,7 +143,6 @@ dir.create(file.path(data_dir, "elevation"))
 OUT_PATH <- file.path(data_dir, "elevation", "elev.tiff")
 
 if(!file.exists(OUT_PATH)){
-  
   
   if(length(iso3_code) > 1){
     
@@ -166,13 +172,13 @@ if(!file.exists(OUT_PATH)){
 }
 
 #### NTL Months to Download
-ntl_months <- seq.Date(ymd("2012-01-01"), to = ymd("2024-06-01"), by = "month") %>%
+ntl_months <- seq.Date(ymd("2012-01-01"), to = ymd("2024-11-01"), by = "month") %>%
   as.character()
 
-ntl_months <- seq.Date(ymd("2018-01-01"), to = ymd("2024-09-01"), by = "month") %>%
+ntl_months <- seq.Date(ymd("2018-01-01"), to = ymd("2024-11-01"), by = "month") %>%
   as.character()
 
-ntl_days <- seq.Date(from = ymd("2024-01-01"), to = ymd("2024-12-31"), by = "day") %>%
+ntl_days <- seq.Date(from = ymd("2024-01-01"), to = ymd("2024-01-03"), by = "day") %>%
   as.character()
 
 #### Colors
@@ -418,12 +424,12 @@ r <- bm_raster(roi_sf = roi_sf,
                output_location_type = "file",
                file_dir = file.path(ntl_bm_dir, "rasters", "monthly"))
 
-r <- bm_raster(roi_sf = roi_sf,
-               product_id = "VNP46A2",
-               date = ntl_days,
-               bearer = nasa_bearer,
-               output_location_type = "file",
-               file_dir = file.path(ntl_bm_dir, "rasters", "daily"))
+# r <- bm_raster(roi_sf = roi_sf,
+#                product_id = "VNP46A2",
+#                date = ntl_days,
+#                bearer = nasa_bearer,
+#                output_location_type = "file",
+#                file_dir = file.path(ntl_bm_dir, "rasters", "daily"))
 
 ```
 
@@ -496,9 +502,8 @@ for(unit in c("adm0",
         }
         
         if(unit == "adm4_5km"){
-            roi_sf <- read_sf(file.path(data_dir, 
-                             "Syria Boundaries",
-                             "syria_adm4_5km.geojson"))
+          roi_sf <- load_boundaries(4)
+
         }
         
         if(unit == "bordercrossings"){
@@ -604,6 +609,12 @@ for(unit in c("adm0",
       list.files(full.names = T,
                  pattern = ".Rds") %>%
       map_df(readRDS)
+    
+    if(unit == "bordercrossings"){
+      ntl_df <- ntl_df %>%
+        dplyr::select(-c("...6", "...7",
+                         "...8", "...9"))
+    }
     
     saveRDS(ntl_df,   file.path(ntl_bm_dir, "aggregated", paste0("ntl_", unit, "_", time_type, ".Rds")))
     write_csv(ntl_df, file.path(ntl_bm_dir, "aggregated", paste0("ntl_", unit, "_", time_type, ".csv")))
@@ -2309,4 +2320,117 @@ adm_data_sf %>%
   theme_void() +
   theme(strip.text = element_text(face = "bold"),
         legend.position = "bottom")
+```
+
+# Impact of Lebanon Conflict
+
+## ADM 1
+```{r}
+## Load
+lbn_sf <- read_sf(file.path(data_dir, "geoBoundaries-LBN-ADM0-all",
+                            "geoBoundaries-LBN-ADM0_simplified.shp"))
+adm_sf <- load_boundaries(1)
+ntl_monthly_df <- readRDS(file.path(ntl_bm_dir, "aggregated", "ntl_adm1_monthly.Rds"))
+
+adm_sf$dist_lebanon <- adm_sf %>% st_distance(lbn_sf) %>% as.vector()
+adm_sf <- adm_sf %>%
+  dplyr::filter(dist_lebanon <= 1000)
+
+ntl_monthly_df[ntl_monthly_df$ADM1_EN %in% adm_sf$ADM1_EN,] %>%
+  dplyr::mutate(date = date %>% ymd()) %>%
+  dplyr::filter(date >= ymd("2024-01-01")) %>%
+  ggplot() +
+  geom_vline(xintercept = ymd("2024-09-01"), color = "red") +
+  geom_col(aes(x = date,
+                y = ntl_sum)) +
+  labs(x = NULL,
+       y = "NTL Radiance") +
+  facet_wrap(~ADM1_EN) +
+  theme_classic2() +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(face = "bold"))
+```
+
+## ADM 2
+```{r}
+## Load
+lbn_sf <- read_sf(file.path(data_dir, "geoBoundaries-LBN-ADM0-all",
+                            "geoBoundaries-LBN-ADM0_simplified.shp"))
+adm_sf <- load_boundaries(2)
+ntl_monthly_df <- readRDS(file.path(ntl_bm_dir, "aggregated", "ntl_adm2_monthly.Rds"))
+
+adm_sf$dist_lebanon <- adm_sf %>% st_distance(lbn_sf) %>% as.vector()
+adm_sf <- adm_sf %>%
+  dplyr::filter(dist_lebanon <= 1000)
+
+ntl_monthly_df[ntl_monthly_df$ADM2_EN %in% adm_sf$ADM2_EN,] %>%
+  dplyr::mutate(date = date %>% ymd()) %>%
+  dplyr::filter(date >= ymd("2024-01-01")) %>%
+  ggplot() +
+  geom_vline(xintercept = ymd("2024-09-01"), color = "red") +
+  geom_col(aes(x = date,
+                y = ntl_sum)) +
+  labs(x = NULL,
+       y = "NTL Radiance") +
+  facet_wrap(~ADM2_EN) +
+  theme_classic2() +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(face = "bold"))
+```
+
+## ADM 3
+```{r}
+## Load
+lbn_sf <- read_sf(file.path(data_dir, "geoBoundaries-LBN-ADM0-all",
+                            "geoBoundaries-LBN-ADM0_simplified.shp"))
+adm_sf <- load_boundaries(3)
+ntl_monthly_df <- readRDS(file.path(ntl_bm_dir, "aggregated", "ntl_adm3_monthly.Rds"))
+
+adm_sf$dist_lebanon <- adm_sf %>% st_distance(lbn_sf) %>% as.vector()
+adm_sf <- adm_sf %>%
+  dplyr::filter(dist_lebanon <= 1000)
+
+ntl_monthly_df[ntl_monthly_df$ADM3_EN %in% adm_sf$ADM3_EN,] %>%
+  dplyr::mutate(date = date %>% ymd()) %>%
+  dplyr::filter(date >= ymd("2024-01-01")) %>%
+  ggplot() +
+  geom_vline(xintercept = ymd("2024-09-01"), color = "red") +
+  geom_col(aes(x = date,
+                y = ntl_sum)) +
+  labs(x = NULL,
+       y = "NTL Radiance") +
+  facet_wrap(~ADM3_EN) +
+  theme_classic2() +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(face = "bold"))
+```
+
+## ADM 4
+```{r}
+#| fig-height: 40
+
+## Load
+lbn_sf <- read_sf(file.path(data_dir, "geoBoundaries-LBN-ADM0-all",
+                            "geoBoundaries-LBN-ADM0_simplified.shp"))
+adm_sf <- load_boundaries(4)
+ntl_monthly_df <- readRDS(file.path(ntl_bm_dir, "aggregated", "ntl_adm4_5km_monthly.Rds"))
+
+adm_sf$dist_lebanon <- adm_sf %>% st_distance(lbn_sf) %>% as.vector()
+adm_sf <- adm_sf %>%
+  dplyr::filter(dist_lebanon <= 1000)
+
+ntl_monthly_df[ntl_monthly_df$uid %in% adm_sf$uid,] %>%
+  dplyr::mutate(date = date %>% ymd()) %>%
+  dplyr::filter(date >= ymd("2024-01-01")) %>%
+  ggplot() +
+  geom_vline(xintercept = ymd("2024-09-01"), color = "red") +
+  geom_col(aes(x = date,
+                y = ntl_sum)) +
+  labs(x = NULL,
+       y = "NTL Radiance") +
+  facet_wrap(~admin4Name_en,
+             ncol = 5) +
+  theme_classic2() +
+  theme(strip.background = element_blank(),
+        strip.text = element_text(face = "bold"))
 ```
