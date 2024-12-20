@@ -2324,6 +2324,8 @@ adm_data_sf %>%
 
 # Impact of Lebanon Conflict
 
+The following figures look at trends in Syria administrative regions that are within 1km of the border with Lebanon.
+
 ## ADM 1
 ```{r}
 ## Load
