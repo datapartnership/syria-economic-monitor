@@ -1,0 +1,276 @@
+,Region,ShapeGroup,shapeType,crop_area_ha,Admin1,Admin2
+0,Ariha,SYR,ADM3,"3,656.02",Idleb,Ariha
+1,Ehsem,SYR,ADM3,"2,250.94",Idleb,Ariha
+2,Mhambal,SYR,ADM3,"5,091.30",Idleb,Ariha
+3,Jisr-Ash-Shugur,SYR,ADM3,"8,576.27",Idleb,Jisr-Ash-Shugur
+4,Badama,SYR,ADM3,"1,286.63",Idleb,Jisr-Ash-Shugur
+5,Darkosh,SYR,ADM3,"2,628.62",Idleb,Jisr-Ash-Shugur
+6,Janudiyeh,SYR,ADM3,"2,521.98",Idleb,Jisr-Ash-Shugur
+7,Harim,SYR,ADM3,"1,136.00",Idleb,Harim
+8,Dana,SYR,ADM3,"3,182.29",Idleb,Harim
+9,Salqin,SYR,ADM3,"5,457.83",Idleb,Harim
+10,Kafr Takharim,SYR,ADM3,267.45,Idleb,Harim
+11,Qourqeena,SYR,ADM3,614.26,Idleb,Harim
+12,Armanaz,SYR,ADM3,"2,890.70",Idleb,Harim
+13,Abul Thohur,SYR,ADM3,"22,984.06",Idleb,Idleb
+14,Bennsh,SYR,ADM3,"8,492.14",Idleb,Idleb
+15,Saraqab,SYR,ADM3,"26,090.41",Idleb,Idleb
+16,Teftnaz,SYR,ADM3,"8,572.64",Idleb,Idleb
+17,Maaret Tamsrin,SYR,ADM3,"8,386.34",Idleb,Idleb
+18,Sarmin,SYR,ADM3,"3,161.81",Idleb,Idleb
+19,Idleb,SYR,ADM3,"9,245.96",Idleb,Idleb
+20,Ma'arrat An Nu'man,SYR,ADM3,"21,965.55",Idleb,Al Ma'ra
+21,Khan Shaykun,SYR,ADM3,"14,693.14",Idleb,Al Ma'ra
+22,Sanjar,SYR,ADM3,"42,549.54",Idleb,Al Ma'ra
+23,Kafr Nobol,SYR,ADM3,"6,868.81",Idleb,Al Ma'ra
+24,Tamanaah,SYR,ADM3,"29,512.31",Idleb,Al Ma'ra
+25,Heish,SYR,ADM3,"9,679.69",Idleb,Al Ma'ra
+26,Quamishli,SYR,ADM3,"54,442.16",Al-Hasakeh,Quamishli
+27,Tal Hmis,SYR,ADM3,"94,655.27",Al-Hasakeh,Quamishli
+28,Amuda,SYR,ADM3,"98,430.81",Al-Hasakeh,Quamishli
+29,Qahtaniyyeh,SYR,ADM3,"74,434.40",Al-Hasakeh,Quamishli
+30,Al-Malikeyyeh,SYR,ADM3,"104,531.46",Al-Hasakeh,Al-Malikeyyeh
+31,Jawadiyah,SYR,ADM3,"35,592.62",Al-Hasakeh,Al-Malikeyyeh
+32,Ya'robiyah,SYR,ADM3,"79,756.25",Al-Hasakeh,Al-Malikeyyeh
+33,Ras Al Ain,SYR,ADM3,"104,074.17",Al-Hasakeh,Ras Al Ain
+34,Darbasiyah,SYR,ADM3,"89,200.80",Al-Hasakeh,Ras Al Ain
+35,Al-Hasakeh,SYR,ADM3,"72,363.93",Al-Hasakeh,Al-Hasakeh
+36,Tal Tamer,SYR,ADM3,"31,001.07",Al-Hasakeh,Al-Hasakeh
+37,Shadadah,SYR,ADM3,"34,014.21",Al-Hasakeh,Al-Hasakeh
+38,Markada,SYR,ADM3,"24,880.20",Al-Hasakeh,Al-Hasakeh
+39,Be'r Al-Hulo Al-Wardeyyeh,SYR,ADM3,"52,899.29",Al-Hasakeh,Al-Hasakeh
+40,Areesheh,SYR,ADM3,"15,985.91",Al-Hasakeh,Al-Hasakeh
+41,Hole,SYR,ADM3,"10,883.94",Al-Hasakeh,Al-Hasakeh
+42,Al-Thawrah,SYR,ADM3,720.51,Ar-Raqqa,Ath-Thawrah
+43,Mansura,SYR,ADM3,"33,785.05",Ar-Raqqa,Ath-Thawrah
+44,Jurneyyeh,SYR,ADM3,"26,722.17",Ar-Raqqa,Ath-Thawrah
+45,Tell Abiad,SYR,ADM3,"45,554.24",Ar-Raqqa,Tell Abiad
+46,Suluk,SYR,ADM3,"99,748.69",Ar-Raqqa,Tell Abiad
+47,Ein Issa,SYR,ADM3,"86,752.71",Ar-Raqqa,Tell Abiad
+48,Ar-Raqqa,SYR,ADM3,"135,384.96",Ar-Raqqa,Ar-Raqqa
+49,Sabka,SYR,ADM3,"17,124.38",Ar-Raqqa,Ar-Raqqa
+50,Karama,SYR,ADM3,"38,335.24",Ar-Raqqa,Ar-Raqqa
+51,Maadan,SYR,ADM3,"6,447.41",Ar-Raqqa,Ar-Raqqa
+52,Shaqa,SYR,ADM3,"10,988.48",As-Sweida,Shahba
+53,Ariqa,SYR,ADM3,"2,671.30",As-Sweida,Shahba
+54,Little Sura,SYR,ADM3,"1,984.43",As-Sweida,Shahba
+55,Shahba,SYR,ADM3,"8,684.07",As-Sweida,Shahba
+56,Salkhad,SYR,ADM3,"12,128.29",As-Sweida,Salkhad
+57,Qarayya,SYR,ADM3,"7,374.84",As-Sweida,Salkhad
+58,Gharyeh,SYR,ADM3,"3,326.69",As-Sweida,Salkhad
+59,Thibeen,SYR,ADM3,"6,544.21",As-Sweida,Salkhad
+60,Milh,SYR,ADM3,"24,637.69",As-Sweida,Salkhad
+61,As-Sweida,SYR,ADM3,"30,114.14",As-Sweida,As-Sweida
+62,Mazra'a,SYR,ADM3,"7,819.52",As-Sweida,As-Sweida
+63,Mashnaf,SYR,ADM3,"89,618.33",As-Sweida,As-Sweida
+64,Fiq,SYR,ADM3,"18,795.66",Quneitra,Al Fiq
+65,Al-Butayhah,SYR,ADM3,"3,174.84",Quneitra,Al Fiq
+66,Quneitra,SYR,ADM3,"13,407.12",Quneitra,Quneitra
+67,Khan Arnaba,SYR,ADM3,"17,124.11",Quneitra,Quneitra
+68,Al-Khashniyyeh,SYR,ADM3,"14,770.21",Quneitra,Quneitra
+69,Masaada,SYR,ADM3,"5,327.34",Quneitra,Quneitra
+70,Kansaba,SYR,ADM3,331.74,Lattakia,Al-Haffa
+71,Salanfa,SYR,ADM3,377.13,Lattakia,Al-Haffa
+72,Mzair'a,SYR,ADM3,473.25,Lattakia,Al-Haffa
+73,Ein Et-teeneh,SYR,ADM3,110.51,Lattakia,Al-Haffa
+74,Al-Haffa,SYR,ADM3,659.06,Lattakia,Al-Haffa
+75,Fakhura,SYR,ADM3,552.19,Lattakia,Al-Qardaha
+76,Jobet Berghal,SYR,ADM3,37.67,Lattakia,Al-Qardaha
+77,Al-Qardaha,SYR,ADM3,521.85,Lattakia,Al-Qardaha
+78,Harf Elmseitra,SYR,ADM3,39.29,Lattakia,Al-Qardaha
+79,Jablah,SYR,ADM3,"1,583.50",Lattakia,Jablah
+80,Qteilbiyyeh,SYR,ADM3,520.43,Lattakia,Jablah
+81,Ein Shaqaq,SYR,ADM3,557.32,Lattakia,Jablah
+82,Dalyeh,SYR,ADM3,59.49,Lattakia,Jablah
+83,Ein Elsharqiyeh,SYR,ADM3,61.53,Lattakia,Jablah
+84,Beit Yashout,SYR,ADM3,15,Lattakia,Jablah
+85,Rabee'a,SYR,ADM3,272.24,Lattakia,Lattakia
+86,Bahlolieh,SYR,ADM3,702.53,Lattakia,Lattakia
+87,Ein El-Bayda,SYR,ADM3,"1,074.49",Lattakia,Lattakia
+88,Kasab,SYR,ADM3,211.67,Lattakia,Lattakia
+89,Hanadi,SYR,ADM3,758.99,Lattakia,Lattakia
+90,Qastal Maaf,SYR,ADM3,"1,536.10",Lattakia,Lattakia
+91,Lattakia,SYR,ADM3,"1,512.71",Lattakia,Lattakia
+92,Aghtrin,SYR,ADM3,"28,339.77",Aleppo,A'zaz
+93,Suran,SYR,ADM3,"14,717.48",Aleppo,A'zaz
+94,Suran,SYR,ADM3,"14,717.48",Hama,Hama
+95,A'zaz,SYR,ADM3,"13,090.86",Aleppo,A'zaz
+96,Mare',SYR,ADM3,"15,596.23",Aleppo,A'zaz
+97,Tall Refaat,SYR,ADM3,"17,515.31",Aleppo,A'zaz
+98,Nabul,SYR,ADM3,"7,910.20",Aleppo,A'zaz
+99,Ar-Ra'ee,SYR,ADM3,"29,209.00",Aleppo,Al Bab
+100,A'rima,SYR,ADM3,"18,972.93",Aleppo,Al Bab
+101,Al Bab,SYR,ADM3,"32,012.20",Aleppo,Al Bab
+102,Tadaf,SYR,ADM3,"20,343.38",Aleppo,Al Bab
+103,Rasm Haram El-Imam,SYR,ADM3,"15,543.43",Aleppo,Al Bab
+104,Dayr Hafir,SYR,ADM3,"9,444.94",Aleppo,Al Bab
+105,Eastern Kwaires,SYR,ADM3,"17,961.49",Aleppo,Al Bab
+106,As-Safira,SYR,ADM3,"36,237.67",Aleppo,As-Safira
+107,Banan,SYR,ADM3,"7,924.13",Aleppo,As-Safira
+108,Hajeb,SYR,ADM3,"11,563.77",Aleppo,As-Safira
+109,Khanaser,SYR,ADM3,"64,062.81",Aleppo,As-Safira
+110,Tall Ed-daman,SYR,ADM3,"69,640.47",Aleppo,Jebel Saman
+111,Hadher,SYR,ADM3,"10,131.84",Aleppo,Jebel Saman
+112,Zarbah,SYR,ADM3,"29,578.07",Aleppo,Jebel Saman
+113,Daret Azza,SYR,ADM3,"3,403.75",Aleppo,Jebel Saman
+114,Atareb,SYR,ADM3,"15,047.58",Aleppo,Jebel Saman
+115,Haritan,SYR,ADM3,"12,785.94",Aleppo,Jebel Saman
+116,Jebel Saman,SYR,ADM3,"28,670.21",Aleppo,Jebel Saman
+117,Jarablus,SYR,ADM3,"11,789.22",Aleppo,Jarablus
+118,Ghandorah,SYR,ADM3,"17,595.79",Aleppo,Jarablus
+119,Bulbul,SYR,ADM3,"3,280.03",Aleppo,Afrin
+120,Raju,SYR,ADM3,"4,941.77",Aleppo,Afrin
+121,Ma'btali,SYR,ADM3,"5,461.64",Aleppo,Afrin
+122,Sheikh El-Hadid,SYR,ADM3,"2,264.56",Aleppo,Afrin
+123,Jandairis,SYR,ADM3,"16,377.26",Aleppo,Afrin
+124,Sharan,SYR,ADM3,"9,396.63",Aleppo,Afrin
+125,Afrin,SYR,ADM3,"18,449.08",Aleppo,Afrin
+126,Lower Shyookh,SYR,ADM3,"22,199.07",Aleppo,Ain Al Arab
+127,Ain al Arab,SYR,ADM3,"62,775.55",Aleppo,Ain Al Arab
+128,Sarin,SYR,ADM3,"106,458.49",Aleppo,Ain Al Arab
+129,Menbij,SYR,ADM3,"67,559.11",Aleppo,Menbij
+130,Abu Qalqal,SYR,ADM3,"18,278.88",Aleppo,Menbij
+131,Al-Khafsa,SYR,ADM3,"83,768.09",Aleppo,Menbij
+132,Maskana,SYR,ADM3,"26,323.27",Aleppo,Menbij
+133,As-Suqaylabiyah,SYR,ADM3,"12,045.29",Hama,As-Suqaylabiyah
+134,Tell Salhib,SYR,ADM3,"6,148.79",Hama,As-Suqaylabiyah
+135,Ziyara,SYR,ADM3,"13,616.82",Hama,As-Suqaylabiyah
+136,Shat-ha,SYR,ADM3,"9,373.89",Hama,As-Suqaylabiyah
+137,Madiq Castle,SYR,ADM3,"19,478.77",Hama,As-Suqaylabiyah
+138,As-Salamiyeh,SYR,ADM3,"58,968.65",Hama,As-Salamiyeh
+139,Eastern Bari,SYR,ADM3,"15,561.61",Hama,As-Salamiyeh
+140,As-Saan,SYR,ADM3,"35,236.52",Hama,As-Salamiyeh
+141,Oqeirbat,SYR,ADM3,"26,592.60",Hama,As-Salamiyeh
+142,Muhradah,SYR,ADM3,"17,277.39",Hama,Muhradah
+143,Kafr Zeita,SYR,ADM3,"12,924.52",Hama,Muhradah
+144,Karnaz,SYR,ADM3,"5,483.28",Hama,Muhradah
+145,Hama,SYR,ADM3,"48,771.84",Hama,Hama
+146,Suran,SYR,ADM3,"37,053.15",Aleppo,A'zaz
+147,Suran,SYR,ADM3,"37,053.15",Hama,Hama
+148,Harbanifse,SYR,ADM3,"9,138.25",Hama,Hama
+149,Hamra,SYR,ADM3,"40,876.36",Hama,Hama
+150,Masyaf,SYR,ADM3,"6,549.79",Hama,Masyaf
+151,Jeb Ramleh,SYR,ADM3,"7,681.98",Hama,Masyaf
+152,Oj,SYR,ADM3,"1,709.93",Hama,Masyaf
+153,Wadi El-oyoun,SYR,ADM3,86.2,Hama,Masyaf
+154,Ein Halaqim,SYR,ADM3,642.44,Hama,Masyaf
+155,Ar-Rastan,SYR,ADM3,"6,133.65",Homs,Ar-Rastan
+156,Talbiseh,SYR,ADM3,"11,788.58",Homs,Ar-Rastan
+157,Al-Qusayr,SYR,ADM3,"38,273.96",Homs,Al-Qusayr
+158,Al Makhrim,SYR,ADM3,"26,605.59",Homs,Al Makhrim
+159,Jeb Ej-Jarrah,SYR,ADM3,"51,714.48",Homs,Al Makhrim
+160,Tadmor,SYR,ADM3,"17,233.70",Homs,Tadmor
+161,Sokhneh,SYR,ADM3,"5,862.35",Homs,Tadmor
+162,Tall Kalakh,SYR,ADM3,"4,859.20",Homs,Tall Kalakh
+163,Hadideh,SYR,ADM3,"3,120.20",Homs,Tall Kalakh
+164,Hawash,SYR,ADM3,763.69,Homs,Tall Kalakh
+165,Nasra,SYR,ADM3,223.15,Homs,Tall Kalakh
+166,Homs,SYR,ADM3,"40,868.03",Homs,Homs
+167,Taldu,SYR,ADM3,"10,497.91",Homs,Homs
+168,Kherbet Tin Noor,SYR,ADM3,"12,625.79",Homs,Homs
+169,Ein Elniser,SYR,ADM3,"20,575.42",Homs,Homs
+170,Farqalas,SYR,ADM3,"4,062.86",Homs,Homs
+171,Raqama,SYR,ADM3,"19,945.35",Homs,Homs
+172,Mahin,SYR,ADM3,53.6,Homs,Homs
+173,Sadad,SYR,ADM3,34.34,Homs,Homs
+174,Qaryatein,SYR,ADM3,173.93,Homs,Homs
+175,Qabu,SYR,ADM3,"1,851.96",Homs,Homs
+176,Shin,SYR,ADM3,884.12,Homs,Homs
+177,Hasyaa,SYR,ADM3,"15,808.77",Homs,Homs
+178,Izra',SYR,ADM3,"14,035.44",Dar'a,Izra'
+179,Jasim,SYR,ADM3,"4,770.70",Dar'a,Izra'
+180,Hrak,SYR,ADM3,"8,337.81",Dar'a,Izra'
+181,Nawa,SYR,ADM3,"9,761.81",Dar'a,Izra'
+182,Sheikh Miskine,SYR,ADM3,"8,814.95",Dar'a,Izra'
+183,Tassil,SYR,ADM3,"3,656.37",Dar'a,Izra'
+184,As-Sanamayn,SYR,ADM3,"19,475.82",Dar'a,As-Sanamayn
+185,Masmiyyeh,SYR,ADM3,"2,421.24",Dar'a,As-Sanamayn
+186,Ghabagheb,SYR,ADM3,"5,840.64",Dar'a,As-Sanamayn
+187,Dar'a,SYR,ADM3,"22,243.69",Dar'a,Dar'a
+188,Busra Esh-Sham,SYR,ADM3,"8,196.01",Dar'a,Dar'a
+189,Kherbet Ghazala,SYR,ADM3,"10,594.10",Dar'a,Dar'a
+190,Ash-Shajara,SYR,ADM3,"11,036.28",Dar'a,Dar'a
+191,Da'el,SYR,ADM3,"9,043.46",Dar'a,Dar'a
+192,Mzeireb,SYR,ADM3,"12,133.75",Dar'a,Dar'a
+193,Jizeh,SYR,ADM3,"3,222.43",Dar'a,Dar'a
+194,Mseifra,SYR,ADM3,"11,128.18",Dar'a,Dar'a
+195,Abu Kamal,SYR,ADM3,"9,368.41",Deir-ez-Zor,Abu Kamal
+196,Hajin,SYR,ADM3,"11,032.25",Deir-ez-Zor,Abu Kamal
+197,Jalaa,SYR,ADM3,"4,749.20",Deir-ez-Zor,Abu Kamal
+198,Susat,SYR,ADM3,"3,685.15",Deir-ez-Zor,Abu Kamal
+199,Al Mayadin,SYR,ADM3,"8,834.90",Deir-ez-Zor,Al Mayadin
+200,Thiban,SYR,ADM3,"9,791.09",Deir-ez-Zor,Al Mayadin
+201,Ashara,SYR,ADM3,"6,124.91",Deir-ez-Zor,Al Mayadin
+202,Deir-ez-Zor,SYR,ADM3,"16,125.67",Deir-ez-Zor,Deir-ez-Zor
+203,Kisreh,SYR,ADM3,"33,642.19",Deir-ez-Zor,Deir-ez-Zor
+204,Basira,SYR,ADM3,"11,067.35",Deir-ez-Zor,Deir-ez-Zor
+205,Muhasan,SYR,ADM3,"14,287.71",Deir-ez-Zor,Deir-ez-Zor
+206,Tabni,SYR,ADM3,"13,578.00",Deir-ez-Zor,Deir-ez-Zor
+207,Khasham,SYR,ADM3,"4,137.46",Deir-ez-Zor,Deir-ez-Zor
+208,Sur,SYR,ADM3,"13,578.85",Deir-ez-Zor,Deir-ez-Zor
+209,Sidnaya,SYR,ADM3,"1,727.78",Rural Damascus,At Tall
+210,Rankus,SYR,ADM3,"2,740.66",Rural Damascus,At Tall
+211,Az-Zabdani,SYR,ADM3,"2,499.80",Rural Damascus,Az-Zabdani
+212,Dimas,SYR,ADM3,"1,011.78",Rural Damascus,Az-Zabdani
+213,Ein Elfijeh,SYR,ADM3,53.42,Rural Damascus,Az-Zabdani
+214,Madaya,SYR,ADM3,17,Rural Damascus,Az-Zabdani
+215,Sarghaya,SYR,ADM3,"1,408.64",Rural Damascus,Az-Zabdani
+216,Al Qutayfah,SYR,ADM3,629.56,Rural Damascus,Al Qutayfah
+217,Jirud,SYR,ADM3,384.86,Rural Damascus,Al Qutayfah
+218,Ma'loula,SYR,ADM3,315.46,Rural Damascus,Al Qutayfah
+219,Raheiba,SYR,ADM3,129.56,Rural Damascus,Al Qutayfah
+220,An Nabk,SYR,ADM3,368.91,Rural Damascus,An Nabk
+221,Deir Attiyeh,SYR,ADM3,498.68,Rural Damascus,An Nabk
+222,Sahnaya,SYR,ADM3,357.59,Rural Damascus,Darayya
+223,Duma,SYR,ADM3,"7,190.41",Rural Damascus,Duma
+224,Sabe Byar,SYR,ADM3,"27,748.80",Rural Damascus,Duma
+225,Dhameer,SYR,ADM3,"2,132.78",Rural Damascus,Duma
+226,Nashabiyeh,SYR,ADM3,"8,796.70",Rural Damascus,Duma
+227,Ghizlaniyyeh,SYR,ADM3,"2,590.76",Rural Damascus,Duma
+228,Haran Al'awameed,SYR,ADM3,"2,371.18",Rural Damascus,Duma
+229,Qatana,SYR,ADM3,"6,176.32",Rural Damascus,Qatana
+230,Sa'sa',SYR,ADM3,"11,192.89",Rural Damascus,Qatana
+231,Bait Jan,SYR,ADM3,"5,071.38",Rural Damascus,Qatana
+232,Kisweh,SYR,ADM3,"6,379.46",Rural Damascus,Rural Damascus
+233,Maliha,SYR,ADM3,"3,234.68",Rural Damascus,Rural Damascus
+234,Yabroud,SYR,ADM3,"1,551.88",Rural Damascus,Yabroud
+235,Esal El-Ward,SYR,ADM3,"1,597.10",Rural Damascus,Yabroud
+236,Sheikh Badr,SYR,ADM3,235.3,Tartous,Sheikh Badr
+237,Qumseyyeh,SYR,ADM3,143.42,Tartous,Sheikh Badr
+238,Baramanet Elmashayekh,SYR,ADM3,249.52,Tartous,Sheikh Badr
+239,Banyas,SYR,ADM3,721.24,Tartous,Banyas
+240,Rawda,SYR,ADM3,122.86,Tartous,Banyas
+241,Anaza,SYR,ADM3,270.68,Tartous,Qadmous
+242,Hamam Wasil,SYR,ADM3,171.31,Tartous,Qadmous
+243,Tawahin,SYR,ADM3,486.04,Tartous,Qadmous
+244,Taleen,SYR,ADM3,49.76,Tartous,Banyas
+245,Qadmous,SYR,ADM3,"1,151.07",Tartous,Qadmous
+246,Dreikish,SYR,ADM3,212.7,Tartous,Dreikish
+247,Jneinet Raslan,SYR,ADM3,40.09,Tartous,Dreikish
+248,Hamin,SYR,ADM3,103.02,Tartous,Dreikish
+249,Dweir Raslan,SYR,ADM3,58.63,Tartous,Dreikish
+250,Safita,SYR,ADM3,553.07,Tartous,Safita
+251,Mashta Elhiu,SYR,ADM3,67.47,Tartous,Safita
+252,Bariqiyeh,SYR,ADM3,123.46,Tartous,Safita
+253,Sibbeh,SYR,ADM3,46.38,Tartous,Safita
+254,Sisniyyeh,SYR,ADM3,609.64,Tartous,Safita
+255,Ras El-Khashufeh,SYR,ADM3,199.16,Tartous,Safita
+256,Arwad,SYR,ADM3,0,Tartous,Tartous
+257,Tartous,SYR,ADM3,"1,453.59",Tartous,Tartous
+258,Hameidiyyeh,SYR,ADM3,"2,893.41",Tartous,Tartous
+259,Kherbet Elma'aza,SYR,ADM3,514.71,Tartous,Tartous
+260,Soda Khawabi,SYR,ADM3,273.02,Tartous,Tartous
+261,Kareemeh,SYR,ADM3,"1,297.77",Tartous,Tartous
+262,Safsafa,SYR,ADM3,"1,300.52",Tartous,Tartous
+263,Saboura,SYR,ADM3,"18,895.18",Hama,As-Salamiyeh
+264,Jaramana,SYR,ADM3,103.4,Rural Damascus,Rural Damascus
+265,Kafr Batna,SYR,ADM3,494.95,Rural Damascus,Rural Damascus
+266,Arbin,SYR,ADM3,1.09,Rural Damascus,Rural Damascus
+267,Harasta,SYR,ADM3,322.58,Rural Damascus,Duma
+268,At Tall,SYR,ADM3,954.77,Rural Damascus,At Tall
+269,Markaz Darayya,SYR,ADM3,198.94,Rural Damascus,Darayya
+270,Hajar Aswad,SYR,ADM3,68.14,Rural Damascus,Darayya
+271,Damascus,SYR,ADM3,247.56,Damascus,Damascus
+272,Babella,SYR,ADM3,"2,109.09",Rural Damascus,Rural Damascus
+273,"Qudsiya
+",,ADM3,77.1,Rural Damascus,Rural Damascus
