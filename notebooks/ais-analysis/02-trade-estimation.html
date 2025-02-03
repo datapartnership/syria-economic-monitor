@@ -75,7 +75,7 @@
     <link rel="prev" title="AIS Data Exploration" href="01-descriptive-stats.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Dec 18, 2024"/>
+    <meta name="docbuild:last-update" content="Feb 03, 2025"/>
   </head>
   
   
@@ -498,18 +498,18 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
-<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">port_call</span> <span class="kn">import</span> <span class="n">create_port_calls</span>
-<span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">port_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_port_calls</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">metrics</span>
 </pre></div>
 </div>
 </div>
@@ -1480,7 +1480,7 @@ Name: draught_delta, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_payload</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_payload</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
     <span class="c1"># get parameters</span>
     <span class="n">Din</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;draught-in&quot;</span><span class="p">]</span>
     <span class="n">Dout</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;draught-out&quot;</span><span class="p">]</span>
@@ -2311,9 +2311,9 @@ Name: draught_delta, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">metrics</span>
 </pre></div>
 </div>
 </div>
@@ -2793,7 +2793,7 @@ Name: draught_delta, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_payload</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_payload</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
     <span class="c1"># get parameters</span>
     <span class="n">Din</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;draught-in&quot;</span><span class="p">]</span>
     <span class="n">Dout</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;draught-out&quot;</span><span class="p">]</span>
@@ -3213,7 +3213,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 18, 2024.
+  Last updated on Feb 03, 2025.
   <br/>
 </p>
   </div>
