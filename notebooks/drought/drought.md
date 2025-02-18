@@ -1,8 +1,8 @@
-# Drought Analytics 
+# Drought Analytics
 ## Overview
 
-This chapter focuses on utilizing historical precipitation data from 2000 to 2024 to analyze moisture trends and drought levels over time at national and subnational levels.This chapter inludes two notebooks namely drought_spei and drought_analysis_chirps. 
- 
+This chapter focuses on utilizing historical precipitation data from 2000 to 2024 to analyze moisture trends and drought levels over time at national and subnational levels.This chapter inludes two notebooks namely drought_spei and drought_analysis_chirps.
+
 - *Drought_spei* : This notebook used the Spei (Standard Precipitation Evapotranspiration Index) data from the [Global SPEI Database](https://spei.csic.es/database.html). Since this data is not updated for the year of 2024, this notebook provides drought analysis until 2023 on national level
 
 - *Drought_analysis_CHIRPS* : This notebook calculates the SPI values( Standard Precipitation Index) from the latest [CHIRPS 3.0](https://www.chc.ucsb.edu/data/chirps3) and provides moisture trends as well as drought classifications from 2000 to 2024 at national and subnational levels.
@@ -27,7 +27,7 @@ Temporal Coverage: Monthly data from January 1901 to the present, continuously u
 - **Use Case**: The dataset is widely used for drought monitoring, agricultural planning, hydrological modeling, and climate research. It is particularly valuable for early warning systems and food security assessments in regions vulnerable to climate variability
 - **Data Format**: The data is available in downloadable global tiff images, which are then clipped for Syria admin level 0 boundaries and processed into a NetCDF format with time, lon and lat dimensions.
 
-   
+
 3. **Administrative Boundaries (HDX)**:
    - **Source**: Humanitarian Data Exchange [HDX](https://data.humdata.org/).
    - **Description**: Geographic boundaries used for spatial aggregation and administrative analysis, such as calculating productivity metrics by region (e.g., governorate or district).
