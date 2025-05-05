@@ -45,6 +45,7 @@ parts:
   - caption: Syria Economic Monitor 2024 Updates
     chapters:
       - file: notebooks/conflict/acled-update-october24.ipynb
+      - file: notebooks/conflict/acled_post_assad.ipynb
       - file: notebooks/aviation/aviation_update.ipynb
       - file: notebooks/vegetation-conditions/agriculture.md
         sections:
