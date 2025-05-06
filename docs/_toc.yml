@@ -42,7 +42,7 @@ parts:
         sections:
           - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
       - file: notebooks/google-earth-engine/air-pollution.ipynb
-  - caption: Syria Economic Monitor 2024 Updates
+  - caption: Syria Economic Monitor 2024-2025 Updates
     chapters:
       - file: notebooks/conflict/acled-update-october24.ipynb
       - file: notebooks/conflict/acled_post_assad.ipynb
@@ -50,12 +50,15 @@ parts:
       - file: notebooks/vegetation-conditions/agriculture.md
         sections:
           - file: notebooks/vegetation-conditions/evi-analytics.ipynb
-          - file: notebooks/vegetation-conditions/drought.ipynb
           - file: notebooks/vegetation-conditions/lulc.ipynb
           - file: notebooks/vegetation-conditions/ChangeMaps.ipynb
       - file: notebooks/syria-forest-cover/2023-summer-tree-cover-loss.md
         sections:
         - file: notebooks/syria-forest-cover/syria_forest.ipynb
+      - file: notebooks/drought/drought.md
+        sections:
+        - file: notebooks/drought/drought_spei.ipynb
+        - file: notebooks/drought/drought_analysis_chirps.ipynb
       - file: notebooks/ais-analysis/fall-2024/update.md
   - caption: Acknowledgements
     chapters:
