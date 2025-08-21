@@ -10,13 +10,11 @@ DOWNLOAD_NTL <- F
 
 # Filepaths --------------------------------------------------------------------
 #### Root paths
-if(Sys.info()[["user"]] == "robmarty"){
-
+if(Sys.info()[["user"]] == "rmarty"){
   git_dir  <- "~/Documents/Github/syria-economic-monitor"
-  data_dir <- file.path("~", "Dropbox", "World Bank", "Side Work", "Syria Economic Monitor",
-                        "data")
-
+  data_dir <- file.path("/Users/rmarty/Library/CloudStorage/OneDrive-SharedLibraries-WBG/Development Data Partnership - Syria Economic Monitor/Data")
 }
+
 
 #### From root
 #ntl_dir     <- file.path(git_dir, "notebooks", "ntl-analysis")
@@ -40,16 +38,13 @@ clean_dir <- file.path(code_dir, "01_clean_data")
 library(dplyr)
 library(readr)
 library(purrr)
-library(rgdal)
-library(rgeos)
-library(sp)
 library(sf)
 library(raster) #install.packages('raster', repos='https://rspatial.r-universe.dev')
 library(ggplot2)
 library(exactextractr)
 library(lubridate)
 library(tidyr)
-library(ggtheme)
+#library(ggtheme)
 library(ggpubr)
 library(leaflet)
 library(leaflet.extras)
