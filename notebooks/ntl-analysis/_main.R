@@ -11,7 +11,7 @@ DOWNLOAD_NTL <- F
 # Filepaths --------------------------------------------------------------------
 #### Root paths
 if(Sys.info()[["user"]] == "rmarty"){
-  git_dir  <- "~/Documents/Github/syria-economic-monitor"
+  git_dir  <- "~/Documents/github/syria-economic-monitor"
   data_dir <- file.path("/Users/rmarty/Library/CloudStorage/OneDrive-SharedLibraries-WBG/Development Data Partnership - Syria Economic Monitor/Data")
 }
 
@@ -20,8 +20,8 @@ if(Sys.info()[["user"]] == "rmarty"){
 #ntl_dir     <- file.path(git_dir, "notebooks", "ntl-analysis")
 figures_dir <- file.path(git_dir, "reports", "figures")
 
-ntl_bm_dir  <- file.path(data_dir, "NTL BlackMarble")
-gas_flare_dir  <- file.path(data_dir, "Global Gas Flaring")
+ntl_bm_dir  <- file.path(data_dir, "Nighttime Lights BlackMarble")
+gas_flare_dir  <- file.path(data_dir, "gas-flaring")
 gadm_dir  <- file.path(data_dir, "GADM")
 eq_intensity_dir <- file.path(data_dir, "Earthquake Intensity")
 unocha_dir <- file.path(data_dir, "UNOCHA")

@@ -19,9 +19,9 @@ bm_raster(roi_sf = roi_sf,
           bearer = bearer,
           output_location_type = "file",
           file_dir = file.path(data_dir,
-                               "NTL BlackMarble",
-                               "FinalData",
-                               "annual_rasters"))
+                               "Nighttime Lights BlackMarble",
+                               "rasters",
+                               "annual"))
 
 bm_raster(roi_sf = roi_sf,
           product_id = "VNP46A3",
@@ -29,9 +29,9 @@ bm_raster(roi_sf = roi_sf,
           bearer = bearer,
           output_location_type = "file",
           file_dir = file.path(data_dir,
-                               "NTL BlackMarble",
-                               "FinalData",
-                               "monthly_rasters"))
+                               "Nighttime Lights BlackMarble",
+                               "rasters",
+                               "monthly"))
 
 bm_raster(roi_sf = roi_sf,
           product_id = "VNP46A2",
@@ -39,6 +39,6 @@ bm_raster(roi_sf = roi_sf,
           bearer = bearer,
           output_location_type = "file",
           file_dir = file.path(data_dir,
-                               "NTL BlackMarble",
-                               "FinalData",
-                               "daily_rasters"))
+                               "Nighttime Lights BlackMarble",
+                               "rasters",
+                               "daily"))
