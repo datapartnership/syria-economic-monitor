@@ -35,10 +35,13 @@ bm_raster(roi_sf = roi_sf,
 
 bm_raster(roi_sf = roi_sf,
           product_id = "VNP46A2",
-          date = seq.Date(from = ymd("2023-06-01"), to = Sys.Date(), by = "day") %>% rev(),
+          date = seq.Date(from = ymd("2023-01-01"), to = ymd("2023-06-01"), by = "day") %>% rev(),
           bearer = bearer,
           output_location_type = "file",
+          #h5_dir = "~/Dropbox/h5",
           file_dir = file.path(data_dir,
                                "Nighttime Lights BlackMarble",
                                "rasters",
                                "daily"))
+
+

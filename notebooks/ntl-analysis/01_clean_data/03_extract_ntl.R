@@ -61,7 +61,7 @@ for(adm_i in rev(c("adm0",
                    "adm3",
                    "adm4",
                    "border_crossings_1km"))){
-  for(time_type in rev(c("annual", "monthly", "daily"))){
+  for(time_type in c("annual", "monthly", "daily")){
     
     # Load data --------------------------------------------------------------------
     if(adm_i == "border_crossings_1km"){
