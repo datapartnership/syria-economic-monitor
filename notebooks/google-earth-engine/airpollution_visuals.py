@@ -322,13 +322,14 @@ def create_temporal_maps(
     pollution_column: str = "mean",
     date_column: str = "start_date",
     temporal_grouping: str = "year",
+    title: str = None,  # Allow custom title input
     title_prefix: str = "Air Pollution Levels",
     width: int = 400,
     height: int = 300,
     color_scheme: str = "blues"
 ) -> alt.Chart:
     """
-    Create temporal maps showing pollution changes over time.
+    Create temporal maps showing pollution changes over time using Altair.
     
     Parameters:
     -----------
@@ -344,8 +345,10 @@ def create_temporal_maps(
         Column containing date information
     temporal_grouping : str, default "year"
         How to group time periods ("year", "month", "quarter")
+    title : str or None, default None
+        Custom title for the chart. If None, uses title_prefix with temporal grouping.
     title_prefix : str, default "Air Pollution Levels"
-        Prefix for map titles
+        Prefix for map titles (used when title is None)
     width : int, default 400
         Width of each map
     height : int, default 300
@@ -359,9 +362,7 @@ def create_temporal_maps(
         Altair chart with temporal maps
     """
     
-    # Import required libraries
     import geopandas as gpd
-    import json
     
     # Make copies to avoid modifying original data
     df = dataframe.copy()
@@ -373,55 +374,65 @@ def create_temporal_maps(
     # Create temporal grouping
     if temporal_grouping == "year":
         df['time_period'] = df[date_column].dt.year
-        time_format = "{:d}"
     elif temporal_grouping == "month":
         df['time_period'] = df[date_column].dt.to_period('M').astype(str)
-        time_format = "{}"
     elif temporal_grouping == "quarter":
         df['time_period'] = df[date_column].dt.to_period('Q').astype(str)
-        time_format = "{}"
     else:
         raise ValueError("temporal_grouping must be 'year', 'month', or 'quarter'")
     
     # Aggregate data by time period and region
     agg_data = df.groupby(['time_period', join_column])[pollution_column].mean().reset_index()
     
-    # Convert geodataframe to GeoJSON for Altair
-    gdf_json = json.loads(gdf.to_json())
+    # Calculate global min/max for consistent color scale
+    global_min = agg_data[pollution_column].min()
+    global_max = agg_data[pollution_column].max()
     
-    # Create the base map
+    # Use custom title if provided, otherwise use title_prefix with temporal grouping
+    chart_title = title if title is not None else f"{title_prefix} - {temporal_grouping.title()} View"
+    
+    # Create the choropleth map using the same pattern as vegetation analytics
     base_map = alt.Chart(
-        alt.InlineData(values=gdf_json, format=alt.DataFormat(property='features', type='json'))
+        agg_data,
+        title=chart_title
     ).mark_geoshape(
         stroke='white',
         strokeWidth=0.5
-    ).transform_lookup(
-        lookup=f'properties.{join_column}',
-        from_=alt.LookupData(
-            data=agg_data,
-            key=join_column,
-            fields=[pollution_column, 'time_period']
-        )
     ).encode(
+        shape='geo:G',
         color=alt.Color(
             f'{pollution_column}:Q',
-            scale=alt.Scale(scheme=color_scheme, type='linear'),
+            scale=alt.Scale(
+                scheme=color_scheme,
+                domain=[global_min, global_max]  # Fixed domain for consistent coloring
+            ),
             title='NO2 Level',
             legend=alt.Legend(
-                orient='bottom',
-                titleFontSize=10,
-                labelFontSize=9
+                orient='right',
+                titleFontSize=12,
+                labelFontSize=10,
+                gradientLength=200
             )
+        ),
+        tooltip=[
+            alt.Tooltip(f'{join_column}:N', title='Region'),
+            alt.Tooltip(f'{pollution_column}:Q', title='NO2 Level', format='.3f'),
+            alt.Tooltip('time_period:O', title='Time Period')
+        ],
+        facet=alt.Facet(
+            'time_period:O', 
+            columns=3, 
+            title=None
         )
+    ).transform_lookup(
+        lookup=join_column,
+        from_=alt.LookupData(data=gdf, key=join_column),
+        as_='geo'
     ).properties(
         width=width,
         height=height
-    ).facet(
-        column=alt.Column('time_period:O', title='Time Period'),
-        columns=4,
-        title=f"{title_prefix} - {temporal_grouping.title()} View"
     ).resolve_scale(
-        color='independent'
+        color='shared'  # Share color scale across all facets
     )
     
     return base_map
@@ -539,10 +550,7 @@ def create_animated_map(
     color_scheme: str = "blues"
 ) -> alt.Chart:
     """
-    Create an animated map showing pollution changes over time.
-    
-    Note: For now, this creates a simple faceted map. True animation 
-    with sliders requires more complex Altair configuration.
+    Create a temporal overview map showing pollution changes over time.
     
     Parameters:
     -----------
@@ -555,9 +563,9 @@ def create_animated_map(
     pollution_column : str, default "mean"
         Pollution value column
     date_column : str, default "start_date"
-        Date column for animation
+        Date column for temporal grouping
     temporal_grouping : str, default "year"
-        Time grouping for animation ("year", "month", "quarter")
+        Time grouping ("year", "month", "quarter")
     width : int, default 600
         Map width
     height : int, default 400
@@ -571,7 +579,7 @@ def create_animated_map(
         Temporal map chart (faceted by time period)
     """
     
-    # For simplicity, let's create a faceted version instead of animated
+    # Create a temporal overview using smaller faceted maps
     return create_temporal_maps(
         dataframe=dataframe,
         boundaries_gdf=boundaries_gdf,
@@ -580,7 +588,7 @@ def create_animated_map(
         date_column=date_column,
         temporal_grouping=temporal_grouping,
         title_prefix="Temporal Changes in Air Pollution",
-        width=width//2,  # Smaller since it's faceted
-        height=height//2,
+        width=width//3,  # Smaller since it's faceted
+        height=height//3,
         color_scheme=color_scheme
     )

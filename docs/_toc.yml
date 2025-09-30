@@ -41,7 +41,7 @@ parts:
       - file: notebooks/vegetation-conditions/README
         sections:
           - file: notebooks/vegetation-conditions/Seasonality_Parameters_Data_Extraction.md
-      - file: notebooks/google-earth-engine/air-pollution.ipynb
+      #- file: notebooks/google-earth-engine/air-pollution.ipynb
   - caption: Syria Economic Monitor 2024 Updates
     chapters:
       - file: notebooks/conflict/acled-update-october24.ipynb
