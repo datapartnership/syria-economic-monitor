@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
@@ -77,7 +77,7 @@
     <link rel="prev" title="Analysis of Armed Conflict, Updated to the Present" href="acled-update-october24.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="May 06, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 30, 2025"/>
   </head>
   
   
@@ -245,6 +245,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../ais-analysis/fall-2024/update.html">Seaborn Trade Activity Estimation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Syria Economic Monitor 2025 Updates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-sept2025.html">Crop Productivity Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul class="nav bd-sidenav">
@@ -494,7 +498,9 @@ document.write(`
 <h1>Analysing Conflict before and after the fall of the Assad Regime<a class="headerlink" href="#analysing-conflict-before-and-after-the-fall-of-the-assad-regime" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Regime Change&#39;</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">==</span><span class="mf">35.5252</span><span class="p">)][</span><span class="s1">&#39;notes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Regime Change&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">35.5252</span><span class="p">)][</span>
+    <span class="s2">&quot;notes&quot;</span>
+<span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -506,7 +512,10 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conflict_daily</span><span class="p">[(</span><span class="n">conflict_daily</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Regime Change&#39;</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">conflict_daily</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">==</span><span class="mf">35.5252</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conflict_daily</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">conflict_daily</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Regime Change&quot;</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">conflict_daily</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">35.5252</span><span class="p">)</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -555,7 +564,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_mean</span><span class="p">[</span><span class="n">daily_mean</span><span class="p">[</span><span class="s1">&#39;nrFatalities&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">75</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_mean</span><span class="p">[</span><span class="n">daily_mean</span><span class="p">[</span><span class="s2">&quot;nrFatalities&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">75</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -605,7 +614,7 @@ document.write(`
 <p><strong>What are the average number of events per day occuring in Syria during the three time periods?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_maps</span><span class="p">(</span><span class="n">daily_mean</span><span class="p">,</span> <span class="s1">&#39;Mean Fatalities and Events per Day&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_maps</span><span class="p">(</span><span class="n">daily_mean</span><span class="p">,</span> <span class="s2">&quot;Mean Fatalities and Events per Day&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,7 +628,7 @@ document.write(`
 <p><strong>What is the most number of conflict events and fatalities that have occured in a given point in Syria?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_maps</span><span class="p">(</span><span class="n">daily_median</span><span class="p">,</span> <span class="s1">&#39;Median Fatalities and Events per Day&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_maps</span><span class="p">(</span><span class="n">daily_median</span><span class="p">,</span> <span class="s2">&quot;Median Fatalities and Events per Day&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -630,8 +639,10 @@ document.write(`
 <p><strong>Is there a difference between mean and median conflict events and conflict fatalities?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">daily_median</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">daily_mean</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">],</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;_median&#39;</span><span class="p">,</span> <span class="s1">&#39;_mean&#39;</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrFatalities_median&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrFatalities_mean&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">daily_median</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">daily_mean</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">],</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;_median&quot;</span><span class="p">,</span> <span class="s2">&quot;_mean&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;nrFatalities_median&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;nrFatalities_mean&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -781,7 +792,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="mi">80</span><span class="o">/</span><span class="n">daily_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">/</span> <span class="n">daily_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Percentage of points where mean and median fatalities are different: </span><span class="si">{</span><span class="n">pc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -794,7 +805,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrEvents_median&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nrEvents_mean&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;nrEvents_median&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;nrEvents_mean&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -857,15 +868,25 @@ document.write(`
 <p>Conflict index is calculated at the location and then average is taken over time (across the three time periods). This is to preserve the integrity of the conflict index in that specific location.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_conflict_intensity_median</span> <span class="o">=</span> <span class="n">conflict_daily</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;category&#39;</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">])[[</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">,</span> <span class="s1">&#39;nrFatalities&#39;</span><span class="p">,</span> <span class="s1">&#39;conflict_intensity_index_op1&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">daily_conflict_intensity_median</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">convert_to_gdf</span><span class="p">(</span><span class="n">daily_conflict_intensity_median</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_conflict_intensity_median</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">conflict_daily</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])[</span>
+        <span class="p">[</span><span class="s2">&quot;nrEvents&quot;</span><span class="p">,</span> <span class="s2">&quot;nrFatalities&quot;</span><span class="p">,</span> <span class="s2">&quot;conflict_intensity_index_op1&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">daily_conflict_intensity_median</span> <span class="o">=</span> <span class="n">analysis</span><span class="o">.</span><span class="n">convert_to_gdf</span><span class="p">(</span>
+    <span class="n">daily_conflict_intensity_median</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_maps_conflict_index</span><span class="p">(</span><span class="n">daily_conflict_intensity</span><span class="p">,</span> <span class="s1">&#39;Mean Conflict Intensity&#39;</span><span class="p">,</span> <span class="s1">&#39;conflict_intensity_index_op1&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_maps_conflict_index</span><span class="p">(</span>
+    <span class="n">daily_conflict_intensity</span><span class="p">,</span> <span class="s2">&quot;Mean Conflict Intensity&quot;</span><span class="p">,</span> <span class="s2">&quot;conflict_intensity_index_op1&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -882,7 +903,11 @@ document.write(`
 <h3>Mean Conflict Index<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span><span class="n">conflict_daily_h3_mean</span><span class="p">,</span> <span class="s1">&#39;Conflict Index of daily average conflict events and fatalities&#39;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s1">&#39;conflict_intensity_index_op1&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span>
+    <span class="n">conflict_daily_h3_mean</span><span class="p">,</span>
+    <span class="s2">&quot;Conflict Index of daily average conflict events and fatalities&quot;</span><span class="p">,</span>
+    <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;conflict_intensity_index_op1&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -896,7 +921,9 @@ document.write(`
 <h3>Mean Conflict Events<a class="headerlink" href="#mean-conflict-events" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span><span class="n">conflict_daily_h3_mean</span><span class="p">,</span> <span class="s1">&#39;Daily average of conflict events&#39;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span>
+    <span class="n">conflict_daily_h3_mean</span><span class="p">,</span> <span class="s2">&quot;Daily average of conflict events&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;nrEvents&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -909,7 +936,11 @@ document.write(`
 <h3>Mean Fatalities<a class="headerlink" href="#mean-fatalities" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span><span class="n">conflict_daily_h3_mean</span><span class="p">,</span> <span class="s1">&#39;Daily average of conflict fatalities&#39;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s1">&#39;nrFatalities&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span>
+    <span class="n">conflict_daily_h3_mean</span><span class="p">,</span>
+    <span class="s2">&quot;Daily average of conflict fatalities&quot;</span><span class="p">,</span>
+    <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;nrFatalities&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -922,7 +953,9 @@ document.write(`
 <h3>Median Conflict Events<a class="headerlink" href="#median-conflict-events" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span><span class="n">conflict_daily_h3_median</span><span class="p">,</span> <span class="s1">&#39;Daily median of conflict events&#39;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s1">&#39;nrEvents&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span>
+    <span class="n">conflict_daily_h3_median</span><span class="p">,</span> <span class="s2">&quot;Daily median of conflict events&quot;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;nrEvents&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -935,7 +968,11 @@ document.write(`
 <h3>Median Conflict Fatalities<a class="headerlink" href="#median-conflict-fatalities" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span><span class="n">conflict_daily_h3_median</span><span class="p">,</span> <span class="s1">&#39;Daily median of conflict fatalities&#39;</span><span class="p">,</span> <span class="n">measure</span><span class="o">=</span><span class="s1">&#39;nrFatalities&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_h3_maps</span><span class="p">(</span>
+    <span class="n">conflict_daily_h3_median</span><span class="p">,</span>
+    <span class="s2">&quot;Daily median of conflict fatalities&quot;</span><span class="p">,</span>
+    <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;nrFatalities&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1073,7 +1110,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on May 06, 2025.
+  Last updated on Sep 30, 2025.
   <br/>
 </p>
   </div>
