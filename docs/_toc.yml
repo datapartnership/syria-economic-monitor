@@ -60,7 +60,7 @@ parts:
   - caption: Syria Economic Monitor 2025 Updates
     chapters:
     - file: notebooks/vegetation-conditions/evi-analytics-update-sept2025.ipynb
-    
+
   - caption: Acknowledgements
     chapters:
       - file: docs/team
