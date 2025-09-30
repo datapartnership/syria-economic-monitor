@@ -57,6 +57,10 @@ parts:
         sections:
         - file: notebooks/syria-forest-cover/syria_forest.ipynb
       - file: notebooks/ais-analysis/fall-2024/update.md
+  - caption: Syria Economic Monitor 2025 Updates
+    chapters:
+    - file: notebooks/vegetation-conditions/evi-analytics-update-sept2025.ipynb
+
   - caption: Acknowledgements
     chapters:
       - file: docs/team
