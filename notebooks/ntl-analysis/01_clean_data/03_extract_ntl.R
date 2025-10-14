@@ -65,8 +65,11 @@ for(adm_i in rev(c("adm0",
     
     # Load data --------------------------------------------------------------------
     if(adm_i == "border_crossings_1km"){
-      gadm_sf <- read_sf(file.path(data_dir, "Border Crossings", 
-                                   "TUR_SYR_bordercrossings_1kmbuffer.geojson"))
+      gadm_sf <- read_xlsx(file.path(data_dir, "Border Crossings", 
+                                   "Syria Border Crossings.xlsx")) %>%
+        st_as_sf(coords = c("longitude", "latitude"),
+                 crs = 4326) %>%
+        st_buffer(dist = 1000)
     }
     
     if(adm_i == "adm0"){
