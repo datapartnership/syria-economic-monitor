@@ -77,7 +77,7 @@
     <link rel="prev" title="Humanitarian Assistance Survey" href="../hsos-survey/README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Sep 30, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 20, 2025"/>
   </head>
   
   
@@ -247,7 +247,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syria Economic Monitor 2025 Updates</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-sept2025.html">Crop Productivity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html">Crop Productivity Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../google-earth-engine/air-pollution.html">Air Pollution in Syria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../combined/economic_models.html">Using Nighttime Lights, NO2 and EVI as proxies for GDP</a></li>
 </ul>
@@ -491,11 +491,11 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="seaborn-trade-activity-estimation">
 <h1>Seaborn Trade Activity Estimation<a class="headerlink" href="#seaborn-trade-activity-estimation" title="Permalink to this heading">#</a></h1>
 <p>This section introduces the use of an alternative big data source – Automatic Identification System (hereafter, AIS) – to monitor seaborn trade activity in Syrian ports. AIS was originally developed by the International Maritime Organization in 2004 to prevent collisions between large vessels. This system requires all commercial ships (gross tonnage greater than 300) and passenger ships to broadcast their position via ground stations and satellites.</p>
-<p>A nascent literature has been dedicated to convert raw AIS messages into economic values of trade (<span id="id1">Arslanalp <em>et al.</em> [<a class="reference internal" href="../traffic/README.html#id12" title="Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. IMF Working Papers, 2021(225):A001, 2021. URL: https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml, doi:10.5089/9781513593531.001.A001.">2021</a>]</span>; <span id="id2">Cerdeiro <em>et al.</em> [<a class="reference internal" href="../traffic/README.html#id8" title="Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. IMF Working Papers, 2020.">2020</a>]</span>; <span id="id3">Jia <em>et al.</em> [<a class="reference internal" href="../traffic/README.html#id9" title="Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. International Journal of Shipping and Transport Logistics, 11:25, 01 2019. doi:10.1504/IJSTL.2019.096864.">2019</a>]</span>; <span id="id4">Verschuur <em>et al.</em> [<a class="reference internal" href="../traffic/README.html#id10" title="Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. Nature Human Behaviour, 5(3):305-307, Mar 2021. URL: https://doi.org/10.1038/s41562-021-01060-5, doi:10.1038/s41562-021-01060-5.">2021</a>]</span>; <span id="id5">Verschuur <em>et al.</em> [<a class="reference internal" href="../traffic/README.html#id11" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">2021</a>]</span>). These papers utilize dynamic information on ship movements, static characteristics of each ship, and reported draft (depth of submergence), to estimate the amount of goods offloaded or loaded at a certain port. While this approach is grounded on principles from physics and has been validated with official statistics, issues with missing data make it less reliable in the context of Syria.</p>
-<p>For the purposes of the monitor, we implement the methodology described in “Global economic impacts of COVID-19 lockdown measures stand out in high frequency shipping data” <span id="id6">[<a class="reference internal" href="../traffic/README.html#id11" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>, using the same AIS data used by the authors, facilitated by the <a class="reference external" href="https://unstats.un.org/wiki/display/AIS/AIS+Handbook+Outline">UN Global Platform AIS Task Team</a>. We choose to follow this paper as it is the latest global AIS analysis which included Syria, and the data processing steps are described in detail in the appendix. The authors report strong correlations between predicted trade and reported trade for selected countries (0.52 - 0.96), as well as with trade flows retrieved from UN Comtrade (0.84 - 0.86).</p>
+<p>A nascent literature has been dedicated to convert raw AIS messages into economic values of trade (<span id="id1">Arslanalp <em>et al.</em> [<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id36" title="Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. IMF Working Papers, 2021(225):A001, 2021. URL: https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml, doi:10.5089/9781513593531.001.A001.">2021</a>]</span>; <span id="id2">Cerdeiro <em>et al.</em> [<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id32" title="Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. IMF Working Papers, 2020.">2020</a>]</span>; <span id="id3">Jia <em>et al.</em> [<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id33" title="Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. International Journal of Shipping and Transport Logistics, 11:25, 01 2019. doi:10.1504/IJSTL.2019.096864.">2019</a>]</span>; <span id="id4">Verschuur <em>et al.</em> [<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id34" title="Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. Nature Human Behaviour, 5(3):305-307, Mar 2021. URL: https://doi.org/10.1038/s41562-021-01060-5, doi:10.1038/s41562-021-01060-5.">2021</a>]</span>; <span id="id5">Verschuur <em>et al.</em> [<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id35" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">2021</a>]</span>). These papers utilize dynamic information on ship movements, static characteristics of each ship, and reported draft (depth of submergence), to estimate the amount of goods offloaded or loaded at a certain port. While this approach is grounded on principles from physics and has been validated with official statistics, issues with missing data make it less reliable in the context of Syria.</p>
+<p>For the purposes of the monitor, we implement the methodology described in “Global economic impacts of COVID-19 lockdown measures stand out in high frequency shipping data” <span id="id6">[<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id35" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>, using the same AIS data used by the authors, facilitated by the <a class="reference external" href="https://unstats.un.org/wiki/display/AIS/AIS+Handbook+Outline">UN Global Platform AIS Task Team</a>. We choose to follow this paper as it is the latest global AIS analysis which included Syria, and the data processing steps are described in detail in the appendix. The authors report strong correlations between predicted trade and reported trade for selected countries (0.52 - 0.96), as well as with trade flows retrieved from UN Comtrade (0.84 - 0.86).</p>
 <section id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
-<p>The method can be broken down into the following four steps. A lengthier description of each step is available on “S1 Appendix: Methodology maritime trade estimates” ​<span id="id7">[<a class="reference internal" href="../traffic/README.html#id11" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>.</p>
+<p>The method can be broken down into the following four steps. A lengthier description of each step is available on “S1 Appendix: Methodology maritime trade estimates” ​<span id="id7">[<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id35" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>.</p>
 <section id="step-1-data-extraction">
 <h3>Step 1. Data Extraction<a class="headerlink" href="#step-1-data-extraction" title="Permalink to this heading">#</a></h3>
 <p>We retrieve all AIS messages that intersect a 20-kilometer buffer from each port in Syria (Al Ladhiqiyah, Tartus, Baniyas), available from December 1st, 2018, to August 31st, 2022. This results in a dataset of 98,662 AIS messages, the majority of which are concentrated in Al Ladhiqiyah and Tartus.</p>
@@ -520,7 +520,7 @@ document.write(`
 <div><p>where <span class="math notranslate nohighlight">\(C_{b}\)</span> is the block coefficient, <span class="math notranslate nohighlight">\(d_{d}\)</span> is the design draft, <span class="math notranslate nohighlight">\(d_r\)</span> is the reported draft, <span class="math notranslate nohighlight">\(L\)</span> is the length, <span class="math notranslate nohighlight">\(W\)</span> is the width, <span class="math notranslate nohighlight">\(DWT\)</span> is the deadweight tonnage, and <span class="math notranslate nohighlight">\(p_w\)</span> is a constant for the density in salt water.</p>
 </div></blockquote>
 <p>The utilization rate is multiplied by deadweight tonnage to calculate the volume of cargo being transported. The direction of the change in draught dictates whether the cargo is considered an import or an export. If the outgoing draught is greater than the incoming draught, the trade flow is considered an export, and the inverse is true for imports.</p>
-<p>In the majority of cases, vessels either load or unload goods. Therefore, we estimate the trade flows based on the net unloading (imports) or loading (exports) of vessels, which is estimated based on the draft differences when entering and leaving the port. In case there is no difference between the ingoing and outgoing draft (as this is not always manually entered), we estimate the ratio of unloading (fraction exports) and loading (fraction imports) based on the imbalance measured at the port. <span id="id8">[<a class="reference internal" href="../traffic/README.html#id11" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>.</p>
+<p>In the majority of cases, vessels either load or unload goods. Therefore, we estimate the trade flows based on the net unloading (imports) or loading (exports) of vessels, which is estimated based on the draft differences when entering and leaving the port. In case there is no difference between the ingoing and outgoing draft (as this is not always manually entered), we estimate the ratio of unloading (fraction exports) and loading (fraction imports) based on the imbalance measured at the port. <span id="id8">[<a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html#id35" title="Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. PLoS One, 16(4):e0248818, April 2021.">Verschuur <em>et al.</em>, 2021</a>]</span>.</p>
 </section>
 </section>
 <section id="implementation">
@@ -533,10 +533,10 @@ document.write(`
 <section id="findings">
 <h2>Findings<a class="headerlink" href="#findings" title="Permalink to this heading">#</a></h2>
 <p>We present results of the estimated volume of trade (imports and exports) across both ports in Syria (Latakia and Tartus). Despite the relatively small number of ships captured by the AIS data in Syria (498 vessels), the data is comprehensive enough to identify general trends from the limited trade that remains since the fallout of the conflict. The trade flow is consistently dominated by imports. We find a decrease in trade volume in 2020, with slight decreases in 2021 and 2022.</p>
-<figure class="align-center" id="id21">
+<figure class="align-center" id="id53">
 <img alt="../../_images/trade-estimates.png" src="../../_images/trade-estimates.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Estimated Monthly Trade Volume from AIS signal</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Estimated Monthly Trade Volume from AIS signal</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The general trends identified are consistent with the AIS-derived estimates reported by UN Comtrade, although the decrease is more pronounced in the Comtrade data. Although both estimates are based on the same AIS data, there are important methodological differences that affect the results. Key differences include the coverage of vessel information, the method to define port boundaries (Comtrade uses an automated method), and the trade estimation formula.</p>
@@ -556,8 +556,20 @@ document.write(`
 <dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id1">AKV21</a></span></dt>
 <dd><p>Serkan Arslanalp, Robin Koepke, and Jasper Verschuur. Tracking trade from space: an application to pacific island countries. <em>IMF Working Papers</em>, 2021(225):A001, 2021. URL: <a class="reference external" href="https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml">https://www.elibrary.imf.org/view/journals/001/2021/225/article-A001-en.xml</a>, <a class="reference external" href="https://doi.org/10.5089/9781513593531.001.A001">doi:10.5089/9781513593531.001.A001</a>.</p>
 </dd>
+<dt class="label" id="id39"><span class="brackets">AJL17</span></dt>
+<dd><p>George Azzari, Meha Jain, and David B. Lobell. Towards fine resolution global maps of crop yields: Testing multiple methods and satellites in three countries. <em>Remote Sensing of Environment</em>, 202:129–141, December 2017. <a class="reference external" href="https://doi.org/10.1016/j.rse.2017.04.014">doi:10.1016/j.rse.2017.04.014</a>.</p>
+</dd>
+<dt class="label" id="id38"><span class="brackets">BRVLJ10</span></dt>
+<dd><p>I. Becker-Reshef, E. Vermote, M. Lindeman, and C. Justice. A generalized regression-based model for forecasting winter wheat yields in Kansas and Ukraine using MODIS data. <em>Remote Sensing of Environment</em>, 114(6):1312–1323, June 2010. <a class="reference external" href="https://doi.org/10.1016/j.rse.2010.01.010">doi:10.1016/j.rse.2010.01.010</a>.</p>
+</dd>
+<dt class="label" id="id29"><span class="brackets">BF13</span></dt>
+<dd><p>Douglas K. Bolton and Mark A. Friedl. Forecasting crop yield using remotely sensed vegetation indices and crop phenology metrics. <em>Agricultural and Forest Meteorology</em>, 173:74–84, May 2013. <a class="reference external" href="https://doi.org/10.1016/j.agrformet.2013.01.007">doi:10.1016/j.agrformet.2013.01.007</a>.</p>
+</dd>
 <dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id2">CKomaromiLS20</a></span></dt>
 <dd><p>Diego A. Cerdeiro, András Komáromi, Y. Liu, and Mamoon M. Saeed. World seaborne trade in real time: a proof of concept for building ais-based nowcasts from scratch. <em>IMF Working Papers</em>, 2020.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">DMCS03</span></dt>
+<dd><p>Paul C. Doraiswamy, Sophie Moulin, Paul W. Cook, and Alan Stern. Crop Yield Assessment from Remote Sensing. <em>Photogrammetric Engineering &amp; Remote Sensing</em>, 69(6):665–674, June 2003. <a class="reference external" href="https://doi.org/10.14358/PERS.69.6.665">doi:10.14358/PERS.69.6.665</a>.</p>
 </dd>
 <dt class="label" id="id20"><span class="brackets">GTS+14</span></dt>
 <dd><p>Dirk Geudtner, Ramón Torres, Paul Snoeij, Malcolm Davidson, and Björn Rommen. Sentinel-1 system capabilities and applications. In <em>2014 IEEE Geoscience and Remote Sensing Symposium</em>, volume, 1457–1460. 2014. <a class="reference external" href="https://doi.org/10.1109/IGARSS.2014.6946711">doi:10.1109/IGARSS.2014.6946711</a>.</p>
@@ -565,17 +577,59 @@ document.write(`
 <dt class="label" id="id10"><span class="brackets">HT04</span></dt>
 <dd><p>Ramaswamy Hariharan and Kentaro Toyama. Project Lachesis: Parsing and Modeling Location Histories. In <em>Geographic Information Science. Volume 3234</em>, volume 3234, 106–124. 2004. <a class="reference external" href="https://doi.org/10.1007/978-3-540-30231-5_8">doi:10.1007/978-3-540-30231-5_8</a>.</p>
 </dd>
+<dt class="label" id="id36"><span class="brackets">HDM+02</span></dt>
+<dd><p>A Huete, K Didan, T Miura, E.P Rodriguez, X Gao, and L.G Ferreira. Overview of the radiometric and biophysical performance of the MODIS vegetation indices. <em>Remote Sensing of Environment</em>, 83(1-2):195–213, November 2002. <a class="reference external" href="https://doi.org/10.1016/S0034-4257(02)00096-2">doi:10.1016/S0034-4257(02)00096-2</a>.</p>
+</dd>
+<dt class="label" id="id46"><span class="brackets">JA15</span></dt>
+<dd><p>Hadi H. Jaafar and Farah A. Ahmad. Crop yield prediction from remotely sensed vegetation indices and primary productivity in arid and semi-arid lands. <em>International Journal of Remote Sensing</em>, 36(18):4570–4589, September 2015. <a class="reference external" href="https://doi.org/10.1080/01431161.2015.1084434">doi:10.1080/01431161.2015.1084434</a>.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets">JPZ+22</span></dt>
+<dd><p>Zhonglin Ji, Yaozhong Pan, Xiufang Zhu, Dujuan Zhang, and Jinyun Wang. A generalized model to predict large-scale crop yields integrating satellite-based vegetation index time series and phenology metrics. <em>Ecological Indicators</em>, 137:108759, April 2022. <a class="reference external" href="https://doi.org/10.1016/j.ecolind.2022.108759">doi:10.1016/j.ecolind.2022.108759</a>.</p>
+</dd>
 <dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id3">JPS19</a></span></dt>
 <dd><p>Haiying Jia, Vishnu Prakash, and Tristan Smith. Estimating vessel payloads in bulk shipping using ais data. <em>International Journal of Shipping and Transport Logistics</em>, 11:25, 01 2019. <a class="reference external" href="https://doi.org/10.1504/IJSTL.2019.096864">doi:10.1504/IJSTL.2019.096864</a>.</p>
 </dd>
+<dt class="label" id="id21"><span class="brackets">Joh16</span></dt>
+<dd><p>David M. Johnson. A comprehensive assessment of the correlations between field crop yields and commonly used MODIS products. <em>International Journal of Applied Earth Observation and Geoinformation</em>, 52:65–81, October 2016. <a class="reference external" href="https://doi.org/10.1016/j.jag.2016.05.010">doi:10.1016/j.jag.2016.05.010</a>.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets">JLH+18</span></dt>
+<dd><p>František Jurečka, Vojtěch Lukas, Petr Hlavinka, Daniela Semerádová, Zdeněk Žalud, and Miroslav Trnka. Estimating Crop Yields at the Field Level Using Landsat and MODIS Products. <em>Acta Universitatis Agriculturae et Silviculturae Mendelianae Brunensis</em>, 66(5):1141–1150, October 2018. <a class="reference external" href="https://doi.org/10.11118/actaun201866051141">doi:10.11118/actaun201866051141</a>.</p>
+</dd>
+<dt class="label" id="id31"><span class="brackets">KMC20</span></dt>
+<dd><p>Kefyalew Sahle Kibret, Carsten Marohn, and Georg Cadisch. Use of MODIS EVI to map crop phenology, identify cropping systems, detect land use change and drought risk in Ethiopia – an application of Google Earth Engine. <em>European Journal of Remote Sensing</em>, 53(1):176–191, January 2020. <a class="reference external" href="https://doi.org/10.1080/22797254.2020.1786466">doi:10.1080/22797254.2020.1786466</a>.</p>
+</dd>
 <dt class="label" id="id11"><span class="brackets">Kun14</span></dt>
 <dd><p>Robin Kunaka, Charles; Carruthers. Trade and Transport Corridor Management Toolkit. World Bank Training, World Bank, 2014. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/18241">http://hdl.handle.net/10986/18241</a>.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets">Pet18</span></dt>
+<dd><p>Lillian Kay Petersen. Real-Time Prediction of Crop Yields From MODIS Relative Vegetation Health: A Continent-Wide Analysis of Africa. <em>Remote Sensing</em>, 10(11):1726, November 2018. Number: 11 Publisher: Multidisciplinary Digital Publishing Institute. <a class="reference external" href="https://doi.org/10.3390/rs10111726">doi:10.3390/rs10111726</a>.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets">PAK+22</span></dt>
+<dd><p>Hoa Thi Pham, Joseph Awange, Michael Kuhn, Binh Van Nguyen, and Luyen K. Bui. Enhancing Crop Yield Prediction Utilizing Machine Learning on Satellite-Based Vegetation Health Indices. <em>Sensors</em>, 22(3):719, January 2022. <a class="reference external" href="https://doi.org/10.3390/s22030719">doi:10.3390/s22030719</a>.</p>
+</dd>
+<dt class="label" id="id40"><span class="brackets">RRK+09</span></dt>
+<dd><p>Atiqur Rahman, Leonid Roytman, Nir Y. Krakauer, Mohammad Nizamuddin, and Mitch Goldberg. Use of Vegetation Health Data for Estimation of Aus Rice Yield in Bangladesh. <em>Sensors</em>, 9(4):2968–2975, April 2009. <a class="reference external" href="https://doi.org/10.3390/s90402968">doi:10.3390/s90402968</a>.</p>
+</dd>
+<dt class="label" id="id51"><span class="brackets">SH15</span></dt>
+<dd><p>Jingjing Shi and Jingfeng Huang. Monitoring Spatio-Temporal Distribution of Rice Planting Area in the Yangtze River Delta Region Using MODIS Images. <em>Remote Sensing</em>, 7(7):8883–8905, July 2015. <a class="reference external" href="https://doi.org/10.3390/rs70708883">doi:10.3390/rs70708883</a>.</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets">SCC+13</span></dt>
+<dd><p>N. T. Son, C. F. Chen, C. R. Chen, L. Y. Chang, H. N. Duc, and L. D. Nguyen. Prediction of rice crop yield using MODIS EVI−LAI data in the Mekong Delta, Vietnam. <em>International Journal of Remote Sensing</em>, 34(20):7275–7292, October 2013. <a class="reference external" href="https://doi.org/10.1080/01431161.2013.818258">doi:10.1080/01431161.2013.818258</a>.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets">TMA+23</span></dt>
+<dd><p>Gizachew Ayalew Tiruneh, Derege Tsegaye Meshesha, Enyew Adgo, Atsushi Tsunekawa, Nigussie Haregeweyn, Ayele Almaw Fenta, Tiringo Yilak Alemayehu, Temesgen Mulualem, Genetu Fekadu, Simeneh Demissie, and José Miguel Reichert. Mapping crop yield spatial variability using Sentinel-2 vegetation indices in Ethiopia. <em>Arabian Journal of Geosciences</em>, 16(11):631, November 2023. <a class="reference external" href="https://doi.org/10.1007/s12517-023-11754-x">doi:10.1007/s12517-023-11754-x</a>.</p>
 </dd>
 <dt class="label" id="id18"><span class="brackets">VKH21a</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>,<a href="#id7">3</a>,<a href="#id8">4</a>)</span></dt>
 <dd><p>Jasper Verschuur, Elco E Koks, and Jim W Hall. Global economic impacts of COVID-19 lockdown measures stand out in high-frequency shipping data. <em>PLoS One</em>, 16(4):e0248818, April 2021.</p>
 </dd>
 <dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id4">VKH21b</a></span></dt>
 <dd><p>Jasper Verschuur, Elco E. Koks, and Jim W. Hall. Observed impacts of the covid-19 pandemic on global trade. <em>Nature Human Behaviour</em>, 5(3):305–307, Mar 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">https://doi.org/10.1038/s41562-021-01060-5</a>, <a class="reference external" href="https://doi.org/10.1038/s41562-021-01060-5">doi:10.1038/s41562-021-01060-5</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets">WDS15</span></dt>
+<dd><p>J. S. J. Wijesingha, N. L. Deshapriya, and L. Samarakoon. Rice Crop Monitoring and Yield Assessment with MODIS 250m Gridded Vegetation Products: A Case Study of Sa Kaeo Province, Thailand. <em>The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences</em>, XL-7/W3:121–127, April 2015. <a class="reference external" href="https://doi.org/10.5194/isprsarchives-XL-7-W3-121-2015">doi:10.5194/isprsarchives-XL-7-W3-121-2015</a>.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets">WZZ+23</span></dt>
+<dd><p>Bingfang Wu, Miao Zhang, Hongwei Zeng, Fuyou Tian, Andries B Potgieter, Xingli Qin, Nana Yan, Sheng Chang, Yan Zhao, Qinghan Dong, Vijendra Boken, Dmitry Plotnikov, Huadong Guo, Fangming Wu, Hang Zhao, Bart Deronde, Laurent Tits, and Evgeny Loupian. Challenges and opportunities in remote sensing-based crop monitoring: a review. <em>National Science Review</em>, 10(4):nwac290, March 2023. <a class="reference external" href="https://doi.org/10.1093/nsr/nwac290">doi:10.1093/nsr/nwac290</a>.</p>
 </dd>
 <dt class="label" id="id12"><span class="brackets">WorldBank21</span></dt>
 <dd><p>World Bank. <em>World Development Report 2021 : Data for Better Lives</em>. World Bank, 2021. License: CC BY 3.0 IGO. URL: <a class="reference external" href="http://hdl.handle.net/10986/35218">http://hdl.handle.net/10986/35218</a>.</p>
@@ -691,7 +745,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 30, 2025.
+  Last updated on Nov 20, 2025.
   <br/>
 </p>
   </div>

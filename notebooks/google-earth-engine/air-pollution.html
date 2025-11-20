@@ -72,10 +72,10 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Using Nighttime Lights, NO2 and EVI as proxies for GDP" href="../combined/economic_models.html" />
-    <link rel="prev" title="Crop Productivity Analysis" href="../vegetation-conditions/evi-analytics-update-sept2025.html" />
+    <link rel="prev" title="Crop Productivity Analysis" href="../vegetation-conditions/evi-analytics-update-nov2025.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Sep 30, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 20, 2025"/>
   </head>
   
   
@@ -245,7 +245,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syria Economic Monitor 2025 Updates</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-sept2025.html">Crop Productivity Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vegetation-conditions/evi-analytics-update-nov2025.html">Crop Productivity Analysis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Air Pollution in Syria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../combined/economic_models.html">Using Nighttime Lights, NO2 and EVI as proxies for GDP</a></li>
 </ul>
@@ -730,6 +730,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the new mapping functions</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+
 <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">airpollution_visuals</span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">airpollution_visuals</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </pre></div>
@@ -740,6 +741,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the updated mapping functions with shared legend</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+
 <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">airpollution_visuals</span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">airpollution_visuals</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_temporal_maps</span>
 
@@ -750,7 +752,7 @@ document.write(`
     <span class="n">join_column</span><span class="o">=</span><span class="s2">&quot;NAME_EN&quot;</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
-    <span class="n">color_scheme</span><span class="o">=</span><span class="s2">&quot;blues&quot;</span>
+    <span class="n">color_scheme</span><span class="o">=</span><span class="s2">&quot;blues&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">yearly_maps</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -832,12 +834,12 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create monthly maps for Damascus admin3 regions with custom title</span>
 <span class="n">monthly_maps_2023</span> <span class="o">=</span> <span class="n">create_temporal_maps</span><span class="p">(</span>
     <span class="n">dataframe</span><span class="o">=</span><span class="n">monthly_no2_adm3</span><span class="p">,</span>
-    <span class="n">boundaries_gdf</span><span class="o">=</span><span class="n">syria_adm3</span><span class="p">[</span><span class="n">syria_adm3</span><span class="p">[</span><span class="s1">&#39;ADM1_EN&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Damascus&#39;</span><span class="p">],</span>
+    <span class="n">boundaries_gdf</span><span class="o">=</span><span class="n">syria_adm3</span><span class="p">[</span><span class="n">syria_adm3</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Damascus&quot;</span><span class="p">],</span>
     <span class="n">join_column</span><span class="o">=</span><span class="s2">&quot;NAME_EN&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 Pollution in Damascus Districts&quot;</span><span class="p">,</span>  <span class="c1"># Custom title</span>
     <span class="n">temporal_grouping</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">200</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">monthly_maps_2023</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -948,7 +950,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../vegetation-conditions/evi-analytics-update-sept2025.html"
+       href="../vegetation-conditions/evi-analytics-update-nov2025.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1014,7 +1016,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 30, 2025.
+  Last updated on Nov 20, 2025.
   <br/>
 </p>
   </div>
