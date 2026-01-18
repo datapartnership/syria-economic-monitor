@@ -1,0 +1,47 @@
+######################################################################
+# Syria Economic Monitoring
+# Multi-Sectoral Needs Assesment
+# 0_master
+######################################################################
+
+install.packages(c("here", "tidyverse", "visdat", "summarytools", "readxl", "ggplot2", "Hmisc", "devtools"))
+devtools::install_github("hadley/scales")
+
+library(here)
+library(tidyverse)
+library(readxl)
+library(visdat)
+library(summarytools)
+library(ggplot2)
+library(Hmisc)
+library(scales)
+library(dplyr)
+library(viridis)
+library(ggrepel)
+
+# Colors -----------------------------------------------------------------------
+
+pie_colors <- c("#66c2e0", "#fae10b", "#fc8d62", "darkseagreen3", "lightpink1", "lightsteelblue1")
+bar_colors <- c("#66c2e0", "#fae10b", "#fc8d62")
+
+# Codes ------------------------------------------------------------------------
+
+  # Data cleaning
+  source(here("Codes", "1_cleaning.R"))
+
+  # Demographic analysis
+  source(here("Codes", "2_demographics.R"))
+
+  # Thematic pillars
+
+    # Conflict and household welfare
+    source(here("Codes", "3_1_conflict.R"))
+  
+    # Humanitarian Aid
+    source(here("Codes", "3_2_aid.R"))
+  
+    # Humanitarian Aid
+    source(here("Codes", "3_3_displacement.R"))
+
+    # HH welfare
+    source(here("Codes", "3_4_hh_welfare.R"))
