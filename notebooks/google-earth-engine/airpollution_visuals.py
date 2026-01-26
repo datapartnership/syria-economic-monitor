@@ -327,7 +327,7 @@ def create_temporal_maps(
 ) -> alt.Chart:
     """
     Create temporal maps showing pollution changes over time using Altair.
-
+    
     Parameters:
     -----------
     dataframe : pd.DataFrame
@@ -358,7 +358,9 @@ def create_temporal_maps(
     alt.Chart
         Altair chart with temporal maps
     """
-
+    
+    import geopandas as gpd
+    
     # Make copies to avoid modifying original data
     df = dataframe.copy()
     gdf = boundaries_gdf.copy()
@@ -368,69 +370,66 @@ def create_temporal_maps(
 
     # Create temporal grouping
     if temporal_grouping == "year":
-        df["time_period"] = df[date_column].dt.year
+        df['time_period'] = df[date_column].dt.year
     elif temporal_grouping == "month":
-        df["time_period"] = df[date_column].dt.to_period("M").astype(str)
+        df['time_period'] = df[date_column].dt.to_period('M').astype(str)
     elif temporal_grouping == "quarter":
-        df["time_period"] = df[date_column].dt.to_period("Q").astype(str)
+        df['time_period'] = df[date_column].dt.to_period('Q').astype(str)
     else:
         raise ValueError("temporal_grouping must be 'year', 'month', or 'quarter'")
 
     # Aggregate data by time period and region
-    agg_data = (
-        df.groupby(["time_period", join_column])[pollution_column].mean().reset_index()
-    )
-
+    agg_data = df.groupby(['time_period', join_column])[pollution_column].mean().reset_index()
+    
     # Calculate global min/max for consistent color scale
     global_min = agg_data[pollution_column].min()
     global_max = agg_data[pollution_column].max()
-
+    
     # Use custom title if provided, otherwise use title_prefix with temporal grouping
-    chart_title = (
-        title
-        if title is not None
-        else f"{title_prefix} - {temporal_grouping.title()} View"
-    )
-
+    chart_title = title if title is not None else f"{title_prefix} - {temporal_grouping.title()} View"
+    
     # Create the choropleth map using the same pattern as vegetation analytics
-    base_map = (
-        alt.Chart(agg_data, title=chart_title)
-        .mark_geoshape(stroke="white", strokeWidth=0.5)
-        .encode(
-            shape="geo:G",
-            color=alt.Color(
-                f"{pollution_column}:Q",
-                scale=alt.Scale(
-                    scheme=color_scheme,
-                    domain=[
-                        global_min,
-                        global_max,
-                    ],  # Fixed domain for consistent coloring
-                ),
-                title="NO2 Level",
-                legend=alt.Legend(
-                    orient="right",
-                    titleFontSize=12,
-                    labelFontSize=10,
-                    gradientLength=200,
-                ),
+    base_map = alt.Chart(
+        agg_data,
+        title=chart_title
+    ).mark_geoshape(
+        stroke='white',
+        strokeWidth=0.5
+    ).encode(
+        shape='geo:G',
+        color=alt.Color(
+            f'{pollution_column}:Q',
+            scale=alt.Scale(
+                scheme=color_scheme,
+                domain=[global_min, global_max]  # Fixed domain for consistent coloring
             ),
-            tooltip=[
-                alt.Tooltip(f"{join_column}:N", title="Region"),
-                alt.Tooltip(f"{pollution_column}:Q", title="NO2 Level", format=".3f"),
-                alt.Tooltip("time_period:O", title="Time Period"),
-            ],
-            facet=alt.Facet("time_period:O", columns=3, title=None),
+            title='NO2 Level',
+            legend=alt.Legend(
+                orient='right',
+                titleFontSize=12,
+                labelFontSize=10,
+                gradientLength=200
+            )
+        ),
+        tooltip=[
+            alt.Tooltip(f'{join_column}:N', title='Region'),
+            alt.Tooltip(f'{pollution_column}:Q', title='NO2 Level', format='.3f'),
+            alt.Tooltip('time_period:O', title='Time Period')
+        ],
+        facet=alt.Facet(
+            'time_period:O', 
+            columns=3, 
+            title=None
         )
-        .transform_lookup(
-            lookup=join_column,
-            from_=alt.LookupData(data=gdf, key=join_column),
-            as_="geo",
-        )
-        .properties(width=width, height=height)
-        .resolve_scale(
-            color="shared"  # Share color scale across all facets
-        )
+    ).transform_lookup(
+        lookup=join_column,
+        from_=alt.LookupData(data=gdf, key=join_column),
+        as_='geo'
+    ).properties(
+        width=width,
+        height=height
+    ).resolve_scale(
+        color='shared'  # Share color scale across all facets
     )
 
     return base_map
@@ -549,7 +548,7 @@ def create_animated_map(
 ) -> alt.Chart:
     """
     Create a temporal overview map showing pollution changes over time.
-
+    
     Parameters:
     -----------
     dataframe : pd.DataFrame
@@ -576,7 +575,7 @@ def create_animated_map(
     alt.Chart
         Temporal map chart (faceted by time period)
     """
-
+    
     # Create a temporal overview using smaller faceted maps
     return create_temporal_maps(
         dataframe=dataframe,
@@ -586,7 +585,7 @@ def create_animated_map(
         date_column=date_column,
         temporal_grouping=temporal_grouping,
         title_prefix="Temporal Changes in Air Pollution",
-        width=width // 3,  # Smaller since it's faceted
-        height=height // 3,
-        color_scheme=color_scheme,
+        width=width//3,  # Smaller since it's faceted
+        height=height//3,
+        color_scheme=color_scheme
     )
