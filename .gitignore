@@ -95,3 +95,5 @@ _build/
 .python_version
 data/
 notebooks/hsos-survey/Figures
+training-253313-c905674c1ca0.json
+*.json
