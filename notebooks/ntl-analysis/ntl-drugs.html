@@ -75,7 +75,7 @@
     <link rel="prev" title="Using Nighttime Lights, NO2 and EVI as proxies for GDP" href="../combined/economic_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Mar 09, 2026"/>
+    <meta name="docbuild:last-update" content="Mar 16, 2026"/>
   </head>
   
   
@@ -468,10 +468,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buffers-around-factories">Buffers around Factories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-down-lights-into-very-small-grids">Breaking down lights into very small grids</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identified-limitations">Identified Limitations</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-nightlights-in-factories">Average Nightlights in Factories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-in-nightlights-in-each-factory-compared-to-nov-2024">% Change in Nightlights in each factory compared to Nov 2024</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-of-change-in-ntl">Map of % change in NTL</a></li>
 </ul>
             </nav>
         </div>
@@ -486,35 +488,51 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="nightlights-around-drug-production-areas">
 <h1>Nightlights around drug production areas<a class="headerlink" href="#nightlights-around-drug-production-areas" title="Permalink to this heading">#</a></h1>
 <p>For all the drug production sites where the exact location is known, we used a 1km radius. For everything else, we used a 5km radius.</p>
-<section id="buffers-around-factories">
-<h2>Buffers around Factories<a class="headerlink" href="#buffers-around-factories" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="breaking-down-lights-into-very-small-grids">
+<h2>Breaking down lights into very small grids<a class="headerlink" href="#breaking-down-lights-into-very-small-grids" title="Permalink to this heading">#</a></h2>
+<p>The country is broken down in H3 grids each of the size 0.8 <a class="reference external" href="http://sq.km">sq.km</a>. The hexagons with the factory inside it are identified as the regions of interest.</p>
+<section id="identified-limitations">
+<h3>Identified Limitations<a class="headerlink" href="#identified-limitations" title="Permalink to this heading">#</a></h3>
+<p>It was seen atht June and July of 2025 have high spikes in lights in June and July, so they were removed from the maps as months of interest. This is because the quality of observations that fed into those months of data seems faulty. We’re still looking into how to best deal with this data discrepancy.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/2419978a2de45cc8f356ad828c638b83b3e63f7d6944e4c1a59fc6a8794069b6.png" src="../../_images/2419978a2de45cc8f356ad828c638b83b3e63f7d6944e4c1a59fc6a8794069b6.png" />
+<img alt="../../_images/80d2610c327e381bd425724d1c24ad10596a3be96fefa89b7e84527a0b17f3a8.png" src="../../_images/80d2610c327e381bd425724d1c24ad10596a3be96fefa89b7e84527a0b17f3a8.png" />
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/5bffee9b8c49f06ee271ccc78d47232547ec076244135cfcc863f4c19f784a4b.png" src="../../_images/5bffee9b8c49f06ee271ccc78d47232547ec076244135cfcc863f4c19f784a4b.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="average-nightlights-in-factories">
 <h2>Average Nightlights in Factories<a class="headerlink" href="#average-nightlights-in-factories" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/75866ec9039f66daa15c243cab9068abe93fbf0701cb07fcc2d9ed1fe5e6c0e2.png" src="../../_images/75866ec9039f66daa15c243cab9068abe93fbf0701cb07fcc2d9ed1fe5e6c0e2.png" />
+<img alt="../../_images/1b127c972a996c313996cb2fc7c14b98ec6d54dec67b496922f123eba7470fe3.png" src="../../_images/1b127c972a996c313996cb2fc7c14b98ec6d54dec67b496922f123eba7470fe3.png" />
 </div>
 </div>
 </section>
 <section id="change-in-nightlights-in-each-factory-compared-to-nov-2024">
 <h2>% Change in Nightlights in each factory compared to Nov 2024<a class="headerlink" href="#change-in-nightlights-in-each-factory-compared-to-nov-2024" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../_images/9a5e9b8ed56b67065716cdda3c50e143d338fc67bca83f88b9e1418672f8a858.png" src="../../_images/9a5e9b8ed56b67065716cdda3c50e143d338fc67bca83f88b9e1418672f8a858.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighbor_count_summary</span>
+</pre></div>
 </div>
 </div>
-</section>
-<section id="map-of-change-in-ntl">
-<h2>Map of % change in NTL<a class="headerlink" href="#map-of-change-in-ntl" title="Permalink to this heading">#</a></h2>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Neighbor cells per factory: Rural Damascus, Rankous (n=6), Homs, Talkalakh (n=6), Rural Aleppo, Afrin, Al Oqaibah (n=6),\n  Aleppo, Al Nairab  (n=6), Rural Damascus, Assal Al Ward  (n=6), Homs, Al Qussier  (n=6), Homs, Arjoun  (n=6), Deir\n  Ezzor, Al Mayadien  (n=6), Deir Ezzor, Al Bu Kamal  (n=6), Rural Damascus, Sarghayah (n=10), Aleppo, Al Arqoub (n=6),\n  Daraa, Nawa  (n=6), Daraa, Taiba (n=6), Daraa, Kharab Al Shahem (n=6), Rural Damascus, Maddayah (n=6), Rural Damascus,\n  Qara (n=6), Al Sawieda, Shahba (n=6), Lattakia, Eastern Al Murouj (n=6), Damascus, Al Sabourah (n=6), Rural Aleppo, Al\n  Zahraa (n=6), Rural Damascus, Al Diemas (n=6), Rural Damascus, Falita (n=11), Rural Damascus, Sidnaya.  (n=6), Rural\n  Aleppo, Azaz, Soran (n=6), Aleppo, Shikh Najjar (n=6), Daraa, Nassib (n=6), Lattakia, Kilmakho  (n=6), Tartous, Al\n  Shikh Saad (n=6), Daraa, Um Al Mayadiyen (n=6), Lattakia, Al Shelfatiyeh (n=6), Daraa, Al lajat  (n=6), Rural Idleb,\n  Tal Al Karama (n=6), Al Sawieda, Atil  (n=6), Damascus, Jaramana  (n=6), Rural Aleppo, Afrin, Kafar Janeh (n=6), Rural\n  Damascus, Deir Attieh (n=6), Lattakia, Al Bassa (n=6), Daraa, Tafas  (n=6), Idleb, Ram Hamdan  (n=6), Lattakia, Al\n  Sena&#39;ah  (n=6), Rural Damascus, Al Zabadani (n=6), Al Sawieda, Malah (n=6), Rural Damascus, Douma (n=6), Homs, Al\n  Qariyatien (n=6), Damascus, Sahnaya (n=6), Aleppo, Al Muslemiyeh (n=6), Rural Aleppo, Al Bab, Sossian (n=6), Daraa, Al\n  Meta&#39;aiyeh (n=6)&quot;
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/d9d079a53b8ea337a8b42f6ab90b18a0fe1547792fb3469712aeb97f2bd2dbdb.png" src="../../_images/d9d079a53b8ea337a8b42f6ab90b18a0fe1547792fb3469712aeb97f2bd2dbdb.png" />
+<img alt="../../_images/55c12429e03c4778ee5c391893bd4984dd322244b4381c0b66060cbc26912aba.png" src="../../_images/55c12429e03c4778ee5c391893bd4984dd322244b4381c0b66060cbc26912aba.png" />
 </div>
 </div>
 </section>
@@ -584,10 +602,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buffers-around-factories">Buffers around Factories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-down-lights-into-very-small-grids">Breaking down lights into very small grids</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identified-limitations">Identified Limitations</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-nightlights-in-factories">Average Nightlights in Factories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-in-nightlights-in-each-factory-compared-to-nov-2024">% Change in Nightlights in each factory compared to Nov 2024</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-of-change-in-ntl">Map of % change in NTL</a></li>
 </ul>
   </nav></div>
 
@@ -614,7 +634,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Mar 09, 2026.
+  Last updated on Mar 16, 2026.
   <br/>
 </p>
   </div>
