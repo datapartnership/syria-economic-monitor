@@ -120,7 +120,7 @@ end_date_monthly = "2026-03-01"
 
 end_date_annual = "2025-01-01"
 
-for products in [Product.VNP46A4]:
+for products in [Product.VNP46A3]:
 
     if products == Product.VNP46A4:
         print("Extracting VNP46A4 (annual composites)...")
