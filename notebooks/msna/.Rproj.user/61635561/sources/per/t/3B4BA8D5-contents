@@ -1,0 +1,134 @@
+######################################################################
+# Syria Economic Monitoring
+# Multi-Sectoral Needs Assesment
+# 3_2_aid
+######################################################################
+
+# % HH having received aid in the 3 months -------------------------------------
+
+aid_2022 <- msna_2022 %>%
+  group_by(q_k10, q_k9, q_7_1) %>%
+  summarise(per_aid_hh_rec = mean(q_17_1 == "Yes", na.rm = TRUE) * 100,
+            .groups = 'drop')
+
+aid_2022 <- aid_2022 %>%
+  mutate(subdis_code = str_split(q_k9, " - ", simplify = TRUE)[, 1],
+         subdis_name = str_split(q_k9, " - ", simplify = TRUE)[, 2]) %>%
+  select(subdis_code, subdis_name, q_k10, per_aid_hh_rec, q_7_1) %>%
+  rename(
+    type_location = q_k10,
+    hh_pop_type = q_7_1
+  )
+
+aid_2022 %>%
+  write_csv(
+    here("Data",
+         "Coded",
+         "aid_dis_2022.csv"
+    )
+  )
+
+# Aid satisfaction -------------------------------------------------------------
+
+aid_2022 <- msna_2022 %>%
+  filter(!is.na(q_17_3)) 
+
+unique_q_k10 <- unique(msna_2022$q_k10)
+
+for (value in unique_q_k10) {
+  subset_data <- aid_2022 %>%
+    filter(q_k10 == value) %>%
+    group_by(q_7_1, q_17_3) %>%
+    summarise(n = n()) %>%
+    mutate(percentage = round(n / sum(n) * 100, 1)) %>% 
+    mutate(csum = rev(cumsum(rev(percentage))), 
+           pos = percentage/2 + lead(csum, 1),
+           pos = if_else(is.na(pos), percentage/2, pos))
+
+pie_chart <- ggplot(subset_data, aes(x = "", y = percentage, fill = fct_inorder(q_17_3))) +
+  geom_bar(stat = "identity", width = 1, color = "white") +
+  coord_polar(theta = "y") +
+  geom_label_repel(data = subset_data,
+                   aes(y = pos, label = paste0(percentage, "%")),
+                   size = 3, nudge_x = 0.7, show.legend = FALSE) +
+  labs(fill = "") +
+  theme_minimal() +
+  theme(legend.position = "right",
+        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+        plot.caption = element_text(hjust = 0.5, size = 10),
+        axis.text = element_blank(),
+        axis.title = element_blank(),
+        panel.grid = element_blank()) +
+  scale_fill_manual(values = pie_colors) +
+  facet_wrap(~q_7_1, ncol = 3) 
+
+  ggsave(here("Output", paste0("pie_aid_sat_", gsub(" ", "_", value), ".png")), plot = pie_chart, width = 9, height = 6, units = "in", dpi = 300)
+}
+
+# Priority needs ---------------------------------------------------------------
+
+needs_2022 <- msna_2022 %>%
+  select(id, q_7_1, q_16_1_1, q_k10) %>%
+  rename(need = q_16_1_1) %>%
+  filter(need != "All needs are met") %>%
+  mutate(id = id,
+         ones = 1,
+         need = ifelse(need == "Shelter assistance (emergency shelter provision, shelter repairs, rent subsidies)", "Shelter assistance", need),
+         need = ifelse(need %in% c("Other (specify)",
+                                   "Access to community centers and safe spaces for women and girls",
+                                   "Reintegration services", "GBV post services",
+                                   "Risk awareness and clearance (Mine Action)",
+                                   "Technical and vocational training",
+                                   "No other reasons",
+                                   "Don't know/unsure",
+                                   "Waste disposal",
+                                   "Access to safe water",
+                                   "WASH services (unloading service, toilet, handbasin, associated connections/sewage system)",
+                                   "Phone/data/communication",
+                                   "Education services",
+                                   "Electricity provision",
+                                   "Disability-specific needs (medical equipment, medicine, services)",
+                                   "Health services", "Medicine",
+                                   "Mental health and psychosocial support services (e.g. structured group activities in a safe space, invididual or group counseling, etc.)"), "Other", need),
+         need = ifelse(need %in% c("NFI items (e.g. clothing, blankets, cooking material, sanitation items, fuel and school equipment)", "Shelter assistance"), "Shelter assistance, NFI items", need),
+         need = ifelse(need %in% c("Legal advice including civil documentation and Housing, Land and Property", 
+                                   "Livelihood opportunities/inability to work"), "Legal advice and documentation", need)) %>%
+  group_by(need, q_7_1, q_k10) %>%
+  summarise(total = sum(ones, na.rm = TRUE), .groups = 'drop') %>%
+  filter(!is.na(need)) %>%
+  group_by(q_7_1, q_k10) %>%
+  mutate(percentage = round(total / sum(total) * 100, digits = 1)) %>%
+  ungroup()
+
+unique_q_k10 <- unique(safety_2022$q_k10)
+
+for (value in unique_q_k10) {
+  plot_data <- filter(needs_2022, q_k10 == value)
+  
+  bar_chart <- ggplot(plot_data, aes(x = percentage, y = need, fill = q_7_1)) +
+    geom_bar(stat = "identity", position = "dodge", width = 0.7, color = "white") +
+    geom_text(aes(label = percentage), position = position_dodge(width = 0.7), hjust = - 0.5, vjust = 0, size = 2) +
+    labs(title = "",
+         x = "Percentage of Households",
+         y = "Need") +
+    scale_x_continuous(limits = c(0, max(plot_data$percentage) + (max(plot_data$percentage)/10))) +
+    scale_fill_manual(values = bar_colors) +
+    theme_minimal() +
+    theme(
+      axis.text.y = element_text(size = 8),
+      axis.text.x = element_text(size = 10),
+      axis.title = element_text(size = 12, face = "bold"),
+      plot.title = element_text(size = 16, face = "bold"),
+      legend.position = "top",
+      legend.title = element_blank(),
+      legend.text = element_text(size = 10),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      panel.grid.major.x = element_line(color = "lightgray", size = 0.5),
+      panel.grid.minor.x = element_blank()
+    )
+  
+  ggsave(here("Output", paste0("/bar_need", gsub("/", "_", value), ".png")), bar_chart, width = 9, height = 6)
+}
+
+# GoS-issued documentation -----------------------------------------------------
