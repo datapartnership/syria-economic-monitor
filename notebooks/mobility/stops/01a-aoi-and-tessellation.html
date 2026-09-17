@@ -75,7 +75,7 @@
     <link rel="prev" title="Estimating cross-border movement in Lebanon and Syria through Mobility Data" href="README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 13, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 17, 2026"/>
   </head>
   
   
@@ -542,21 +542,21 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Below, see auxiliary functions. Ideally, we&#39;ll move them to a package in the future</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Below, see auxiliary functions. Ideally, we'll move them to a package in the future</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_h3_tessellation</span><span class="p">(</span>
-    <span class="n">gdf</span><span class="p">:</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">RESOLUTION</span>
+    <span class="n">gdf</span><span class="p">:</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"shapeName"</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">RESOLUTION</span>
 <span class="p">):</span>
     <span class="n">mapper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">h3_tessellation</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="c1"># TODO: vectorize, if possible</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="n">geometry</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+        <span class="n">geometry</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span>
 
         <span class="k">match</span> <span class="n">geometry</span><span class="o">.</span><span class="n">geom_type</span><span class="p">:</span>
-            <span class="k">case</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">:</span>
+            <span class="k">case</span> <span class="s2">"Polygon"</span><span class="p">:</span>
                 <span class="n">hex_ids</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">polyfill</span><span class="p">(</span>
                     <span class="n">shapely</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">mapping</span><span class="p">(</span><span class="n">geometry</span><span class="p">),</span>
                     <span class="n">resolution</span><span class="p">,</span>
@@ -566,7 +566,7 @@ document.write(`
                 <span class="n">h3_tessellation</span> <span class="o">=</span> <span class="n">h3_tessellation</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">hex_ids</span><span class="p">))</span>
                 <span class="n">mapper</span><span class="o">.</span><span class="n">update</span><span class="p">([(</span><span class="n">hex_id</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">hex_id</span> <span class="ow">in</span> <span class="n">hex_ids</span><span class="p">])</span>
 
-            <span class="k">case</span> <span class="s2">&quot;MultiPolygon&quot;</span><span class="p">:</span>
+            <span class="k">case</span> <span class="s2">"MultiPolygon"</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
                     <span class="n">hex_ids</span> <span class="o">=</span> <span class="n">h3</span><span class="o">.</span><span class="n">polyfill</span><span class="p">(</span>
                         <span class="n">shapely</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">mapping</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
@@ -590,7 +590,7 @@ document.write(`
 <p>First, we define <strong>Region A</strong> as the region within <code class="docutils literal notranslate"><span class="pre">RADIUS</span></code> (meters) of <code class="docutils literal notranslate"><span class="pre">CHECKPOINTS</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CHECKPOINTS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/external/border_crossings_jordan.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CHECKPOINTS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../../data/external/border_crossings_jordan.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -600,7 +600,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CHECKPOINTS</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
     <span class="n">CHECKPOINTS</span><span class="p">,</span>
     <span class="n">geometry</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span>
-        <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span>
+        <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
     <span class="p">),</span>
 <span class="p">)</span>
 
@@ -869,10 +869,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># proj EPSG:3857 (meters)</span>
-<span class="n">CHECKPOINTS</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">RADIUS</span><span class="p">)</span>
+<span class="n">CHECKPOINTS</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">"EPSG:3857"</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">RADIUS</span><span class="p">)</span>
 
 <span class="c1"># proj lat/lon</span>
-<span class="n">CHECKPOINTS</span> <span class="o">=</span> <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">CHECKPOINTS</span> <span class="o">=</span> <span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -883,7 +883,7 @@ document.write(`
 <p>As for the tessellation, we use <a class="reference external" href="https://h3geo.org/docs/core-library/restable/">H3 resolution 10</a> toTo expediate the computation of spatial joins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">HEXID_A</span> <span class="o">=</span> <span class="n">get_h3_tessellation</span><span class="p">(</span><span class="n">CHECKPOINTS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">HEXID_A</span> <span class="o">=</span> <span class="n">get_h3_tessellation</span><span class="p">(</span><span class="n">CHECKPOINTS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"name"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -893,7 +893,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">Polygon</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">HEXID_A</span><span class="p">]</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
-    <span class="n">HEXID_A</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span>
+    <span class="n">HEXID_A</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"hex_id"</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1083,10 +1083,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LBN</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-    <span class="s2">&quot;../../data/external/geoBoundaries/geoBoundaries-LBN-ADM0-all/geoBoundaries-LBN-ADM0_simplified.shp&quot;</span>
+    <span class="s2">"../../data/external/geoBoundaries/geoBoundaries-LBN-ADM0-all/geoBoundaries-LBN-ADM0_simplified.shp"</span>
 <span class="p">)</span>
 <span class="n">SYR</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-    <span class="s2">&quot;../../data/external/geoBoundaries/geoBoundaries-SYR-ADM0-all/geoBoundaries-SYR-ADM0_simplified.shp&quot;</span>
+    <span class="s2">"../../data/external/geoBoundaries/geoBoundaries-SYR-ADM0-all/geoBoundaries-SYR-ADM0_simplified.shp"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1096,14 +1096,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to meters</span>
-<span class="n">LBN</span> <span class="o">=</span> <span class="n">LBN</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:32634&quot;</span><span class="p">)</span>
-<span class="n">SYR</span> <span class="o">=</span> <span class="n">SYR</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:32634&quot;</span><span class="p">)</span>
+<span class="n">LBN</span> <span class="o">=</span> <span class="n">LBN</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">"EPSG:32634"</span><span class="p">)</span>
+<span class="n">SYR</span> <span class="o">=</span> <span class="n">SYR</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">"EPSG:32634"</span><span class="p">)</span>
 
 <span class="c1"># create a 500m buffer</span>
 <span class="n">LBN</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">LBN</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">LBN</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">250</span><span class="p">))</span>
 <span class="n">SYR</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">SYR</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">SYR</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">250</span><span class="p">))</span>
 
-<span class="n">BORDER</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">SYR</span><span class="p">,</span> <span class="n">LBN</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">BORDER</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">SYR</span><span class="p">,</span> <span class="n">LBN</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">"EPSG:4326"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1288,7 @@ document.write(`
 <h4>Region B: Generate Tessellation (H3)<a class="headerlink" href="#region-b-generate-tessellation-h3" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">HEXID_BORDER</span> <span class="o">=</span> <span class="n">get_h3_tessellation</span><span class="p">(</span><span class="n">BORDER</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shapeName_1&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">HEXID_BORDER</span> <span class="o">=</span> <span class="n">get_h3_tessellation</span><span class="p">(</span><span class="n">BORDER</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"shapeName_1"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1305,7 +1305,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">Polygon</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">HEXID_B</span><span class="p">]</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">HEXID_B</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">]),</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">HEXID_B</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"hex_id"</span><span class="p">]),</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1501,11 +1501,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 
-<span class="n">B</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">B</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="n">CHECKPOINTS</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Areas of Interest: (A) and (B)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Areas of Interest: (A) and (B)"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 
 <span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 </pre></div>
@@ -1526,10 +1526,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LBN</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-    <span class="s2">&quot;../../data/external/geoBoundaries/geoBoundaries-LBN-ADM1-all/geoBoundaries-LBN-ADM1_simplified.shp&quot;</span>
+    <span class="s2">"../../data/external/geoBoundaries/geoBoundaries-LBN-ADM1-all/geoBoundaries-LBN-ADM1_simplified.shp"</span>
 <span class="p">)</span>
 <span class="n">SYR</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
-    <span class="s2">&quot;../../data/external/geoBoundaries/geoBoundaries-SYR-ADM1-all/geoBoundaries-SYR-ADM1_simplified.shp&quot;</span>
+    <span class="s2">"../../data/external/geoBoundaries/geoBoundaries-SYR-ADM1-all/geoBoundaries-SYR-ADM1_simplified.shp"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1562,8 +1562,8 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="n">AOI</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="n">AOI</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">([(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])]</span>
 
-<span class="n">AOI</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;shapeISO&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;LB-AS&quot;</span><span class="p">]</span>
-<span class="n">AOI</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;shapeISO&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;SYR-TA&quot;</span><span class="p">]</span>
+<span class="n">AOI</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="n">AOI</span><span class="p">[</span><span class="s2">"shapeISO"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"LB-AS"</span><span class="p">]</span>
+<span class="n">AOI</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="n">AOI</span><span class="p">[</span><span class="s2">"shapeISO"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"SYR-TA"</span><span class="p">]</span>
 
 <span class="n">AOI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">AOI</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
 </pre></div>
@@ -1749,9 +1749,9 @@ document.write(`
 <p>Preparing tessellation for further steps and saving.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;tile_ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;shapeISO&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span><span class="p">[</span><span class="s2">"tile_ID"</span><span class="p">]</span> <span class="o">=</span> <span class="n">AOI</span><span class="p">[</span><span class="s2">"shapeISO"</span><span class="p">]</span>
 
-<span class="n">AOI</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;../../data/interim/tessellation/LNBSYR.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+<span class="n">AOI</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">"../../data/interim/tessellation/LNBSYR.geojson"</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">"GeoJSON"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1761,7 +1761,7 @@ document.write(`
 <h3>LB-SY Tessellation (H3)<a class="headerlink" href="#lb-sy-tessellation-h3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapper</span><span class="p">,</span> <span class="n">HEXID_SY</span> <span class="o">=</span> <span class="n">get_h3_tessellation</span><span class="p">(</span><span class="n">AOI</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shapeISO&quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapper</span><span class="p">,</span> <span class="n">HEXID_SY</span> <span class="o">=</span> <span class="n">get_h3_tessellation</span><span class="p">(</span><span class="n">AOI</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"shapeISO"</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1771,8 +1771,8 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TESSELLATION</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">HEXID_SY</span><span class="p">,</span>
     <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">Polygon</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">HEXID_SY</span><span class="p">],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tile_ID&quot;</span><span class="p">],</span>
-    <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"tile_ID"</span><span class="p">],</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1783,10 +1783,10 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 
-<span class="n">TESSELLATION</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">TESSELLATION</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"k"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Lebanon-Syria H3 Tessellation&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Lebanon-Syria H3 Tessellation"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 
 <span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 </pre></div>
@@ -1908,7 +1908,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Aug 13, 2026.
+  Last updated on Sep 17, 2026.
   <br/>
 </p>
   </div>

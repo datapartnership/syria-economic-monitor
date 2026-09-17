@@ -75,7 +75,7 @@
     <link rel="prev" title="Createp Longitudinal Panels" href="01b-convenience-sampling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 13, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 17, 2026"/>
   </head>
   
   
@@ -515,8 +515,8 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://papermill.readthedocs.io/en/latest/usage-parameterize.html</span>
 <span class="n">DASK_SCHEDULER_ADDRESS</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="n">AOI</span> <span class="o">=</span> <span class="s2">&quot;id=7&amp;name=A&quot;</span>
-<span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
+<span class="n">AOI</span> <span class="o">=</span> <span class="s2">"id=7&amp;name=A"</span>
+<span class="n">NAME</span> <span class="o">=</span> <span class="s2">"A"</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +527,7 @@ document.write(`
 <h3>Area of Interest<a class="headerlink" href="#area-of-interest" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../data/interim/aoi/</span><span class="si">{</span><span class="n">AOI</span><span class="si">}</span><span class="s2">.geojson&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AOI</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">"../../data/interim/aoi/</span><span class="si">{</span><span class="n">AOI</span><span class="si">}</span><span class="s2">.geojson"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,7 +539,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PATH</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="sa">f</span><span class="s2">&quot;../../data/interim/panels/</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"../../data/interim/panels/</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="n">filters</span> <span class="o">=</span> <span class="p">[]</span>
@@ -558,7 +558,7 @@ document.write(`
 <p>Filtering,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">&quot;h3_10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">AOI</span><span class="p">[</span><span class="s2">&quot;hex_id&quot;</span><span class="p">])]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="n">ddf</span><span class="p">[</span><span class="s2">"h3_10"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">AOI</span><span class="p">[</span><span class="s2">"hex_id"</span><span class="p">])]</span>
 </pre></div>
 </div>
 </div>
@@ -571,7 +571,7 @@ document.write(`
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dropping uid, for privacy</span>
-<span class="n">ddf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;uid&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<span class="n">ddf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"uid"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -671,7 +671,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;89.6 MB&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'89.6 MB'
 </pre></div>
 </div>
 </div>
@@ -700,9 +700,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s2">"longitude"</span><span class="p">,</span> <span class="s2">"latitude"</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span>
     <span class="n">geometry</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10000</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span>
     <span class="p">),</span>
 <span class="p">)</span>
 <span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
@@ -889,7 +889,7 @@ document.write(`
 <p>Now, we are interested to see how the number of devices evolves in time. Let’s calculate the daily number of devices detected withih the area of interest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;date&quot;</span><span class="p">])[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"date"</span><span class="p">])[</span><span class="s2">"uid"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">"count"</span><span class="p">)</span>
 
 <span class="n">count</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">count</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </pre></div>
@@ -908,12 +908,12 @@ document.write(`
 
 <span class="n">count</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Number of devices with area of interest (</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"Number of devices with area of interest (</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">)"</span><span class="p">,</span>
     <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
-    <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+    <span class="n">fontweight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_text</span><span class="p">(</span><span class="s2">&quot;Number of devices&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%b-%Y&quot;</span><span class="p">));</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_text</span><span class="p">(</span><span class="s2">"Number of devices"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">"%b-%Y"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -1022,7 +1022,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Aug 13, 2026.
+  Last updated on Sep 17, 2026.
   <br/>
 </p>
   </div>

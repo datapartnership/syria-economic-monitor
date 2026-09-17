@@ -75,7 +75,7 @@
     <link rel="prev" title="Internet Connectivity Post Earthquake" href="README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 13, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 17, 2026"/>
   </head>
   
   
@@ -488,24 +488,24 @@ document.write(`
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Aleppo&quot;</span><span class="p">,</span> <span class="s2">&quot;Idleb&quot;</span><span class="p">,</span> <span class="s2">&quot;Lattakia&quot;</span><span class="p">,</span> <span class="s2">&quot;Hama&quot;</span><span class="p">]:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">week_type_adm1</span><span class="p">[</span><span class="n">week_type_adm1</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"Aleppo"</span><span class="p">,</span> <span class="s2">"Idleb"</span><span class="p">,</span> <span class="s2">"Lattakia"</span><span class="p">,</span> <span class="s2">"Hama"</span><span class="p">]:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">week_type_adm1</span><span class="p">[</span><span class="n">week_type_adm1</span><span class="p">[</span><span class="s2">"ADM1_EN"</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
             <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
                 <span class="n">df</span><span class="p">,</span>
-                <span class="s2">&quot;Download Speed (mbps) in admin 1 regions&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Source: Ookla for Good&quot;</span><span class="p">,</span>
+                <span class="s2">"Download Speed (mbps) in admin 1 regions"</span><span class="p">,</span>
+                <span class="s2">"Source: Ookla for Good"</span><span class="p">,</span>
                 <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                <span class="n">aggregation</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">,</span>
-                <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;download_mbps&quot;</span><span class="p">,</span>
+                <span class="n">subtitle</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+                <span class="n">aggregation</span><span class="o">=</span><span class="s2">"type"</span><span class="p">,</span>
+                <span class="n">measure</span><span class="o">=</span><span class="s2">"download_mbps"</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
         <span class="p">)</span>
     <span class="p">)</span>
 
-<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">"scale_both"</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -841,29 +841,29 @@ if (force === true) {
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">week_speed_adm1</span><span class="p">[</span>
-    <span class="n">week_speed_adm1</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Aleppo&quot;</span><span class="p">,</span> <span class="s2">&quot;Idleb&quot;</span><span class="p">,</span> <span class="s2">&quot;Lattakia&quot;</span><span class="p">,</span> <span class="s2">&quot;Hama&quot;</span><span class="p">])</span>
+    <span class="n">week_speed_adm1</span><span class="p">[</span><span class="s2">"ADM1_EN"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"Aleppo"</span><span class="p">,</span> <span class="s2">"Idleb"</span><span class="p">,</span> <span class="s2">"Lattakia"</span><span class="p">,</span> <span class="s2">"Hama"</span><span class="p">])</span>
 <span class="p">]</span>
-<span class="c1"># df = df.groupby([&#39;ADM1_EN&#39;, &#39;date&#39;]).mean([&#39;download_kbps&#39;, &#39;upload_kbps&#39;, &#39;download_mbps&#39;, &#39;upload_mbps&#39;]).reset_index()</span>
-<span class="c1"># df = df[df[&#39;date&#39;]&gt;=&#39;2023-01-31&#39;]</span>
+<span class="c1"># df = df.groupby(['ADM1_EN', 'date']).mean(['download_kbps', 'upload_kbps', 'download_mbps', 'upload_mbps']).reset_index()</span>
+<span class="c1"># df = df[df['date']&gt;='2023-01-31']</span>
 <span class="c1"># for adm in affected_adm1:</span>
-<span class="c1">#     df = week[week[&#39;ADM1_EN&#39;]==adm]</span>
+<span class="c1">#     df = week[week['ADM1_EN']==adm]</span>
 
 <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
     <span class="n">TabPanel</span><span class="p">(</span>
         <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
             <span class="n">df</span><span class="p">,</span>
-            <span class="s2">&quot;Download Speed (mbps) in admin 1 regions&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Source: Ookla for Good&quot;</span><span class="p">,</span>
+            <span class="s2">"Download Speed (mbps) in admin 1 regions"</span><span class="p">,</span>
+            <span class="s2">"Source: Ookla for Good"</span><span class="p">,</span>
             <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="n">aggregation</span><span class="o">=</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span>
-            <span class="n">measure</span><span class="o">=</span><span class="s2">&quot;download_mbps&quot;</span><span class="p">,</span>
+            <span class="n">subtitle</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+            <span class="n">aggregation</span><span class="o">=</span><span class="s2">"ADM1_EN"</span><span class="p">,</span>
+            <span class="n">measure</span><span class="o">=</span><span class="s2">"download_mbps"</span><span class="p">,</span>
         <span class="p">),</span>
         <span class="c1"># title=adm.capitalize(),</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">"scale_both"</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1198,26 +1198,26 @@ if (force === true) {
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">week_adm1</span><span class="p">[</span><span class="n">week_adm1</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Aleppo&quot;</span><span class="p">,</span> <span class="s2">&quot;Idleb&quot;</span><span class="p">,</span> <span class="s2">&quot;Lattakia&quot;</span><span class="p">,</span> <span class="s2">&quot;Hama&quot;</span><span class="p">])]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s2">&quot;2023-01-31&quot;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">week_adm1</span><span class="p">[</span><span class="n">week_adm1</span><span class="p">[</span><span class="s2">"ADM1_EN"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"Aleppo"</span><span class="p">,</span> <span class="s2">"Idleb"</span><span class="p">,</span> <span class="s2">"Lattakia"</span><span class="p">,</span> <span class="s2">"Hama"</span><span class="p">])]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s2">"2023-01-31"</span><span class="p">]</span>
 <span class="c1"># for adm in affected_adm1:</span>
-<span class="c1">#     df = week[week[&#39;ADM1_EN&#39;]==adm]</span>
+<span class="c1">#     df = week[week['ADM1_EN']==adm]</span>
 
 <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
     <span class="n">TabPanel</span><span class="p">(</span>
         <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
             <span class="n">df</span><span class="p">,</span>
-            <span class="s2">&quot;Weekly average users taking speedtest&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Source: Ookla for Good&quot;</span><span class="p">,</span>
+            <span class="s2">"Weekly average users taking speedtest"</span><span class="p">,</span>
+            <span class="s2">"Source: Ookla for Good"</span><span class="p">,</span>
             <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">% c</span><span class="s2">hange compared to a baseline users from January 2023&quot;</span><span class="p">,</span>
-            <span class="n">aggregation</span><span class="o">=</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span>
+            <span class="n">subtitle</span><span class="o">=</span><span class="s2">"</span><span class="si">% c</span><span class="s2">hange compared to a baseline users from January 2023"</span><span class="p">,</span>
+            <span class="n">aggregation</span><span class="o">=</span><span class="s2">"ADM1_EN"</span><span class="p">,</span>
         <span class="p">),</span>
         <span class="c1"># title=adm.capitalize(),</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">"scale_both"</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1543,8 +1543,8 @@ if (force === true) {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span>
-    <span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM1_EN&quot;</span><span class="p">,</span> <span class="s2">&quot;n_users&quot;</span><span class="p">,</span> <span class="s2">&quot;n_baseline&quot;</span><span class="p">,</span> <span class="s2">&quot;n_difference&quot;</span><span class="p">,</span> <span class="s2">&quot;percent_change&quot;</span><span class="p">]</span>
-<span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../data/ookla-speedtest/adm1_users_percent_change.csv&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">"ADM1_EN"</span><span class="p">,</span> <span class="s2">"n_users"</span><span class="p">,</span> <span class="s2">"n_baseline"</span><span class="p">,</span> <span class="s2">"n_difference"</span><span class="p">,</span> <span class="s2">"percent_change"</span><span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"../../data/ookla-speedtest/adm1_users_percent_change.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1561,24 +1561,24 @@ if (force === true) {
 
 <span class="n">tabs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Aleppo&quot;</span><span class="p">,</span> <span class="s2">&quot;Idleb&quot;</span><span class="p">,</span> <span class="s2">&quot;Lattakia&quot;</span><span class="p">,</span> <span class="s2">&quot;Hama&quot;</span><span class="p">]:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">week_adm2</span><span class="p">[</span><span class="n">week_adm2</span><span class="p">[</span><span class="s2">&quot;ADM1_EN&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s2">&quot;2023-01-15&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">adm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"Aleppo"</span><span class="p">,</span> <span class="s2">"Idleb"</span><span class="p">,</span> <span class="s2">"Lattakia"</span><span class="p">,</span> <span class="s2">"Hama"</span><span class="p">]:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">week_adm2</span><span class="p">[</span><span class="n">week_adm2</span><span class="p">[</span><span class="s2">"ADM1_EN"</span><span class="p">]</span> <span class="o">==</span> <span class="n">adm</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s2">"2023-01-15"</span><span class="p">]</span>
 
     <span class="n">tabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">TabPanel</span><span class="p">(</span>
             <span class="n">child</span><span class="o">=</span><span class="n">get_line_plot</span><span class="p">(</span>
                 <span class="n">df</span><span class="p">,</span>
-                <span class="s2">&quot;Weekly average users taking speedtest&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Source: Ookla for Good&quot;</span><span class="p">,</span>
+                <span class="s2">"Weekly average users taking speedtest"</span><span class="p">,</span>
+                <span class="s2">"Source: Ookla for Good"</span><span class="p">,</span>
                 <span class="n">earthquakes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">subtitle</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">% c</span><span class="s2">hange compared to a baseline users from January 2023&quot;</span><span class="p">,</span>
+                <span class="n">subtitle</span><span class="o">=</span><span class="s2">"</span><span class="si">% c</span><span class="s2">hange compared to a baseline users from January 2023"</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">title</span><span class="o">=</span><span class="n">adm</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
         <span class="p">)</span>
     <span class="p">)</span>
 
-<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">&quot;scale_both&quot;</span><span class="p">)</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">Tabs</span><span class="p">(</span><span class="n">tabs</span><span class="o">=</span><span class="n">tabs</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s2">"scale_both"</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">tabs</span><span class="p">,</span> <span class="n">warn_on_missing_glyphs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1979,7 +1979,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Aug 13, 2026.
+  Last updated on Sep 17, 2026.
   <br/>
 </p>
   </div>

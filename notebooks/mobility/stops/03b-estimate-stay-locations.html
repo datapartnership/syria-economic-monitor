@@ -75,7 +75,7 @@
     <link rel="prev" title="Calculate Number of Devices within Areas of Interest" href="03a-count-within-aoi.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Aug 13, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 17, 2026"/>
   </head>
   
   
@@ -508,12 +508,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PATH</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="sa">f</span><span class="s2">&quot;../../data/interim/panels/</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"../../data/interim/panels/</span><span class="si">{</span><span class="n">NAME</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">QUARTER</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"year"</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">YEAR</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"quarter"</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">QUARTER</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -553,7 +553,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tdf</span> <span class="o">=</span> <span class="n">skmob</span><span class="o">.</span><span class="n">TrajDataFrame</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">&quot;uid&quot;</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=</span><span class="s2">"latitude"</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="s2">"longitude"</span><span class="p">,</span> <span class="n">datetime</span><span class="o">=</span><span class="s2">"datetime"</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="s2">"uid"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -28321,7 +28321,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;hexid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">h3</span><span class="o">.</span><span class="n">geo_to_h3</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;lng&quot;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="mi">7</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s2">"hexid"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">h3</span><span class="o">.</span><span class="n">geo_to_h3</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"lng"</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">],</span> <span class="mi">7</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -28329,9 +28329,9 @@ document.write(`
 <p>Aggregating on <code class="docutils literal notranslate"><span class="pre">hexid</span></code> and counting the number of stay location within the corresponding hexagon.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;hexid&quot;</span><span class="p">])[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"hexid"</span><span class="p">])[</span><span class="s2">"uid"</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">"count"</span><span class="p">)</span>
 
-<span class="n">count</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="n">count</span><span class="p">[</span><span class="s2">"geometry"</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="p">)</span>
 </pre></div>
@@ -28343,9 +28343,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
     <span class="n">count</span><span class="p">,</span>
-    <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span>
-    <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span>
-<span class="p">)</span><span class="o">.</span><span class="n">explore</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;Percentiles&quot;</span><span class="p">)</span>
+    <span class="n">geometry</span><span class="o">=</span><span class="s2">"geometry"</span><span class="p">,</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s2">"EPSG:4326"</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">explore</span><span class="p">(</span><span class="s2">"count"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"cividis"</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">"Percentiles"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -28595,23 +28595,23 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">dsl_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;distance_straight_line&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">dsl_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"distance_straight_line"</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"uid"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2022-01-01 00:00:00&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Asia/Damascus&quot;</span><span class="p">)</span>
-<span class="n">end_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2022-01-02 00:00:00&quot;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">&quot;Asia/Damascus&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2022-01-01 00:00:00"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Asia/Damascus"</span><span class="p">)</span>
+<span class="n">end_datetime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">"2022-01-02 00:00:00"</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s2">"Asia/Damascus"</span><span class="p">)</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">cstdf</span><span class="o">.</span><span class="n">plot_diary</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">start_datetime</span><span class="p">,</span> <span class="n">end_datetime</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Diary&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Diary"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Diary&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, 'Diary')
 </pre></div>
 </div>
 <img alt="../../../_images/9864c68210ecd93b688808546b8ee4c8efb44bbc1b5f3722f0addced9dc06a23.png" src="../../../_images/9864c68210ecd93b688808546b8ee4c8efb44bbc1b5f3722f0addced9dc06a23.png" />
@@ -28727,7 +28727,7 @@ By Development Data Group
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Aug 13, 2026.
+  Last updated on Sep 17, 2026.
   <br/>
 </p>
   </div>
