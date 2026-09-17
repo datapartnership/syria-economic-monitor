@@ -67,6 +67,7 @@ parts:
     - file: notebooks/ntl-analysis/ntl-drugs.ipynb
     - file: notebooks/ntl-analysis/ntl-gas-flaring.ipynb
     - file: notebooks/conflict/acled_post_assad.ipynb
+    - file: notebooks/internet-connectivity/gdp_proxy_metrics.ipynb
 
   - caption: Acknowledgements
     chapters:
